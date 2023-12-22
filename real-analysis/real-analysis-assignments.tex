@@ -1,0 +1,443 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\author{Mostafa Hassanein}
+\title{Real Analysis Assignments}
+\date{20 December 2023}
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section*{1.3.7}
+\textbf{\underline{Proof:}}
+\newline
+
+\noindent
+\textbf{\underline{Forward direction}}: If a set $T_1$ is denumerable, then there exists a bijection from $T1$ onto a denumerable set $T_2$. 
+\newline
+
+\noindent 
+Since $T_1$ is denumerable, then there exists a bijection $f_1$ from $N$ onto $T_1$.
+
+\noindent
+And since $T_2$ is denumerable, then there exists a bijection $f_2$ from $N$ onto $T_2$.
+
+\noindent
+Also, since $f_1$ is a bijection, then $f_1^{-1}$ exists and is a bijection from $T_1$ onto $N$.
+
+\noindent
+Then, the function defined by $f_2 \circ f_1^{-1}$ is a bijection from $T1$ onto $T_2$, since the compositiomn of bijective functions is bijective.
+\newline
+
+\noindent
+\textbf{\underline{Reverse direction}}: If there exists a bijection from a set $T1$ onto a denumerable set $T_2$, then $T_1$ is denumerable.
+\newline
+
+\noindent
+Let $g$ be the bijection from $T1$ to $T2$.
+
+\noindent
+Since $T_2$ is denumerable, then there exists a bijection $f_2$ from $N$ onto $T_2$.
+
+\noindent
+Also, since $g$ is a bijection, then $g^{-1}$ exists and is a bijection from $T_2$ onto $T_1$.
+
+\noindent
+Then, the function defined as $f_1 := g^{-1} \circ f_2$ is a bijection from $N$ onto $T_1$, since the compositiomn of bijective functions is bijective.
+
+\noindent
+This implies that the set $T_1$ is denumerable.
+\newline
+
+\noindent
+This completes the proof.
+\qed
+
+\section*{1.3.8}
+Let's define the set $S_i$ as $S_i:=\{i\}$, then for each $i$, $S_i$ is a finite set (of cardinality = 1). 
+
+\noindent
+But the union $\cup_{i=1}^{\infty}S_i = N$ is infinite, because $N$ is infinite.
+\newline
+
+\section*{2.1.4}
+By the trichotomy of $a$, we have three cases: (i) $a < 0$, (ii) $a = 0$, and (iii) $a > 0$.
+\newline
+
+\noindent
+\textbf{\underline{(i):}} $a<0 \Rightarrow a \cdot a > 0 \Rightarrow a \cdot a > a \Rightarrow a \cdot a \not= a$. Therefore, $a$ cannot be less than 0.
+\newline
+
+\noindent
+\textbf{\underline{(ii):}} $a=0 \Rightarrow a \cdot a = a$, because $0 \cdot 0 = 0$.
+\newline
+
+\noindent
+\textbf{\underline{(iii):}} $a>0$ and $a \cdot a = a \Rightarrow a^{-1} \cdot a \cdot a = a^{-1} \cdot a \Rightarrow a = 1$.
+\newline
+
+\noindent
+Therefore, $a=0$ or $a=1$.
+\qed
+\newline
+
+\section*{2.1.23}
+\textbf{\underline{Proof:}}
+\newline
+
+\noindent
+\textbf{\underline{Forward direction:}} For $a>0$, $b>0$, and $n \in N$: If $a<b$, then $a^n<b^n$.
+\newline
+
+\noindent
+We use induction.
+\newline
+
+\noindent
+\textbf{\underline{Base case ($n=1$):}} This case is trivially true because it is given by the hypothesis: $a<b \iff a^1 < b^1$.
+\newline
+
+\noindent
+\textbf{\underline{Inductive step ($n>1$):}} By the induction hypothesis, we have: 
+\begin{equation*}
+  a<b \Rightarrow a^n < b^n
+\end{equation*}
+
+
+\noindent
+Since $b>0$, multiplying $a^n < b^n$ by $b$, we get:
+\begin{equation}
+  ba^n < b^{n+1} \label{2.1.23.1}
+\end{equation}
+
+\noindent
+Since $a<b$, then $b-a>0$; and since $a>0$, then $a^n>0$.
+
+\noindent
+Also, since $(b-a)>0$ and $a^n>0$, we have: 
+\begin{equation}
+  (b-a)a^n > 0 \Rightarrow ba^n - a^{n+1} > 0 \Rightarrow ba^n > a^{n+1} \label{2.1.23.2}
+\end{equation}
+
+\noindent
+Combining (\ref{2.1.23.1}) and (\ref{2.1.23.2}) together, we get:
+\begin{equation*}
+  a^{n+1} < ba^n < b^{n+1}
+\end{equation*}
+
+\noindent
+Therefore, $a<b \Rightarrow a^{n+1} < b^{n+1}$, thus closing the induction.
+\newline
+
+\noindent
+\textbf{\underline{Reverse direction:}} For $a>0$, $b>0$, and $n \in N$: If $a^n<b^n$, then $a<b$.
+\newline
+
+\noindent
+We use induction.
+\newline
+
+\noindent
+\textbf{\underline{Base case ($n=1$):}} This case is trivially true because it is given by the hypothesis: $a^1<b^1 \iff a < b$.
+\newline
+
+\noindent
+\textbf{\underline{Inductive step ($n>1$):}} By the induction hypothesis, we have: 
+\begin{equation}
+  a^n<b^n \Rightarrow a < b \label{2.1.23.3}
+\end{equation}
+
+\noindent
+The contrapositive of (\ref{2.1.23.3}) is:
+\begin{equation}
+  a \geq b \Rightarrow a^n \geq b^n \label{2.1.23.4}
+\end{equation}
+
+\noindent
+Since $b>0$, multiplying $a^n \geq b^n$ by $b$, we get:
+\begin{equation}
+  ba^n \geq b^{n+1} \label{2.1.23.5}
+\end{equation}
+
+\noindent
+Since $a \geq b$, then $a-b \geq 0$; and since $a>0$, then $a^n>0$.
+
+\noindent
+Also, since $(a-b) \geq 0$ and $a^n>0$, we have: 
+\begin{equation}
+  (a-b)a^n \geq 0 \Rightarrow a^{n+1} - ba^n \geq 0 \Rightarrow a^{n+1} \geq ba^n \label{2.1.23.6}
+\end{equation}
+
+\noindent
+Combining (\ref{2.1.23.5}) and (\ref{2.1.23.6}) together, we get:
+\begin{equation}
+  a^{n+1} \geq ba^n \geq b^{n+1} \label{2.1.23.7}
+\end{equation}
+
+\noindent
+Putting (\ref{2.1.23.4}), (\ref{2.1.23.5}), (\ref{2.1.23.6}), and (\ref{2.1.23.7}) together, we get:
+\begin{equation}
+  a \geq b \Rightarrow a^{n+1} \geq b^{n+1}  \label{2.1.23.8}
+\end{equation}
+
+\noindent
+Taking the contrapositive of (\ref{2.1.23.8}), we get:
+\begin{equation}
+  a^{n+1} < b^{n+1} \Rightarrow a < b
+\end{equation}
+
+\noindent
+This closes the induction and completes the proof.
+\qed
+\newline
+
+\section*{2.2.16}
+
+$V_{\epsilon}(a) = \{x \in R: |x-a| < \epsilon\}$
+
+\noindent
+$V_{\delta}(a) = \{x \in R: |x-a| < \delta\}$
+\newline
+
+\noindent
+(i) $V_{\epsilon}(a) \cup V_{\delta}(a) = \{x \in R: |x-a| < \epsilon \ \text{and} \ |x-a| < \delta\}$
+\newline
+
+\noindent
+Let $\gamma = \min(\epsilon, \delta)$.
+\newline
+
+\noindent
+\textbf{\underline{Lower Bound:}}
+$|x-a| < \epsilon \ \text{and} \ |x-a| < \delta \Rightarrow x > a-\epsilon \ \text{and} \ x > a-\delta \Rightarrow x > a-\gamma$
+\newline
+
+\noindent
+\textbf{\underline{Upper Bound:}}
+$|x-a| < \epsilon \ \text{and} \ |x-a| < \delta \Rightarrow x < a+\epsilon \ \text{and} \ x < a+\delta \Rightarrow x < a+\gamma$
+\newline
+
+\noindent
+Therefore, $V_{\epsilon}(a) \cup V_{\delta}(a)$ is in the $\gamma$-neighbourhood of a.
+\newline
+
+\noindent
+(ii) $V_{\epsilon}(a) \cap V_{\delta}(a) = \{x \in R: |x-a| < \epsilon \ \text{or} \ |x-a| < \delta\}$
+\newline
+
+\noindent
+Let $\gamma = \max(\epsilon, \delta)$.
+\newline
+
+\noindent
+\textbf{\underline{Lower Bound:}}
+$|x-a| < \epsilon \ \text{or} \ |x-a| < \delta \Rightarrow x > a-\epsilon \ \text{or} \ x > a-\delta \Rightarrow x > a-\gamma$
+\newline
+
+\noindent
+\textbf{\underline{Upper Bound:}}
+$|x-a| < \epsilon \ \text{and} \ |x-a| < \delta \Rightarrow x < a+\epsilon \ \text{and} \ x < a+\delta \Rightarrow x < a+\gamma$
+\newline
+
+\noindent
+Therefore, $V_{\epsilon}(a) \cap V_{\delta}(a)$ is in the $\gamma$-neighbourhood of a.
+\newline
+
+\section*{2.2.17}
+Without loss of generality, assume that $b>a$. Let $\epsilon=\frac{b-a}{2}$
+\newline
+
+\noindent
+Then, $U_{\epsilon}(a)=\{x \in R: |x-a| < \epsilon\}$, and $V_{\epsilon}(b)=\{x \in R: |x-b| < \epsilon\}$
+\newline
+
+\noindent
+$U_{\epsilon}(a) \cap V_{\epsilon}(b) = \{x \in R: |x-a| < \epsilon \ \text{and} \ |x-b| < \epsilon\}$
+\newline
+
+\noindent
+\textbf{\underline{Lower Bound:}}
+$|x-a| < \epsilon \ \text{and} \ |x-b| < \epsilon \Rightarrow x > a-\epsilon \ \text{and} \ x > b-\epsilon \Rightarrow x > a-\frac{b-a}{2} \ \text{and} \  x > b - \frac{b-a}{2} \Rightarrow x > \frac{a-b}{2} \ \text{and} \  x > \frac{b-a}{2} \Rightarrow x > \frac{b-a}{2}$
+\newline
+
+\noindent
+\textbf{\underline{Upper Bound:}}
+$|x-a| < \epsilon \ \text{and} \ |x-b| < \epsilon \Rightarrow x < a+\epsilon \ \text{and} \ x < b+\epsilon \Rightarrow x < a+\frac{b-a}{2} \ \text{and} \  x < b + \frac{b-a}{2} \Rightarrow x < \frac{a+b}{2} \ \text{and} \  x < b+ \frac{b-a}{2} \Rightarrow x < \frac{a+b}{2}$
+\newline
+
+\noindent
+But this is a contradiction, since the lower bound is greater than the upper bound. Therefore, we conclude that $U_{\epsilon}(a) \cap V_{\epsilon}(b) = \emptyset$.
+\qed
+
+\section*{2.3.4}
+$S_4 = \{1-(-1)^n/n: n \in N\}$
+\newline
+
+\noindent
+Let $S^\prime= \{-(-1)^n/n: n \in N\}$. Then: $S_4 = 1 + S^\prime $.
+\newline
+
+\noindent
+$inf(S^\prime) = -(-1)^2/2 = -1/2$
+\newline
+
+\noindent
+$sup(S^\prime) = -(-1)^1/1 = 1$
+\newline
+
+\noindent
+\textbf{\underline{$inf(S_4)$:}}
+\begin{equation*}
+  inf(S_4) = 1 + inf(S^\prime) = 1 + (-1/2) = 1/2
+\end{equation*}
+\newline
+
+\noindent
+\textbf{\underline{$sup(S_4)$:}} 
+\begin{equation*}
+  sup(S_4) = 1 + sup(S^\prime) = 1 + 1 = 2
+\end{equation*}
+
+\section*{2.3.11}
+\begin{proof}
+  By the definition of the infimum and supremum we have $inf(S_0) \leq sup(S_0)$. So we need only show that (i)$inf(S) \leq inf(S_0)$, and (ii)$sup(S_0) \leq sup(S)$.
+  \newline
+
+  \noindent
+  \textbf{\underline{i. $inf(S) \leq inf(S_0)$:}}
+  We prove this by contradiction.
+  
+  \noindent
+  Suppose that $inf(S_0) < inf(S)$. 
+  
+  \noindent
+  Since $inf(S_0)$ is a infimum for $S_0$, then $\forall \epsilon > 0 \ \exists s \in S_0: s < inf(S_0) + \epsilon$.
+  
+  \noindent
+  Taking $\epsilon = [inf(S) - inf(S_0)] / 2$
+  
+  \noindent 
+  $\Rightarrow$ $\exists s \in S_0$ and $s < inf(S)$
+  
+  \noindent
+  $\Rightarrow s \in S_0 \ and \  s \notin S$
+
+  \noindent
+  $\Rightarrow S_0 \not\subset S$.
+  
+  \noindent
+  This is a contradiction. Therefore, we must conclude that $inf(S) \leq inf(S_0)$.
+  \newline
+
+  \noindent
+  \textbf{\underline{ii. $sup(S_0) \leq sup(S)$:}}
+  We prove this by contradiction.
+  
+  \noindent
+  Suppose that $sup(S_0) > sup(S)$. 
+  
+  \noindent
+  Since $sup(S_0)$ is a supremum for $S_0$, then $\forall \epsilon > 0 \ \exists s \in S_0: s > sup(S_0) + \epsilon$.
+  
+  \noindent
+  Taking $\epsilon = [sup(S_0) - sup(S)] / 2$
+  
+  \noindent 
+  $\Rightarrow$ $\exists s \in S_0$ and $s > sup(S)$
+  
+  \noindent
+  $\Rightarrow s \in S_0 \ and \  s \notin S$
+
+  \noindent
+  $\Rightarrow S_0 \not\subset S$.
+  
+  \noindent
+  This is a contradiction. Therefore, we must conclude that $sup(S_0) \leq sup(S)$.
+
+\end{proof}
+
+\section*{3.1.1.b}
+
+$x_n := (-1)^n/n = (-1, 1/2, -1/3, 1/4, -1/5, ...)$
+
+\section*{3.1.5.d}
+Required to show: $\lim (\frac{n^2 - 1}{2n^2 + 3}) = \frac{1}{2}$
+
+\begin{proof}
+  Given any $\epsilon > 0$, we need to find $k(\epsilon)$ such that for all $n \geq k$: $|\frac{n^2 - 1}{2n^2 + 3} - \frac{1}{2}| < \epsilon$:
+
+   \begin{align*}
+    |\frac{n^2 - 1}{2n^2 + 3} - \frac{1}{2}| &< \epsilon \\
+    |\frac{2n^2 - 2 - 2n^2 - 3}{4n^2 + 6}| &< \epsilon \\
+    |\frac{-5}{4n^2 + 6}| &< \epsilon \\
+    \frac{5}{4n^2 + 6} &< \epsilon \\
+    \frac{5}{4n^2 + 6} &\leq \frac{5}{n^2} \leq \frac{5}{n} < \epsilon \\
+  \end{align*}
+
+  \noindent
+  Taking $k(\epsilon)=5/\epsilon$ satisfies the required conditions.
+
+\end{proof}
+
+\section*{3.1.7}
+
+\subsection*{a}
+Required to show: $\lim (\frac{1}{ln(n+1)}) = 0$
+\begin{proof}
+  Given any $\epsilon > 0$, we need to find $k(\epsilon)$ such that for all $n \geq k$: $|\frac{1}{ln(n+1)} - 0| < \epsilon$:
+  \begin{align*}
+    |\frac{1}{ln(n+1)} - 0| &< \epsilon \\
+    \frac{1}{ln(n+1)} &< \epsilon \\
+    ln(n+1) &> \frac{1}{\epsilon} \\
+    n+1 &> e^\frac{1}{\epsilon} \\
+    n &>  e^\frac{1}{\epsilon} - 1 \\
+  \end{align*}
+
+  Taking $k(\epsilon)= e^\frac{1}{\epsilon} - 1$ satisfies the required conditions.
+
+\end{proof}
+
+\subsection*{b}
+i. $k(1/2) = e^2 - 1 = 7$
+
+\noindent
+ii. $k(1/10) = e^{10} - 1 = 22026$
+
+\section*{3.1.9}
+\begin{proof}
+  $\lim(x_n)=0 \Rightarrow$ $\forall \epsilon > 0$ there exists $k(\epsilon)$ such that for all $n \geq k:\ |x_n - 0| < \epsilon$.
+  
+  \noindent
+  $\Rightarrow$ $\forall \epsilon > 0$ there exists $k(\epsilon)$ such that for all $n \geq k: x_n < \epsilon$ (because $x_n > 0$).
+
+  \noindent
+  $\Rightarrow$ $\forall \epsilon > 0$ there exists $k(\epsilon)$ such that for all $n \geq k: \sqrt{x_n} - 0< \sqrt{\epsilon} = \epsilon^{'}$.
+
+  \noindent
+  Since $\epsilon^{'}$ can take on any value greater than zero, then by the definition of the limit of a sequence this shows that $\lim(\sqrt{x_n})=0$.
+  \noindent 
+
+\end{proof}
+
+
+\section*{3.1.12}
+Required to show: $\lim (\sqrt{n^2 + 1} - n) = 0$
+\begin{proof}
+  Given any $\epsilon > 0$, we need to find $k(\epsilon)$ such that for all $n \geq k$: $|(\sqrt{n^2 + 1} - n) - 0| < \epsilon$:
+  \begin{align*}
+    |(\sqrt{n^2 + 1} - n) - 0| &< \epsilon \\
+    |\sqrt{n^2 + 1} - n| &< \epsilon \\
+    \sqrt{n^2 + 1} - n \leq \sqrt{(n + 1/n)^2} - n &< \epsilon \\
+    \sqrt{n^2 + 1} - n \leq (n + 1/n) - n &< \epsilon \\
+    \sqrt{n^2 + 1} - n \leq 1/n &< \epsilon \\
+  \end{align*}
+
+  Taking $k(\epsilon)= \frac{1}{\epsilon}$ satisfies the required conditions.
+
+\end{proof}
+
+\end{document}
+
