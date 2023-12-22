@@ -1,0 +1,89 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\author{Mostafa Hassanein}
+\title{Linear Algebra Assignments}
+\date{1st April 2020}
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section*{1.2.13}
+
+No. Because the inverse is undefined for some elements in $V$.
+\newline
+
+\noindent 
+To show this, let's begin by finding the identity element. Let $a=(a_1,a_2) \in V$, we want to find the element $id=(id_1, id_2)$ such that:
+\begin{align}
+  a+id&=a \nonumber \\
+  (a_1, a_2) + (id_1, id_2) &= (a_1, a_2) \nonumber \\
+  (a_1 + id_1, a_2id_2) &= (a1, a_2) \label{1.2.13.identity}
+\end{align}
+\eqref{1.2.13.identity} implies that $id=(0,1)$.
+\newline
+
+\noindent
+Next, let's find the inverse element $a^{-1}$ for any $a \in V$:
+\begin{align}
+  a + a^{-1} &= id \nonumber \\
+  (a_1, a_2) + (a^{-1}_1, a^{-1}_2) &= (0, 1) \nonumber \\
+  (a_1 + a^{-1}_1, a_2*a^{-1}_2) &= (0, 1) \label{1.2.13.inverse}
+\end{align}
+\eqref{1.2.13.inverse} implies that $a^{-1}_1 = -a_1$ and $a^{-1}_2=\frac{1}{a_2}$. But whenever $a_2=0$, $a^{-1}_2$ is undefined.
+\newline
+
+\noindent
+Since the inverse is not defined for all $a \in V$, then $V$ is not a vector space.
+
+\section*{1.2.14}
+Yes.
+\newline
+
+\noindent
+Since the set of elements in $V$ over $\mathbb{R}$ is a subset of $V$ over $\mathbb{C}$, and $V$ over $\mathbb{C}$ is a vector space, this problem can be reduced to checking whether $V$ over $\mathbb{R}$ is a subspace of $V$ over $\mathbb{C}$. We only need to check 2 conditions: closure under vector addition and closure and scalar multiplication.
+\newline
+
+\noindent
+
+\subsection*{Closure under Vector Addition}
+Let $a$ and $b$ $\in V$, then:
+\begin{equation*}
+  a + b = (a_1, a_2) + (b_1, b_2)= (a_1 + b_1, a_2 + b_2)  
+\end{equation*}
+\noindent
+Since $a$ and $b \in \mathbb{R} \Rightarrow$ $a_1$, $a_2$, $b_1$, and $b_2$ $\in \mathbb{R} \Rightarrow$ $a_1+b_1$ and $a_2+b_2$ $\in \mathbb{R} \Rightarrow$ $a+b \in V$. Therefore V is closed under vector addition.
+
+\subsection*{Closure under Scalar Multiplication}
+Let $a \in V$ and $c \in \mathbb{R}$, then:
+\begin{equation*}
+  ca = c(a_1, a_2) = (c*a_1, c* a_2)  
+\end{equation*}
+\noindent
+Since $a \in V \Rightarrow$ $a_1$, $a_2$ $\in \mathbb{R} \Rightarrow$ $ca_1$ and $ca_2$ $\in \mathbb{R} \Rightarrow$ $ca \in V$. Therefore V is closed under scalar multiplication.
+
+\section*{1.2.19}
+No. Because it fails axiom 8: $(k_1 + k_2)u = k_1u + k_2u$.
+
+\subsection*{Counter Example}
+Let $u=(1,1)$, $k_1=1$, and $k_2=1$:
+
+\begin{align}
+  (k_1 + k_2)u &= (1+1)(1,1) \nonumber \\
+  &= (2)(1,1) \nonumber \\
+  &= (2, \frac{1}{2}) \label{1.2.19.lhs}
+\end{align}
+
+\noindent
+But,
+\begin{align}
+  k_1u + k_2u &= 1(1,1) + 1(1,1) \nonumber \\
+  &= (1,1) + (1,1) \nonumber \\
+  &= (2, 2) \label{1.2.19.rhs}
+\end{align}
+
+\noindent
+Since \eqref{1.2.19.lhs} $\neq$ \eqref{1.2.19.rhs}, $V$ is not a vector space.
+\end{document}
