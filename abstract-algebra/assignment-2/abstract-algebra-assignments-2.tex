@@ -1,0 +1,198 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\author{Mostafa Hassanein}
+\title{Abstract Algebra Assignment (2): Groups}
+\date{11 November 2023}
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section*{1.}
+
+The Cayley table for $(\overline{I_7^*}, *)$ is:
+\newline
+
+\begin{tabular}{c | c c c c c c c}
+  * & [1] & [2] & [3] & [4] & [5] & [6] \\
+  \cline{1-7}
+  {[1]} & [1] & [2] & [3] & [4] & [5] & [6] \\
+  {[2]} & [2] & [4] & [6] & [1] & [3] & [5] \\
+  {[3]} & [3] & [6] & [2] & [5] & [1] & [4] \\
+  {[4]} & [4] & [1] & [5] & [2] & [6] & [3] \\
+  {[5]} & [5] & [3] & [1] & [6] & [4] & [2] \\
+  {[6]} & [6] & [5] & [4] & [3] & [2] & [1] \\
+\end{tabular}
+
+\subsection*{i.}
+a.
+\begin{align*}
+  (\overline{5})^3 &= [5]^3 \\
+                   &= [5] * [5]^2 \\
+                   &= [5] * [4] = [6]
+\end{align*}
+
+\noindent
+b. 
+\begin{align*}
+  (\overline{4})^{-4} &= [4]^{-4} \\
+                   &= ([4]^{-1})^{4} \\
+                   &= [2]^{4} \\
+                   &= [2]^2 * [2]^2 \\
+                   &= [4] * [4] = [2]
+\end{align*}
+
+\noindent
+c. By definition $x^0 = e$. So we have:
+\begin{align*}
+  (\overline{2})^{0} = [1]
+\end{align*}
+
+\subsection*{ii.}
+In a group $G$, the order of an element $x$ is the smallest positive integer $m$ such that $x^m = e$, if no such m exists, then the order of $x$ is infinite.
+\newline
+
+\noindent
+For the group $(\overline{I_7^*}, *)$, we have $e = [1]$. So we should solve for $x^m = [1]$ for all $x \in (\overline{I_7^*}, *)$. And since $|(\overline{I_7^*}, *)| = 6$, then if an $m$ exists, it will be in the range $1 \leq m \leq 6$:
+\newline
+
+\begin{tabular}{c | c c c c c c c}
+  k & $[1]^k$ & $[2]^k$ & $[3]^k$ & $[4]^k$& $[5]^k$& $[6]^k$ \\
+  \cline{1-7}
+  1 & [1] & [2] & [3] & [4] & [5] & [6] \\
+  2 & [1] & [4] & [2] & [2] & [4] & [1] \\
+  3 & [1] & [1] & [6] & [1] & [6] & [6] \\
+  4 & [1] & [2] & [4] & [4] & [2] & [1] \\
+  5 & [1] & [4] & [5] & [2] & [3] & [6] \\
+  6 & [1] & [1] & [1] & [1] & [1] & [1] \\
+\end{tabular}
+
+From the powers table, we deduce that:
+
+\begin{align*}
+  &ord([1]) = 1  \\
+  &ord([2]) = 3 \\
+  &ord([3]) = 6 \\
+  &ord([4]) = 3 \\
+  &ord([5]) = 6 \\
+  &ord([6]) = 2
+\end{align*}
+
+\section*{2.}
+
+Let's construct the powers table for all $x \in (\overline{I_5^*}, *)$:
+\newline
+
+\begin{tabular}{c | c c c c c}
+  k & $[1]^k$ & $[2]^k$ & $[3]^k$ & $[4]^k$ \\
+  \cline{1-5}
+  0 & [1] & [1] & [1] & [1] \\
+  1 & [1] & [2] & [3] & [4] \\
+  2 & [1] & [4] & [4] & [1] \\
+  3 & [1] & [3] & [2] & [4] \\
+\end{tabular}
+\newline
+
+\noindent
+$(\overline{I_5^*}, *)$ is a cyclic group. 
+
+\noindent
+Because it contains elements, namely $[2]$ and $[3]$, that can generate all other elements in the group.
+
+\section*{3.}
+
+\begin{proof}
+  We have to study the following properties: Closure, associativity, existence of an identity, existence of inverses.
+\newline
+
+\noindent
+i. Closure: Let $\overline{a},\overline{b} \in \overline{I_p^*}$, then:
+\noindent
+\begin{align*}
+  \overline{a} \otimes \overline{b} = \overline{ab} &= ab &\mod{p} \\
+  & = (q_1p + r_1)(q_2p +r_2) &\mod{p} \\
+  &= q_1q_2p^2 + q_1r_2p + q_2r_1p + r_1r_2 &\mod{p} \\
+  &= (q_1q_2p + q_1r_2 + q2_r1)p + r_1r_2 &\mod{p} \\
+  &= r1r2 &\mod{p}
+\end{align*}
+
+\noindent
+Where $r_1, r_2 > 0$, because $\overline{0} \not \in \overline{I_p^*}$.
+
+\noindent
+$p$ is prime and $r_1, r_2 >0 \Rightarrow r_1$ and $r_2$ do not divide $p \Rightarrow r1r2$ does not divide $p \Rightarrow 1 \leq (r1r2 \mod{p}) < p \Rightarrow a \otimes b \in \overline{I_p^*}$.
+\newline
+
+\noindent
+ii. Associativity: Let $\overline{a}, \overline{b}, \overline{c} \in \overline{I_p^*}$. We want to show that $\overline{a} \otimes (\overline{b} \otimes \overline{c}) = (\overline{a} \otimes \overline{b}) \otimes \overline{c}$:
+
+\begin{align*}
+  L.H.S.: \overline{a} \otimes (\overline{b} \otimes \overline{c}) &=  \overline{a} \otimes (\overline{bc}) \\
+  &= \overline{abc} \\
+  R.H.S.: (\overline{a} \otimes \overline{b}) \otimes \overline{c} &= \overline{ab} \otimes \overline{c} \\
+  &= \overline{abc}
+\end{align*}
+
+$L.H.S. = R.H.S.$
+\newline
+
+\noindent
+iii. Identity: $\exists e = \overline{1} \in \overline{I_p^*} \ni \forall a \in \overline{I_p^*}: e \otimes a = a \otimes e = a$.
+
+\noindent
+iv. Inverse: $p$ is prime $\Rightarrow \forall \overline{a} \in \overline{I_p^*}: gcd(a, p) = 1$
+
+$\Rightarrow \forall \overline{a} \in \overline{I_p^*} \ \exists r,s \in Z: ar + ps = 1$ 
+
+$\Rightarrow \forall \overline{a} \in \overline{I_p^*} \ \exists r,s \in Z: \overline{ar + ps} = \overline{1}$
+
+$\Rightarrow \forall \overline{a} \in \overline{I_p^*} \ \exists r,s \in Z: \overline{ar} = \overline{1}$
+
+$\Rightarrow \forall \overline{a} \in \overline{I_p^*} \ \exists r,s \in Z: \overline{a} \otimes \overline{r} = \overline{1} $
+
+$\Rightarrow \forall \overline{a} \in \overline{I_p^*} \ \exists \overline{r} \in \overline{I_p^*}: \overline{a} \otimes \overline{r} = \overline{1}$
+\newline
+
+\noindent
+i, ii, iii, iv $\Rightarrow \overline{I_p^*}$ is a group. 
+
+\noindent
+And since ${I_p^*}$ contains $p-1$ elements, then $|\overline{I_p^*}| = p-1$.
+\newline
+\end{proof}
+
+\section*{4.}
+
+\begin{proof}
+  The set of elements generated by $+1$ under $+$ is given by: $\{k(+1) = k: \ k \in I\} = I$. This shows that $+1$ is a generator for the additive group of integers.
+  \newline
+
+  \noindent
+  Similarly, the set of elements generated by $-1$ under $+$ is given by: $\{k(-1) = -k: \ k \in I\} = I$. This shows that $-1$ is a generator for the additive group of integers. (Alternatively, we could have used the fact that if $a$ is a generator then so is $a^{-1}$.)
+  \newline
+
+  \noindent
+  This shows that $I$ is a cyclic group with  +1 and -1 as generators.
+  \newline
+
+  \noindent
+  Since $|I| = \infty$, then $I$ is an infinite cyclic group.
+
+\end{proof}
+
+\section*{5.}
+
+\begin{proof}
+  The set of elements generated by $\overline{1}$ under $+$ are given by: 
+  \begin{align*}
+    <\overline{1}> &= \{ \overline{k \overline{1}}: \ k \in Z \}\\
+    &= \{ \overline{k}: \ k \in Z \} \\
+    &= \{ \overline{k}: \ 0 \leq k < n \} \\
+    &= \overline{I_n}
+  \end{align*}
+\end{proof}
+
+\end{document}
