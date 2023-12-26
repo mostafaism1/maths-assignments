@@ -1,0 +1,294 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\author{Mostafa Hassanein}
+\title{Abstract Algebra Assignment (4): Application on Groups of Permutations}
+\date{23 December 2023}
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section*{1.}
+ $|G=(a)| = 5 \ \Rightarrow \ |G_A| = \phi(5) = |\{1, 2, 3, 4\}| = 4$.
+\newline
+
+\noindent
+$G_A = \{f_t(a^j) = a^{tj}: t \in \{1, 2, 3, 4\},\ j \in \{1..5\} \}$.
+\newline
+
+\noindent
+$f_1(a^j) = a^{j}; \ \ \ \ j \in \{1..5\}$
+\newline
+\noindent
+$f_1 = \begin{pmatrix}
+  a & a^2 & a^3 & a^4 & a^5\\
+  a & a^2 & a^3 & a^4 & a^5
+\end{pmatrix} = id$
+\newline
+
+\noindent
+$f_2(a^j) = a^{2j}, \ \ \ j \in \{1..5\}$
+\newline
+\noindent
+$f_2 = \begin{pmatrix}
+  a & a^2 & a^3 & a^4 & a^5 \\
+  a^2 & a^4 & a & a^3 & a^5
+\end{pmatrix} = (a \ a^2 \ a^4 \ a^3)$
+\newline
+
+
+\noindent
+$f_3(a^j) = a^{3j}, \ \ \ j \in \{1..5\}$
+\newline
+\noindent
+$f_3 = \begin{pmatrix}
+  a & a^2 & a^3 & a^4 & a^5 \\
+  a^3 & a & a^4 & a^2 & a^5
+\end{pmatrix} = (a \ a^3 \ a^4 \ a^2)$
+\newline
+
+\noindent
+$f_4(a^j) = a^{4j}, \ \ \ j \in \{1..5\}$
+\newline
+\noindent
+$f_4 = \begin{pmatrix}
+  a & a^2 & a^3 & a^4 & a^5 \\
+  a^4 & a^3 & a^2 & a^1 & a^5
+\end{pmatrix} = (a \ a^4)(a^2 \ a^3)$
+\newline
+
+\noindent
+$G_A$ is a cyclic group.
+
+\noindent
+Its generating elements are $f_2$ and $f_3$ since $|f_2|=|f_3|=4=|G_A|$.
+
+\section*{2.}
+We know that:
+
+i. The cosets of a subgroup partition the group.
+
+ii. The size of any coset is equal to the size of the subgroup.
+
+iii. The size of $A_n = S_n/2$.
+\newline
+
+\noindent
+(i), (ii), and (iii) $\Rightarrow H$ has 2 cosets.
+\newline
+
+\noindent
+Since $H$ is one of the cosets (because $id \circ H =H$ and $H \circ id =H$), then the other coset must be $S_n \setminus H = S_n \setminus A_n = O_n$, which are the odd permutations.
+\newline
+
+\noindent
+$S_n/H = \{H, O_n\}$
+
+\noindent
+$[S_n:H] = |S_n/H| = 2$
+
+\section*{3.}
+
+\noindent
+Let's first construct the Cayley table:
+
+\begin{tabular}{c | c c c c c c c c c}
+  $\circ$ & $p_1$ & $p_2$ & $p_3$ & $p_4$ & $p_5$ & $p_6$ & $p_7$ & $p_8$ \\
+  \cline{1-9}
+  {$p_1$} & $p_1$ & $p_2$ & $p_3$ & $p_4$ & $p_5$ & $p_6$ & $p_7$ & $p_8$\\
+  {$p_2$} & $p_2$ & $p_3$ & $p_4$ & $p_1$ & $p_8$ & $p_7$ & $p_5$ & $p_6$ \\
+  {$p_3$} & $p_3$ & $p_4$ & $p_1$ & $p_2$ & $p_6$ & $p_5$ & $p_3$ & $p_7$ \\
+  {$p_4$} & $p_4$ & $p_1$ & $p_2$ & $p_3$ & $p_7$ & $p_8$ & $p_6$ & $p_5$ \\
+  {$p_5$} & $p_5$ & $p_7$ & $p_6$ & $p_8$ & $p_1$ & $p_3$ & $p_2$ & $p_4$ \\
+  {$p_6$} & $p_6$ & $p_8$ & $p_5$ & $p_7$ & $p_3$ & $p_1$ & $p_4$ & $p_2$ \\
+  {$p_7$} & $p_7$ & $p_6$ & $p_8$ & $p_5$ & $p_4$ & $p_2$ & $p_1$ & $p_3$ \\
+  {$p_8$} & $p_8$ & $p_5$ & $p_7$ & $p_6$ & $p_2$ & $p_4$ & $p_3$ & $p_1$ \\
+\end{tabular}
+\newline
+\newline
+
+\noindent
+To prove that $H = \{p_1,p_3,p_7,p_8\}$ is self conjugate, we have to show that all elements in $H$ commute with all elements in $G$ i.e. $\forall h \in H \ and \ \forall p \in G: p^{-1} \circ h \circ p = h$:
+\newline
+
+$p_1^{-1} \circ p_1 \circ p_1 = p_1$
+
+$p_2^{-1} \circ p_1 \circ p_2 = p_1$
+
+$p_3^{-1} \circ p_1 \circ p_3 = p_1$
+
+$p_4^{-1} \circ p_1 \circ p_4 = p_1$
+
+$p_5^{-1} \circ p_1 \circ p_5 = p_1$
+
+$p_6^{-1} \circ p_1 \circ p_6 = p_1$
+
+$p_7^{-1} \circ p_1 \circ p_7 = p_1$
+
+$p_8^{-1} \circ p_1 \circ p_8 = p_1$
+\newline
+
+$p_1^{-1} \circ p_3 \circ p_1 = p_3$
+
+$p_2^{-1} \circ p_3 \circ p_2 = p_3$
+
+$p_3^{-1} \circ p_3 \circ p_3 = p_3$
+
+$p_4^{-1} \circ p_3 \circ p_4 = p_3$
+
+$p_5^{-1} \circ p_3 \circ p_5 = p_3$
+
+$p_6^{-1} \circ p_3 \circ p_6 = p_3$
+
+$p_7^{-1} \circ p_3 \circ p_7 = p_3$
+
+$p_8^{-1} \circ p_3 \circ p_8 = p_3$
+\newline
+
+$p_1^{-1} \circ p_7 \circ p_1 = p_7$
+
+$p_2^{-1} \circ p_7 \circ p_2 = p_7$
+
+$p_3^{-1} \circ p_7 \circ p_3 = p_7$
+
+$p_4^{-1} \circ p_7 \circ p_4 = p_7$
+
+$p_5^{-1} \circ p_7 \circ p_5 = p_7$
+
+$p_6^{-1} \circ p_7 \circ p_6 = p_7$
+
+$p_7^{-1} \circ p_7 \circ p_7 = p_7$
+
+$p_8^{-1} \circ p_7 \circ p_8 = p_7$
+\newline
+
+$p_1^{-1} \circ p_8 \circ p_1 = p_8$
+
+$p_2^{-1} \circ p_8 \circ p_2 = p_8$
+
+$p_3^{-1} \circ p_8 \circ p_3 = p_8$
+
+$p_4^{-1} \circ p_8 \circ p_4 = p_8$
+
+$p_5^{-1} \circ p_8 \circ p_5 = p_8$
+
+$p_6^{-1} \circ p_8 \circ p_6 = p_8$
+
+$p_7^{-1} \circ p_8 \circ p_7 = p_8$
+
+$p_8^{-1} \circ p_8 \circ p_8 = p_8$
+\newline
+
+\noindent
+The right cosets of $H$ are $H \circ b$, where $b \in \{p_1...p_8\}$:
+
+$H \circ p_1 = H = \{p_1,p_3,p_7,p_8 \} = H \circ p_3 = H \circ p_7 = H \circ p_8$
+\newline
+
+$H \circ p_2= \{p_1,p_3,p_7,p_8 \} \circ p_2 = \{p_2, p_4, p_6, p_5\} = H \circ p_4 = H \circ p_6 = H \circ p_6$
+\newline
+
+\noindent
+$S/H = \{ H \circ p_1, H \circ p_2\}$
+
+\noindent
+$[S:H] = |S/H| = 2$
+
+\section*{4.}
+$G_A = \{f_a: f_a=\begin{pmatrix}
+  x \\
+  a^{-1} \circ x \circ a
+\end{pmatrix}\ \ \forall x \in G, \ \forall a \in G \}$
+\newline
+
+\noindent
+We start by constructing the Cayley table:
+
+\begin{center}
+  \begin{align*}
+    \begin{tabular}{c | c c c c}
+      $\circ$ & $p_1$ & $p_2$ & $p_3$ & $p_4$ \\
+      \cline{1-5}
+      {$p_1$} & $p_1$ & $p_2$ & $p_3$ & $p_4$ \\
+      {$p_2$} & $p_2$ & $p_1$ & $p_4$ & $p_3$ \\
+      {$p_3$} & $p_3$ & $p_4$ & $p_1$ & $p_2$ \\
+      {$p_4$} & $p_4$ & $p_3$ & $p_2$ & $p_1$ \\
+    \end{tabular} 
+    && 
+    \begin{tabular}{|c | c|c|c|c|}
+      \hline
+      Element & $p_1$ & $p_2$ & $p_3$ & $p_4$ \\
+      \hline
+      Order & 1 & 2 & 2 & 2 \\
+      \hline
+    \end{tabular}
+  \end{align*}
+\end{center}
+
+\noindent
+$f_1(p_1) = p_1^{-1} \circ (p_1 \circ p_1) = p_1^{-1} \circ p_1 = p_1 \circ p_1 = p_1$
+
+\noindent
+$f_1(p_2) = p_2$
+
+\noindent
+$f_1(p_3) = p_3$
+
+\noindent
+$f_1(p_4) = p_4$
+\newline
+
+\noindent
+$f_2(p_1) = p_2^{-1} \circ (p_1 \circ p_2) = p_2^{-1} \circ p_2 = p_2 \circ p_2 = p_1$
+
+\noindent
+$f_2(p_2) = p_2^{-1} \circ (p_2 \circ p_2) = p_2^{-1} \circ p_1 = p_2 \circ p_1 = p_2$
+
+\noindent
+$f_2(p_3) = p_2^{-1} \circ (p_3 \circ p_2) = p_2^{-1} \circ p_4 = p_2 \circ p_4 = p_3$
+
+\noindent
+$f_2(p_4) = p_2^{-1} \circ (p_4 \circ p_2) = p_2^{-1} \circ p_3 = p_2 \circ p_3 = p_4$
+\newline
+
+\noindent
+$f_3(p_1) = p_3^{-1} \circ (p_1 \circ p_3) = p_3^{-1} \circ p_3 = p_3 \circ p_3 = p_1$
+
+\noindent
+$f_3(p_2) = p_3^{-1} \circ (p_2 \circ p_3) = p_3^{-1} \circ p_4 = p_3 \circ p_4 = p_2$
+
+\noindent
+$f_3(p_3) = p_3^{-1} \circ (p_3 \circ p_3) = p_3^{-1} \circ p_1 = p_3 \circ p_1 = p_3$
+
+\noindent
+$f_3(p_4) = p_3^{-1} \circ (p_4 \circ p_3) = p_3^{-1} \circ p_2 = p_3 \circ p_2 = p_4$
+\newline
+
+\noindent
+$f_4(p_1) = p_4^{-1} \circ (p_1 \circ p_4) = p_4^{-1} \circ p_4 = p_4 \circ p_4 = p_1$
+
+\noindent
+$f_4(p_2) = p_4^{-1} \circ (p_2 \circ p_4) = p_4^{-1} \circ p_3 = p_4 \circ p_4 = p_2$
+
+\noindent
+$f_4(p_3) = p_4^{-1} \circ (p_3 \circ p_4) = p_4^{-1} \circ p_2 = p_4 \circ p_2 = p_3$
+
+\noindent
+$f_4(p_4) = p_4^{-1} \circ (p_4 \circ p_4) = p_4^{-1} \circ p_1 = p_4 \circ p_1 = p_4$
+\newline
+
+\noindent
+We have $f_1 = f_2 = f_3 = f_4 = p_1$ (i.e. the identity permutation).
+
+$\Rightarrow \ G_A = \{ p_1 \}$ 
+
+$\Rightarrow |G_A| = 1 = |p_1|$.
+
+$\Rightarrow G_A$ is a cyclic group whose generating element is $p_1$.
+\newline
+
+
+\end{document}
