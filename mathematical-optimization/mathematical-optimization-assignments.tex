@@ -1,0 +1,816 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{tikz}
+\author{Mostafa Hassanein}
+\title{Operations Research and Optimization Assignments}
+\date{30 December 2023}
+\begin{document}
+
+\maketitle
+
+\newpage
+
+% Modified \textcircled solution
+\newcommand*\numcircledmod[1]{\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {#1}}}}
+
+% TikZ solution
+\newcommand*\numcircledtikz[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=1.2pt] (char) {#1};}} 
+
+
+\section*{1.}
+
+In general, given an optimization problem in the standard form $Ax=b$ and $x_i \geq 0$, where $A$ is an $mxn$ matrix and $rank(A)=m$; then the basic solutions are constructed by solving the system of equations using any $m$ linearly independent columns at a time (the basic variables), and setting the remaining variables (the non-basic variables) to zero.
+
+\subsection*{i.}
+\subsubsection*{a.}
+
+$dim(A) = 2x4 \Rightarrow$ There are $^4C_2=6$ possible basic solutions, corresponding to the following bases:
+\begin{align*}
+  B_1 = (A_1, A_2) && B_1 = (A_1, A_3) \\
+  B_3 = (A_1, A_4) && B_4 = (A_2, A_3) \\
+  B_5 = (A_2, A_4) && B_6 = (A_3, A_4) \\
+\end{align*}
+
+\noindent
+\textbf{\underline{Basic solution corresponding to $B_1$:}}
+
+\noindent
+\newline
+$
+\begin{bmatrix}
+  4 & 5 \\
+  2 & 2
+\end{bmatrix}
+\begin{bmatrix}
+  x_1 \\
+  x_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+ 10 \\
+ 11 
+\end{bmatrix}
+\Rightarrow
+\begin{bmatrix}
+  x_1 \\
+  x_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+  35/2 \\
+  -12
+\end{bmatrix}
+$
+\newline
+
+\noindent
+Therefore, $bs_1 = (35/2, -12, 0, 0)$.
+\newline
+
+\noindent
+\textbf{\underline{Basic solution corresponding to $B_2$:}}
+
+\noindent
+\newline
+$
+\begin{bmatrix}
+  4 & 8 \\
+  2 & 6
+\end{bmatrix}
+\begin{bmatrix}
+  x_1 \\
+  x_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+ 10 \\
+ 11 
+\end{bmatrix}
+\Rightarrow
+\begin{bmatrix}
+  x_1 \\
+  x_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+  -7/2 \\
+  3
+\end{bmatrix}
+$
+\newline
+
+\noindent
+Therefore, $bs_2 = (-7/2, 0, 3, 0)$.
+\newline
+
+\noindent
+\textbf{\underline{Basic solution corresponding to $B_3$:}}
+
+\noindent
+\newline
+$
+\begin{bmatrix}
+  4 & 7 \\
+  2 & 9
+\end{bmatrix}
+\begin{bmatrix}
+  x_1 \\
+  x_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+ 10 \\
+ 11 
+\end{bmatrix}
+\Rightarrow
+\begin{bmatrix}
+  x_1 \\
+  x_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+  13/22 \\
+ 12/11
+\end{bmatrix}
+$
+\newline
+
+\noindent
+Therefore, $bs_3 = (13/22, 0, 0, 12/11)$.
+\newline
+
+\noindent
+\textbf{\underline{Basic solution corresponding to $B_4$:}}
+
+\noindent
+\newline
+$
+\begin{bmatrix}
+  5 & 8 \\
+  2 & 6
+\end{bmatrix}
+\begin{bmatrix}
+  x_2 \\
+  x_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+ 10 \\
+ 11 
+\end{bmatrix}
+\Rightarrow
+\begin{bmatrix}
+  x_2 \\
+  x_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+  -2 \\
+ 5/2
+\end{bmatrix}
+$
+\newline
+
+\noindent
+Therefore, $bs_4 = (0, -2, 5/2, 0)$.
+\newline
+
+\noindent
+\textbf{\underline{Basic solution corresponding to $B_5$:}}
+
+\noindent
+\newline
+$
+\begin{bmatrix}
+  5 & 7 \\
+  2 & 9
+\end{bmatrix}
+\begin{bmatrix}
+  x_2 \\
+  x_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+ 10 \\
+ 11 
+\end{bmatrix}
+\Rightarrow
+\begin{bmatrix}
+  x_2 \\
+  x_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+  13/31 \\
+  35/31
+\end{bmatrix}
+$
+\newline
+
+\noindent
+Therefore, $bs_5 = (0, 13/31, 0, 35/31)$.
+\newline
+
+\noindent
+\textbf{\underline{Basic solution corresponding to $B_6$:}}
+
+\noindent
+\newline
+$
+\begin{bmatrix}
+  8 & 7 \\
+  6 & 9
+\end{bmatrix}
+\begin{bmatrix}
+  x_3 \\
+  x_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+ 10 \\
+ 11 
+\end{bmatrix}
+\Rightarrow
+\begin{bmatrix}
+  x_3 \\
+  x_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+  13/30 \\
+  14/15
+\end{bmatrix}
+$
+\newline
+
+\noindent
+Therefore, $bs_6 = (0, 0, 13/30, 14/15)$.
+
+\subsubsection*{b.}
+The basic \textbf{\underline{feasible}} solutions are: $\{bs_3, bs_5, bs_6\}$.
+
+\subsubsection*{c.}
+The maximum number of basic solutions is: $^4C_2 = 6$.
+
+\noindent
+This occurs when $rank(A) = 2$.
+
+\subsection*{ii.}
+\subsubsection*{a.}
+
+$dim(A) = 2x3 \Rightarrow$ There are $^3C_2=3$ possible basic solutions, corresponding to the following bases:
+\begin{align*}
+  B_1 = (A_1, A_2) && B_1 = (A_1, A_3) && B_3 = (A_2, A_3)
+\end{align*}
+
+\noindent
+\textbf{\underline{Basic solution corresponding to $B_1$:}}
+
+\noindent
+\newline
+$
+\begin{bmatrix}
+  1 & 2 \\
+  2 & 1
+\end{bmatrix}
+\begin{bmatrix}
+  x_1 \\
+  x_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+ 4 \\
+ 5 
+\end{bmatrix}
+\Rightarrow
+\begin{bmatrix}
+  x_1 \\
+  x_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+  2 \\
+  1
+\end{bmatrix}
+$
+\newline
+
+\noindent
+Therefore, $bs_1 = (2, 1, 0)$.
+\newline
+
+\noindent
+\textbf{\underline{Basic solution corresponding to $B_2$:}}
+
+\noindent
+\newline
+$
+\begin{bmatrix}
+  1 & 1 \\
+  2 & 5
+\end{bmatrix}
+\begin{bmatrix}
+  x_1 \\
+  x_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+ 4 \\
+ 5
+\end{bmatrix}
+\Rightarrow
+\begin{bmatrix}
+  x_1 \\
+  x_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+  5 \\
+  -1
+\end{bmatrix}
+$
+\newline
+
+\noindent
+Therefore, $bs_2 = (5, 0, -1)$.
+\newline
+
+\noindent
+\textbf{\underline{Basic solution corresponding to $B_3$:}}
+
+\noindent
+\newline
+$
+\begin{bmatrix}
+  2 & 1 \\
+  1 & 5
+\end{bmatrix}
+\begin{bmatrix}
+  x_2 \\
+  x_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+ 4 \\
+ 5 
+\end{bmatrix}
+\Rightarrow
+\begin{bmatrix}
+  x_2 \\
+  x_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+  5/3 \\
+  2/3
+\end{bmatrix}
+$
+\newline
+
+\noindent
+Therefore, $bs_3 = (0, 5/3, 2/3)$.
+\newline
+
+
+\subsubsection*{b.}
+The basic \textbf{\underline{feasible}} solutions are: $\{bs_1, bs_3\}$.
+
+\subsubsection*{c.}
+The maximum number of basic solutions is: $^3C_2 = 3$.
+
+\noindent
+This occurs when $rank(A) = 2$.
+\newline
+% ---
+
+\section*{2.}
+\subsection*{a.}
+First, we transform the problem from a maximization problem to the equivalent minimization problem by multiplying the $RHS$ of the cost function by $-1$.
+\newline
+
+\noindent
+Second, we put the problem in the standard form by introducing 3 slack variables $x_3, x_4, x_5$ to change the inequalities to equations. 
+\newline
+
+\noindent
+The problem now becomes:
+
+\begin{center}
+  Minimize $z = -5x_1 - 3x_2$
+\end{center}
+
+Subject to:
+\begin{align*}
+  9x_1 + 3x_2 + x_3 &= 27 \\
+  2x_1 + x_2 + x_4 &= 7 \\
+  2x_1 + 2x_2 + x_5 &= 12 \\
+  x_1, x_2, x_3, x_4, x_5 &\geq 0
+\end{align*}
+
+\noindent
+The tableau for this problem is:
+
+\begin{center}
+  \begin{tabular}{ |c|c c c c c| }
+  \hline
+  0 & -5 & -3 & 0 & 0 & 0 \\ 
+  \hline 
+  27 & \numcircledtikz{9} & 3 & 1 & 0 & 0 \\ 
+  7  & 2 & 1 & 0 & 1 & 0 \\ 
+  12 & 2 & 2 & 0 & 0 & 1 \\ 
+  \hline
+  \end{tabular}
+\end{center}
+
+\noindent
+We get the initial basic feasible solution $bfs_0 = (0, 0, 27, 7, 12)$ with a cost $z=0$.
+\newline
+
+\noindent
+Next, we pivot on $x_{11}$ because $\bar{c_1} < 0$ so it is profitable for column 1 to enter the basis, and $\theta_0 = 1/3$ at $l=1$:
+
+\begin{center}
+  \begin{tabular}{ |c|c c c c c| }
+   \hline
+   15 & 0 & -4/3 & 5/9 & 0 & 0 \\ 
+   \hline 
+   3 & 1 & 1/3 & 1/9 & 0 & 0 \\ 
+   1 & 0 & \numcircledtikz{1/3} & -2/9 & 1 & 0 \\ 
+   6 & 0 & 4/3 & -2/9 & 0 & 1 \\ 
+   \hline
+  \end{tabular}
+\end{center}
+
+\noindent
+We get the $bfs = (3, 0, 0, 1, 6)$ with a cost $z=-15$. Next, we pivot on $x_{22}$:
+
+\begin{center}
+  \begin{tabular}{ |c|c c c c c| }
+   \hline
+   19 & 0 & 0 & -1/3 & 4 & 0 \\ 
+   \hline 
+   2 & 1 & 0 & 1/3 & -1 & 0 \\ 
+   3 & 0 & 1 & -2/3 & 3 & 0 \\ 
+   2 & 0 & 0 & \numcircledtikz{2/3} & -4 & 1 \\ 
+   \hline
+  \end{tabular}
+\end{center}
+
+\noindent
+We get the $bfs = (2, 3, 0, 0, 2)$ with a cost $z=-19$. Next, we pivot on $x_{33}$:
+
+\begin{center}
+  \begin{tabular}{ |c|c c c c c| }
+   \hline
+   20 & 0 & 0 & 0 & 2 & 1/2 \\ 
+   \hline 
+   1 & 1 & 0 & 0 & 1 & -1/2 \\ 
+   5 & 0 & 1 & 0 & -1 & 1 \\ 
+   3 & 0 & 0 & 1 & -6 & 3/2 \\ 
+   \hline
+  \end{tabular}
+\end{center}
+
+\noindent
+We get the $bfs = (1, 5, 3, 0, 0)$ with cost $z = -20$.
+
+\noindent
+This solution is optimal because all $\bar{c_i} \geq 0$.
+
+\section*{3.}
+First, we transform the problem from a maximization problem to the equivalent minimization problem by multiplying the $RHS$ of the cost function by $-1$.
+\newline
+
+\noindent
+Second, we put the problem in the standard form by introducing 3 slack variables $x_4, x_5, x_6$ to change the inequalities to equations. 
+\newline
+
+\noindent
+The problem now becomes:
+
+\begin{center}
+  Minimize $z = -5x_1 - 3x_2 -4x_3$
+\end{center}
+
+Subject to:
+\begin{align*}
+  3x_1 + 6x_2 + 2x_3 + x_4 &= 12 \\
+  1x_1 + 2x_2 + 2x_3 + x_5 &= 8 \\
+  4x_1 + 2x_2 + 4x_3 + x_6 &= 17 \\
+  x_1, x_2, x_3, x_4, x_5 &\geq 0
+\end{align*}
+
+\noindent
+The tableau for this problem is:
+
+\begin{center}
+  \begin{tabular}{ |c|c c c c c c| }
+  \hline
+  0 & -5 & -3 & -4 & 0 & 0 & 0 \\ 
+  \hline 
+  12 & \numcircledtikz{3} & 6 & 2 & 1 & 0& 0 \\ 
+  8  & 1 & 2 & 2 & 0 & 1& 0 \\ 
+  17 & 4 & 2 & 4 & 0 & 0& 1 \\ 
+  \hline
+  \end{tabular}
+\end{center}
+
+\noindent
+We get the initial basic feasible solution $bfs_0 = (0, 0, 0, 12, 8, 17)$ with a cost $z=0$.
+\newline
+
+\noindent
+Next, we pivot on $x_{11}$ because $\bar{c_1} < 0$ so it is profitable for column 1 to enter the basis, and $\theta_0 = 12/3 = 4$ at $l=1$:
+
+\begin{center}
+  \begin{tabular}{ |c|c c c c c c| }
+  \hline
+  20 & 0 & 7 & -2/3 & 5/4 & 0 & 0 \\ 
+  \hline 
+  4 & 1 & 2 & 2/3 & 1/3 & 0 & 0 \\ 
+  4 & 0 & 0 & 4/3 & -1/3 & 1 & 0 \\ 
+  1 & 0 & -6 & \numcircledtikz{4/3} & -4/3 & 0 & 1 \\ 
+  \hline
+  41/2 & 0 & 4 & 0 & 7/12 & 0 & 1/2 \\ 
+  \hline
+  7/2 & 1 & 5 & 0 & 1 & 0 & -1/2 \\ 
+  3 & 0 & 6 & 0 & 1 & 1 & -1 \\ 
+  3/4 & 0 & -9/2 & 1 & -1 & 0 & 3/4 \\ 
+  \hline
+  \end{tabular}
+\end{center}
+
+\noindent
+We get the $bfs = (7/2, 0, 3/4, 0, 3, 0)$ with cost $z = -41/2$.
+
+\noindent
+This solution is optimal because all $\bar{c_i} \geq 0$.
+
+\section*{4.}
+
+\noindent
+First, we put the problem in the standard form by introducing 3 slack variables $x5, x_6, x_7$ to change the inequalities to equations. 
+\newline
+
+\noindent
+The problem now becomes:
+
+\begin{center}
+  Minimize $z = -x_1 -2x_2 +3x_3 -x_4$
+\end{center}
+
+Subject to:
+\begin{align*}
+  1x_1  + 2x_2 + x_3   - x_4  + x_5             &= 1 \\
+  2x_1  + 3x_2 + -1x_3 + 2x_4       + x_6       &= 2  \\
+  -1x_1 + 2x_2 + 3x_3  - 3x_4             + x_7 &= 3 \\
+  x_1, x_2, x_3, x_4, x_5, x_6, x_7 &\geq 0
+\end{align*}
+
+\noindent
+The tableau for this problem is:
+
+\begin{center}
+  \begin{tabular}{ |c|c c c c c c c| }
+  \hline
+  0 & -1 & -2 & 3 & -1 & 0 & 0 & 0 \\ 
+  \hline 
+  1 & 1  & \numcircledtikz{2} & 1  & -1 & 1 & 0& 0 \\ 
+  2 & 2  & 3 & -1 & 2  & 0 & 1& 0 \\ 
+  3 & -1 & 2 & 3  & -3 & 0 & 0& 1 \\ 
+  \hline
+  1 & 0 & 0 & 4 & -2 & 1 & 0 & 0 \\ 
+  \hline 
+  1/2 & 1/2  & 1 & 1/2  & -1/2 & 1/2 & 0  & 0 \\ 
+  1/2 & 1/2  & 0 & -5/2 & \numcircledtikz{7/2}  & -3/2 & 1 & 0 \\ 
+  2   & -2   & 0 & 2    & -2   & -1   & 0 & 1 \\ 
+  \hline
+  9/7 & 2/7 & 0 & 18/7 & 0 & 29/7 & 4/7 & 0 \\ 
+  \hline 
+  4/7 & 4/7  & 1 & 1/7  & 0 & 2/7 & 1/7  & 0 \\ 
+  1/7 & 1/7  & 0 & -5/7 & 1  & -3/7 & 2/7 & 0 \\ 
+  16/7   & -12/7   & 0 & 4/7    & 0   & -13/7   & 4/7 & 1 \\ 
+  \hline
+  
+  \end{tabular}
+\end{center}
+
+\noindent
+We get the $bfs = (0, 4/7, 0, 1/7, 0, 0, 16/7)$ with cost $z = -9/7$.
+
+\noindent
+This solution is optimal because all $\bar{c_i} \geq 0$.
+
+
+\section*{5.}
+First, we transform the problem from a maximization problem to the equivalent minimization problem by multiplying the $RHS$ of the cost function by $-1$.
+\newline
+
+\noindent
+Second, we put the problem in the standard form by introducing a slack variable $x_3$ to the first constraint, and a surplus variable to the second constraint, to change the inequalities to equations. 
+\newline
+
+\noindent
+The problem now becomes:
+
+\begin{center}
+  Minimize $z = -2x_1 - 4x_2$
+\end{center}
+
+Subject to:
+\begin{align*}
+  x_1  + x_2  + x_3       &= 8 \\
+  6x_1 + 4x_2       - x_4 &= 12 \\
+  x_1  + 4x_2             &= 20 \\
+  x_1, x_2, x_3, x_4 &\geq 0
+\end{align*}
+\newline
+
+\noindent
+To find an initial feasible solution, we use the 2-phase method.
+\newline
+
+\noindent
+\textbf{\underline{Phase I:}}
+
+We introduce 2 artificial variables $x_1^a, x_2^a$ to the second and third equations respectively, and minimize the cost function $w=x_1^a + x_2^a$. The problem becomes:
+
+\begin{center}
+  Minimize $w = x_1^a + x_2^a = 32 -7x_1 -8x_2 + x_4$
+\end{center}
+
+Subject to:
+\begin{align*}
+  x_1  + x_2  + x_3                       &= 8 \\
+  6x_1 + 4x_2       - x_4 + x_1^a         &= 12 \\
+  x_1  + 4x_2                     + x_2^a &= 20 \\
+  x_1, x_2, x_3, x_4, x_1^a, x_2^a        &\geq 0
+\end{align*}
+\newline
+
+\begin{center}
+  \begin{tabular}{ |c|c c c c c c| }
+  \hline
+  0 & -2 & -4 & 0 & 0 & 0 & 0 \\ 
+  -32 & -7 & -8 & 0 & 1 & 0 & 0 \\ 
+  \hline 
+  8  & 1 & 1 & 1 & 0  & 0 & 0 \\ 
+  12 & 6 & \numcircledtikz{4} & 0 & -1 & 1 & 0 \\ 
+  20 & 1 & 4 & 0 & 0  & 0 & 1 \\ 
+  \hline
+  12 & 4 & 0 & 0 & -1 & 1 & 0 \\ 
+  -8 & 5 & 0 & 0 & -1 & 2 & 0 \\ 
+  \hline 
+  5  & -1/2 & 0 & 1 & 1/4  & -1/4 & 0 \\ 
+  2 & 3/2 & 1 & 0 & -1/4 & 1/4 & 0 \\ 
+  8 & -5 & 0 & 0 & \numcircledtikz{1}  & -1 & 1 \\ 
+  \hline
+  20 & -1 & 0 & 0 & 0 & 0 & 1 \\ 
+  0 & 0 & 0 & 0 & 0 & 1 & 1 \\ 
+  \hline 
+  3  & 3/4 & 0 & 1 & 0  & 0 & -1/4 \\ 
+  5 & 1/4 & 1 & 0 & 0 & 0 & 1/4 \\ 
+  8 & -5 & 0 & 0 & 1  & -1 & 1 \\ 
+  \hline
+  \end{tabular}
+\end{center}
+
+\noindent
+\textbf{\underline{Phase II:}}
+
+\begin{center}
+  \begin{tabular}{ |c|c c c c| }
+    \hline
+    20 & -1 & 0 & 0 & 0  \\
+    \hline 
+    3  & \numcircledtikz{3/4} & 0 & 1 & 0 \\ 
+    5 & 1/4 & 1 & 0 & 0 \\ 
+    8 & -5 & 0 & 0 & 1 \\ 
+    \hline
+    24 & 0 & 0 & 4/3 & 0 \\
+    \hline 
+    4  & 1 & 0 & 4/3 & 0 \\ 
+    4 & 0 & 1 & -1/3 & 0 \\ 
+    28 & 0 & 0 & 20/3 & 1 \\ 
+    \hline
+    \end{tabular}
+\end{center}
+  
+\noindent
+We get the $bfs = (4, 4, 0, 28)$ with cost $z = -24$.
+
+\noindent
+This solution is optimal because all $\bar{c_i} \geq 0$.
+
+\section*{6.}
+
+\noindent
+First, we put the problem in the standard form by introducing 2 slack variables $x5, x_6$ and 2 surplus variables $x_7, x_8$ to change the inequalities to equations. 
+\newline
+
+\noindent
+The problem now becomes:
+
+\begin{center}
+  Minimize $z = 20x_1 + 15x_2 + 10x_3 + 12x_4$
+\end{center}
+
+Subject to:
+\begin{align*}
+  2x_1 + x_2    + 1.5x_3   - 0.5x_4  + x_5                  &= 250 \\
+  x_1  + 0.5x_2 + 2x_3     + 1.5x_4       + x_6             &= 200  \\
+  x_1  + x_2                                    - x_7       &= 100 \\
+                  x_3                                 - x_8 &= 20 \\
+  x_1, x_2, x_3, x_4, x_5, x_6, x_7, x_8 &\geq 0
+\end{align*}
+
+\noindent
+To find an initial feasible solution, we use the 2-phase method.
+\newline
+
+\noindent
+\textbf{\underline{Phase I:}}
+
+We introduce 2 artificial variables $x_1^a, x_2^a$ to the third and fourth equations respectively, and minimize the cost function $w=x_1^a + x_2^a$. The problem becomes:
+
+\begin{center}
+  Minimize $w = x_1^a + x_2^a = 120 -x_1 -x_2 -x_3 +x_7 + x_8$
+\end{center}
+
+Subject to:
+\begin{align*}
+  2x_1 + x_2    + 1.5x_3   - 0.5x_4  + x_5                                  &= 250 \\
+  x_1  + 0.5x_2 + 2x_3     + 1.5x_4       + x_6                             &= 200  \\
+  x_1  + x_2                                    - x_7       + x_1^a         &= 100 \\
+                  x_3                                 - x_8         + x_2^a &= 20 \\
+  x_1, x_2, x_3, x_4, x_5, x_6, x_7, x_8, x_1^a, x_2^a &\geq 0
+\end{align*}
+\newline
+
+\begin{center}
+  \begin{tabular}{ |c|c c c c c c c c c c| }
+  \hline
+  0 & 20 & 15 & 10 & 12 & 0 & 0 & 0 & 0 & 0 & 0\\ 
+  -120 & -1 & -1 & -1 & 0 & 0 & 0 & 1 & 1 & 0 & 0\\ 
+  \hline 
+  250 & 2 & 1   & 1.5 & -0.5  & 1 & 0 & 0  & 0  & 0 & 0 \\ 
+  200 & 1 & 0.5 & 2   & 1.5   & 0 & 1 & 0  & 0  & 0 & 0 \\ 
+  100 & \numcircledtikz{1} & 1   & 0   & 0     & 0 & 0 & -1 & 0  & 1 & 0 \\ 
+  20  & 0 & 0   & 1   & 0     & 0 & 0 & 0  & -1 & 0 & 1 \\ 
+  
+  \hline
+  -2000 & 0 & -5 & 10 & 12 & 0 & 0 & 20 & 0 & -20 & 0\\ 
+  -20   & 0 & 0 & -1 & 0 & 0 & 0 & 0 & 1 & 1 & 0\\ 
+  \hline 
+  50    & 0 & -1   & 1.5 & 0.5  & 1 & 0 & 2  & 0  & -2 & 0 \\ 
+  100   & 0 & -0.5 & 2   & 1.5   & 0 & 1 & 1  & 0  & -1 & 0 \\ 
+  100   & 1 & 1   & 0   & 0     & 0 & 0 & -1 & 0  & 1 & 0 \\ 
+  20    & 0 & 0   & \numcircledtikz{1}   & 0     & 0 & 0 & 0  & -1 & 0 & 1 \\ 
+
+  \hline
+  -2200 & 0 & -5 & 0 & 12 & 0 & 0 & 20 & 10 & -20 & -10 \\ 
+  0   & 0 & 0 & -0 & 0 & 0 & 0 & 0 & 0 & 1 & 1 \\ 
+  \hline 
+  20    & 0 & -1   & 0   & 0.5   & 1 & 0 & 2  & 1.5  & -2 & -1.5 \\ 
+  60    & 0 & -0.5 & 0   & 1.5   & 0 & 1 & 1  & 2    & -1 & -2 \\ 
+  100   & 1 & 1    & 0   & 0     & 0 & 0 & -1 & 0    & 1 & 0 \\ 
+  20    & 0 & 0    & 1   & 0     & 0 & 0 & 0  & -1   & 0 & 1 \\ 
+  \hline
+  \end{tabular}
+\end{center}
+
+\noindent
+\textbf{\underline{Phase II:}}
+
+\begin{center}
+  \begin{tabular}{ |c|c c c c c c c c| }
+    \hline
+    -2200 & 0 & -5 & 0 & 12 & 0 & 0 & 20 & 10 \\ 
+    \hline 
+    20    & 0 & -1   & 0   & 0.5   & 1 & 0 & 2  & 1.5 \\ 
+    60    & 0 & -0.5 & 0   & 1.5   & 0 & 1 & 1  & 2   \\ 
+    100   & 1 & \numcircledtikz{1}    & 0   & 0     & 0 & 0 & -1 & 0   \\ 
+    20    & 0 & 0    & 1   & 0     & 0 & 0 & 0  & -1  \\ 
+    \hline
+
+    -1700 & 5    & 0    & 0   & 12    & 0 & 0 & 15 & 10 \\ 
+    \hline 
+    120    & 1   & 0    & 0   & 0.5   & 1 & 0 & 1   & 1.5 \\ 
+    110    & 0.5 & 0    & 0   & 1.5   & 0 & 1 & 0.5 & 2   \\ 
+    100    & 1   & 1    & 0   & 0     & 0 & 0 & -1  & 0   \\ 
+    20     & 0   & 0    & 1   & 0     & 0 & 0 & 0   & -1  \\ 
+    \hline
+    \end{tabular}
+\end{center}
+  
+\noindent
+We get the $bfs = (0, 100, 20, 0, 0, 0, 0, 0)$ with cost $z = 1700$.
+
+\noindent
+This solution is optimal because all $\bar{c_i} \geq 0$.
+
+
+\end{document}
