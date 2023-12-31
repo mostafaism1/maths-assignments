@@ -1,0 +1,384 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\author{Mostafa Hassanein}
+\title{Abstract Algebra Assignment (5): Rings}
+\date{31 December 2023}
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section*{1.}
+To show that the system $(I_m,+, \cdot)$ is an ideal in the ring $(I,+,\cdot)$, we must show that:
+
+\noindent
+i. $(I_m,+)$ is a sub-group of $(I, +)$.
+
+\begin{proof}
+  $ $
+
+  $a,b \in I_m \implies a = mr_1 \ \land \ b = mr_2$
+
+  $\implies b^{-1} = -mr_2$
+  
+  $\implies a+b^{-1} = mr_1 + (-mr_2) = m(r_1-r_2) = mr^{\prime}$
+
+  $\implies a+b^{-1} \in I_m$
+
+  $\implies (I_m,+)$ is a sub-group of $(I, +)$.
+
+\end{proof}
+
+\noindent
+ii. $I_m$ is a left ideal: $r \cdot x \in I_m, \ \forall x \in I_m \ \land \ \forall r \in I$.
+
+\begin{proof}
+  $ $
+
+  Let $x \in I_m \implies \ x=mr_1, \ m,r_1 \in I$.
+
+  Let $r_2 \in I \implies r_2 \cdot x = r_2 \cdot mr_1 = m(r_1 + r_2) = mr^{\prime}$
+
+  $\implies r_2 \cdot x \in I_m, \ \forall x \in I_m \ \land \ \forall r_2 \in I$
+
+  $\implies (I_m, +, \cdot)$ is a left ideal.
+
+  
+\end{proof}
+
+\noindent
+iii. $I_m$ is a right ideal: $x \cdot r \in I_m, \ \forall x \in I_m \ \land \ \forall r \in I$.
+
+\begin{proof}
+  $ $
+
+  Because $I$ is commutative w.r.t. the second operation, and $I_m$ is a left ideal, then $I_m$ is also a right ideal.
+
+\end{proof}
+
+\section*{2.}
+To prove that the system $(R, \oplus, \otimes)$ is a field, we need to show that:
+
+\noindent
+i. $(R, \oplus)$ is a commutative group.
+
+\begin{proof}
+  $ $ 
+
+  a. Closure: $a \oplus b = a + b - 1$
+
+  $\implies a \oplus b \in R$.
+  \newline
+
+  b. Associativity: $(a \oplus b) \oplus c = (a+b-1) \oplus c = (a+b-1) + c -1 = a + (b + c -1) -1 = a \oplus (b + c - 1) = a \oplus (b \oplus c)$.
+  \newline
+
+  c. Existence of an identity: $a \oplus e = a \implies a + e - 1 = a$
+  
+  $\implies e = 1$
+
+  $\implies e \in R$.
+  \newline
+
+  d. Existence of inverses: $a \oplus a^{-1} = e \implies a + a^{-1} - 1 = 1$
+  
+  $\implies a^{-1} = 2 - a$
+
+  $\implies a^{-1} \in R$.
+  \newline
+
+  e. $\oplus$ is commutative: $\oplus$ is defined in terms of addition and addition is commutative $\implies \oplus$ is commutative.
+  \newline
+
+  (a), (b), (c), (d), (e) $\implies (R, \oplus)$ is a commutative group.
+  \newline
+
+\end{proof}
+
+\noindent
+ii. $(R^*, \otimes)$ is a commutative group.
+
+\begin{proof}
+  $ $
+
+  Let $\bar{e}$ be the identity for $\otimes$, then: $ a \otimes \bar{e} = a$
+  
+  $\implies a+\bar{e}-a\bar{e} = a$
+
+  $\implies \bar{e} - a\bar{e} = 0$
+
+  $\implies \bar{e}(1-a) = 0$
+
+  $\implies \bar{e} = 0$.
+  \newline
+
+  Let $b \in R^*$, then: $b \otimes b^{-1} = \bar{e}$
+  
+  $\implies b + b^{-1} - bb^{-1}= 0$
+
+  $\implies b^{-1}(1-b) + b = 0$
+
+  $\implies b^{-1}= b/(b-1)$
+
+  $\implies b^{-1}$ exists for all $b \in \{R - 1\} \ \land \ b^{-1} \neq e = 1$
+
+  $\implies b^{-1} \in R^*$.
+  \newline
+
+  Let $a,b \in R^*$, then: $a \otimes b^{-1} = ab/b-1$
+
+  $\implies a \otimes b^{-1}$ exists for all $b \in \{R - 1\} \ \land \ a \otimes b^{-1} \neq e = 1$
+
+  $\implies a \otimes b^{-1} \in R^*$
+
+  $\implies (R^*, \otimes)$ is a group.
+  \newline
+
+  Finally, $\otimes$ is defined in terms of addition and multiplication which are both commutative $\implies (R^*, \otimes)$ is a commutative group.
+  
+\end{proof}
+
+\noindent
+iii. The binary operation $\otimes$ is both left and right distributive over $\oplus$.
+
+\begin{proof}
+  $ $
+
+  a. Left distributivity: 
+  \begin{align*}
+    a \otimes (b \oplus c) &= a + (b \oplus c) - a(b \oplus c) \\
+    &= a + (b \oplus c) - a(b \oplus c) \\
+    &= a + (b + c -1) - a(b + c - 1) \\
+    &= a + (b + c - 1) - ab + ac - a \\
+    &= 2a + b + c -ab - ac - 1 \\
+    &= (a + b - ab) + (a + c - ac) - 1 \\
+    &= (a \otimes b) + (a \otimes c) - 1 \\
+    &= (a \otimes b) \oplus (a \otimes c). \\
+  \end{align*}
+
+  b. Right distributivity:
+  \begin{align*}
+    (a \oplus b) \otimes c &= (a \oplus b) + c - (a \oplus b)c \\
+    &= (a+b-1) + c - (a+b-1)c \\
+    &= a+b-1 + c - ac - bc + c \\
+    &= a+b+2c-bc-ac-1 \\
+    &= (a + c - ac) + (b + c - bc) - 1 \\
+    &= (a \otimes c) + (b \otimes c) - 1 \\
+    &= (a \otimes c) \oplus (b \otimes c). \\
+  \end{align*}
+
+  \noindent
+  Therefore, the system $(R, \oplus, \otimes)$ is a field.
+\end{proof}
+
+
+\section*{3.}
+
+We start by constructing the Cayley table for both operations:
+\newline
+
+\begin{tabular}{c | c c c c c}
+  $*$ & $\bar{0}$ & $\bar{2}$ & $\bar{4}$ & $\bar{6}$ & $\bar{8}$ \\
+  \cline{1-6}
+  {$\bar{0}$} & $\bar{0}$ & $\bar{2}$ & $\bar{4}$& $\bar{6}$& $\bar{8}$ \\
+  {$\bar{2}$} & $\bar{2}$ & $\bar{4}$ & $\bar{6}$& $\bar{8}$& $\bar{0}$ \\
+  {$\bar{4}$} & $\bar{4}$ & $\bar{6}$ & $\bar{8}$& $\bar{0}$& $\bar{2}$ \\
+  {$\bar{6}$} & $\bar{6}$ & $\bar{8}$ & $\bar{0}$& $\bar{2}$& $\bar{4}$ \\
+  {$\bar{8}$} & $\bar{8}$ & $\bar{0}$ & $\bar{2}$& $\bar{4}$& $\bar{6}$ \\
+\end{tabular}
+\newline
+\newline
+
+\begin{tabular}{c | c c c c c}
+  $*$ & $\bar{0}$ & $\bar{2}$ & $\bar{4}$ & $\bar{6}$ & $\bar{8}$ \\
+  \cline{1-6}
+  {$\bar{0}$} & $\bar{0}$ & $\bar{0}$ & $\bar{0}$ & $\bar{0}$ & $\bar{0}$ \\
+  {$\bar{2}$} & $\bar{0}$ & $\bar{4}$ & $\bar{8}$ & $\bar{2}$ & $\bar{6}$ \\
+  {$\bar{4}$} & $\bar{0}$ & $\bar{8}$ & $\bar{6}$ & $\bar{4}$ & $\bar{2}$ \\
+  {$\bar{6}$} & $\bar{0}$ & $\bar{2}$ & $\bar{4}$ & $\bar{6}$ & $\bar{8}$ \\
+  {$\bar{8}$} & $\bar{0}$ & $\bar{6}$ & $\bar{2}$ & $\bar{8}$ & $\bar{4}$ \\
+\end{tabular}
+\newline
+
+\begin{proof}
+  $ $
+  
+\noindent
+From the Cayley table for the first operation we see that: 
+
+i. $*$ is closed over $S$.
+
+ii. There's an identity element $e=0$.
+
+iii. All elements have an inverse.
+
+iv. $*$ is commutative.
+
+\noindent
+Additionally:
+
+v. $*$ is associative (because addition is associative).
+\newline
+
+\noindent
+(i), (ii), (iii), (iv), (v) $\implies (S, *)$ is a commutative group.
+\newline
+
+\noindent
+From the Cayley table for the second operation we see that:
+
+a. $\Delta$ is closed over $S$.
+
+b. $\Delta$ is commutative.
+
+c. $\Delta$ has no zero divisors.
+
+\noindent
+Additionally:
+
+d. $\Delta$ is associative (because multiplication is associative).
+
+e. $\Delta$ is distributive over $*$ (because multiplication is distributive over addition).
+\newline
+
+\noindent
+(a), (b), (c), (d), (e) $\implies \Delta$ is an associative, distributive, and commutative binary operation on $S$ with no zero divisors.
+\newline
+
+\noindent
+Therefore, $(S, *, \Delta)$ is a commutative ring with no zero divisors.
+
+\end{proof}
+
+\section*{4.}
+To show that the system $(M_2, +, \cdot)$ is a ring, we need to show that:
+
+\noindent
+i. $(M_2, +)$ is a commutative group.
+
+\begin{proof}
+  $ $
+
+  $a, b \in M_2 \implies a = \begin{bmatrix}
+    x & y \\
+    -y & x
+  \end{bmatrix}
+  \ \land \ 
+  b= \begin{bmatrix}
+    w & z \\
+    -z & w
+  \end{bmatrix}$
+  \newline
+
+  $\implies b^{-1} = \begin{bmatrix}
+    -w & -z \\
+    z & -w
+  \end{bmatrix}$
+  \newline
+
+  $\implies a + b^{-1} = \begin{bmatrix}
+    x & y \\
+    -y & x
+  \end{bmatrix}
+  +
+  \begin{bmatrix}
+    -w & -z \\
+    z & -w
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    x-w & y-z \\
+    -(y-z) & x-w
+  \end{bmatrix}
+  $
+  \newline
+
+  $\implies a \cdot b
+  =
+  \begin{bmatrix}
+    p & q \\
+    -q & p
+  \end{bmatrix}
+  $
+  \newline
+
+  $\implies a + b^{-1} \in M_2$
+  \newline
+
+  $\implies (M_2, +)$ is a commutative group (because matrix addition is commutative).
+
+\end{proof}
+
+\noindent
+ii. $\cdot$ is binary associative over $M_2$.
+
+\begin{proof}
+  $ $
+
+  $a, b \in M_2 \implies a = \begin{bmatrix}
+    x & y \\
+    -y & x
+  \end{bmatrix}
+  \ \land \ 
+  b= \begin{bmatrix}
+    w & z \\
+    -z & w
+  \end{bmatrix}$
+  \newline
+  
+  $\implies a \cdot b
+  =
+  \begin{bmatrix}
+    x & y \\
+    -y & x
+  \end{bmatrix}
+  \cdot
+  \begin{bmatrix}
+    w & z \\
+    -z & w
+  \end{bmatrix}
+  $
+  \newline
+
+  $\implies a \cdot b
+  =
+  \begin{bmatrix}
+    xw - yz & xz +yw \\
+    -(xz+yw) & xw -yz
+  \end{bmatrix}
+  $
+  \newline
+
+  $\implies a \cdot b
+  =
+  \begin{bmatrix}
+    p & q \\
+    -q & p
+  \end{bmatrix}
+  $
+  \newline
+
+  $\implies a \cdot b \in M_2$
+  \newline
+
+  Therefore, $\cdot$ is closed and associative (because matrix multiplication is associative) over $M_2$.
+  
+\end{proof}
+
+\noindent
+iii. $\cdot$ is distributive over $+$.
+
+\begin{proof}
+  $ $
+
+  Since matrix multiplication is distributive, then it must also be satisfied for the subset of matrices $M_2$.
+  \newline
+  
+  \noindent
+  Therefore, $(M_2, +, \dot)$ is a ring.
+\end{proof}
+
+\end{document}
