@@ -1,0 +1,529 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{tikz}
+\author{Mostafa Hassanein}
+\title{Probability Assignment}
+\date{1 January 2024}
+\begin{document}
+
+\maketitle
+
+\newpage
+
+% Modified \textcircled solution
+\newcommand*\numcircledmod[1]{\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {#1}}}}
+
+% TikZ solution
+\newcommand*\numcircledtikz[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=1.2pt] (char) {#1};}} 
+
+\begin{center}
+  \textbf{\underline{Part 1}}
+\end{center}
+
+\section*{1.}
+
+Number of arrangements = $4!*(4!*3!*2!*1!) = 6912$ arrangements.
+
+\section*{2.}
+
+a. Number of committees $= C^5_2 * C^7_3 = 10 * 35 = 350$.
+
+\noindent
+b. Number of commitees $= C^5_2 * (C^7_3 - C^7_1) = 10 * (35 - 7) = 280$.
+
+\section*{3.}
+a. Number of possible license plates $= 26^2*10^5 = 67600000$.
+
+\noindent
+b. Number of possible license plates $= (26*25)*(10*9*8*7*6) = 676 * 10^5 = 19656000$.
+
+\section*{4.}
+
+Number of seatings $= 2!*7! = 10080$.
+
+\section*{5.}
+
+a. Choices $= C^6_2 + C^7_2 + C^4_2 = 42$.
+
+\noindent
+b. Choices $= C^6_1 * C^7_1 + C^6_1 * C^4_1 + C^7_1 * C^4_1 = 94$.
+
+\section*{6.}
+
+Choices $= C^5_3 * C^5_4 + C^5_4 * C^5_3 + C^5_5 * C^5_2 = 7*5 + 5*7 + 1*10 = 80$.
+
+\section*{7.}
+
+a. $Choices = C^{3n}_3$
+
+\noindent
+b. $Choices = n*C^{n}_3$
+
+\section*{8.}
+
+Choices = $C^7_2 * C^8_4 + C^7_3 * C^8_3 = 21 * 70 + 35 * 56 = 3430$
+
+\section*{11.}
+
+\subsection*{i.}
+$A = \{ H2, H4, H6 \}$
+
+\noindent
+$B = \{ H2, H3, H5, T2, T3, T5 \}$
+
+
+\noindent
+$C = \{ T1, T3, T5 \}$
+
+\subsection*{ii.}
+a. $A$ or $B = A \cup B = \{ H2, H3, H4, H5, H6, T2, T3, T5 \}$
+
+\noindent
+b. $B$ and $C = B \cap C = \{ T3, T5 \}$
+
+\noindent
+c. Only $B$ occurs = $B \setminus (A \cup C) = \{ H3, H5, T2 \}$
+
+\subsection*{iii.}
+Only A and C are mutually exclusive because: $A \cap C = \emptyset$.
+
+\section*{12.}
+
+\subsection*{i.}
+
+$P(a_1) = 1 - P(a_2) - P(a_3) - P(a_4) = 1 - 1/3 - 1/6 - 1/9 = 7/18$
+
+\subsection*{ii.}
+$P(a_1) + P(a_2) + 1/4 + 1/4 = 1$
+
+\noindent
+$2P(a_2) + P(a_2) + 1/2 = 1$
+
+\noindent
+$3P(a_2) = 1/2$
+
+\noindent
+$P(a_2) = 1/6$ and $P(a_1) = 2/6$.
+
+
+\section*{13.}
+
+\subsection*{i.}
+
+\begin{flalign*}
+  P(1) = 1/21 && P(2) = 2/21 && \\
+  P(3) = 3/21 && P(4) = 4/21 && \\
+  P(5) = 5/21 && P(6) = 6/21 && \\
+\end{flalign*}
+
+\subsection*{ii.}
+
+\begin{flalign*}
+  P(A) &= P(2) + P(4) + P(6) && \\
+  &= 2/21 + 4/21 + 6/21 = 11/21
+\end{flalign*}
+
+\noindent
+\begin{flalign*}
+  P(B) &= P(2) + P(3) + P(5) && \\
+  &= 2/21 + 3/21 + 5/21 = 10/21
+\end{flalign*}
+
+\noindent
+\begin{flalign*}
+  P(B) &= P(1) + P(3) + P(5) && \\
+  &= 1/21 + 3/21 + 5/21 = 9/21
+\end{flalign*}
+
+\subsection*{iii.}
+
+\noindent
+\begin{flalign*}
+  P(A \cup B) &= P(A) + P(B) - P(A \cap B) && \\
+  &= 11/21 + 10/21 - 2/21 = 19/21 && \\
+\end{flalign*}
+
+
+\noindent
+\begin{flalign*}
+  P(B \cup C) &= P(B) + P(c) - P(B \cap C) && \\
+  &= 10/21 + 9/21 - (3/21 + 5/21)= 11/21 && \\
+\end{flalign*}
+
+\noindent
+\begin{flalign*}
+  P(A \setminus B) &= P(A) - P(A \cap B) && \\
+  &= 11/21 - 2/21 = 9/21 && \\
+\end{flalign*}
+
+
+\section*{14.}
+
+Let $A=\{x: x is a man \}$, $B=\{x: x has brown eyes \}$
+
+\noindent
+\begin{flalign*}
+  P(A \cup B) &= P(A) + P(B) - P(A \cup B) && \\
+  &= 10/30 + 15/30 - 5/30 = 20/30&&\\
+\end{flalign*}
+
+\section*{15.}
+
+Let $F=\{x: x \ is \  studying \ French \}$, $S=\{x: x \  is \ studying \ Spanish \}$
+
+\subsection*{i.}
+
+\noindent
+\begin{flalign*}
+  P(F \cup S) &= P(F) + P(S) - P(F \cap S) && \\
+  &= 60/120 + 50/120 - 20/120 = 90/120 = 3/4&& \\
+\end{flalign*}
+
+\subsection*{ii.}
+
+\noindent
+\begin{flalign*}
+  P(\bar{F} \cap \bar{S}) &= P(\overline{F \cup S}) && \\
+  &= 1 - P(F \cup S) && \\
+  &= 1 - 90/120 = 30/120 = 1/4
+\end{flalign*}
+
+
+\section*{16.}
+
+Let $HS=\{x: x \ has \ high \ strength \}$, $LS=\{x: x \ has \ low \ strength \}$, $HC=\{x: x \ has \ high \ conductivity \}$, $LC=\{x: x \ has \ low \ conductivity \}$.
+
+\subsection*{a.}
+
+\noindent
+\begin{flalign*}
+  P(LS \cup LC) &= P(LS) + P(LC) - P(LS \cap LC) && \\
+  &= (13/100 + 10/100) + (14/100 + 10/100) - 10/100 = 37/100 && \\
+\end{flalign*}
+
+\subsection*{b.}
+
+\noindent
+\begin{flalign*}
+  P(HC \cup HS) &= \frac{P(HC \cap HS)}{P(HS)}  && \\
+  &= \frac{63}{63+14} = \frac{63}{77} = \frac{9}{11} && \\
+\end{flalign*}
+
+\section*{17.}
+\begin{proof}
+  \begin{flalign*}
+    P(A^c \cap B^c) &= P([A \cup B]^c) && \\
+    &= 1 - P(A \cup B) && \\
+    &= 1 - [P(A) + P(B) - P(A \cap B)] && \\
+    &= 1 - P(A) - P(B) + P(A \cap B) && \\
+  \end{flalign*}
+\end{proof}
+
+\section*{18.}
+
+$A = \{ (W, W, T), (W, W, L), (W, W, W) \}$
+
+\noindent
+\begin{flalign*}
+  P(A) &=  0.6*0.6*0.3 + 0.6*0.6*0.1 + 0.6*0.6*0.6 = 0.36 && \\
+\end{flalign*}
+
+
+
+\section*{19.}
+
+\begin{flalign*}
+  P(A \cup B \cup C) &=  P(A) + P(B) + P(C) && \\
+  & -P(A \cap B) - P(A \cap C) - P(B \cap C) && \\
+  & +P(A \cap B \ cap C) && \\
+  &= 0.02 + 0.01 + 0.015 && \\
+  & - 0.005 - 0.006 - 0.004 && \\
+  & + 0.002 && \\
+  &= 0.045 - 0.015 + 0.002 &&\\
+  &= 0.032 &&\\
+\end{flalign*}
+
+\section*{20.}
+
+\subsection*{a.}
+
+$P = \frac{21}{25} *\frac{20}{24} * \frac{19}{23} * \frac{18}{22} = \frac{21}{25}$
+
+\subsection*{b.}
+
+$P = \frac{1}{25} + \frac{1}{24} + \frac{1}{23} + \frac{1}{22} = 0.17$
+
+\section*{21.}
+
+The probability that a point lies in some region inside the circle is proportional to the area of the region, and the probability of lying anywhere inside the circle is $1$.
+
+$\implies P(\text{p lies in region R}) = \frac{\text{Area of region R}}{\pi r^2}$
+
+\subsection*{a.}
+Let $A$ be the set of all points inside the circle of radius $r$ that are closer to the circumference than the center.
+
+\noindent
+\begin{flalign*}
+  P(A) &= \frac{\pi r^2 - \pi (\frac{r}{2})^2}{\pi r^2} &&\\
+  &= \frac{\pi r^2(1 -\frac{1}{4} )}{\pi r^2} = 3/4 && \\
+\end{flalign*}
+
+\subsection*{b.}
+Let $B$ be the set of all points inside the circle of radius $r$ that are at least $r/3$ from the center.
+
+\noindent
+\begin{flalign*}
+  P(B) &= \frac{\pi r^2 - \pi (\frac{r}{3})^2}{\pi r^2} &&\\
+  &= \frac{\pi r^2(1 -\frac{1}{9} )}{\pi r^2} = 8/9 && \\
+\end{flalign*}
+
+
+\begin{center}
+  \textbf{\underline{Part 2}}  
+\end{center}
+
+
+\section*{1.}
+\subsection*{a.}
+
+\begin{proof}
+  $P(A \cup B) = P(A) + P(B) - P(A \cap B)$
+
+  \noindent
+  $\implies P(A \cap B) = P(A) + P(B) - P(A \cup B)$
+
+  \noindent 
+  And we have: $0 \leq P(A \cup B) \leq 1$
+
+  \noindent
+  $\implies P(A \cap B) \geq P(A) + P(B) - 1$
+
+\end{proof}
+
+\subsection*{b.}
+
+\begin{proof}
+  \begin{flalign*}
+    P((A \cup B)|C) &= \frac{P([A \cup B] \cap C)}{P(C)} && \\
+    &= \frac{P([A \cap C] \cup [B \cap C])}{P(C)} && \\
+    &= \frac{P(A \cap C) + P(B \cap C) - P([A \cap C] \cap [B \cap C])}{P(C)} && \\
+    &= \frac{P(A \cap C) + P(B \cap C) - P(A \cap B \cap C)}{P(C)} && \\
+    &= P(A|C) + P(B|C) + P((A \cap B)|C)
+  \end{flalign*}
+\end{proof}
+
+\section*{2.}
+
+\subsection*{a.}
+
+\begin{proof}
+\begin{flalign*}
+  P((A-B)|C) &= \frac{P((A-B) \cap C)}{P(C)} && \\
+  &= \frac{P((A - A \cap B) \cap C)}{P(C)} && \\
+  &= \frac{P(A \cap C - A \cap B \cap C)}{P(C)} && \\
+  &= P(A|C) - P((A \cap B)|C) && \\
+\end{flalign*}
+\end{proof}
+
+\subsection*{b.}
+\begin{flalign*}
+  P((A \cup B)|B^c) &= P(A|B^c) && \\
+  &= \frac{P(A \cap B^c)}{P(B^c)} && \\
+  &= \frac{0.5}{0.8} = 5/8 = 0.625 && \\
+\end{flalign*}
+
+\begin{flalign*}
+  P((A \cup B)^c|A) &= P((A^c \cup B^c)|A) && \\
+  &= \frac{P((A^c \cap B^c)\cap A)}{P(A)} && \\
+  &= \frac{P((A^c \cap A)\cap B^c)}{P(A)} && \\
+  &= \frac{0}{P(A)} = 0
+\end{flalign*}
+
+
+\section*{3.}
+
+\begin{proof}
+  \begin{flalign*}
+    P(A|B) &= \frac{P(A \cap B)}{P(B)} && \\
+    P(B|A) &= \frac{P(B \cap A)}{P(A)} && \\
+    \implies \frac{P(A|B)}{P(B|A)} &= \frac{\frac{P(A \cap B)}{P(B)}}{\frac{P(B \cap A)}{P(A)}} && \\
+    &= \frac{P(A)}{p(B)}
+  \end{flalign*}
+\end{proof}
+
+\section*{4.}
+\subsection*{a.}
+No. Because $P(A) + P(B) = 7/6 > 1$.
+
+\subsection*{b.}
+$P(A \cup B) = P(A) + P(B) - P(A \cap B)$
+
+\subsubsection*{i.}
+
+$A$ and $B$ are independent.
+
+\noindent
+$\implies P(A|B) = P(A)$
+
+\noindent
+$\implies \frac{P(A \cap B)}{P(B)} = P(A)$
+
+\noindent
+$\implies P(A \cap B) = P(A)*P(B)$
+\newline
+
+\noindent
+Therefore:
+
+\noindent
+\begin{flalign*}
+  P(A \cup B) &= P(A) + P(B) - P(A \cap B) && \\
+  &= P(A) + P(B) - P(A)P(B) && \\
+  &= 1/2 + 2/3 - 1/2 * 2/3 = 5/3 = 0.834&& \\
+\end{flalign*}
+
+\subsubsection*{ii.}
+
+\begin{flalign*}
+  P(A \cup B) &= P(A) + P(B) - P(A \cap B) && \\
+  &= 1/2 + 2/3 - 1/4 = 11/12 = 0.917 && \\
+\end{flalign*}
+
+\section*{5.}
+\begin{proof}
+    $P(A|B) > P(A)$
+
+    $\implies -P(A|B) < -P(A)$
+
+    $\implies 1-P(A|B) < 1 - P(A)$
+
+    $\implies P(A^c|B) < P(A^c)$
+
+\end{proof}
+
+\section*{6.}
+\subsection*{i.}
+
+\begin{proof}
+  \begin{flalign*}
+    P(A_1 \cup A_2) &= P(A_1) + P(A_2) - P(A_1 \cap A_2) &&\\
+    &= P(A_1) + P(A_2) - P(A_1)P(A_2) &&\\
+    &= P(A_2) + [P(A_1) - P(A_1)P(A_2)] &&\\
+    &= P(A_2) + [P(A_1) (1 - P(A_2))] &&\\
+    &= P(A_2) + P(A_1) P(A^c_2) &&\\
+  \end{flalign*}
+\end{proof}
+
+\subsection*{ii.}
+
+\begin{proof}
+  $ $
+
+  \begin{flalign*}
+    P(A_1 \cup A_2 \cup A_3) &= P((A_1 \cup A_2) \cup A_3) &&\\
+    &= P(B \cap A_3) &&\\
+    &= P(A_3) + P(B)P(A^c_3) &&\\
+    &= P(A_3) + P(A_1 \cup A_2)P(A^c_3) &&\\
+    &= P(A_3) + [P(A_1)P(A^c_2) + P(A_2)]P(A^c_3) &&\\
+    &= P(A_3) + P(A_1)P(A^c_2)P(A^c_3) + P(A_2)P(A^c_3) &&\\
+  \end{flalign*}
+\end{proof}
+
+\section*{7.}
+
+\begin{flalign*}
+  P(A \cup B) &= P(A) + P(B) - P(A)P(B) &&\\
+  &= 0.6 + 0.6 - 0.6*0.6 = 0.84
+\end{flalign*}
+
+\begin{flalign*}
+  P(A^c \cap C) &= P(C) - P(A \cap C) &&\\
+  &= 0.6 - 0.6*0.6 = 0.24
+\end{flalign*}
+
+\section*{8.}
+\begin{flalign*}
+  P((A \cup B)|A^c) &= \frac{P((A \cup B) \cap A^c)}{P(A^c)} &&\\
+  &= \frac{P[(A \cap A^c) \cup (B \cap A^c) ]}{P(A^c)} &&\\
+  &= \frac{P(B \cap A^c)}{P(A^c)} &&\\
+  &= \frac{P(B) - P(B \cap A)}{P(A^c)} &&\\
+  &= \frac{P(B) - P(B)P(A)}{P(A^c)} = \frac{0.6 - 0.6*0.4}{0.6} = 0.6 &&\\
+\end{flalign*}
+
+\begin{flalign*}
+  P((A \cup C)|B) &= \frac{P((A \cup C) \cap B)}{P(B)} &&\\
+  &= \frac{P[(A \cap B) \cup (C \cap B)]}{P(B)} &&\\
+  &= \frac{P(A \cap B) + P(C \cap B) - P(A \cap B \cap C)}{P(B)} &&\\
+  &= \frac{P(A)P(B) + P(B|C)*P(C) - P(A \cap B \cap C)}{P(B)} = \frac{0.4*0.6 + 0.4*0.6 - 0}{0.6} = 0.8
+\end{flalign*}
+
+
+\section*{9.}
+Let $A$ be the event that the first item is defective, and $B$ be the event that the second item is non-defective.
+
+$P(A) = \frac{3}{18}$
+
+$P(B) = \frac{15}{18} * \frac{14}{17} + \frac{3}{18} * \frac{15}{17} = 5/6$
+
+$P(B|A) = \frac{2}{17}$
+
+$P(A|B) = P(B|A)*\frac{P(A)}{P(B)} = \frac{2}{17} * \frac{\frac{3}{18}}{\frac{5}{6}} = \frac{2}{85} = 0.024$
+
+\section*{10.}
+\subsection*{i.}
+\begin{flalign*}
+  P(D|A) &= \frac{P(A \cap D)}{P(A)} = \frac{0.2}{0.45} = 0.45 &&\\
+\end{flalign*}
+
+\subsection*{ii.}
+$P(A) + P(B) + P(C) = 1$
+
+\noindent
+$\implies P(D) = P(A \cap D) + P(B \cap D) + P(C \cap D)$
+\newline
+
+\noindent
+$P(B \cap D) = P(D|B) * P(B) = 0.3 * 0.25 = 0.075$
+\newline
+
+\noindent
+$P(C \cap D) = P(D|C) * P(C) = 0.1 * 0.3 = 0.03$
+\newline
+
+\noindent
+\begin{flalign*}
+  P(D) &= P(A \cap D) + P(B \cap D) + P(C \cap D) &&\\
+  &= 0.2 + 0.075 + 0.03 = 0.305
+\end{flalign*}
+
+\subsection*{iii.}
+\begin{flalign*}
+  P(C|D) &= \frac{P(C \cap D)}{P(D)} &&\\
+  &= \frac{0.03}{0.305} = 0.098 &&\\ 
+\end{flalign*}
+
+\section*{11.}
+
+\begin{flalign*}
+  P((A \cup B)^c|D) &= 1- P((A \cup B)|D) &&\\
+  &= 1 - P(D|(A \cup B)) * \frac{P(A \cup B)}{P(D)} &&\\
+  &= 1 - P(D|(A \cup B)) * \frac{P(A) + P(B) - P(A)P(B)}{P(D)} &&\\
+  0.3 &= 1 - 0.7 * \frac{0.05 + 0.2 - 0.05*0.2}{P(D)} &&\\
+  P(D) &= 0.24
+\end{flalign*}
+
+\noindent
+$P((A \cup B)^c|D) = 1- P((A \cup B)|D)$
+
+\noindent
+$P((A \cup B)|D) = 0.3$
+
+\noindent
+$\implies P((A \cup B)|D) = P(D|(A \cup B)) * \frac{P(A \cup B)}{P(D)}$
+
+% $P((A \cup B)^c|D) = P(D|(A \cup B)^c) * \frac{P((A \cup B)^c)}{P(D)}$
+
+\end{document}
