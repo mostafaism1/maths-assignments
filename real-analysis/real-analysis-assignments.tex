@@ -1,15 +1,82 @@
 \documentclass{article}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amsthm}
+\usepackage{amsmath, amsthm, amsfonts}
+
+\newtheorem{innercustomthm}{Theorem}
+\newenvironment{customthm}[1]
+  {\renewcommand\theinnercustomthm{#1}\innercustomthm}
+  {\endinnercustomthm}
+
 \author{Mostafa Hassanein}
 \title{Real Analysis Assignments}
-\date{20 December 2023}
+\date{9 January 2024}
 \begin{document}
 
 \maketitle
 
 \newpage
+
+\section*{1.1.7}
+$A_n$ is the set of all positive multiples of $(n+1)$.
+
+\subsection*{a.}
+
+\begin{flalign*}
+  A_1 \cap A_2 &= \{ x: \text{x is a positive multiple of both 2 and 3} \} &&\\
+  &= \{ x: \text{x is a positive multiple of 6} \} &&\\
+  &= A_5 &&\\
+  &= \{ 6, 12, 18, \ldots \}.
+\end{flalign*}
+
+
+\subsection*{b.}
+\subsubsection*{i.}
+
+\begin{flalign*}
+  \cup \{ A_n: n \in \textbf{N} \} &= \{ x: \text{x is a positive multiple of 2 or 3 or 4 or \dots} \} &&\\
+  &= \textbf{N} - \{1\}. &&\\
+\end{flalign*}
+
+\subsubsection*{ii.}
+
+\begin{flalign*}
+  \cap \{ A_n: n \in \textbf{N} \} &= \{ x: \text{x is a positive multiple of 2 and 3 and 4 and \dots} \} &&\\
+  &= \emptyset \text{ (because } \forall n \in N \ n \notin A_n \text{)}. &&\\
+\end{flalign*}
+
+\section*{1.1.22}
+\subsection*{a.}
+
+\begin{proof}
+  $ $
+
+  Let $x_1, x_2 \in A$, and assume $f(x_1) = f(x_2)$
+
+  $\implies g(f(x_1)) = g(f(x_2))$
+
+  $\implies (g\circ f)(x_1) = (g\circ f)(x_2)$
+  
+  $\implies x_1 = x_2$, by injectivity of $g \circ f$
+
+  $\implies$ f is injective.
+
+\end{proof}
+
+\subsection*{b.}
+\begin{proof}
+  $ $
+
+  Let $c \in C$
+
+  $\implies \exists a \in A: (g\circ f)(a) = c$
+
+  $\implies \exists a \in A: g(f(a)) = c$
+
+  $\implies \exists b \in B: g(b) = c$
+
+  $\implies$ g is surjective.  
+
+\end{proof}
+
 
 \section*{1.3.7}
 \textbf{\underline{Proof:}}
@@ -260,16 +327,36 @@ $U_{\epsilon}(a) \cap V_{\epsilon}(b) = \{x \in R: |x-a| < \epsilon \ \text{and}
 
 \noindent
 \textbf{\underline{Lower Bound:}}
-$|x-a| < \epsilon \ \text{and} \ |x-b| < \epsilon \Rightarrow x > a-\epsilon \ \text{and} \ x > b-\epsilon \Rightarrow x > a-\frac{b-a}{2} \ \text{and} \  x > b - \frac{b-a}{2} \Rightarrow x > \frac{a-b}{2} \ \text{and} \  x > \frac{b-a}{2} \Rightarrow x > \frac{b-a}{2}$
+$ $
+
+$|x-a| < \epsilon \ \text{and} \ |x-b| < \epsilon$ 
+
+$\implies x > a-\epsilon \ \text{and} \ x > b-\epsilon$ 
+
+$\implies x > a-\frac{b-a}{2} \ \text{and} \  x > b - \frac{b-a}{2}$
+
+$\implies x > \frac{3a-b}{2} \ \text{and} \  x > \frac{b+a}{2}$
+
+$\implies x > \frac{b+a}{2}$
 \newline
 
 \noindent
 \textbf{\underline{Upper Bound:}}
-$|x-a| < \epsilon \ \text{and} \ |x-b| < \epsilon \Rightarrow x < a+\epsilon \ \text{and} \ x < b+\epsilon \Rightarrow x < a+\frac{b-a}{2} \ \text{and} \  x < b + \frac{b-a}{2} \Rightarrow x < \frac{a+b}{2} \ \text{and} \  x < b+ \frac{b-a}{2} \Rightarrow x < \frac{a+b}{2}$
+$ $
+
+$|x-a| < \epsilon \ \text{and} \ |x-b| < \epsilon$ 
+
+$\implies x < a+\epsilon \ \text{and} \ x < b+\epsilon$ 
+
+$\implies x < a+\frac{b-a}{2} \ \text{and} \  x < b + \frac{b-a}{2}$
+
+$\implies x < \frac{a+b}{2} \ \text{and} \  x < b+ \frac{b-a}{2}$
+
+$\implies x < \frac{a+b}{2}$
 \newline
 
 \noindent
-But this is a contradiction, since the lower bound is greater than the upper bound. Therefore, we conclude that $U_{\epsilon}(a) \cap V_{\epsilon}(b) = \emptyset$.
+Since the lower bound and the upper bound do not intersect, then $U_{\epsilon}(a) \cap V_{\epsilon}(b) = \emptyset$.
 \qed
 
 \section*{2.3.4}
@@ -439,5 +526,536 @@ Required to show: $\lim (\sqrt{n^2 + 1} - n) = 0$
 
 \end{proof}
 
-\end{document}
+\section*{3.2.2}
+\subsection*{a.}
+% $X = (n)$, $Y = (-n) \implies X+Y = (0)$.
+$X = (sin^2(n))$, $Y = (cos^2(n)) \implies X+Y = (1)$.
 
+\subsection*{b.}
+$X = ((-1)^n)$, $Y = ((-1)^{n+1}) \implies X*Y = (-1)$.
+
+\section*{3.2.13}
+
+Multiply and divide by the complex conjugate to put the sequence into a more favorable form:
+
+\begin{flalign*}
+  (\sqrt{(n+a)(n+b)}-n) * \frac{\sqrt{(n+a)(n+b)}+n}{\sqrt{(n+a)(n+b)}+n} &= \frac{(n+a)(n+b) - n^2}{\sqrt{(n+a)(n+b)}+n} &&\\ 
+  &= \frac{n^2 + an + bn - ab - n^2}{\sqrt{(n+a)(n+b)}+n} &&\\ 
+  &= \frac{an + bn - ab}{\sqrt{(n+a)(n+b)}+n} &&\\ 
+  &= \frac{an + bn - ab}{\sqrt{(n+a)(n+b)}+n} &&\\ 
+  &= \frac{a + b - \frac{ab}{n}}{\sqrt{(1+\frac{a}{n})(1+\frac{b}{n})}+1} &&\\ 
+\end{flalign*}
+
+\noindent
+Now taking the limit:
+
+\begin{flalign*}
+  \lim{\frac{a + b - \frac{ab}{n}}{\sqrt{(1+\frac{a}{n})(1+\frac{b}{n})}+1}} &= \frac{\lim{a} + \lim{b} - \lim{\frac{ab}{n}}}{\lim{\sqrt{1+\frac{a}{n}}}*\lim{\sqrt{1+\frac{b}{n}}} +\lim{1}} &&\\
+  &= \frac{a+b - 0}{1*1+1} = \frac{a+b}{2}
+\end{flalign*}
+
+
+\section*{3.2.14}
+\subsection*{a.}
+
+We have:
+
+$0 \leq 1/n^2 \leq 1/n$
+
+\noindent
+$\implies n^0 \leq n^{1/n^2} \leq n^{1/n}$
+
+\noindent
+And we know the following limits:
+
+$\lim(n^0) = 1 \ \land \ \lim{(n^{1/n)} = \lim{(n^{\lim{1/n}}})} = \lim{(n^0)}=1$
+
+\noindent
+$\implies \lim{(n^{1/n^2})} = 1$ (By the squeeze theorem).
+
+\subsection*{b.}
+
+We have:
+
+$1 \leq n! \leq n^n $
+
+\noindent
+$\implies 1^{1/n^2} \leq (n!)^{1/n^2} \leq (n^n)^{1/n^2}$
+
+\noindent
+And we know the following limits:
+
+$\lim{(1^{1/n^2})} = 1^0 = 1 \ \land \ \lim{((n^n)^{1/n^2})} = \lim{(n^{1/n})} = n^0 = 1$
+
+\noindent
+$\implies \lim{((n!)^{1/n^2})} = 1$ (By the squeeze theorem).
+
+\section*{3.2.22}
+The definition given for $(y_n)$ is exactly the definition of the limit.
+
+\noindent
+Therefore, $\lim{(y_n)} = (x_n)$.
+
+\noindent
+And, because $(x_n)$ is convergent, then $(y_n)$ must also be convergent.
+
+
+\section*{3.3.3}
+
+We first show that $(x_n)$ is bounded below by 2 using induction.
+
+\begin{proof}
+  $ $
+
+\textbf{\underline{Base case ($n=1$):}} This case is trivially true since $x_1 \geq 2$.
+\newline
+
+\textbf{\underline{Inductive step ($n>1$):}} Assume $x_n \geq 2$
+
+$\implies x_{n+1} = 1 + \sqrt{x_n - 1} \geq 1 + \sqrt{2 - 1} = 2$.
+
+\end{proof}
+
+
+\noindent
+Next, we show that $(x_n)$ is decreasing using induction.
+
+\begin{proof}
+  $ $
+
+\textbf{\underline{Base case ($n=1$):}} $x_2 = 1 + \sqrt{x_1-1} \leq x_1 f$ for $x \geq 2$.
+\newline
+
+\textbf{\underline{Inductive step ($n>1$):}} Assume $x_{n+1} \leq x_n$
+
+$\implies x_{n+2} = 1 + \sqrt{x_{n+1} - 1} \leq 1 + \sqrt{x_n - 1} = x_{n+1}$.
+
+\end{proof}
+
+
+\noindent
+Finally, to find the limit we note that at the limit we have:
+
+$x_{n+1} = x_n$
+
+\noindent
+$\implies lim{(x_n) = x = 1 + \sqrt{x-1}}$
+
+\noindent
+$\implies x = 2$.
+
+
+\section*{3.4.9}
+
+\begin{proof}{(By contradiction)}
+  $ $
+
+  Suppose $\lim{X} = a \neq 0$.
+
+  \noindent
+  $\implies$ All \textbf{subsequences} of $X$ must converge to a (By theorem 3.4.2).
+
+  \noindent
+  $\implies$ All \textbf{subsequences of subsequences} of $X$ must converge to a (Again by theorem 3.4.2).
+  \newline
+  
+  But this is a contradiction to our initial assumption that all subsequences of $X$ contain a subsequence that converges to zero. Therefore, we conclude that $lim{X} = 0$.
+
+\end{proof}
+
+
+\section*{3.5.9}
+\begin{proof}
+  $ $
+
+  \noindent
+  \begin{flalign*}
+    m>n \implies |x_{m} - x_{n}| &< r^n + r^{n+1} + \ldots + r^{m-1} &&\\ 
+    & \leq \frac{r^n}{1-r} &&\\
+    & < \epsilon \ \ \forall \epsilon > 0 \ and \ n \geq H(\epsilon) \ \text{(Because} \lim{\frac{r^n}{1-r}} = 0 \text{)}.
+  \end{flalign*}
+
+  \noindent
+  $\implies (x_n)$ is a Cauchy sequence.
+
+\end{proof}
+
+
+\section*{3.7.9}
+\subsection*{a.}
+\begin{proof}
+  $ $
+
+  The sequence (cos(n)) does not converge to zero.
+  
+  \noindent
+  $\implies \sum_{n=1}^{\infty} cos(n)$ is divergent.
+
+\end{proof}
+
+\subsection*{b.}
+\begin{proof}
+  $ $
+
+  Let $X := (\frac{1}{n^2})$ and $Y = (\frac{cos(n)}{n^2})$. 
+  
+  \noindent
+  $\implies X$ is convergent and $x_n < y_n$
+
+  \noindent
+  $\implies Y$ is convergent (By the comparison test).
+  
+\end{proof}
+
+
+\section*{4.2.14}
+\begin{proof}
+  $ $
+
+  $\lim_{x\to c}{f} = L \implies |f(x) - L| <   \epsilon$
+  \newline
+
+  And we have:
+  $|f(x) - L| \geq ||f(x)| - |L||$
+  \newline
+
+  Therefore: 
+  $||f(x)| - |L|| < \epsilon$
+  \newline
+
+  This implies that $\lim_{x\to c}{|f|} = |L|$
+
+\end{proof}
+
+
+\section*{5.4.2}
+
+\textbf{\underline{On A = [1, $\infty$):}}
+\begin{proof}
+  $ $
+  
+  Let $x, u \geq 1$.
+  \begin{flalign*}
+    \implies |f(x) - f(u)| &= |\frac{1}{x^2} - \frac{1}{u^2}| &&\\
+    &= |\frac{u^2 - x^2}{u^2x^2}| &&\\
+    &= |\frac{(u+x)(u-x)}{u^2x^2}| &&\\
+    &= |\frac{(u+x)(u-x)}{u^2x^2}| &&\\
+    &= \frac{(u+x)}{u^2x^2}|u-x| &&\\
+    &= (\frac{1}{ux^2} + \frac{1}{u^2x})|u-x| &&\\
+    &\leq 2|u-x| &&\\
+  \end{flalign*}
+
+  \noindent
+  $\implies \forall \epsilon > 0 \ \exists \delta(\epsilon) = \frac{\epsilon}{2}: (\forall x,u \in A: |x-u|< \delta \implies |f(x) - f(u)| < \epsilon)$
+
+  \noindent
+  $\implies f$ is uniformly continuous on $A$.
+
+\end{proof}
+
+\noindent
+\textbf{\underline{On B = [0, $\infty$):}}
+\begin{proof}
+  $ $
+
+  Take $x=\frac{1}{n}$ and $u=\frac{1}{n+1}$.
+
+  \noindent
+  $\implies |x - u| = |\frac{1}{n} - \frac{1}{n+1}| = |\frac{1}{n^2 + n}|$
+
+  \noindent
+  $\implies lim(|x-u|) = 0$.
+  \newline
+
+  But we also have:
+
+  $|f(x)-f(u)| = |n^2 - (n+1)^2| = |n^2 - n^2 -2n - 1 | = 2n + 1 \geq 1$.
+  \newline
+  
+  \noindent
+  This shows that if we take $\epsilon$ to be any value $< 1$, then there is no corresponding $\delta$ that can satisfy the condition $|x-u|<\delta \implies |f(x) - f(u)|$.
+
+  \noindent
+  $\implies f$ is not uniformly continuous on $B$.
+
+\end{proof}
+
+\section*{6.2.14}
+\begin{proof}{(By Contradiction)}
+  $ $
+
+  Suppose there exists $a,b \in I$ such that $f^\prime(a) > 0$ and $f^\prime(b) < 0$.
+
+  \noindent
+  $\implies \exists c \in I: f^\prime(c) = 0$ \qquad (By Darboux's theorem)
+  \newline
+
+  \noindent
+  This is a contradiction. Therefore, we must conclude that either $f^\prime(x) > 0 \ \forall x \in I$ or $f^\prime(x) < 0 \ \forall x \in I$.
+  
+\end{proof}
+
+
+\section*{6.2.15}
+\begin{proof}
+  $ $
+
+  Let $f^\prime(x) \leq C$, and $x_1, x_2 \in I$.
+  
+  \begin{flalign*}
+    \implies \exists z \in I: |f(x_1) - f(x_2)| &= |f^\prime(z)(x_1-x_2)| \qquad \text{(By the Mean Value Theorem)} &&\\
+    &\leq C|x_1-x_2| &&\\
+  \end{flalign*}
+
+  \noindent
+  $\implies f$ satisfies the Lipschitz condition.
+
+\end{proof}
+
+
+
+\section*{7.2.18}
+\begin{proof}
+  $ $
+
+  Let $M := sup (f)$ and $p \in [a,b]$ such that $f(p)=M$.
+  \newline
+
+  Since $f$ is continuous at $p$, then given an $\epsilon > 0$, there exists $\delta > 0$ such that:
+  \begin{align*}
+    |x-p| \leq \delta &\implies |f(x)-f(p)| \leq \epsilon &&\\
+    &\implies f(p) - \epsilon \leq f(x) \leq f(p) &&\\
+    &\implies M - \epsilon \leq f(x) \leq M &&\\
+    &\implies (M - \epsilon)^n \leq f(x)^n \leq M^n &&\\
+    &\implies 2\delta (M - \epsilon)^n \leq \int_{p-\delta}^{p+\delta} f(x)^n \leq (b-a) M^n &&\\
+    &\implies 2\delta (M - \epsilon)^n \leq \int_{p-\delta}^{p+\delta} f(x)^n \leq \int_{a}^{b} f(x)^n \leq (b-a) M^n &&\\
+    &\implies 2\delta (M - \epsilon)^n \leq \int_{a}^{b} f(x)^n \leq (b-a) M^n &&\\
+    &\implies (2\delta)^{\frac{1}{n}} (M - \epsilon) \leq \left( \int_{a}^{b} f(x)^n \right)^{\frac{1}{n}} \leq (b-a)^{\frac{1}{n}} M &&\\
+    &\implies (M - \epsilon) \leq M_n \leq  M.
+  \end{align*}
+
+  \noindent
+  $\implies \lim{M_n} = M$.
+
+\end{proof}
+
+\section*{7.4.7}
+\subsection*{a.}
+\begin{proof}
+  $ $
+
+  Let $P = [0, \frac{1}{2}-\epsilon, \frac{1}{2}+\epsilon, 1]$
+
+  \noindent
+  \begin{flalign*}
+    \implies &L(g;P) = 0*(\frac{1}{2}-\epsilon) + 0*(2\epsilon) + 1*(\frac{1}{2}-\epsilon) = \frac{1}{2} - \epsilon &&\\ 
+    &U(g;P) = 0*(\frac{1}{2}-\epsilon) + 1*(2\epsilon) + 1*(\frac{1}{2}-\epsilon) = \frac{1}{2} + \epsilon &&\\ 
+  \end{flalign*}
+
+  \noindent
+  $\implies U(g;P) - L(g;P) = 2\epsilon$
+
+
+  \noindent
+  $\implies$ The Darboux integral of $g$ on $[0,1]$ is $\frac{1}{2}$.
+  
+\end{proof}
+
+\subsection*{b.}
+
+Let $P = [0, \frac{1}{2}-\epsilon, \frac{1}{2}+\epsilon, 1]$
+
+\noindent
+\begin{flalign*}
+  \implies &L(g;P) = 0*(\frac{1}{2}-\epsilon) + 0*(2\epsilon) + 1*(\frac{1}{2}-\epsilon) = \frac{1}{2} - \epsilon &&\\ 
+  &U(g;P) = 0*(\frac{1}{2}-\epsilon) + 13*(2\epsilon) + 1*(\frac{1}{2}-\epsilon) = \frac{1}{2} + 25\epsilon &&\\ 
+\end{flalign*}
+
+\noindent
+$\implies U(g;P) - L(g;P) = 26\epsilon$
+
+\noindent
+$\implies$ $g$ is Darboux integrable on $[0,1]$ with an integral value of $\frac{1}{2}$.
+
+
+
+\section*{8.1.23}
+\begin{proof}
+  $ $
+
+  Let $M$ be the larger of the upper bounds on $f_n$ and $g_n$.
+  
+  \noindent
+  \begin{flalign*}
+    \implies |f_ng_n - fg| &= |f_ng_n + f_ng - f_ng - fg| &&\\
+    &\leq  |f_ng_n - f_ng| + |f_ng - fg| &&\\
+    &=  |f_n||g_n - g| + |g||f_n - f| &&\\
+    &\leq  M|g_n - g| + M|f_n - f| &&\\
+    &< \epsilon. &&\\
+  \end{flalign*}
+
+  \noindent
+  $\implies lim{(f_ng_n)} = fg$.
+
+\end{proof}
+
+
+
+
+
+
+% \newline
+\noindent\rule{\textwidth}{1pt}
+\section*{Extras}
+
+\begin{customthm}{3.1.4}[Uniqueness of Limits]
+  $ $
+
+  A sequence in $\mathbb{R}$ can have at most one limit.
+\end{customthm}
+
+\begin{proof}{(By contradiction)}
+  $ $
+
+  Suppose for the sake of contradiction that $x^\prime$ and $x^{\prime\prime}$ are two limits of the sequence $(x_n)$ and $x^\prime \neq x^{\prime\prime}$.
+
+  \noindent
+  $\implies 
+  \forall \epsilon > 0: \ 
+  (\exists K^\prime: \forall n \geq K^\prime: |x_n - x^\prime| < \epsilon)
+  \land \ 
+  (\exists K^{\prime\prime}: \forall n \geq K^{\prime\prime}: |x_n - x^{\prime\prime}| < \epsilon)$
+  
+  \noindent
+  \begin{flalign*}
+    \implies \forall n \geq K = max(K^\prime, K^{\prime\prime}): |x^{\prime} - x^{\prime\prime}| &= |x^{\prime} - x_n + x_n - x^{\prime\prime}| &&\\
+    &\leq |x^{\prime} - x_n| + |x_n - x^{\prime\prime}| &&\\
+    & < \epsilon + \epsilon = 2\epsilon.
+  \end{flalign*}
+
+  \noindent
+  $\implies x^\prime = x^{\prime\prime}$, since we can make $\epsilon$ as small as we wish.
+  \newline
+
+  \noindent
+  But this is a contradiction to our initial assumption that $x^\prime \neq x^{\prime\prime}$. Therefore, we conclude that a sequence in $\mathbb{R}$ can have at most one limit.
+
+\end{proof}
+
+% 
+
+\begin{customthm}{3.2.2}
+  $ $
+
+  A convergent sequence of real numbers is bounded.
+\end{customthm}
+
+\begin{proof}
+  $ $
+
+  Let $\lim{(x_n)} = x$ and $\epsilon := 1$.
+
+  \noindent
+  $\implies \exists K=K(1): \forall n \geq K: |x_n - x| < \epsilon = 1$
+
+  \noindent
+  \begin{flalign*}
+    \implies |x_n| &= |x_n - x + x| &&\\
+    & \leq |x_n - x| + |x| &&\\
+    & < 1 + |x|. &&\\
+  \end{flalign*}
+  
+  Define $M := sup\{ |x_1|, |x_2|, \dots, |x_{K-1}|, 1 + |x| \}$.
+  
+  \noindent
+  $\implies \forall n \in \textbf{N}: |x_n| \leq M$.
+
+  \noindent
+  $\implies$ The sequence $(x_n)$ is bounded. 
+
+\end{proof}
+
+% 
+
+\begin{customthm}{3.4.8}[Bolzano-Weierstrass Theorem]
+  $ $
+
+  A bounded sequence of real numbers has a convergent subsequence.
+\end{customthm}
+
+\begin{proof}
+  $ $
+
+  Let $X$ be our bounded sequence.
+  
+  By the Monotone Subsequence Theorem, $X$ has a subsequence $X^\prime$ that is monotone.
+
+  Since $X$ is bounded, then so is $X^\prime$.
+
+  Since $X^\prime$ is monotone and bounded, then, by the Monotone Convergence Theorem, it is convergent.
+  
+\end{proof}
+
+% 
+
+\begin{customthm}{5.3.7}[Bolzano’s Intermediate Value Theorem]
+  $ $
+
+  Let $I$ be an interval and let $f: I \rightarrow \textbf{R}$ be continuous on $I$. If $a, b \in I$ and if $k \in \textbf{R}$ satisfies $f(a) < k < f(b)$, then there exists a point $c \in I$ between $a$ and $b$ such that $f(c) = k$.
+\end{customthm}
+
+\begin{proof}{(By Cases)}
+  $ $
+
+  \underline{Case 1: $a < b$:}
+
+  Define $g(x):=f(x) - k$. 
+
+  $\implies g(a) < 0 < g(b)$
+
+  $\implies \exists c \ \text{where} \ a < c < b:  g(c) = 0$ (By the Location of Roots Theorem)
+
+  $\implies \exists c: f(c) = g(c) + k = k$.
+  \newline
+
+
+  \underline{Case 2: $b < a$:}
+  
+  Define $h(x):=k-f(x)$.
+
+  $\implies h(b) < 0 < h(a)$
+
+  $\implies \exists c \ \text{where} \  b < c < a:  g(c) = 0$ (By the Location of Roots Theorem)
+
+  $\implies \exists c: f(c) = k - h(c) = k$.
+  
+\end{proof}
+
+
+% 
+
+\begin{customthm}{6.2.12}[Darboux's Theorem]
+  $ $
+
+  If f is differentiable on $I = [a, b]$ and if $k$ is a number between $f^{\prime}(a)$ and $f^{\prime}(b)$, then there is at least one point $c$ in $(a, b)$ such that $f^{\prime}(c) = k$.
+\end{customthm}
+
+\begin{proof}{}
+  $ $
+
+  Suppose that $f^\prime(a) < k < f^\prime(b)$. 
+  
+  Define $g(x):=kx-f(x)$ for $x \in I$.
+
+  Since $g$ is continuous, it attains a maximum value on $I$.
+
+  Since $g^\prime(a) = k - f^\prime(a) > 0$, then the maximum of $g$ does not occur at $x=a$.
+
+  Similarly, since $g^\prime(b) = k - f^\prime(b) < 0$, then the maximum of $g$ does not occur at $x=b$.
+
+  Therefore, by the Interior Extremum theorem, $g$ attains its maximum at some point $c$ in $(a,b)$ where $g^\prime(c) = k - f^\prime(c) = 0$. Hence $f^\prime(c) = k$.
+  
+  
+\end{proof}
+
+\end{document}
