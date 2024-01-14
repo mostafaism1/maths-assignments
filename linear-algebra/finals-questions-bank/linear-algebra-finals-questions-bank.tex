@@ -1,0 +1,550 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts}
+
+\newtheorem{innercustomthm}{Theorem}
+\newenvironment{customthm}[1]
+  {\renewcommand\theinnercustomthm{#1}\innercustomthm}
+  {\endinnercustomthm}
+
+\author{Mostafa Hassanein}
+\title{Linear Algebra Finals Questions Bank}
+\date{14 January 2024}
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section*{Proofs}
+
+\begin{customthm}{1}[2023.S(1.A.i)]
+  $ $
+
+  i. Disprove: $W$ is a subspace of the vector space $V$ and $v \in V$. Then, the set defined by $v+W = \{ v+w: w \in W \}$, is a subspace of $V$.
+  \newline
+
+  ii. Under what condition is $v+W$ a subspace of $V$?
+\end{customthm}
+
+\begin{proof}
+  $ $
+
+  i. By counterexample: 
+  
+  Let $V = R^2$, $W = \{ w \in V: w = (x,0) \}$, and $v = (0, 1)$.
+  
+  \noindent
+  $\implies v+W = \{ u \in V: u = (x, 1) \}$.
+
+  \noindent
+  $\implies 0_v = (0, 0) \notin v+W$
+
+  \noindent
+  $\implies$ v+W is not a subspace.
+  \newline
+
+  ii. It's clear that if $v \in W$, then $v+W = W$, which is a subspace of $V$ as desired.
+
+  If, however, $v \notin W$, then, by the counterexample provided, $v+W$ is not a subspace of $V$.
+
+  Therefore, the sufficient and necessary condition is: $v \in v+W$.
+
+\end{proof}
+\newpage
+
+\begin{customthm}{2}[2023.S(1.A.ii)]
+  $ $
+
+  Let $x_1,\ldots,x_n$ be distinct elements of $F$. The functions $f_i(x)= \Pi_{k=1,k \neq i}^{n+1} = \frac{(x-x_k)}{(x_i-x_k)}$ for $i=1,\ldots,n+1$ is a basis for $P_n(F)$.
+  \newline
+
+  Note to self: A possible source of confusion here is that $F$ is not an infinite field, rather it's a finite field, where $F = \{x_1,\ldots,x_n \}$.
+\end{customthm}
+
+\begin{proof}
+  $ $
+
+  Since $dim(P_n) = n+1$ and we have $n+1$ functions/vectors, then it's sufficient to check either one of the following conditions: 
+  
+  \qquad i. The $n+1$ functions/vectors span $P_n$
+
+  \qquad ii. The $n+1$ functions/vectors are linearly independent.
+  \newline
+
+  We check (ii). Let $x_j \in x_1,\ldots,x_n$, then:
+  \begin{align*}
+    0_v &= \sum_{i=1}^{n+1} a_i f_i(x_j) &&\\
+    &= \sum_{i=1}^{n+1} a_i \Pi_{k=1, k \neq i}^{n+1}\frac{x_j - x_k}{x_i - x_k} &&\\
+    &= \sum_{i=1}^{n+1} a_i \delta_{ij} &&\\
+    &= a_j, \ \forall j=1,\ldots,n+1 &&\\
+  \end{align*}
+
+  \noindent
+  $\implies (f_1,\ldots,f_n)$ are linearly independent.
+
+  \noindent
+  $\implies (f_1,\ldots,f_n)$ is a basis for $P_n$.
+
+\end{proof}
+\newpage
+
+\begin{customthm}{3}[2023.S(1.A.iii)]
+  $ $
+
+  If $T \in Hom(V)$, $W$ is a T-invariant subspace of $V$, and $V = R(T) \oplus W$, then $W \subseteq N(T)$. 
+
+\end{customthm}
+\begin{proof}{(By contradiction)}
+  $ $
+
+  Suppose that $W \not\subseteq N(T)$.
+  
+  \noindent
+  $\implies \exists w \in W$ s.t. $w \notin N(T)$
+
+  \noindent
+  $\implies T(w) \in R(T)$
+
+  \noindent
+  $\implies T(w) \in R(T)$ and $T(w) \in W$ \quad (Because $W$ is $T$-invariant)
+
+  \noindent
+  $\implies \exists v=T(w) \in V$ s.t. $v$ is not uniquely represented as a sum from $R(T)$ and $W$.
+  \newline
+
+  \noindent
+  This is a contradiction. Therefore, we must conclude that $W \subseteq N(T)$
+
+\end{proof}
+\newpage
+
+\begin{customthm}{4}[2023.S(1.A.iv)]
+  $ $
+
+  Disprove: Linear operatos on an infinite-dimensional vector space never have eigenvectors. 
+
+\end{customthm}
+
+\begin{proof}
+  $ $
+
+  Counterexample: Consider the vector space $V = \mathbb{R}^\infty$ over $\mathbb{R}$.
+
+  Let $T$ be a linear operator on $V$ defined by: $T = lambdaI_\infty$, where $lambda \in \mathbb{R}$.
+
+  Then, all vectors in $V$ are eigenvectors with eigenvalue $lambda$.
+
+  
+\end{proof}
+\newpage
+
+\begin{customthm}{5}[2023.S(1.A.v)]
+  $ $
+
+  If $S$ is a \textbf{\underline{subset}} of an inner product space $V$, then $Span(S)$ is a \textbf{\underline{subspace}} of $(S^\perp)^\perp$.
+
+\end{customthm}
+
+\begin{proof}
+  $ $
+
+  We will show that $(S^\perp)^\perp = Span(S)$,  thus, concluding that $Span(S)$ is a subspace (an improper subspace) of $(S^\perp)^\perp$.
+  \newline
+  
+  We start from the fact (given by another theorem) that if $U$ is a subspace, then $U = (U^\perp)^\perp$. So, now we need only show that $Span(S)^\perp = S^\perp$. This amounts to showing that $(i) Span(S)^\perp \subseteq S^\perp$ and $(ii) S^\perp \subseteq Span(S)^\perp$.
+  \newline
+
+  (i) is true since any vector that is orthgonal to all vectors in $Span(S)$ must also be orthogonal to all vectors in $S$.
+  \newline
+
+  (ii): Let $s_o \in S^\perp$ and $s \in Span(S)$.
+
+  \noindent
+  $\implies s = \sum a_i s_i, \ \forall s_i \in S$
+
+  \noindent
+  $\implies <\sum a_i s_i, s_o> = \sum <a_i s_i, s_o> = \sum a_i <s_i, s_o> = \sum a_i * 0 = 0$.
+
+  \noindent
+  $\implies s_o \in Span(S)^\perp$
+
+  \noindent
+  $\implies S^\perp \subseteq Span(S)^\perp$.
+
+\end{proof}
+\newpage
+
+\begin{customthm}{6}[2023.S(1.B), 2022.S(1.A.ii)]
+  $ $
+
+  Let $V$ be an n-dimensional vector space and $T \in Hom(V, W)$. Prove that:
+
+  i. $nullity(T) + rank(T) = n$.
+
+  ii. $T$ is injective iff $T$ carries linearly independent subsets of $V$ onto linearly independent subsets of $W$. In other words:
+
+  T is injective $\iff$ If $(v_1,\ldots,v_k)$ are linearly independent, then $(Tv_1,\ldots,Tv_k)$ are linearly independent.
+
+\end{customthm}
+
+\begin{proof}{Part i}
+  $ $
+
+  Let $nullity(T) = m$, $0 \leq m \leq n$,  and $B_N = (u_1,\ldots,u_m)$ be a basis for N(T).
+  \newline
+
+  Extend $B_N$ to a basis for $V$: $B_V=(u_1,\ldots,u_m,u_{m+1},\ldots,u_n)$.
+  \newline
+
+  Let $v \in V$, then $v = \sum_{i=1}^{n} a_i u_i$.
+
+  Apply $T$ to both sides:
+  \begin{align*}
+    T(v) &= T(\sum_{i=1}^{n} a_i u_i) &&\\
+    &= \sum_{i=1}^{n} a_i T(u_i) &&\\
+    &= \sum_{i=m+1}^{n} a_i T(u_i) &&\\
+  \end{align*}
+
+  This shows that $(Tv_{m+1},\ldots, Tv_n)$ spans $R(T)$.
+
+  Next, we show that it is also linearly independent:
+  \begin{align*}
+    0_v &= \sum_{i=m+1}^{n} a_i T(u_i) &&\\
+    &= T(\sum_{i=m+1}^{n} a_i u_i) &&\\
+  \end{align*}
+
+  \noindent
+  $\implies \sum_{i=m+1}^{n} a_i u_i \in N(T)$
+
+  \noindent
+  $\implies \sum_{i=1}^{m} a_i u_i = \sum_{i=m+1}^{n} a_i u_i$
+
+  \noindent
+  $\implies a_i = 0$, for $i=1,...,n$. \qquad (Because $(u_1,\ldots,u_n)$ is linearly independent)
+
+  \noindent
+  $\implies (Tu_{m+1},\ldots,Tu_n)$ is linearly independent and hence is a bsis for range $T$.
+
+\end{proof}
+
+\begin{proof}{Part ii}
+  $ $
+
+  \textbf{\underline{Forward direction: }} Assume $T$ is injective and $(v_1,\ldots, v_n)$ is linearly independent, then:
+
+  \begin{align*}
+    0_v &= a_1Tv_1 + \ldots + a_n Tv_n &&\\
+    &= T(a_1v_1 + \ldots + a_nv_n)
+  \end{align*}
+
+  \noindent
+  $\implies a1,\ldots,a_n = 0$ \qquad (Because T is injective)
+
+  \noindent
+  $\implies (Tv_1,...,Tv_n)$ is linearly independent.
+
+  \textbf{\underline{Converse direction: }} Assume $(v_1,\ldots,v_n)$ and $(Tv_1,\ldots,Tv_n)$ are both linearly independent.
+
+  \noindent
+  $\implies$ If $a_1Tv_1 + \ldots + a_nTv_n = 0_v$, then $a_1,\ldots,a_n = 0$.
+
+  \noindent
+  $\implies$ If $T(a_1v_1+\ldots+a_nv_n) = 0$, then $a_1,\ldots,a_n = 0$.
+
+  \noindent
+  $\implies N(T) = \{ 0_v \}$.
+
+  \noindent
+  $\implies T$ is injective.
+
+\end{proof}
+\newpage
+
+\begin{customthm}{7}[2023.S(2.A)]
+  $ $
+
+  Let $T: P_n(R) \rightarrow R^{n+1}$ be such that:
+
+  \qquad $T(\sum_{i=0}^{n} c_it^i) = (x_0, x_1,\ldots, x_n)$
+
+  where: $x_k = \int_{0}^{1}f(t)dt$ \qquad for $k = 0,\ldots,n$.
+  \newline
+  
+  Show that $T$ is invertible.
+  \newline
+
+  Question to self: What is $f(t)$? Also, is it "for some $f(t)$" or "for all $f(t)$"?
+
+  It cannot be "for all $f(t)$, because it's obviously false for $f(t)=0$.
+
+  So it has to be for some $f(t)$.
+
+\end{customthm}
+
+\begin{proof}
+  $ $
+  
+  
+
+\end{proof}
+\newpage
+
+\begin{customthm}{8}[2023.S(2.B), 2021.F(2.A)]
+  $ $
+
+  Let $V$ and $W$ be n-dimensional vector spaces with order bases $\alpha$ and $\beta$ respectively. If $T$ is an isomorphism from $V$ onto $W$ with $[T]_\alpha^\beta = A$, show that $[T^{-1}]_\beta^\alpha = A^{-1}$
+
+\end{customthm}
+
+\begin{proof}
+  $ $
+
+  
+
+
+\end{proof}
+\newpage
+
+\begin{customthm}{9}[2023.S(2.C)]
+  $ $
+
+  Let $V = M_{2x2}(R)$ and $T(A) = A^t + 2tr(A)I_2$, where $A \in V$ and $A^t$ is the transpose of $A$.
+
+  Find an ordered Basis $\beta$ for $V$ so that $[T]\beta$ is a diagonal matrix.
+\end{customthm}
+
+
+\begin{customthm}{10}[2023.S(3.B)]
+  $ $
+
+  Let $V = W \oplus W^\perp$ and $T$ be the projection on $W$ along $W^\perp$.
+  
+  Show that $T^* = T$.
+\end{customthm}
+
+
+\begin{customthm}{11}[2023.S(3.C)]
+  $ $
+
+  Let $T$ be a linear operator on the inner product space $V$. Show that:
+
+  $<T(u), T(v)> = <u, v> \quad \forall u,v \in V \iff ||T(u)|| = ||u|| \quad \forall u \in V$.
+\end{customthm}
+
+
+
+\begin{customthm}{12}[2022.S(1.A.i)]
+  $ $
+
+  If $V$ is a vector space and $S_1, S_2 \subseteq V$ with $S_1 \subseteq S_2$, then $S_2^\perp$ is a \textbf{\underline{subspace}} of $S_1^\perp$.
+\end{customthm}
+
+\begin{customthm}{13}[2022.S(1.B)]
+  $ $
+
+  Let $V=M_{2x2}(R)$.
+  
+  i. Show that $V$ has a basis that contains bases for its subspaces $U$ and $W$, where:
+  
+  \qquad $U = \{ A \in V: A^T = A \}$ and $W = \{ A \in V: A^T = -A \}$.
+
+  ii. Show that $V = U \oplus W$.
+\end{customthm}
+
+
+\begin{customthm}{14}[2022.S(1.D)]
+  $ $
+
+  Let $V$ be the vector space of complex numbers over the field $\mathbb{R}$, i.e. $C^1$ over $\mathbb{R}$.
+
+  Let $T: V \rightarrow V$ be defined by $T(z) = \bar{z}$, the complex conjugate of $z$.
+
+  i. Show that $T$ is linear.
+
+  ii. Show that $T$ is not linear if $V$ is redefined to be over the complex field $\mathbb{C}$.
+\end{customthm}
+
+
+\begin{customthm}{15}[2022.S(2.A)]
+  $ $
+
+  Let $V$ be an n-dimensional vector space with bases $\alpha = \{\alpha_i\}$ and $\beta = \{\beta_i\}$.
+  
+  If $P \in Hom(V)$, such that $P(\alpha_i) = \beta_i \quad \forall i$, derive the relation between $[V]_\alpha$ and $[V]_\beta$ for $v \in V$.
+\end{customthm}
+
+
+\begin{customthm}{16}[2022.S(2.B)]
+  $ $
+
+  TODO: Reformulate from a problem to a statement.
+  \newline
+
+  Let $T: P_2(R) \rightarrow P_2(R)$ be such that: 
+
+  \qquad $T(a + bt + ct^2) = -2b -3c + (a+3b+3c)t + ct^2$.
+
+  i. Find a basis for for the eigenspace $E_1$.
+
+  ii. Is $T$ diagonalizable?
+
+  iii. Is there an operator on $P_2(R)$ whose null space is $E_1$?
+\end{customthm}
+
+
+
+\begin{customthm}{17}[2022.S(3.B), 2021.F(3.D)]
+  $ $
+
+  Let $V$ be an inner product space, and $T \in Hom(V)$.
+
+  i. Show that $N(T^*T)=N(T)$.
+
+  ii. [Prove or Disprove] $rank(T^*T) = rank(T)$.
+\end{customthm}
+
+
+\begin{customthm}{18}[2021.F(1.A.i)]
+  $ $
+
+  $V$ is an inner product vector space and $S \subseteq V \ \land \ S \neq \emptyset$ 
+  
+  \noindent
+  $\implies S^\perp$ is a subspace of $V$.
+\end{customthm}
+
+
+\begin{customthm}{19}[2021.F(1.A.ii)]
+  $ $
+
+  [Disprove] If $T \in Hom(V, W)$, $dim(V)=dim(W)=2$, and $\{ v_1, v_2 \}$ is a basis for $V$, then $\{ T(v_1-v_2), T(v_1)\}$ is a basis for $W$.
+\end{customthm}
+
+\begin{customthm}{20}[2021.F(3.B)]
+  $ $
+
+  Let $V$ be an inner product space, and $W$ be a finite-dimensional subspace of $V$.
+  
+  Show that: $w \in W \implies \exists v \in V \ni v \in W^\perp \ \land <v, u> \neq 0$. 
+\end{customthm}
+
+\begin{customthm}{21}[2021.F(3.B)]
+  $ $
+
+  Let $V$ be an inner product space, and $W$ be a finite-dimensional subspace of $V$.
+  
+  Show that: $w \in W \implies \exists v \in V \ni v \in W^\perp \ \land <v, u> \neq 0$. 
+\end{customthm}
+
+
+
+\begin{customthm}{22}[2012.F(1.B)]
+  $ $
+
+  Let $V = M_{2x2}(R)$, 
+  
+  $B \in V$ such that $B=\begin{bmatrix}
+    1 & 2 \\
+    0 & 3
+  \end{bmatrix}
+  $, 
+  
+  $W_1 = \{ A \in V: AB=BA \}$,
+
+  $W_2 = \{ A \in V: A^T = A \}$.
+
+
+  i. Show that $W_1$ is a subspace of of $V$.
+
+  ii. Find $dim(W_1)$.
+
+  iii. [Prove or Disprove] $V = W_1 \oplus W_2$.
+\end{customthm}
+
+
+\begin{customthm}{23}[2012.F(1.D)]
+  $ $
+
+  Let $T_1, T_2 \in Hom(V,W)$.
+
+  Show that: $rank(T_1 + T_2) \leq rank(T_1) + rank(T_2)$.
+\end{customthm}
+
+
+% 
+
+\noindent\rule{\textwidth}{1pt}
+
+\section*{Problems}
+
+\subsection*{1.}[2023.S(3.A)]
+
+Let $V = C([-1, 1])$ with the inner product $<f,g> = \int_{-1}^{1} f(t)g(t)dt \qquad \forall f,g \in V$.
+
+i. Find an orthonormal basis for $P_2(R)$ as a subspace of $V$ and use it to compute the best quadratic approximation of $f(t) = e^t$ on $[-1, 1]$.
+
+ii. For $T \in Hom(P_1(R))$ with $P_1(R)$ as a subspace of $V$ and $T(f) = f^\prime + 3f$, evaluate $T^* = 1 + 3t$.
+
+
+\section*{2.}[2022.S(1.C), 2021.F(1.B)]
+
+Let $V=R^3$.
+
+i. Suggest two 2-dimensional subspaces $W_1$ and $W_2$ of $V$ such that $V=W_1 + W_2$.
+
+ii. With $W_1= \{v \in V: v=(x,y,0) \}$, define two projections \textbf{\underline{on}} $W_1$ \textbf{\underline{along}} two distinct subspaces $W_2$ amd $W_3$ of $V$.
+
+
+\section*{3.}[2022.S(3.A), 2021.F(3.A)]
+
+Let $V = P_1(R) = Span(\{ 1,t \})$ with the inner product $<f,g> = \int_{0}^{1} f(t)g(t)dt, \  \forall f,g \in V$.
+
+  i. Find an orthonormal basis for V.
+  
+  ii. Find the orthogonal projection of $f(t)= t^2$ on $V$.
+
+  iii. Let $T(f) = f^\prime(t) + 3f(t)$ be a linear operator on $V$. Is $(t-2)$ an eigenvector for $T$?
+
+  iv. Evaluate $T^*(2t-1)$.
+
+
+  \section*{4.}[2021.F(1.C)]
+
+  Let $T: P_2(R) \rightarrow R^2$ be such that $T(a_0 + a_1t + a_2t^2) = (a_1+a_2, a_0-a_1)$.
+
+  i. Find a basis for $ker(T)$.
+  ii. Is $T$ surjective?
+  iii. Find a two-dimensional subspace of of $P_2(R)$ such that its image under $T$ is a one-dimensional subspace of $R^3$.
+  iv. Find the matrix representation of $T$ relative to $\{1, t-1, t^2+1 \}$ as a basis for $P_2(R)$ 
+  and $\{(0,1), (1,1)\}$ as a basis for $R^2$.
+
+
+  \section*{5.}[2021.F(2.B)]
+
+  $T$ is a linear operator on $P_2(R)$ defined by:
+  \qquad $T(f(x)=xf^\prime(x) + f(2) + f(3))$.
+
+  i. Is $T$ diagonalizable?
+
+  ii. Find an eigenpair for $T$.
+
+
+  \section*{6.}[2021.F(3.C)]
+
+  Let $V = \mathbb{C}^2$ and $T(z_1, z_2) = (2z_1 + iz_2, (1-i)z_1)$. 
+  
+  Evaluate $T^*(3-i, 1+2i)$.
+
+
+  \section*{6.}[2012.F(4.B)]
+
+  Find the minimal $l_2$-norm solution to the system:
+
+  \begin{align*}
+    x + 2y  - z &= 1 &&\\
+    2x + 3y + z &= 2 &&\\
+    4x + 7y - z &= 4.
+  \end{align*}
+
+
+\end{document}
