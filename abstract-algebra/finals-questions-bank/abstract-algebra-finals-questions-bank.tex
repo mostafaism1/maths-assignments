@@ -1,0 +1,335 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts}
+
+\newtheorem{innercustomthm}{Theorem}
+\newenvironment{customthm}[1]
+  {\renewcommand\theinnercustomthm{#1}\innercustomthm}
+  {\endinnercustomthm}
+
+\newtheorem{definition}{Definition}
+
+\author{Mostafa Hassanein}
+\title{Linear Algebra Finals Questions Bank}
+\date{16 January 2024}
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section*{Definitions}
+
+\begin{definition}[Cyclic Group]
+  $ $
+
+  A group $G$ is called a cyclic group if: $\exists a \in G \ \ni \ \forall x \in G \ \exists k \in \mathbb{Z} \ \ni \ x=a^k$.
+\end{definition}
+
+\begin{definition}[Index of a subgroup $H$ in a group $G$]
+  $ $
+
+  Is the number of left (or right) cosets of the subgroup $H$ in the group $G$, and is denotes by $[G:H]$.
+\end{definition}
+
+
+\begin{definition}[Cyclic Permutation]
+  $ $
+
+  A permutation where the elements of the first line are written in such a way that the image of any element is the next element and the image of the last element is the first element.
+\end{definition}
+
+
+\begin{definition}[Conjugate Element]
+  $ $
+
+  Let $G$ be a group and $a \in G$, then the element $x^{-1}ax$, where $x \in G$, is called a conjugate element of $a$.
+\end{definition}
+
+
+\begin{definition}[Euler's Function]
+  $ $
+
+  $\phi(n)$, where $n > 0$, is the cardinal number of the set $X=\{x: (x,n)=1, \ x<n \}$.
+\end{definition}
+
+\begin{definition}[Integral Domain]
+  $ $
+
+  Is a ring $R$ that has no zero divisors.
+  
+  OR
+
+  Is a ring $(R, +, \cdot )$ s.t. $a\cdot b = e \implies a=e \ \lor \ b=e \ \forall a,b \in R$, where $e$ is the identity of the first operation.
+\end{definition}
+
+\begin{definition}[Commutative Ring]
+  $ $
+
+   Is a ring where the second operation is commutative.
+\end{definition}
+
+
+\begin{definition}[Right Ideal]
+  $ $
+
+   Let $(R, +, \cdot )$ be a ring. A subgroup $I$ of $R$ is called a right ideal if: $x \cdot r \in I \ \forall x \in I$ and $\forall r \in R$.
+\end{definition}
+
+\begin{definition}[Zero Divisor]
+  $ $
+
+  Let $(R, +, \cdot)$ be a ring with additive identity $e$. Then, $a \in R^*$ is called a zero divisor if: $\exists b \in R^* \ \ni a \cdot b = e \ \land \ \exists c \in R^* \ \ni \ c \cdot a = e$. 
+\end{definition}
+
+\begin{definition}[Field]
+  $ $
+
+  The system $(F, +, \cdot)$ is called a field if:
+
+  \qquad i. $(F, +, \cdot)$ is a commutative ring.
+
+  \qquad ii. $(F^*, \cdot)$ is a commutative group, where $F^* = F - {e}$, $e$ is the identity of the group $(F, \cdot)$.
+\end{definition}
+
+
+\begin{definition}[Kernel of a Homomorphism]
+  $ $
+
+  Let the map $\alpha: G \rightarrow G^\prime$ be a homomorphism, and $e^\prime$ be the identity of $G^\prime$.
+
+  Then, the kernel of $\alpha$ is defined as: $Ker(\alpha)=\{g \in G: \alpha(g) = e^\prime \in G^\prime \}$.
+\end{definition}
+
+
+\begin{definition}[Abstract Algebra]
+  $ $
+
+  Is a set $S$ together with one or more binary operations on $S$.
+\end{definition}
+
+\begin{definition}[Binary Operation]
+  $ $
+
+  Given a set $A$, a binary operation defined as: $A \times A \to A$.
+\end{definition}
+
+\begin{definition}[Division Ring]
+  $ $
+  
+  A ring $(R, +, \cdot)$ is called a division ring if:
+
+  \qquad i. $(R, +, \cdot)$ is a ring.
+
+  \qquad ii. $(R^*, \cdot)$ is a group.
+  
+\end{definition}
+
+
+\begin{definition}[Isomorphism]
+  $ $
+
+  Is a bijective homomorphism.
+  
+\end{definition}
+
+\begin{definition}[Center of a Group]
+  $ $
+  
+  Is the set of self conjugate elements in a group $G$.
+  
+\end{definition}
+
+\newpage
+
+\section*{Proofs}
+
+\begin{customthm}{1}[2023.S(1.A.i)]
+  $ $
+
+  
+
+\end{customthm}
+
+\begin{proof}
+  
+\end{proof}
+\newpage
+
+
+\section*{Problems}
+1. 
+Let $S = \{ A, B, C, D\}, \ A=\emptyset, \ B=\{a,b\}, \ C=\{a,c\}, \ D=\{a,b,c\}$.
+
+i. Is union a binary relation over $S$?
+
+ii. Is intersection a binary relation over $S$?
+
+iii.Is $(S, \cup)$ a group?
+\newline
+
+\noindent
+\underbar{Ans.}
+
+i. Let's construct the Cayley table:
+
+\begin{center}
+  \begin{tabular}{c | c c c c}
+    $\cup$ & A & B & C & D \\
+    \cline{1-5}
+    A & A & B & C & D \\
+    B & B & B & D & D \\
+    C & C & D & C & D \\
+    D & D & D & D & D \\
+  \end{tabular}
+\end{center}
+
+From the Cayley table, the set $S$ is closed under the union operation. Therefore, it is a binary operation.
+\newline
+
+ii. Let's construct the Cayley table:
+
+\begin{center}
+  \begin{tabular}{c | c c c c}
+    $\cap$ & A & B & C & D \\
+    \cline{1-5}
+    A & A & A & A & A \\
+    B & A & B & \{a\} & B \\
+    C & A & \{a\} & C & C \\
+    D & A & B & C & D \\
+  \end{tabular}
+\end{center}
+
+From the Cayley table, the set $S$ is not closed under the intersection operation because $\{a\} \notin S$. Therefore, it is not a binary operation.
+\newline
+
+iii. No. From the Cayley table, it is clear that $A$ is the identity element. It is also clear that elements $B, C, D$ do not have inverses.
+
+\newpage
+
+2. Let $G=(a)$ be a cyclic group of order 20. Let $H=(a^4)$ be a subgroup of $G$.
+
+\qquad i. Determine the cosets of of $H$ in $G$.
+
+\qquad ii. Find the quotient group $G/H$.
+
+\qquad iii. Find the index of $H$ in $G$.
+
+\noindent
+\underline{Ans.}
+
+i. 
+Cosets:
+
+$H = \{ a^4, a^8, a^{12}, a^{16}, a^{20} \} = a^4H = a^8H = a^{12}H = a^{16}H = a^{20}H$
+
+$aH = \{a^1, a^5, a^9, a^{13}, a^{17} \} = a^5H= a^9H= a^{13}H= a^{17}H$.
+
+$a^2H = \{a^2, a^6, a^{10}, a^{14}, a^{18} \}= a^6H= a^{10}H= a^{14}H= a^{18}H$.
+
+$a^3H = \{a^3, a^7, a^{11}, a^{15}, a^{19} \}= a^7H= a^{11}H= a^{15}H= a^{19}H$.
+\newline
+
+ii. $G/H = \{H, aH, a^2H, a^3H \}$.
+
+iii. $[G:H] = |G/H| = 4$.
+\newpage
+
+3. Let $G=(I,+)$, $I=\{\ldots, -2,-1,0,1,2,\ldots\}$, and let $H=\{px: x \in I\}$, $p$ is a prime number.
+
+\qquad i. Find the quotient group $G/H$.
+
+\qquad ii. Is $G/H$ a cyclic group?
+
+\qquad iii. What is the generating element(s) of $G/H$ if exists?
+
+\qquad iv. What is the index of $H$ in $G$.
+\newline
+
+\underline{Ans.}
+
+i. 
+
+
+
+
+% 
+
+
+
+\newpage
+
+\section*{True or False}
+
+1. The identity permutation is an even permutation.
+
+True.
+
+Since the identity permutation on $n$ symbols can be factored as a product of $n$ disjoint cycles of length 1, then the invariant number $N(p=i)= n - k = n - n = 0$, which is even.
+\newline
+
+\noindent
+2. The composition of two even permutation is an odd permutation.
+
+False.
+
+Let $p_1$ and $p_2$ be two even permutations with $N(p_1)=2k_1$ and $N(p_2)2k_2$. Then, $p_1 \circ p_2 = p_2p_1$ can be represented as a product of $2(k_1+k_2)$ transpositions, which is even.
+\newline
+
+3. Equivalence of matrices on the set of matrices with appropriate dimensions is an equivalence relation.
+
+True.
+
+Let $A,B,C$ be 3 matrices of the same dimension, then:
+
+\qquad i. Reflexivity: $A = IA \implies (A,A) \in R$.
+
+\qquad ii. Symmetry: $(A,B) \in R \implies A=E_k\ldots E_1 B \implies B = E_1^{-1} \ldots E_k^{-1}A \implies (B,A) \in R$.
+
+\qquad iii. Transitivity: $(A,B) \in R \ \land \ (B,C) \in R \implies A=E_k\ldots E_1 B \ \land \ B=H_r\ldots H_1 C \implies A=E_k\ldots E_1 H_r \ldots H_1 C \implies (A,C) \in R$.
+\newline
+
+4. Each transposition is its own inverse.
+
+True.
+
+Let $\tau=(a,b)$ be a transposition. Applying $\tau$ twice we get $\tau^2 = (a)(b) = id$.
+\newline
+
+5. The "Square of" on the set $N=\{1,2,\ldots\}$ is an equivalence relation.
+
+False.
+
+Because it fails reflexivity, i.e. $\exists x \in N \ \ni \ (x,x) \notin R$. 
+
+For example, 2 is not the square of itself.
+\newline
+
+6. "Perpendicular to" on the set of straight lines in a plane is an equivalence relation.
+
+False.
+
+It fails reflexivity, since no line is perpendicular to itself.
+
+
+7. The order of any subgroup $H$ of a group $G$ is a divisor of the order of $G$.
+
+True. By Lagrange's theorem.
+\newline
+
+8. "Conjugate to" in the set of complexes of a group $G$ is an equivalence relation.
+
+True.
+
+Let $K, L, M \in P(G)$.
+
+\qquad i. Reflexivity: $eK = Ke \implies (K,K) \in R$.
+
+\qquad ii. Symmetry: $(K,L) \in R \implies K = x^{-1}Lx \implies L = xKx^-1 \implies L = y^{-1}Ky \implies (L,K) \in R$.
+
+\qquad iii. Transitivity: $(K,L), (L,M) \in R 
+\implies K = x^{-1}Lx \ \land \ L = y^{-1}My
+\implies K = x^{-1}y^{-1}Myx
+\implies K = (yx)^{-1}Myx
+\implies (L,M) \in R$.
+
+\end{document}
