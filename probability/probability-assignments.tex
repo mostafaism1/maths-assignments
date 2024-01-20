@@ -5,7 +5,7 @@
 \usepackage{tikz}
 \author{Mostafa Hassanein}
 \title{Probability Assignment}
-\date{1 January 2024}
+\date{14 January 2024}
 \begin{document}
 
 \maketitle
@@ -162,7 +162,7 @@ $P(a_2) = 1/6$ and $P(a_1) = 2/6$.
 
 \section*{14.}
 
-Let $A=\{x: x is a man \}$, $B=\{x: x has brown eyes \}$
+Let $A=\{x: x \ is \ a \ man \}$, $B=\{x: x \ has \ brown \ eyes \}$
 
 \noindent
 \begin{flalign*}
@@ -238,7 +238,7 @@ $A = \{ (W, W, T), (W, W, L), (W, W, W) \}$
 \begin{flalign*}
   P(A \cup B \cup C) &=  P(A) + P(B) + P(C) && \\
   & -P(A \cap B) - P(A \cap C) - P(B \cap C) && \\
-  & +P(A \cap B \ cap C) && \\
+  & +P(A \cap B \cap C) && \\
   &= 0.02 + 0.01 + 0.015 && \\
   & - 0.005 - 0.006 - 0.004 && \\
   & + 0.002 && \\
@@ -507,23 +507,55 @@ $P(C \cap D) = P(D|C) * P(C) = 0.1 * 0.3 = 0.03$
 
 \section*{11.}
 
-\begin{flalign*}
-  P((A \cup B)^c|D) &= 1- P((A \cup B)|D) &&\\
-  &= 1 - P(D|(A \cup B)) * \frac{P(A \cup B)}{P(D)} &&\\
-  &= 1 - P(D|(A \cup B)) * \frac{P(A) + P(B) - P(A)P(B)}{P(D)} &&\\
-  0.3 &= 1 - 0.7 * \frac{0.05 + 0.2 - 0.05*0.2}{P(D)} &&\\
-  P(D) &= 0.24
-\end{flalign*}
+% My attempted solution
+% \begin{flalign*}
+%   P((A \cup B)^c|D) &= 1- P((A \cup B)|D) &&\\
+%   &= 1 - P(D|(A \cup B)) * \frac{P(A \cup B)}{P(D)} &&\\
+%   &= 1 - P(D|(A \cup B)) * \frac{P(A) + P(B) - P(A)P(B)}{P(D)} &&\\
+%   0.3 &= 1 - 0.7 * \frac{0.05 + 0.2 - 0.05*0.2}{P(D)} &&\\
+%   P(D) &= 0.24
+% \end{flalign*}
 
-\noindent
-$P((A \cup B)^c|D) = 1- P((A \cup B)|D)$
+% \noindent
+% $P((A \cup B)^c|D) = 1- P((A \cup B)|D)$
 
-\noindent
-$P((A \cup B)|D) = 0.3$
+% \noindent
+% $P((A \cup B)|D) = 0.3$
 
-\noindent
-$\implies P((A \cup B)|D) = P(D|(A \cup B)) * \frac{P(A \cup B)}{P(D)}$
+% \noindent
+% $\implies P((A \cup B)|D) = P(D|(A \cup B)) * \frac{P(A \cup B)}{P(D)}$
 
 % $P((A \cup B)^c|D) = P(D|(A \cup B)^c) * \frac{P((A \cup B)^c)}{P(D)}$
+
+
+
+%
+% Copied From Abdullah
+%
+$P(D|A \cup B) = \frac{P(D\cap A) \cup P(D \cap B)}{P(A \cup B)} = 0.7$
+\newline
+
+\noindent
+$P(A\cup B) = P(A) + P(B) - P(A) P(B) = 0.24$
+\newline
+
+\noindent
+$P(D \cap (A \cup B)) = 0.168$
+\newline
+
+\noindent
+$\frac{P(D \cap (A \cup B)^c)}{P(A \cup B)^c} = 0.3$
+\newline
+
+\noindent
+$P(D \cap (A \cup B)^c) = 0.228$
+\newline
+
+\noindent
+$P(D)= P(D \cap (A \cup B)) + P(D \cap (A \cup B)^c) = 0.396$
+\newline
+
+\noindent
+$P(A \cup B | D) = \frac{P((A\cup B)  \cap D)}{P(D)} = \frac{0.24}{0.396} = \frac{20}{33}$.
 
 \end{document}
