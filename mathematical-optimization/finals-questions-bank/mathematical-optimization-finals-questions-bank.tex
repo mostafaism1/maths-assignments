@@ -1,0 +1,622 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{tikz}
+\author{Mostafa Hassanein}
+\title{Operations Research and Optimization Questions Bank}
+\date{21 January 2024}
+\begin{document}
+
+\maketitle
+
+\newpage
+
+% Modified \textcircled solution
+\newcommand*\numcircledmod[1]{\raisebox{.5pt}{\textcircled{\raisebox{-.9pt} {#1}}}}
+
+% TikZ solution
+\newcommand*\numcircledtikz[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=1.2pt] (char) {#1};}} 
+
+\newtheorem{innercustomthm}{Theorem}
+\newenvironment{customthm}[1]
+  {\renewcommand\theinnercustomthm{#1}\innercustomthm}
+  {\endinnercustomthm}
+
+\section*{Proofs}
+
+\begin{customthm}{1}
+  $ $
+
+  Given the following LP: 
+  
+  \qquad Minimize $C^TX$ 
+  
+  Subject to, 
+  
+  \qquad $x \in F = \{x \in R^n: AX=b, x\geq 0, b\in R^m \}$.
+  \newline
+
+  Show that:
+
+  \qquad Corresponding to $F$ there exists a polytope $P \subseteq R^{n-m}$.
+
+\end{customthm}
+
+\begin{proof}
+  $ $
+  
+  Assume $rank(A) = m$.
+
+  Then $A$ can be arranged into $m$ basis columns and $(n-m)$ non-basis columns, thus the constraint $AX=b$ becomes:
+
+  $\begin{bmatrix}
+    n-m &  & m \\
+    N &   | & B \\
+        & | &   \\
+  \end{bmatrix}
+  \begin{bmatrix}
+  x_1       \\
+  \vdots    \\
+  x_{n-m}   \\
+  x_{n-m+1} \\
+  x_{b}     \\
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    b_1 \\
+    \vdots \\
+    b_m  
+  \end{bmatrix}$
+  \newline
+
+  \noindent
+  $\implies NX_N + BX_B = b$
+
+  \noindent
+  $\implies X_B = B^{-1}b - B^{-1}NX_N$
+
+  \noindent
+  $\implies x_i = b_i^\prime - \sum_{j=1}^{n-m}a_{ij}^\prime x_j$ \qquad for $i=n-m+1 \ldots n$. \qquad (1)
+  \newline
+
+  Substituting (1) into the non-negativity constraints we get:
+  \newline
+  
+  $\begin{Bmatrix}
+    x_j > 0, & j = 1 \ldots n-m \\
+    b_i^\prime - \sum_{j=1}^{n-m}a_{ij}^\prime x_j > 0  & i=n-m+1 \ldots n
+  \end{Bmatrix}$ \qquad (2)
+  \newline
+  \newline
+
+
+  But (2) describes the intersection of $n$ halfspaces in $R^{n-m}$.
+  
+  Thus, it describes a convex polytope in $R^{n-m}$.
+  \newline
+  
+  Conversely, ... 
+
+\end{proof}
+
+\newpage
+
+\begin{customthm}{2}
+  $ $
+
+  Given the following LP: 
+  
+  \qquad Minimize $C^TX$ 
+  
+  Subject to, 
+  
+  \qquad $x \in F = \{x \in R^n: AX=b, x\geq 0, b\in R^m \}$.
+  \newline
+
+  Show that:
+
+  \qquad If the given LP has an optimal solution, then at least one bfs is optimal. Furthermore, if q bfs's are optimal then their convex combinations are also optimal.
+  
+\end{customthm}
+
+\begin{proof}
+  $ $
+  
+  We know that a BFS in $F$ corresponds to a vertex in $P$.
+
+  So it suffices to show that an optimal solution occurs at one of the vertices of $P$.
+  \newline
+
+  Since $P$ is closed and bounded, then the cost function $c$ attains its min in $P$.
+
+  Let $x_o$ be an optimal solution, then:
+
+  \qquad $x_o = \sum_{i=1}^{N}\alpha_i v_i$, \quad $0 \leq \alpha_i \leq 1$ and $\sum_{i=1}^{N}\alpha_i = 1$.
+  \newline
+  
+  Let $v_j$ be the vertex with the lowest cost, then:
+
+  \qquad $c^T x_o =  \sum_{i=1}^{N}\alpha_i c^T v_i \geq \sum_{i=1}^{N}\alpha_i c^T v_j = c^T v_j$.
+
+  \noindent
+  $\implies v_j$ is optimal.
+  \newline
+
+  Next, suppose the vertices $v_{j1}, \ldots, v_{ja}$ are optimal, then:
+
+  \qquad $c^T \sum_{i=1}^{a}\alpha_i v_i = \sum_{i=1}^{a}\alpha_i c^T v_i = c^T v_{j1}$.
+  \newline
+
+  Therefore, their convex combination is optimal.
+
+  
+
+\end{proof}
+
+\newpage
+
+\begin{customthm}{3}
+  $ $
+
+  Given the following LP: 
+  
+  \qquad Minimize $C^TX$ 
+  
+  Subject to, 
+  
+  \qquad $x \in F = \{x \in R^n: AX=b, x\geq 0, b\in R^m \}$.
+  \newline
+
+  \qquad Starting from a bfs $x_o$ with basis $B= \{A_{B(i)}, i=1,\ldots,m \}$, show how to obtain an adjacent bfs $x_0^\prime$ with basic $B^\prime$ containing $A_j \notin B$.
+
+  \begin{proof}
+    $ $
+
+    Let $x_o$ be an optimal solution corresponding to the basis $B=\{A_{B(i)}\}$, then:
+
+    \qquad $\sum_{i=1}^{m} x_{oi} A_{B(i)} = b$. \qquad (1)
+    \newline
+
+    Let $A_j \notin B$, then:
+
+    \qquad $A_j - \sum_{i=1}^{m} x_{ij} A(B(i)) = 0$. \qquad (2)
+    \newline
+
+    Multiply (2) by $\theta$ and subtract from (1):
+
+    \qquad $\sum_{i=1}^{m} (x_{io} - x_{ij})A_{B(i)} - A_j = b$.
+    \newline
+
+    Assume $x_o$ is not degenerate, then $x_{io} > 0$.
+    \newline
+
+    As $\theta$ increases we move from the current bfs to a feasible solution with $(m+1)$ positive components.
+    \newline
+
+    How far can we increase $\theta$ and remain feasible?
+    \newline
+
+    Until $\theta = \min \frac{x_{io}}{x_{ij}}$. 
+    At this point we reach an adjacent bfs with $m$ strictly positive components and with $A_j$ in the basis.
+
+  \end{proof}
+
+\end{customthm}
+\newpage
+
+\begin{customthm}{4}
+  $ $
+
+  Given the following LP: 
+  
+  \qquad Minimize $C^TX$ 
+  
+  Subject to, 
+  
+  \qquad $x \in F = \{x \in R^n: AX=b, x\geq 0, b\in R^m \}$.
+  \newline
+
+  \qquad Derive the effect of the step from $x_o$ to  $x_o^\prime$ on the cost $C^TX$, Hence deduce the optimality criterion.
+
+\end{customthm}
+
+\begin{proof}
+  $ $
+  
+  The cost of the bfs with basis $B$ is: $\sum_{i}^{m} x_{io} C_{B(i)}$.
+  \newline
+
+  Define $z_j = \sum_{i=1}^{m} x_{ij} C_{B(i)}$ using the tablea after diagonalization.
+  
+  Therefore: $Z^T = C_B^T B^{-1} A $.
+  \newline
+
+  A pivot step in which $x_j$ enters the basis changes the cost by the amount: 
+
+  \qquad $\theta_o \bar{c_j} = \theta_o (c_j - z_j)$.
+  \newline
+
+  Therefore, it is profitable to bring $A_j$ into the basis exactly when $\bar{c_j} < 0$.
+  \newline
+
+  Furthermore, when $\forall j \ \bar{c_j} \geq 0$, then we've arrived at an optimal solution.
+  
+
+\end{proof}
+
+\newpage
+
+\begin{customthm}{5 \& 6}
+  $ $
+
+  Given the following LP: 
+  
+  \qquad Minimize $C^TX$ 
+  
+  Subject to, 
+  
+  \qquad $x \in F = \{x \in R^n: AX=b, x\geq 0, b\in R^m \}$.
+  \newline
+
+  Show that:
+
+  \qquad The same pivoting rules in the Simplex Table can be applied on the characteristic row (row of relative costs).
+  \newline
+
+  OR
+  \newline
+
+  \qquad  In the simplex tableau the same pivoting rules can be applied to the zeroth row: $-Z_o= -Z+ \sum_{j=1 \ A_j \notin B}^{n} \bar{c_j}x_j$.
+
+\end{customthm}
+
+\begin{proof}
+  $ $
+
+  We add to the tableau Row 0 containing $\bar{c_j}$. To do this we have:
+  
+  \qquad $0 = -Z + \sum_{i=1}^{n} c_i x_i$. \qquad (*)
+  \newline
+
+  Then, multiplying each row of the table by $-C_{B(i)}$ and adding to (*) we get Row 0 as:
+
+  \qquad $-Z_o =  -Z + \sum_{j=1 \ A_j \notin B}^{n} \bar{c_j} x_j$.
+
+  
+
+\end{proof}
+
+\newpage
+
+\begin{customthm}{8.a}
+  $ $
+
+  Show that if 2 distinct bases correspond to the same bfs, then it is degenrate.
+
+\end{customthm}
+
+\begin{proof}
+  $ $
+
+  Suppose that $B$ and $B^\prime$ both determine the same bfs $x$.
+  
+  Then $x$ has zeros in $(n-m)$ columns not in $B$.
+  
+  But that implies that it must also have zeros in at least one column in $B-B^\prime \not = \emptyset$, hence it is degenerate.
+
+\end{proof}
+\newpage
+
+\begin{customthm}{8.b}
+  $ $
+
+  Given the following LP: 
+  
+  \qquad Minimize $C^TX$ 
+  
+  Subject to, 
+  
+  \qquad $x \in F = \{x \in R^n: AX=b, x\geq 0, b\in R^m \}$.
+  \newline
+
+  Show that:
+
+  \qquad For a degenerate bfs with $P<m$ positive component it may correspond up to $C^{n-p}_{n-m}=\frac{(n-p)!}{(n-m)!(m-p)!}$ different bases.
+
+\end{customthm}
+
+\begin{proof}
+  $ $
+
+  The number of zeros in this degenerate bfs $= (n-p)$.
+  \newline
+  
+  To determine a bfs we must choose $(n-m)$ non-basic variables (the zero variables).
+  \newline
+
+  Therefore, the possible number of ways we can choose the non-basic variables is given by:
+  
+  \qquad $C^{n-p}_{n-m}=\frac{(n-p)!}{(n-m)!(m-p)!}$.
+
+\end{proof}
+
+\newpage
+
+\begin{customthm}{7}
+  $ $
+
+  Given the following LP: 
+  
+  \qquad Minimize $C^TX$ 
+  
+  Subject to, 
+  
+  \qquad $x \in F = \{x \in R^n: AX=b, x\geq 0, b\in R^m \}$.
+  \newline
+
+  Show that:
+
+  \qquad A vector $X$ is an optimal solution of the problem if there exist vectors $r$ and $w$ such that:
+  
+  \qquad\qquad a. $AX = b, x\geq 0$.
+
+  \qquad\qquad b. $A^Tw + r = c, r\geq 0$.
+
+  \qquad\qquad c. $r^Tx = 0$.
+
+  \qquad and, in this case $w$ is an optimal solution of the dual problem.
+
+\end{customthm}
+\newpage
+
+\begin{customthm}{9.a}
+  $ $
+
+  For a primal-dual pair show that:
+
+  \qquad a. If the primal has an optimal solution, so does its dual and at optimality their costs are equal.
+
+\end{customthm}
+\newpage
+
+\begin{customthm}{9.b}
+  $ $
+
+  For a primal-dual pair show that:
+
+  \qquad b. If either problem has unbounded objective value, then the other has no feasible solution.
+
+\end{customthm}
+\newpage
+
+\begin{customthm}{9.c}
+  $ $
+
+  For a primal-dual pair show that:
+
+  \qquad c. The dual of the dual is the primal.
+
+\end{customthm}
+\newpage
+
+\begin{customthm}{10.}
+  $ $
+
+  Show the possible categories of primal-dual pair.
+
+\end{customthm}
+\newpage
+
+\begin{customthm}{11.}
+  $ $
+
+  Show that $F = \{x \in R^n: AX=b, x\geq 0, b\in R^m \}$ is a convex polyhedron.
+
+\end{customthm}
+
+\begin{proof}
+  $ $
+
+  Same as Theorem(1).
+\end{proof}
+\newpage
+
+\begin{customthm}{12.a}
+  $ $
+
+  Suppose $C_1,\ldots, C_p$ are convex in $R^n$.
+  
+  Prove that: \quad a.$\bigcap_{i=1}^P$ is convex.
+
+\end{customthm}
+\newpage
+
+\begin{customthm}{12.b}
+  $ $
+
+  Suppose $C_1,\ldots, C_p$ are convex in $R^n$.
+  
+  Prove that: \quad b.$\bigcup_{i=1}^P$ is not convex.
+
+\end{customthm}
+\newpage
+
+\begin{customthm}{13}
+  $ $
+
+  Show that a feasible pair $x,\pi$ in a primal-dual pair is optimal iff:
+  
+  \qquad $\forall i,j: \ \pi_i(a_i^T-b) = 0$ and $(C_j - \pi^TA_j)x_j=0$.
+
+\end{customthm}
+\newpage
+
+\begin{customthm}{14}
+  $ $
+
+  Show that the linear system $AX=b, \ x \geq 0$ has no solution \textbf{\underline{iff}} the system $A^Tu \leq 0, \ b^Tu > 0$ has a solution.
+
+\end{customthm}
+\newpage
+
+\begin{customthm}{15.a}{(Necessary Condition for Multivariable Optimal Solution)}
+  $ $
+
+  Show that if $f(x)$ has a local min (max) at $x=x^*$ and if the first partial derivatives of $f(x)$ \textbf{\underline{exist}} at $x^*$, then: $\nabla f(x^*) = 0$ is a necessary condition.
+
+\end{customthm}
+
+\begin{proof}
+  $ $
+
+  Perform a taylor expansion around $x^*$:
+
+  $f(x^* + h) = f(x^*) + h^T \nabla f(x^*) + R_1(x^*, h)$.
+
+  \noindent
+  $\implies f(x^* + h) - f(x^*) = h^T \nabla f(x^*) + R_1(x^*, h)$.
+  \newline
+
+  For small $h$, the first order term dominates the higher order terms. Therefore, the sign of the LHS depends only on the sign of the first term (component-wise).
+  \newline
+
+  But the sign of the first term depends on the sign of $h$, so the only way to remove that dependency on the sign of $h$ is to have $\nabla f(x^*) = 0$.
+
+\end{proof}
+\newpage
+
+\begin{customthm}{15.b}{(Sufficient Conditions for Multivariable Optimal Solution)}
+  $ $
+
+  Show that the sufficient condition for a stationary point $x^*$ to be a local minimum is the second partial derivatives (Hessian) of $f$ at $x^*$ is a positive definite matrix: $H(x^*) = \nabla^2 f(x^*) > 0$.
+
+\end{customthm}
+
+\begin{proof}
+  $ $
+
+  Perform a Taylor's expansion around $x^*$:
+
+  \qquad $f(x^* + h) = f(x^*) + h^T \nabla f(x^*) + \frac{1}{2} h^T \nabla^2 f(x^* + \theta h)h$ \quad for $0<\theta<1$.
+  \newline
+
+  Then at the stationary point $x^*$:
+  \begin{align*}
+    f(x^* + h) - f(x^*) &= h^T \nabla f(x^*) + \frac{1}{2} h^T \nabla^2 f(x^* + \theta h)h &&\\ 
+    &= 0 + \frac{1}{2} h^T \nabla^2 f(x^* + \theta h)h &&\\
+    &= \frac{1}{2} h^T \nabla^2 f(x^* + \theta h)h &&\\
+  \end{align*}
+  
+
+  To be a local min, the RHS should be $>0$, then:
+
+  \qquad $H(x^*) = \nabla^2 f(x^*)>0$
+
+  \noindent
+  $\implies H$ is a positive definite matrix.
+
+\end{proof}
+\newpage
+
+\begin{customthm}{16}
+  $ $
+  
+  Show that the linear system $Ax=b$, $x\geq 0$ has no solution iff the system $A^Tu \leq 0$, $b^Tu > 0$ has a solution.
+
+\end{customthm}
+
+\begin{proof}
+  
+  \textbf{\underline{Forward direction:}} (By Contradiction)
+
+  Given that $Ax=b$, $x\geq 0$ has a solution, suppose for the sake of contradiction that $A^Tu \leq 0$, $b^Tu > 0$ also has a solution.
+
+  $Ax = b$
+
+  \noindent
+  $\implies x^TA^T = b^T$
+
+  \noindent
+  $\implies x^TA^Tu = b^Tu$
+
+  \noindent
+  $\implies x^T < 0$
+  \newline
+
+  This is a contradiction. Therefore the system $A^Tu \leq 0$, $b^Tu > 0$ has no solution.
+  \newline
+
+
+  \textbf{\underline{Reverse direction:}} (By Contradiction)
+
+  Given that $A^Tu \leq 0$, $b^Tu > 0$ has a solution, suppose for the sake of contradiction that $Ax=b$, $x\geq 0$ also has a solution.
+
+  $A^Tu \leq 0$
+
+  \noindent
+  $\implies u^TA \leq 0$
+
+  \noindent
+  $\implies u^TAx \leq 0$
+
+  \noindent
+  $\implies u^Tb \leq 0$
+
+  \noindent
+  $\implies b^Tu \leq 0$
+  \newline
+
+  This is a contradiction. Therefore the system $Ax=b$, $x\geq 0$ has no solution.
+
+  
+\end{proof}
+\newpage
+
+\begin{customthm}{17}
+  $ $
+  
+  KKT Condition.
+
+  Given a linear programming problem in its standard form, a vector $x$ is an optimal solution to the problem iff $\exists$ vectors  $r, \pi$ such that:
+
+  \qquad 1. $Ax=b$, $x\geq 0$ \qquad (Primal feasibility).
+  
+  \qquad 2. $A^T \pi + r = c$, $r \geq 0$ \qquad (Dual feasibility). 
+  
+  \qquad 3. $r^Tx = 0$ \qquad (Complementary slackness).
+  \newline
+
+  In this case $\pi$ is an optimal solution to the dual problem.
+
+\end{customthm}
+\newpage
+
+\begin{customthm}{17}
+  $ $
+  
+  Degenerecy:
+
+  \qquad Definition An LP is degenerate if in a basic feasible solution, one of the basic variables takes on a zero value.
+
+\end{customthm}
+\newpage
+
+\section*{Problems}
+
+\subsection*{1.}
+
+Minimize: $f(x) = 0.65 - \frac{0.75}{x^2 + 1} - 0.65tan^{-1}(\frac{1}{x})$, for $x \in (0,3)$, using the \textbf{\underline{golden search method}}. 
+
+\quad (Take n = 6).
+\newpage
+
+\subsection*{2.}
+
+Minimize: $f(x) = 100(x_2 - x_1^2)^2 + (1-x_1)^2$ along the direction $s_1 = [4 \ 0]^T$, using the \textbf{\underline{quadratic interpolation method}}.
+
+\quad (Start with $x_1 = [-1 \ 1]^T$ and use a maximum of 2 refits.)
+
+
+\end{document}
