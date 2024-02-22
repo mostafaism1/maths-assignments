@@ -47,18 +47,22 @@
 
   If, however, $v \notin W$, then, by the counterexample provided, $v+W$ is not a subspace of $V$.
 
-  Therefore, the sufficient and necessary condition is: $v \in v+W$.
+  Therefore, the sufficient and necessary condition is: $v \in W$.
 
 \end{proof}
+
+\noindent
+Note: The transformation $v+W = \{ v+w: w \in W \}$ is an \underline{\textbf{affine transformation}}, which is not—necessarily—linear.
+
 \newpage
 
 \begin{customthm}{2}[2023.S(1.A.ii)]
   $ $
 
-  Let $x_1,\ldots,x_n$ be distinct elements of $F$. The functions $f_i(x)= \Pi_{k=1,k \neq i}^{n+1} = \frac{(x-x_k)}{(x_i-x_k)}$ for $i=1,\ldots,n+1$ is a basis for $P_n(F)$.
+  Let $x_1,\ldots,x_{n+1}$ be distinct elements of $F$. Then, the functions $f_i(x)= \Pi_{k=1,k \neq i}^{n+1} \frac{(x-x_k)}{(x_i-x_k)}$ for $i=1,\ldots,n+1$ form a basis for $P_n(F)$.
   \newline
 
-  Note to self: A possible source of confusion here is that $F$ is not an infinite field, rather it's a finite field, where $F = \{x_1,\ldots,x_n \}$.
+  Note to self: A possible source of confusion here is that $F$ is not an infinite field, rather it's a finite field given by $F = \{x_1,\ldots,x_n \}$.
 \end{customthm}
 
 \begin{proof}
@@ -71,13 +75,16 @@
   \qquad ii. The $n+1$ functions/vectors are linearly independent.
   \newline
 
-  We check (ii). Let $x_j \in x_1,\ldots,x_n$, then:
+  We check (ii). Let $x_j \in \{x_1,\ldots,x_{n+1}\}$, then:
   \begin{align*}
     0_v &= \sum_{i=1}^{n+1} a_i f_i(x_j) &&\\
     &= \sum_{i=1}^{n+1} a_i \Pi_{k=1, k \neq i}^{n+1}\frac{x_j - x_k}{x_i - x_k} &&\\
     &= \sum_{i=1}^{n+1} a_i \delta_{ij} &&\\
-    &= a_j, \ \forall j=1,\ldots,n+1 &&\\
+    &= a_j.
   \end{align*}
+
+  \noindent
+  $\implies \forall j \in \{1,\ldots,n+1\}: \  a_j = 0$.
 
   \noindent
   $\implies (f_1,\ldots,f_n)$ are linearly independent.
@@ -86,6 +93,13 @@
   $\implies (f_1,\ldots,f_n)$ is a basis for $P_n$.
 
 \end{proof}
+
+\noindent
+Notes:
+
+\quad - The tricky part in this question is to realize that the complicated form of $f_i$ reduces to $\delta_{ij}$.
+
+\quad - This result can be generalized to all function spaces (not just polynomials) over a finite field. The generalization can be stated as follows: Any function space over a finite field of cardinality $n$ has a basis given by the functions $f_i$ where $f_i(x_j) := \delta_{ij}$ for $i,j \in \{1,\ldots,n\}$.
 \newpage
 
 \begin{customthm}{3}[2023.S(1.A.iii)]
@@ -97,23 +111,23 @@
 \begin{proof}{(By contradiction)}
   $ $
 
-  Suppose that $W \not\subseteq N(T)$.
+  Suppose that $W \not\subseteq N(T)$
   
   \noindent
   $\implies \exists w \in W$ s.t. $w \notin N(T)$
 
   \noindent
-  $\implies T(w) \in R(T)$
+  $\implies Tw \in R(T)$
 
   \noindent
-  $\implies T(w) \in R(T)$ and $T(w) \in W$ \quad (Because $W$ is $T$-invariant)
+  $\implies Tw \in R(T)$ and $Tw \in W$ \quad (Because $W$ is $T$-invariant)
 
   \noindent
-  $\implies \exists v=T(w) \in V$ s.t. $v$ is not uniquely represented as a sum from $R(T)$ and $W$.
+  $\implies \exists v=Tw \in V$ s.t. $v$ is not uniquely represented as a sum from $R(T)$ and $W$.
   \newline
 
   \noindent
-  This is a contradiction. Therefore, we must conclude that $W \subseteq N(T)$
+  This is a contradiction. Therefore, we must conclude that $W \subseteq N(T)$.
 
 \end{proof}
 \newpage
@@ -121,18 +135,18 @@
 \begin{customthm}{4}[2023.S(1.A.iv)]
   $ $
 
-  Disprove: Linear operatos on an infinite-dimensional vector space never have eigenvectors. 
+  Disprove: A linear operator on an infinite-dimensional vector space has no eigenvectors. 
 
 \end{customthm}
 
-\begin{proof}
+\begin{proof}{(By counterexample)}
   $ $
 
-  Counterexample: Consider the vector space $V = \mathbb{R}^\infty$ over $\mathbb{R}$.
+  Consider the vector space $V = \mathbb{R}^\infty$ over $\mathbb{R}$.
 
-  Let $T$ be a linear operator on $V$ defined by: $T = lambdaI_\infty$, where $lambda \in \mathbb{R}$.
+  Let $T$ be a linear operator on $V$ defined by $T := \lambda I_\infty$, where $\lambda \in \mathbb{R}$.
 
-  Then, all vectors in $V$ are eigenvectors with eigenvalue $lambda$.
+  Then, all vectors in $V$ are eigenvectors with eigenvalue $= \lambda$.
 
   
 \end{proof}
@@ -154,10 +168,10 @@
   We start from the fact (given by another theorem) that if $U$ is a subspace, then $U = (U^\perp)^\perp$. So, now we need only show that $Span(S)^\perp = S^\perp$. This amounts to showing that $(i) Span(S)^\perp \subseteq S^\perp$ and $(ii) S^\perp \subseteq Span(S)^\perp$.
   \newline
 
-  (i) is true since any vector that is orthgonal to all vectors in $Span(S)$ must also be orthogonal to all vectors in $S$.
+  (i) Is true since any vector that is orthgonal to all vectors in $Span(S)$ must also be orthogonal to all vectors in $S$.
   \newline
 
-  (ii): Let $s_o \in S^\perp$ and $s \in Span(S)$.
+  (ii) Let $s_o \in S^\perp$ and $s \in Span(S)$.
 
   \noindent
   $\implies s = \sum a_i s_i, \ \forall s_i \in S$
