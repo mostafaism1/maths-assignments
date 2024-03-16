@@ -1,0 +1,157 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\author{Mostafa Hassanein}
+\title{Functional Analysis Assignment (Chapter 1)}
+\date{16 March 2024}
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section*{1.1.1}
+
+The distance on $\mathbb{R}$ is defined by $d(x,y)=|x-y|$. We must check that the 4 axioms (M1 to M4) are satisfied.
+\newline
+
+M1 holds, since the absolute value of the difference between 2 real points is real, finite, and non-negative.
+\newline
+
+M2 holds, since $d(x,y) = |x-y| = 0 \iff x = y$. 
+\newline
+
+M3 holds, since $d(x,y) = |x-y| = |y-x| = d(y,x)$.
+\newline
+
+M4 holds, since the triangle inequality holds for the absolute value.
+
+
+\section*{1.1.2}
+$d(x,y) = (x-y)^2$ is not a valid metric since it does not satisfy the triangle inequality.
+
+\begin{proof}{(By counterexample)}
+  $ $
+
+  Let $a,b,c \in R$, where $a = 0, b = 1, c = 5$, then:
+  \newline
+  
+  $d(a,c) = (a - c)^2 = (0 - 5)^2 = 25$.
+
+  $d(a,b) = (a - b)^2 = (0 - 1)^2 = 1$.
+
+  $d(b,c) = (b - c)^2 = (1 - 5)^2 = 16$.
+
+  $d(a,b) + d(b,c) = 1 + 16 = 17$.
+  \newline
+
+  Therefore, 
+  $d(a,c) \not \leq d(a,b) + d(b,c)$.
+
+\end{proof}
+
+
+\section*{1.1.3}
+
+Since the distance function $d(x,y) = |x-y|$ defines a metric on $\mathbb{R}$, as shown in 1.1.1, then it is clear that the square root of that metric is also real, finite, and non-negative, definite, and symmetric (i.e. M1 to M3 hold).
+\newline
+
+\noindent
+The triangle inequality can be shown to hold by noting that the square root function is an increasing function with a negative second derivative in the interval $(0, \infty)$.
+\newline
+
+\noindent
+This shows that $d(x,y) = \sqrt{|x-y|}$ is a metric on $\mathbb{R}$.
+
+
+\section*{1.1.4}
+
+\subsection*{i. $|X| = 2$}
+Let $X = \{a,b\}$, then $d$ must satisfy:
+\newline
+
+$d(a,a) = d(b,b) = 0$, and
+
+
+$d(a,b) = d(b,a) = c$, where $c$ is any non-negative real number.
+
+\subsection*{ii. $|X| = 1$}
+In this case the only valid metric is $d(a,a) = 0$.
+
+
+\section*{1.1.5}
+\subsection*{i. Conditions for $kd$ to be a metric}
+If $d$ is a metric, then $kd$ automatically satisfies axioms M2-M4.
+\newline
+
+\noindent
+For axiom M1 to hold, $k$ must be a non-negative real number.
+
+\subsection*{ii. Conditions for $k+d$ to be a metric}
+To satisfy axiom M2, $k$ must be zero.
+
+
+\section*{1.1.6}
+
+\begin{proof}{(By induction on the length of the sequence)}
+  $ $
+
+  Let $X=(x_j), \ Y=(y_j), \ Z=(z_j)$ be 3 bounded sequences.
+  \newline
+
+  \textbf{\underline{Base case}}
+
+  Consider the subsequence of $X,Y,Z$ consisting of just their first element. Then by the triangle inequality for numbers:
+
+  \qquad $|x_1 - z_1| \leq |x_1 - y_1| + |y_1 - z_1|$
+
+  $\implies \sup |x_1 - z_1| \leq \sup (|x_1 - y_1| + |y_1 - z_1|)$
+
+  $\implies \sup |x_1 - z_1| \leq \sup |x_1 - y_1| + \sup |y_1 - z_1|$.
+\newline
+
+  Therefore $d(x,z) \leq d(x,y) + d(y,z)$ holds for sequences of length 1.
+  \newline
+
+\textbf{\underline{Inductive step}}
+
+Next, we'll consider the sub-sequences of $X,Y,Z$ consisting of the first $n+1$ elements. Suppose that the induction hypothesis holds for sequences of length $n$, i.e.:
+
+\qquad $\sup\limits_{j \in \{1..n\}} |x_j - z_j| \leq \sup\limits_{j \in \{1..n\}} |x_j - y_j| + \sup\limits_{j \in \{1..n\}} |y_j - z_j|$ holds.
+\newline
+
+Then we can partition each sequence of length $n+1$ into 2 sub-sequences: the first sequence contains the first $n$ elements and the second contains the last element.
+\newline
+
+The distance between any 2 sequences of length $n+1$ then becomes:
+
+\qquad$\max(\sup \limits_{j \in 1..n} |x_j - z_j|, \ \sup |x_{n+1} - z_{n+1}|)$
+\newline
+
+Finally, applying the induction hypothesis we get:
+
+\qquad$\max(\sup \limits_{j \in 1..n} |x_j - z_j|, \ \sup |x_{n+1} - z_{n+1}|) \leq \max(\sup\limits_{j \in 1..n} |x_j-y_j| + \sup\limits_{j \in 1..n} |y_j-z_j|, \ \sup |x_{n+1} - y_{n+1}| + \sup |y_{n+1} - z_{n+1}|)$
+\newline
+
+$\implies \sup\limits_{j \in 1..n+1} |x_j - z_j| \leq \sup \limits_{j \in 1..n+1} |x_j-y_j| + \sup \limits_{j \in 1..n+1} |y_j-z_j|$
+\newline
+
+Therefore $d(x,z) \leq d(x,y) + d(y,z)$ holds for sequences of any length.
+
+\end{proof}
+
+\section*{1.1.7}
+
+$d(x,y) = \begin{cases}
+  0 & x=y \\
+  1 & x\not=y
+\end{cases}$
+\newline
+
+\noindent
+Which is the discrete metric.
+
+
+
+\end{document}
