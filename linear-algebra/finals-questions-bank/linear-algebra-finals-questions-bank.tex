@@ -7,7 +7,7 @@
   {\endinnercustomthm}
 
 \author{Mostafa Hassanein}
-\title{Linear Algebra Finals Questions Bank}
+\title{Linear Algebra (MTH401) Finals Questions Bank}
 \date{14 January 2024}
 \begin{document}
 
@@ -75,7 +75,7 @@ Note: The transformation $v+W = \{ v+w: w \in W \}$ is an \underline{\textbf{aff
   \qquad ii. The $n+1$ functions/vectors are linearly independent.
   \newline
 
-  We check (ii). Let $x_j \in \{x_1,\ldots,x_{n+1}\}$, then:
+  We check (ii). Let $x_j, a_i \in \{x_1,\ldots,x_{n+1}\}$, then:
   \begin{align*}
     0_v &= \sum_{i=1}^{n+1} a_i f_i(x_j) &&\\
     &= \sum_{i=1}^{n+1} a_i \Pi_{k=1, k \neq i}^{n+1}\frac{x_j - x_k}{x_i - x_k} &&\\
@@ -97,9 +97,11 @@ Note: The transformation $v+W = \{ v+w: w \in W \}$ is an \underline{\textbf{aff
 \noindent
 Notes:
 
-\quad - The tricky part in this question is to realize that the complicated form of $f_i$ reduces to $\delta_{ij}$.
+\quad - The tricky part in this question is to realize that the complicated form of $f_i$ reduces to $\delta_{ij}$ when applying $f_i$ to $x_j$.
 
-\quad - This result can be generalized to all function spaces (not just polynomials) over a finite field. The generalization can be stated as follows: Any function space over a finite field of cardinality $n$ has a basis given by the functions $f_i$ where $f_i(x_j) := \delta_{ij}$ for $i,j \in \{1,\ldots,n\}$.
+\quad - Intuitively, this is because the output of applying $f_i(x)$ to some $x_j \in F$ must be one of the finite scalars in $F$.
+
+\quad - I suppose this result can be generalized to all function spaces (not just polynomials) over a finite field. The generalization can be stated as follows: Any function space over a finite field of cardinality $n$ has a basis given by the functions $f_i$ where $f_i(x_j) := \delta_{ij}$ for $i,j \in \{1,\ldots,n\}$.
 \newpage
 
 \begin{customthm}{3}[2023.S(1.A.iii)]
@@ -124,6 +126,9 @@ Notes:
 
   \noindent
   $\implies \exists v=Tw \in V$ s.t. $v$ is not uniquely represented as a sum from $R(T)$ and $W$.
+
+  \noindent
+  $\implies V \neq R(T) \oplus W$.
   \newline
 
   \noindent
@@ -162,7 +167,7 @@ Notes:
 \begin{proof}
   $ $
 
-  We will show that $(S^\perp)^\perp = Span(S)$,  thus, concluding that $Span(S)$ is a subspace (an improper subspace) of $(S^\perp)^\perp$.
+  We prove a stronger result:  $(S^\perp)^\perp = Span(S)$.
   \newline
   
   We start from the fact (given by another theorem) that if $U$ is a subspace, then $U = (U^\perp)^\perp$. So, now we need only show that $Span(S)^\perp = S^\perp$. This amounts to showing that $(i) Span(S)^\perp \subseteq S^\perp$ and $(ii) S^\perp \subseteq Span(S)^\perp$.
@@ -177,7 +182,7 @@ Notes:
   $\implies s = \sum a_i s_i, \ \forall s_i \in S$
 
   \noindent
-  $\implies <\sum a_i s_i, s_o> = \sum <a_i s_i, s_o> = \sum a_i <s_i, s_o> = \sum a_i * 0 = 0$.
+  $\implies \langle \sum a_i s_i, s_o \rangle = \sum \langle a_i s_i, s_o \rangle = \sum a_i \langle s_i, s_o \rangle = \sum a_i * 0 = 0$.
 
   \noindent
   $\implies s_o \in Span(S)^\perp$
@@ -247,12 +252,15 @@ Notes:
   \textbf{\underline{Forward direction: }} Assume $T$ is injective and $(v_1,\ldots, v_n)$ is linearly independent, then:
 
   \begin{align*}
-    0_v &= a_1Tv_1 + \ldots + a_n Tv_n &&\\
+    0_w &= a_1Tv_1 + \ldots + a_n Tv_n &&\\
     &= T(a_1v_1 + \ldots + a_nv_n)
   \end{align*}
 
   \noindent
-  $\implies a1,\ldots,a_n = 0$ \qquad (Because T is injective)
+  $\implies a_1v_1 + \ldots + a_nv_n = 0_v$ \qquad (Because T is injective)
+
+  \noindent
+  $\implies a1,\ldots,a_n = 0$ \qquad (Because $(v_1, \ldots, v_n)$ is linearly independent)
 
   \noindent
   $\implies (Tv_1,...,Tv_n)$ is linearly independent.
@@ -260,13 +268,13 @@ Notes:
   \textbf{\underline{Converse direction: }} Assume $(v_1,\ldots,v_n)$ and $(Tv_1,\ldots,Tv_n)$ are both linearly independent.
 
   \noindent
-  $\implies$ If $a_1Tv_1 + \ldots + a_nTv_n = 0_v$, then $a_1,\ldots,a_n = 0$.
+  $\implies$ If $a_1Tv_1 + \ldots + a_nTv_n = 0_w$, then $a_1,\ldots,a_n = 0$
 
   \noindent
-  $\implies$ If $T(a_1v_1+\ldots+a_nv_n) = 0$, then $a_1,\ldots,a_n = 0$.
+  $\implies$ If $T(a_1v_1+\ldots+a_nv_n) = 0_w$, then $a_1v_1 + \ldots + a_nv_n = 0_v$
 
   \noindent
-  $\implies N(T) = \{ 0_v \}$.
+  $\implies N(T) = \{ 0_v \}$
 
   \noindent
   $\implies T$ is injective.
@@ -327,6 +335,15 @@ Notes:
   Find an ordered Basis $\beta$ for $V$ so that $[T]\beta$ is a diagonal matrix.
 \end{customthm}
 
+\begin{proof}
+  $ $
+
+  
+
+
+\end{proof}
+\newpage
+
 
 \begin{customthm}{10}[2023.S(3.B)]
   $ $
@@ -336,15 +353,175 @@ Notes:
   Show that $T^* = T$.
 \end{customthm}
 
+\begin{proof}
+  $ $
+
+  Let $u = w_1 + w_2,\ v = w^\prime_1 + w^\prime_2 \ \in V$ where $w_1, w^\prime_1 \in W$ and $w_2, w^\prime_2 \in W^\perp$.
+
+  \begin{align*}
+      \langle
+        Tu,v
+      \rangle 
+      &= 
+      \langle
+        T(w_1 + w_2), w^\prime_1 + w^\prime_2
+      \rangle &&\\
+      &= 
+      \langle
+        w_1, w^\prime_1 + w^\prime_2
+      \rangle &&\\
+      &= 
+      \langle
+        w_1, w^\prime_1
+      \rangle
+      +
+      \langle
+        w_1, w^\prime_2
+      \rangle &&\\
+      &=
+      \langle
+        w_1, w^\prime_1
+      \rangle
+      + 0 &&\\
+      &=
+      \langle
+        w_1, w^\prime_1
+      \rangle
+      + 
+      \langle 
+        w_2, w^\prime_1
+      \rangle &&\\
+      &=
+      \langle
+        w_1 + w_2, w^\prime_1
+      \rangle &&\\
+      &= 
+      \langle
+        w_1 + w_2, T(w^\prime_1 + w^\prime_2)
+      \rangle &&\\
+      &= 
+      \langle
+        u, Tv
+      \rangle
+  \end{align*}
+
+  $\implies T^* = T$.
+
+\end{proof}
+\newpage
+
 
 \begin{customthm}{11}[2023.S(3.C)]
   $ $
 
   Let $T$ be a linear operator on the inner product space $V$. Show that:
 
-  $<T(u), T(v)> = <u, v> \quad \forall u,v \in V \iff ||T(u)|| = ||u|| \quad \forall u \in V$.
+  $\langle
+    Tu, Tv
+  \rangle 
+  =
+  \langle
+    u, v
+  \rangle 
+  \quad \forall u,v \in V \iff ||Tu|| = ||u|| \quad \forall u \in V$.
 \end{customthm}
 
+\begin{proof}
+  $ $
+
+  \textbf{\underline{$\implies$}}:
+
+  \begin{align*}
+    & \langle
+      Tu, Tv
+    \rangle 
+    =
+    \langle
+      u, v
+    \rangle &&\\
+    \implies & 
+    \langle
+    u, T^*Tv
+    \rangle 
+    =
+    \langle
+      u, v
+    \rangle &&\\
+    \implies & T^*T = I &&\\
+    \implies & ||Tu||^2
+    =
+    \langle
+      Tu, Tu
+    \rangle &&\\
+    \implies & ||Tu||^2
+    =
+    \langle
+      u, T^*Tu
+    \rangle &&\\
+    \implies & ||Tu||^2
+    =
+    \langle
+      u, Iu
+    \rangle &&\\
+    \implies & ||Tu||^2
+    =
+    \langle
+      u, u
+    \rangle &&\\
+    \implies & ||Tu||
+    =
+    \sqrt{
+    \langle
+      u, u
+    \rangle} = ||u||. &&\\
+  \end{align*}
+
+  \textbf{\underline{$\impliedby$}}:
+
+  \begin{align*}
+    & ||Tu||
+    = ||u|| &&\\
+    \implies & ||Tu||^2
+    = ||u||^2 &&\\
+    \implies & 
+    \langle
+      Tu, Tu
+    \rangle
+    =
+    \langle
+      u, u
+    \rangle &&\\
+    \implies & 
+    \langle
+      u, T^*Tu
+    \rangle
+    =
+    \langle
+      u, u
+    \rangle &&\\
+    \implies & T^*T = I &&\\
+    \implies & \langle
+      Tu, Tv
+    \rangle
+    =
+    \langle
+      u, T^*Tv
+    \rangle &&\\
+    \implies & \langle
+      Tu, Tv
+    \rangle
+    =
+    \langle
+      u, Iv
+    \rangle 
+    =
+    \langle
+      u, v
+    \rangle. &&\\
+  \end{align*}
+
+\end{proof}
+\newpage
 
 
 \begin{customthm}{12}[2022.S(1.A.i)]
@@ -352,6 +529,29 @@ Notes:
 
   If $V$ is a vector space and $S_1, S_2 \subseteq V$ with $S_1 \subseteq S_2$, then $S_2^\perp$ is a \textbf{\underline{subspace}} of $S_1^\perp$.
 \end{customthm}
+
+\begin{proof}
+  $ $
+
+  Since for any $A \subseteq V$, $A^\perp$ is a subspace of $V$, we need only show that: $S^\perp_2$ is a \textbf{{\underline{subset}}} of $S^\perp_1$.
+
+  \begin{align*}
+    & \text{Let } s^\perp_2 \in S^\perp_2 &&\\
+    \implies & \forall s_2 \in S_2, \:
+    \langle
+      s^\perp_2, s_2
+    \rangle = 0 &&\\
+    \implies & \forall s_1 \in (S_2 \cap S_1 = S_1), \:
+    \langle
+      s^\perp_2, s_1
+    \rangle = 0 &&\\
+    \implies & S^\perp_2 \subseteq S^\perp_1. &&\\
+  \end{align*}
+
+
+\end{proof}
+\newpage
+
 
 \begin{customthm}{13}[2022.S(1.B)]
   $ $
@@ -364,6 +564,15 @@ Notes:
 
   ii. Show that $V = U \oplus W$.
 \end{customthm}
+
+\begin{proof}
+  $ $
+
+  
+
+
+\end{proof}
+\newpage
 
 
 \begin{customthm}{14}[2022.S(1.D)]
@@ -378,6 +587,16 @@ Notes:
   ii. Show that $T$ is not linear if $V$ is redefined to be over the complex field $\mathbb{C}$.
 \end{customthm}
 
+\begin{proof}
+  $ $
+
+  
+
+
+\end{proof}
+\newpage
+
+
 
 \begin{customthm}{15}[2022.S(2.A)]
   $ $
@@ -386,6 +605,15 @@ Notes:
   
   If $P \in Hom(V)$, such that $P(\alpha_i) = \beta_i \quad \forall i$, derive the relation between $[V]_\alpha$ and $[V]_\beta$ for $v \in V$.
 \end{customthm}
+
+\begin{proof}
+  $ $
+
+  
+
+
+\end{proof}
+\newpage
 
 
 \begin{customthm}{16}[2022.S(2.B)]
@@ -405,6 +633,14 @@ Notes:
   iii. Is there an operator on $P_2(R)$ whose null space is $E_1$?
 \end{customthm}
 
+\begin{proof}
+  $ $
+
+  
+
+
+\end{proof}
+\newpage
 
 
 \begin{customthm}{17}[2022.S(3.B), 2021.F(3.D)]
@@ -417,6 +653,15 @@ Notes:
   ii. [Prove or Disprove] $rank(T^*T) = rank(T)$.
 \end{customthm}
 
+\begin{proof}
+  $ $
+
+  
+
+
+\end{proof}
+\newpage
+
 
 \begin{customthm}{18}[2021.F(1.A.i)]
   $ $
@@ -427,6 +672,77 @@ Notes:
   $\implies S^\perp$ is a subspace of $V$.
 \end{customthm}
 
+\begin{proof}
+  $ $
+
+  \textbf{\underline{i. Inclusion of the Zero Vector}}:
+  \begin{align*}
+   & \forall s \in S, \: 
+   \langle
+    0_v, s
+   \rangle 
+  = 0 &&\\
+  \implies & 0_v \in S^\perp. &&\\
+  \end{align*}
+
+
+  \textbf{\underline{ii. Closure under Vector Addition}}:
+  \begin{align*}
+    & \text{Let } s^\perp_1, s^\perp_2 \in S^\perp, \: s \in S &&\\
+    \implies & 
+    \langle
+      s^\perp_1, s
+    \rangle
+    = 0
+    \land
+    \langle
+      s^\perp_2, s
+    \rangle
+    = 0 &&\\
+    \implies &
+    \langle
+      s^\perp_1, s
+    \rangle
+    +
+    \langle
+      s^\perp_2, s
+    \rangle
+    = 0 &&\\
+    \implies & 
+    \langle
+      s^\perp_1 + s^\perp_2, s
+    \rangle
+    = 0 &&\\
+    \implies & s^\perp_1 + s^\perp_2 \in S^\perp.
+  \end{align*}
+
+
+  \textbf{\underline{iii. Closure under Scalar Multiplication}}:
+  \begin{align*}
+    & \text{Let } s^\perp \in S^\perp, \: s \in S, \: k \in F &&\\
+    \implies &
+    \langle
+      s^\perp, s
+    \rangle
+    = 0 &&\\
+    \implies &
+    k\langle
+      s^\perp, s
+    \rangle
+    = 0 &&\\
+    \implies &
+    \langle
+      ks^\perp, s
+    \rangle
+    = 0 &&\\
+    \implies & ks^\perp \in S^\perp.
+  \end{align*}
+  
+
+
+\end{proof}
+\newpage
+
 
 \begin{customthm}{19}[2021.F(1.A.ii)]
   $ $
@@ -434,25 +750,119 @@ Notes:
   [Disprove] If $T \in Hom(V, W)$, $dim(V)=dim(W)=2$, and $\{ v_1, v_2 \}$ is a basis for $V$, then $\{ T(v_1-v_2), T(v_1)\}$ is a basis for $W$.
 \end{customthm}
 
+\begin{proof}
+  $ $
+
+  
+
+
+\end{proof}
+\newpage
+
+
 \begin{customthm}{20}[2021.F(3.B)]
   $ $
 
   Let $V$ be an inner product space, and $W$ be a finite-dimensional subspace of $V$.
   
-  Show that: $w \in W \implies \exists v \in V \ni v \in W^\perp \ \land <v, u> \neq 0$. 
+  Show that: 
+  $w \in W 
+  \implies \exists v \in V 
+  \ni v \not\in W^\perp \: \land 
+  \langle w, v \rangle \neq 0$. 
+  \newline
+
+  
+  \textbf{\underline{Notes to self:}}
+
+  \qquad 1. I don't think this theorem holds when $W = V$. So I'm going to assume $W \neq V$ in the proof.
+  \newline
+
+  \qquad 2. I don't think this theorem holds when $w = 0_v$. So I'm going to assume $w \neq 0_v$ for the proof.
+  \newline
+
+  % \qquad 2. This part of the statement: "$v \not\in W^\perp \: \land \langle w, v \rangle \neq 0$" is redundant (both conditions in the logical AND are equivalent).
+
 \end{customthm}
 
-\begin{customthm}{21}[2021.F(3.B)]
+\begin{proof}
   $ $
 
-  Let $V$ be an inner product space, and $W$ be a finite-dimensional subspace of $V$.
+  Let $W$ be a \textbf{\underline{proper}} subspace of $V$, then $dim(V) = n > dim(W) = m$. 
   
-  Show that: $w \in W \implies \exists v \in V \ni v \in W^\perp \ \land <v, u> \neq 0$. 
-\end{customthm}
+  Let $\{ v_i \}_{i = 1}^{m}$ be an ordered orthonormal basis for $W$, and extend it to an orthonormal basis for $V$: $\{ v_i \}_{i = 1}^{n}$.
+  Then, $\{ v_i \}_{i = m+1}^{n}$ is an orthonormal basis for $W^\perp$.
+  \newline
+
+  Let $w = \sum_{i = 1}^{m} a_iv_i$. Since $w \neq 0_v$, then at least one $a_i$ is non-zero. Let $k$ be the index of the first non-zero $a_i$.
+
+  Next, let $v = b_kv_k + b_nv_n$, where $a_1, a_n \neq 0$.
+  
+  Then, $v \notin W^\perp$, and:
+  \begin{align*}
+    \langle
+      w, v
+    \rangle 
+    &=
+    \langle
+      w, b_kv_k + b_nv_n
+    \rangle &&\\
+    &=
+    \langle
+      w, b_kv_k
+    \rangle
+    +
+    \langle
+      w, b_nv_n
+    \rangle &&\\
+    &=
+    \overline{b_k}
+    \langle
+      w, v_k
+    \rangle
+    +
+    \overline{b_n}
+    \langle
+      w, v_n
+    \rangle &&\\
+    &=
+    \overline{b_k}
+    \langle
+      w, v_k
+    \rangle
+    +
+    0 &&\\
+    &=
+    \overline{b_k}
+    \langle
+      \sum_{i=k}^{m} a_iv_i, v_k
+    \rangle &&\\
+    &=
+    \overline{b_k}
+    \langle
+      a_kv_k, v_k
+    \rangle
+    +
+    \overline{b_k}
+    \langle
+      \sum_{i=k+1}^{m} a_iv_i, v_k
+    \rangle &&\\
+    &=
+    \overline{b_k}a_k
+    \langle
+      v_k, v_k
+    \rangle
+    +
+    0 &&\\
+    &=
+    \overline{a_k}a_k \neq 0 &&\\
+  \end{align*}
+
+\end{proof}
+\newpage
 
 
-
-\begin{customthm}{22}[2012.F(1.B)]
+\begin{customthm}{21}[2012.F(1.B)]
   $ $
 
   Let $V = M_{2x2}(R)$, 
@@ -475,14 +885,32 @@ Notes:
   iii. [Prove or Disprove] $V = W_1 \oplus W_2$.
 \end{customthm}
 
+\begin{proof}
+  $ $
 
-\begin{customthm}{23}[2012.F(1.D)]
+  
+
+
+\end{proof}
+\newpage
+
+
+\begin{customthm}{22}[2012.F(1.D)]
   $ $
 
   Let $T_1, T_2 \in Hom(V,W)$.
 
   Show that: $rank(T_1 + T_2) \leq rank(T_1) + rank(T_2)$.
 \end{customthm}
+
+\begin{proof}
+  $ $
+
+  
+
+
+\end{proof}
+\newpage
 
 
 % 
@@ -493,11 +921,202 @@ Notes:
 
 \subsection*{1.}[2023.S(3.A)]
 
-Let $V = C([-1, 1])$ with the inner product $<f,g> = \int_{-1}^{1} f(t)g(t)dt \qquad \forall f,g \in V$.
+Let $V = C([-1, 1])$ with the inner product $\langle f,g \rangle = \int_{-1}^{1} f(t)g(t)dt \enspace \forall f,g \in V$.
 
 i. Find an orthonormal basis for $P_2(R)$ as a subspace of $V$ and use it to compute the best quadratic approximation of $f(t) = e^t$ on $[-1, 1]$.
 
-ii. For $T \in Hom(P_1(R))$ with $P_1(R)$ as a subspace of $V$ and $T(f) = f^\prime + 3f$, evaluate $T^* = 1 + 3t$.
+ii. For $T \in Hom(P_1(R))$ with $P_1(R)$ as a subspace of $V$ and $T(f) = f^\prime + 3f$, evaluate $T^*(1 + 3t)$.
+\newline
+
+\begin{center}
+  \textbf{\underline{Solution:}}  
+\end{center}
+
+i. The ordered set $\alpha = \{a_i \}_{i = 0}^{2} = \{t^i\}_{i = 0}^{2}$ is a basis for $P_2(R)$.
+We use the Gram-Schmidt process to transform $\alpha$ to an orthonormal basis $\beta= \{b_i \}_{i = 0}^{2}$.
+\newline
+
+\underline{$b_1$}:
+
+$||a_1||^2 
+= \langle a_1, a_1 \rangle 
+= \langle 1, 1 \rangle
+= \int_{-1}^{1} 1*1 dt 
+= [t]_{-1}^{1} = 2$.
+\newline
+
+$b_1 = \frac{a_1}{||a_1||} 
+= \frac{1}{\sqrt{2}}$.
+\newline
+
+
+\underline{$b_2$}:
+
+$a_2 = t$.
+\newline
+
+$\langle a_2, b_1\rangle 
+= \int_{-1}^{1} t*\frac{1}{\sqrt{2}} dt 
+= [\frac{t^2}{2\sqrt{2}}]_{-1}^{1} = 0$.
+\newline
+
+$a_2 - \langle a_2, b_1\rangle b_1 = t$.
+\newline
+
+$||a_2 - \langle a_2, b_1\rangle b_1||^2 
+= ||t||^2 = \langle t, t \rangle 
+= \int_{-1}^{1} t^2 dt 
+= [\frac{t^3}{3}]_{-1}^{1} 
+= \frac{2}{3}$.
+\newline
+
+$b_2 = \frac{a_2 - \langle a_2, b_1\rangle b_1}{||a_2 - \langle a_2, b_1\rangle b_1||} 
+= \sqrt{\frac{3}{2}}t$
+\newline
+
+
+\underline{$b_3$}:
+
+$a_3 = t^2$.
+\newline
+
+$\langle a_3, b_1\rangle = \int_{-1}^{1} t^2*\frac{1}{\sqrt{2}} dt 
+= [\frac{t^3}{3\sqrt{2}}]_{-1}^{1} 
+= \frac{\sqrt{2}}{3}$.
+\newline
+
+$\langle a_3, b_2\rangle 
+= \int_{-1}^{1} t^2*\sqrt{\frac{3}{2}}t dt 
+= [\frac{t^4}{4\sqrt{2}}]_{-1}^{1} 
+= 0$.
+\newline
+
+$a_3 - \langle a_3, b_1\rangle b_1 - \langle a_3, b_2\rangle b_2 
+= t^2 - \frac{\sqrt{2}}{3} * \frac{1}{\sqrt{2}}
+= t^2 - \frac{1}{3}$.
+\newline
+
+$||a_3 - \langle a_3, b_1\rangle b_1 - \langle a_3, b_2\rangle b_2||^2
+= ||t^2 - \frac{1}{3}||^2
+= \langle t^2 - \frac{1}{3}, t^2 - \frac{1}{3}\rangle
+= \int_{-1}^{1} (t^2 - \frac{1}{3})*(t^2 - \frac{1}{3}) dt
+= \int_{-1}^{1} (t^4 - \frac{2}{3} t^2 + \frac{1}{9}) dt
+= [\frac{t^5}{5} - \frac{2}{9} t^3 + \frac{1}{9} t]_{-1}^{1}
+= \frac{8}{45}$.
+\newline
+
+$b_3 = \frac{a_3 - \langle a_3, b_1\rangle b_1 - \langle a_3, b_2\rangle b_2}{||a_3 - \langle a_3, b_1\rangle b_1 - \langle a_3, b_2\rangle b_2||}
+= \frac{t^2 - \frac{1}{3}}{\sqrt{\frac{8}{45}}}
+= \sqrt{\frac{45}{8}} t^2 - \sqrt{\frac{5}{8}}$.
+\newline
+
+\underline{Best quadratic approximation of $f(t)=e^t$:}
+
+The best approximation is given by: 
+$P_{P_2}(f(t)) 
+= 
+\langle f(t), b_1 \rangle b_1
++
+\langle f(t), b_2 \rangle b_2
++
+\langle f(t), b_3 \rangle b_3
+$.
+\newline
+
+$\langle f(t), b_1 \rangle
+= \langle e^t, \frac{1}{\sqrt{2}} \rangle
+= \int_{-1}^{1} \frac{1}{\sqrt{2}} e^t dt
+= [\frac{1}{\sqrt{2}} e^t]_{-1}^{1}
+= 1.662.
+$
+\newline
+
+$\langle f(t), b_2 \rangle
+= \langle e^t, \sqrt{\frac{3}{2}}t \rangle
+= \int_{-1}^{1} e^t * \sqrt{\frac{3}{2}}t dt
+= 0.901.
+$
+\newline
+
+$\langle f(t), b_3 \rangle
+= \langle e^t, \sqrt{\frac{45}{8}} t^2 - \sqrt{\frac{5}{8}} \rangle
+= \int_{-1}^{1} e^t * (\sqrt{\frac{45}{8}} t^2 - \sqrt{\frac{5}{8}}) dt
+= 0.226.
+$
+\newline
+
+$\implies f(t) 
+\approx 
+0.226(\sqrt{\frac{45}{8}} t^2 - \sqrt{\frac{5}{8}})
++
+0.901 * \sqrt{\frac{3}{2}}t
++
+\frac{1.662}{\sqrt{2}}
+=
+0.536t^2 + 1.103t + 0.997$
+\newline
+
+
+ii. Let $v=a_0b_1 + a_1b_2 = (a_0, a_1), w=a_0^\prime b_1 + a_1^\prime b_2 = (a_0^\prime, a_1^\prime) \in P_1(R)$.
+
+\begin{align*}
+  \langle
+    v, T^*w
+  \rangle
+  &=
+  \langle
+    Tv, w
+  \rangle &&\\
+  &= 
+  \langle
+    T(a_0, a_1), (a_0^\prime, a_1^\prime)
+  \rangle &&\\
+  &= 
+  \langle
+    (3a_0 + a_1, 3a_1), (a_0^\prime, a_1^\prime)
+  \rangle &&\\
+  &= 
+  \langle
+    (3a_0 + a_1, 0), (a_0^\prime, 0)
+  \rangle 
+  +
+  \langle
+    (0, 3a_1), (0, a_1^\prime)
+  \rangle 
+  &&\\
+  &= 
+  \langle
+    (3a_0, 0), (a_0^\prime, 0)
+  \rangle 
+  +
+  \langle
+    (a_1, 0), (a_0^\prime, 0)
+  \rangle 
+  +
+  \langle
+    (0, 3a_1), (0, a_1^\prime)
+  \rangle 
+  &&\\
+  &= 
+  \langle
+    (a_0, a_1), (3a_0^\prime, a_0^\prime + 3a_1^\prime)
+  \rangle &&\\
+\end{align*}
+
+$\implies T^*(a_0, a_1) = (3a_0, a_0 + 3a_1)$.
+\newline
+
+Let $v = 1+3t$, then:
+
+\qquad $\langle v, b_1 \rangle = \sqrt{2}$.
+
+\qquad $\langle v, b_2 \rangle = 2.45$.
+
+Therefore, $v = \sqrt{2}b_1 + 2.45b_2 = (\sqrt{2}, 2.45)$.
+\newline
+
+$\implies T^*v = (3\sqrt{2}, \sqrt{2} + 3*2.45) = (4.24, 8.76)$.
+\newpage
 
 
 \section*{2.}[2022.S(1.C), 2021.F(1.B)]
@@ -508,10 +1127,12 @@ i. Suggest two 2-dimensional subspaces $W_1$ and $W_2$ of $V$ such that $V=W_1 +
 
 ii. With $W_1= \{v \in V: v=(x,y,0) \}$, define two projections \textbf{\underline{on}} $W_1$ \textbf{\underline{along}} two distinct subspaces $W_2$ amd $W_3$ of $V$.
 
+\newpage
+
 
 \section*{3.}[2022.S(3.A), 2021.F(3.A)]
 
-Let $V = P_1(R) = Span(\{ 1,t \})$ with the inner product $<f,g> = \int_{0}^{1} f(t)g(t)dt, \  \forall f,g \in V$.
+Let $V = P_1(R) = Span(\{ 1,t \})$ with the inner product $\langle f,g \rangle = \int_{0}^{1} f(t)g(t)dt, \: \forall f,g \in V$.
 
   i. Find an orthonormal basis for V.
   
@@ -520,6 +1141,145 @@ Let $V = P_1(R) = Span(\{ 1,t \})$ with the inner product $<f,g> = \int_{0}^{1} 
   iii. Let $T(f) = f^\prime(t) + 3f(t)$ be a linear operator on $V$. Is $(t-2)$ an eigenvector for $T$?
 
   iv. Evaluate $T^*(2t-1)$.
+
+
+  \begin{center}
+    \textbf{\underline{Solution:}}  
+  \end{center}
+
+  i. Let $\alpha = \{ a_i \} = \{ t^i \}$ be the standard basis.
+  We use the Gram-Schmidt process to orthonormalize this basis to obtain $E=\{e_i\}$.
+  \newline
+
+  \underline{$e_1$:}
+
+  $||a_1||^2 
+  = \langle 1, 1\rangle 
+  = 1$.
+  \newline
+
+  $e_1 = \frac{a1}{||a_1||} 
+  = \frac{1}{\sqrt{1}} 
+  = 1$.
+  \newline
+
+  \underline{$e_2$:}
+
+  $\langle a_2, e_1\rangle 
+  = \langle t, 1\rangle 
+  = \frac{1}{2}$.
+  \newline
+
+  $a_2 - \langle a_2, e_1\rangle e_1 
+  = t - \frac{1}{2}$.
+  \newline
+
+  $||a_2 - \langle a_2, e_1\rangle e_1||^2
+  = ||t - \frac{1}{2}||^2
+  = \langle t - \frac{1}{2}, t - \frac{1}{2}\rangle
+  = \frac{1}{12}$.
+  \newline
+
+  $e_2 
+  = \frac{a_2 - \langle a_2, e_1\rangle e_1}{||a_2 - \langle a_2, e_1\rangle e_1||}
+  = \frac{t - \frac{1}{2}}{\sqrt{\frac{1}{12}}}
+  = \sqrt{12}(t - \frac{1}{2})$.
+  \newline
+
+
+  ii. 
+
+  $\langle f(t), e_1\rangle
+  =
+  \langle t^2, 1\rangle
+  =
+  0.333$.
+  \newline
+
+  $\langle f(t), e_2\rangle
+  =
+  \langle t^2, \sqrt{12}(t - \frac{1}{2})\rangle
+  =
+  0.289$.
+  \newline
+
+  $\implies f(t) 
+  = e^t 
+  \approx 
+  0.333 + 0.289*\sqrt{12}(t - \frac{1}{2})
+  = -0.168 + 1.001t$.
+  \newline
+
+
+  iii. 
+  $T(t-2)
+  = 1 + 3(t-2)
+  = -5 + 3t
+  \neq \lambda (t-2)$.
+
+  $\implies (t-2)$ is not an eigenvector of $T$.
+  \newline
+
+  iv. Let $v = a_1 e_1 + a_2 e_2 = (a_1, a_2), w= b_1 e_1 + b_2 e_2 = (b_1, b_2) \in P_1(R)$
+
+  \begin{align*}
+    \langle
+      v, T^*w
+    \rangle
+    &=
+    \langle
+      Tv, w
+    \rangle &&\\
+    &=
+    \langle
+      T(a_1, a_2), (b_1, b_2)
+    \rangle &&\\
+    &=
+    \langle
+      (3a_1 + a_2, 3a_2), (b_1, b_2)
+    \rangle &&\\
+    &=
+    \langle
+      (3a_1 + a_2, 0), (b_1, 0)
+    \rangle 
+    +
+    \langle
+      (0, 3a_2), (0, b_2)
+    \rangle &&\\
+    &=
+    \langle
+      (3a_1, 0), (b_1, 0)
+    \rangle 
+    +
+    \langle
+      (a_1, 0), (b_1, 0)
+    \rangle 
+    +
+    \langle
+      (0, 3a_2), (0, b_2)
+    \rangle &&\\
+    &=
+    3a_1b_1 + a2b_1 + 3a_2b_2 &&\\
+    &=
+    \langle
+      (a_1, a_2), (3b_1, b_1 + 3b_2)
+    \rangle. &&\\
+  \end{align*}
+  
+  $\implies T^*(c_1, c_2) = (3c_1, c_1 + 3c_2)$.
+  \newline
+
+  Let $u = 2t-1$.
+
+  $u 
+  = \langle u, e_1 \rangle e_1  + \langle u, e_2 \rangle e_2
+  = 0.577 e_2$.
+
+  $T^*u 
+  = (0, 1.731)
+  $ .
+
+  \newpage
 
 
   \section*{4.}[2021.F(1.C)]
@@ -532,6 +1292,8 @@ Let $V = P_1(R) = Span(\{ 1,t \})$ with the inner product $<f,g> = \int_{0}^{1} 
   iv. Find the matrix representation of $T$ relative to $\{1, t-1, t^2+1 \}$ as a basis for $P_2(R)$ 
   and $\{(0,1), (1,1)\}$ as a basis for $R^2$.
 
+  \newpage
+
 
   \section*{5.}[2021.F(2.B)]
 
@@ -542,15 +1304,59 @@ Let $V = P_1(R) = Span(\{ 1,t \})$ with the inner product $<f,g> = \int_{0}^{1} 
 
   ii. Find an eigenpair for $T$.
 
+  \newpage
+
 
   \section*{6.}[2021.F(3.C)]
 
   Let $V = \mathbb{C}^2$ and $T(z_1, z_2) = (2z_1 + iz_2, (1-i)z_1)$. 
   
   Evaluate $T^*(3-i, 1+2i)$.
+  
+  
+  \begin{center}
+    \textbf{\underline{Solution:}}  
+  \end{center}
+
+  Let $w = (w_1, w_2), z = (z_1, z_2) \in C^2$.
+
+  \begin{align*}
+    \langle
+      w, T^*z
+    \rangle
+    &=
+    \langle
+      Tw, z
+    \rangle &&\\
+    &=
+    \langle
+      T(w_1, w_2), (z_1, z_2)
+    \rangle &&\\
+    &=
+    \langle
+      (2w_1 + iw_2, (1-i)w_1), (z_1, z_2)
+    \rangle &&\\
+    &=
+    (2w_1 + iw_2)z_1 + (1-i)w_1z_2 &&\\
+    &=
+    w_1(2z_1 + (1-i)z_2) + w_2(iz_1) &&\\
+    &=
+    \langle
+      (w_1, w_2), (2z_1 + (1-i)z_2, iz_1)
+    \rangle
+  \end{align*}
+
+  $\implies T^*(z_1, z_2) = (2z_1 + (1-i)z_2,\: iz_1)$.
+
+  Let $v = (3-i, 1+2i)$, then 
+  $T^*v 
+  = (2(3-i) + (1-i)(1+2i), i(3-i))
+  = (...,\: ...)$.
+  
+  \newpage
 
 
-  \section*{6.}[2012.F(4.B)]
+  \section*{7.}[2012.F(4.B)]
 
   Find the minimal $l_2$-norm solution to the system:
 
