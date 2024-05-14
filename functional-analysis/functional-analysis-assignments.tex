@@ -31,7 +31,7 @@ M4 holds, since the triangle inequality holds for the absolute value.
 \section*{1.1.2}
 $d(x,y) = (x-y)^2$ is not a valid metric since it does not satisfy the triangle inequality.
 
-\begin{proof}{(By counterexample)}
+\begin{proof}{(By Counterexample)}
   $ $
 
   Let $a,b,c \in R$, where $a = 0, b = 1, c = 5$, then:
@@ -94,7 +94,7 @@ To satisfy axiom M2, $k$ must be zero.
 
 \section*{1.1.6}
 
-\begin{proof}{(By induction on the length of the sequence)}
+\begin{proof}{(By Induction on the Length of the Sequence)}
   $ $
 
   Let $X=(x_j), \ Y=(y_j), \ Z=(z_j)$ be 3 bounded sequences.
@@ -118,7 +118,7 @@ To satisfy axiom M2, $k$ must be zero.
 
 Next, we'll consider the sub-sequences of $X,Y,Z$ consisting of the first $n+1$ elements. Suppose that the induction hypothesis holds for sequences of length $n$, i.e.:
 
-\qquad $\sup\limits_{j \in \{1..n\}} |x_j - z_j| \leq \sup\limits_{j \in \{1..n\}} |x_j - y_j| + \sup\limits_{j \in \{1..n\}} |y_j - z_j|$ holds.
+\qquad $\sup\limits_{j \in \{1..n\}} |x_j - z_j| \leq \sup\limits_{j \in \{1..n\}} |x_j - y_j| + \sup\limits_{j \in \{1..n\}} |y_j - z_j|$.
 \newline
 
 Then we can partition each sequence of length $n+1$ into 2 sub-sequences: the first sequence contains the first $n$ elements and the second contains the last element.
@@ -158,7 +158,7 @@ M1 holds because $|x(t) - y(t)|$ is a positive function, and the integral of a p
 \newline
 
 \noindent
-M2 holds because $|x(t) - x(t)| = 0$, and the integral of 0 is 0.
+M2 holds because $|x(t) - x(t)| = 0$, and the integral of the zero function is 0.
 \newline
 
 \noindent
@@ -180,5 +180,1009 @@ To show that M4 holds, let $x, y, z \in X$, then:
 \noindent
 $\implies d(x, y) \leq d(x, z) + d(z, y).$
 
+\newpage
+
+\section*{1.2.3}
+\begin{proof}
+  $ $
+  
+  Let $(\zeta_j)$, $(\eta_j)$, and $(\theta_j) \in l^p$, where $(\zeta_j)$ is any point, and define $(\eta_j)$ and $(\theta_j)$ as follows:
+
+  $\eta_j := \begin{cases}
+    1 & j \leq n \\
+    0 & j > n
+  \end{cases}$
+
+  $\theta_j := \begin{cases}
+    \zeta_j & j \leq n \\
+    0 & j > n
+  \end{cases}$
+  \newline
+
+  \noindent
+  Applying the Cauchy-Schwarz inequality to $(\theta_j)$ and $(\eta_j)$, we get:
+
+  \begin{align*}
+    \sum_{j=1}^{\infty} |\theta_j \eta_j| 
+    &\leq \sqrt{\sum_{k=1}^{\infty} |\theta_j|^2} \sqrt{\sum_{m=1}^{\infty} |\eta_j|^2} &&\\
+    \sum_{j=1}^{n} |\theta_j \eta_j| 
+    &\leq \sqrt{\sum_{k=1}^{n} |\theta_j|^2} \sqrt{\sum_{m=1}^{n} |\eta_j|^2} &&\\
+    \sum_{j=1}^{n} |\theta_j| 
+    &\leq \sqrt{\sum_{k=1}^{n} |\theta_j|^2} \sqrt{\sum_{m=1}^{n} 1} &&\\
+    \sum_{j=1}^{n} |\zeta_j| 
+    &\leq \sqrt{\sum_{k=1}^{n} |\zeta_j|^2} \sqrt{n} &&\\
+    \left( \sum_{j=1}^{n} |\zeta_j| \right)^2
+    &\leq n \sum_{k=1}^{n} |\zeta_j^2| &&\\
+  \end{align*}
+\end{proof}
+
+\section*{1.2.4}
+
+% Let $\zeta_j := \frac{1}{\ln(j + 1)}$.
+% \newline
+
+% \noindent
+% Clearly the sequence $(\zeta_j)$ converges to zero as can be verified by evaluating the limit as j goes to infinity using L'Hopital rule.
+% \newline
+
+% \noindent
+% Now we show that the series $\sum_{j=1}^{\infty} |\zeta_j|^p$ is divergent. We show this using the comparison test.
+
+% \noindent
+% Let $\eta_j = \frac{1}{j + 1}$.
+
+% \noindent
+% Since $\frac{1}{j + 1} \leq $
+
+\section*{1.2.5}
+
+\begin{proof}
+  $ $
+  
+  The sequence $\zeta_j = \frac{1}{j}$ is divergent for $p=1$ but convergent for all $p > 1$.
+
+\end{proof}
+
+\section*{1.2.11}
+
+\begin{proof}
+  $ $
+
+  M1 holds because: 
+  \begin{align*}
+    &d(x,y) \geq 0 &&\\
+    \implies& \frac{d(x,y)}{1+d(x,y)} \geq 0 &&\\
+    \implies& \tilde{d}(x,y) \geq 0.
+  \end{align*}
+
+  M2 holds because:
+
+  \textbf{\underline{$\implies$}}:
+  \begin{align*}
+    &\tilde{d}(x,y) = 0 &&\\
+    \implies& \frac{d(x,y)}{1+d(x,y)} = 0 &&\\
+    \implies& d(x,y) = 0 &&\\
+    \implies& x = y. &&\\
+  \end{align*}
+
+  \textbf{\underline{$\impliedby$}}:
+  \begin{align*}
+    &x = y &&\\
+    \implies& d(x,y) = 0 &&\\
+    \implies& \frac{d(x,y)}{1 + d(x,y)} = 0 &&\\
+    \implies& \tilde{d}(x,y) = 0.
+  \end{align*}
+
+  M3 holds because: 
+  \begin{align*}
+    &d(x,y) = d(y,x) &&\\
+    \implies& \frac{d(x,y)}{1+d(x,y)} = \frac{d(y,x)}{1+d(y,x)} &&\\
+    \implies& \tilde{d}(x,y) = \tilde{d}(y,x).
+  \end{align*}
+
+  M4 holds because:
+  \begin{alignat*}{2}
+    &d(x,z) &&\leq d(x,y) + d(y,z) \\
+    \implies& \frac{d(x,z)}{1+d(x,z)} &&\leq \frac{d(x,y)}{1+d(x,z)} + \frac{d(y,z)}{1 + d(x, z)} \\
+    \implies& \frac{d(x,z)}{1+d(x,z)} &&\leq \frac{d(x,y)}{1+d(x,y)} + \frac{d(y,z)}{1 + d(y,z)} \\
+    \implies& \tilde{d}(x,z) &&\leq \tilde{d}(x,y) + \tilde{d}(y,z).
+  \end{alignat*}
+\end{proof}
+
+\newpage
+
+\section*{1.3.4}
+\begin{proof}
+  $ $
+
+  \noindent
+  \textbf{\underline{$\implies$ (By Construction)}}:
+
+  $ $
+  
+  Let $A$ be a non-empty open subset, and $\delta(A)$ be the diameter of A.
+
+  Since $A$ is non-empty and open, then $|A| > 1$.
+
+  Let $a_1, \: a_2$ be 2 different points in $A$.
+
+  Consider the 2 open balls $B(a_1, \delta(A))$ and $B(a_2, \delta(A))$.
+
+  We have $B(a_1, \delta(A)) = B(a_2, \delta(A)) = A$.
+
+  Thus, $A = B(a_1, \delta(A)) \cup B(a_2, \delta(A))$.
+  \newline
+  
+  \noindent
+  \textbf{\underline{$\impliedby$ (By Strong Induction)}}:
+
+  $ $
+
+  We will prove a \textbf{\underline{stronger}} result: The union of non-empty open subsets is a non-empty open subset.
+
+  Let $B=(B_1, B_2, \ldots, B_n)$ be a list of open subsets (balls \textbf{\underline{or not}}) in $X$.
+  \newline 
+
+  \underline{Base case: $|B| = 2$}
+
+  \begin{align*}
+    &A = B_1 \cup B_2 \\
+    \implies& \forall a \in A \:, \: a \in B_1 \lor a \in B_2 \\
+    \implies& \forall a \in A, \: \exists \text{ a ball about } a \\
+    \implies& A \text{ is a non-empty open subset of } X.
+  \end{align*}
+  
+  \underline{Inductive step: $|B|= k > 2$}
+
+  \begin{align}
+    A &= \bigcup_{j = 1}^{k} B_j \nonumber \\
+    &= \bigcup_{j = 1}^{k-1} B_j + B_n \nonumber \\
+    &= C + B_k
+  \end{align}
+  
+  \noindent
+  Where $C$ is a non-empty open subset by the induction hypothesis for $n = k-1$.
+  \newline
+
+  \noindent
+  Applying the induction hypothesis to (1) for $n = 2$, we conclude that $A$ is a non-empty open subset in $X$.
+
+\end{proof}
+
+\section*{1.3.6}
+
+\begin{proof}(By Construction)
+  $ $
+
+  We will prove this statement by recursively (and infinitely) applying the definition of an accumulation point on increasingly smaller $\epsilon$-neighborhoods.
+  \newline
+
+  Let the sequence of $(\epsilon_j)$ be such that $\forall j, \: \epsilon_j > 0$.
+  \newline
+
+  Since $x_0$ is an accumulation point,
+  then each $\epsilon_j$-neighborhood contains at least one point $y \in A$.
+  \newline
+  
+  Let $y_j$ to be any point in the $\epsilon_j$-neighborhood of $x_0$ that satisfies the following condition:
+  \begin{center}
+    $d(y_j, x_0) = \max\limits_{\forall y_k \in \tilde{B}(x_0; \epsilon_j)} d(y_k, x_0)$
+  \end{center}
+
+  Define $\epsilon_j$ recursively as follows:
+  
+  \begin{center}
+    $\epsilon_j := \begin{cases}
+      \epsilon_1 & j = 1 \\
+      d(x_0, y_{j-1})/2 & j > 1
+    \end{cases}$
+  \end{center}
+
+  Then the sequence $(y_j)$ is an infinite sequence of distinct points in A, all contained inside the $\epsilon_1$-neighborhood of $x_0$. 
+  \newline
+  
+  Since $\epsilon_1$ was arbitrarily chosen, this completes the proof.
+
+\end{proof}
+
+\section*{1.3.13}
+\begin{proof}
+  $ $
+
+  This follows directly from the definition that a separable space $X$ contains a subset $Y$ that is countable and dense in $X$.
+
+\end{proof}
+
+\section*{1.3.14}
+\begin{proof}
+  $ $
+  
+  \underline{$\implies$}:
+
+  Let $T: X \longrightarrow Y$ be a continuous map and $M$ be a closed subset in $Y$.
+  \begin{alignat*}{2}
+    \implies& M^c \text{ is open} \quad &&\text{(Because the complement of a closed set is an open set by definition 1.3-2)} \\
+    \implies& T^{-1}(M^c) \text{ is open } \quad &&\text{(By continuity of T)} \\
+    \implies& (T^{-1}(M^c))^c \text{ is closed } \quad &&\text{(Because the complement of an open set is a closed set by definition 1.3-2)} \\
+    \implies& T^{-1}((M^c)^c) \text{ is closed } \quad &&\text{(By the identity: } f^{-1}(A^c) = [f^{-1}(A)]^c \text{)} \\
+    \implies& T^{-1}(M) \text{ is open.} \quad &&\text{(By the identity: } A = [A^c]^c \text{)}\\
+  \end{alignat*}
+
+  \underline{$\impliedby$}:
+
+  Let $T: X \longrightarrow Y$ be a map such that the inverse image of any closed set in $Y$ is a closed set in $X$.
+  
+  Let $A$ be an open set in $Y$.
+  \begin{alignat*}{2}
+    \implies& A^c \text{ is closed} \quad &&\text{(Because the complement of an open set is a closed set by definition 1.3-2)} \\
+    \implies& T(A^c) \text{ is closed} \quad &&\text{(By our assumption the inverse image of any closed set is a closed set)} \\
+    \implies& [T(A^c)]^c \text{ is open} \quad &&\text{(Because the complement of a closed set is an open set by definition 1.3-2)} \\
+    \implies& T([A^c]^c) \text{ is open} \quad &&\text{(By the identity: } f^{-1}(A^c) = [f^{-1}(A)]^c \text{)} \\
+    \implies& T(A) \text{ is open} \quad &&\text{(By the identity: } A = [A^c]^c \text{)} \\
+    \implies& T \text{ is continuous.}
+  \end{alignat*}
+
+\end{proof}
+
+\newpage
+
+\section*{1.4.2}
+\begin{proof}
+  $ $
+
+  \begin{align*}
+    & (x_{n_k}) \text{ converges to x} \\
+    \implies& \forall \epsilon > 0, \: \exists K(\epsilon) \ni \forall k > K, \: d(x_{n_k}, x) < \epsilon \\
+    \implies& \forall \epsilon > 0, \: \exists N(\epsilon) = K(\epsilon) \ni \forall n > N, \: d(x_n, x) < \epsilon \quad \text{(Because $(x_n)$ is Cauchy)} \\
+    \implies& (x_n) \text{ converges to } x.
+  \end{align*} 
+
+\end{proof}
+
+\section*{1.4.4}
+\begin{proof}
+  $ $
+
+  Take $\epsilon$ with any concrete value, say $\epsilon = 1$.
+  \newline
+
+  Because $(x_n)$ is Cauchy, then:
+  \begin{align*}
+    \exists N \ni \forall n,m > N, d(x_n, x_m) < \epsilon = 1. 
+  \end{align*}
+
+  Define $a = \max\limits_{\forall i,j \in \{1, \ldots, N\}} d(x_i, x_j)$.
+  \newline
+
+  Therefore we have $\forall n$:
+  \begin{align*}
+    d(x_n, x_N) \leq \max(1, a) \leq 1 + a
+  \end{align*}
+
+  By the triangle inequality we have $\forall n, m$:
+  \begin{align*}
+    d(x_n, d_m) &\leq d(x_n, x_N) + d(x_N, x_m) \\
+    &\leq (1+a) + (1+a) = 2(1+a) = u.
+  \end{align*}
+  
+  This shows that $u$ is an upperbound for the Cauchy sequence.
+
+\end{proof}
+
+
+\section*{1.4.5}
+\begin{proof}(By Counterexample)
+  $ $
+
+  \underline{i. Boundedness does \textbf{not} imply Cauchiness}:
+
+  Consider the sequence $x_n = (-1)^n$.
+
+  $(x_n)$ is bounded by $2$, but the sequence is not Cauchy, because for any $0 < \epsilon < 2$: 
+  \begin{align*}
+    \not \exists N \ni \forall n,m > N, \: d(x_n, x_m) < \epsilon.
+  \end{align*}
+
+  \underline{ii. Boundedness does \textbf{not} imply Convergence}:
+
+  Consider the sequence $x_n = sin(n)$.
+
+  $(x_n)$ is bounded by $2$, but the sequence oscillates and does not converge.
+
+\end{proof}
+
+\section*{1.4.6}
+\begin{proof}
+  $ $
+
+  Take any $\epsilon > 0$, then since $(x_n)$ and $(y_n)$ are Cauchy:
+  \begin{align*}
+    \exists N_x \ni \forall n,m > N, \: d(x_n, x_m) < \epsilon
+  \end{align*}
+  and,
+  \begin{align*}
+    \exists N_y \ni \forall n,m > N, \: d(y_n, y_m) < \epsilon.
+  \end{align*}
+
+  Let $N = \max \lbrace N_x, N_y \rbrace$, then $\forall n > N$:
+  \begin{align*}
+    d(x_n, x_N) < \epsilon \: \land \: d(y_n, y_N) < \epsilon.
+  \end{align*}
+
+  By the triangle inequality we have $\forall n > N$:
+  \begin{align*}
+    a_n = d(x_n, y_n) &\leq d(x_n, x_N) + d(x_N, y_N) + d(y_N, y_n) \\
+    &\leq \epsilon + c + \epsilon \\
+    &=  2\epsilon + c.
+  \end{align*}
+
+  Finally, $\forall n,m > N$:
+  \begin{align*}
+    d(a_n, a_m) &\leq d(a_n, a_N) + d(a_N, a_m) \\
+    &= |d(x_n, y_n) - d(x_N, y_N)| + |d(x_m, y_m) - d(x_N, y_N)| \\
+    &\leq |2\epsilon + c - c| + |2\epsilon + c - c| \\
+    &= |2\epsilon| + |2\epsilon| \\
+    &\leq 4\epsilon.
+  \end{align*}
+
+  Therefore $(a_n)$ is a Cauchy sequence in $\mathbb{R}$,
+  and since $\mathbb{R}$ is complete, then $(a_n)$ is convergent.
+
+\end{proof}
+
+\newpage
+
+\section*{1.5.2}
+\begin{proof}
+  $ $
+  
+  \setcounter{equation}{0}
+  \begin{align}
+    &\text{Assume } (x_i) \text{ is a Cauchy sequence in } X \nonumber \\
+    \implies& \forall \epsilon > 0, \: \exists N \ni \forall j,k \geq N: \: 
+    d(x_j, x_k) = \max_{i=1}^{n} |x^{(j)}_i - x^{(k)}_i| < \epsilon \\
+    \implies& \forall \epsilon > 0, \: \exists N \ni \forall j,k \geq N, \: \forall i \in \{1,\ldots, n\}: 
+    \:
+    |x^{(j)}_i - x^{(k)}_i| < \epsilon \nonumber \nonumber \\
+    \implies& \forall i \in \{1,\ldots, n\}: \: (x^{(1)}_i, x^{(2)}_i, \ldots) \text{ is a Cauchy sequence of real numbers} \nonumber \\
+    \implies& \forall i \in \{1,\ldots, n\}: \: (x^{(1)}_i, x^{(2)}_i, \ldots) \text{ converges to a limit point } x_i \text{ because } \mathbb{R} \text{ is complete.} \nonumber
+  \end{align}
+
+  Next, we define a candidate limit for $(x_i)$:
+  \begin{align*}
+    x = (x_1, \ldots, x_n).
+  \end{align*}
+
+  Clearly, $x \in X$, and by (1) we have: 
+  \begin{align*}
+    \forall j \geq N: d(x_j, x) = \epsilon.
+  \end{align*}
+
+  This shows that $x$ is the limit of $(x_i)$ and proves completeness of $X$.
+
+\end{proof}
+
+\section*{1.5.5}
+\begin{proof}
+  $ $
+  
+  Assume $(x_n)$ is a Cauchy sequence in X
+
+  \noindent
+  $\implies \forall \epsilon > 0, 
+  \: \exists N \ni \forall n,m \geq N:  
+  \: d(x_n, x_m) = |x_n - x_m| < \epsilon$.
+  \newline
+
+  Take $\epsilon = 0.5$
+  
+  \noindent
+  $\implies \exists N \ni \forall n,m \geq N: |x_n - x_m| < 0.5$
+
+  \noindent
+  $\implies \forall n,m \geq N: x_n = x_m$
+
+  \noindent
+  $\implies (x_n) \longrightarrow x_N$.
+
+\end{proof}
+
+\section*{1.5.6}
+\begin{proof}(By Counterexample)
+  $ $
+
+  Take the sequence $x_n = n$.
+  \newline
+
+  First we show that it is Cauchy.
+  \newline
+
+  Given any $\epsilon > 0$, we can take $N(\epsilon) = \tan(\frac{\pi}{2} - \epsilon)$ so that $\forall n,m \geq N$:
+  \begin{align*}
+    &\arctan(x_m), \arctan(x_n) \in [\frac{\pi}{2} - \epsilon, {\frac{\pi}{2}}) \\
+  \end{align*}
+  \begin{align*}
+    \implies d(x_n, x_m) &= |\arctan(x_n) - \arctan(x_m)| \\
+    &\leq (\frac{\pi}{2} - \epsilon) - \frac{\pi}{2} \\
+    &= \epsilon. \\
+  \end{align*}
+
+  Therefore $(x_n)$ is Cauchy as desired.
+  \newline
+
+  Now we show that $(x_n)$ does not converge. 
+  
+  We observe that the sequence wants to converge to $\frac{\pi}{2}$, since:
+  \begin{align*}
+    \lim\limits_{n \to \infty} d(x_n, \frac{\pi}{2}) = 0
+  \end{align*}
+
+  But there is no element $x \in \mathbb{R}$, such that $\arctan(x) = \frac{\pi}{2}$.
+  \newline
+
+  Thus our metric space is \textbf{\underline{incomplete}.}
+
+\end{proof}
+
+\section*{1.5.8}
+\begin{proof}
+  $ $
+
+  \setcounter{equation}{0}
+  \begin{align}
+    &\text{Let } (x_n) \text{ be a Cauchy sequence in } Y \subseteq [a,b] \text{, and let J = [a,b]} \nonumber \\
+    \implies& 
+    \forall \epsilon>0, 
+    \exists N 
+    \ni \forall n,m \geq N: 
+    d(x_n, x_m) = \max\limits_{t \in J} |x_n(t) - x_m(t)| < \epsilon \\
+    \implies& 
+    \forall \epsilon>0, 
+    \exists N 
+    \ni \forall n,m \geq N, 
+    \: \forall t \in J: 
+    |x_n(t) - x_m(t)| < \epsilon \nonumber \\
+    \implies& 
+    \forall t_0 \in J:
+    \: (x_1(t_0), x_2(t_0), \ldots) \text{ is a Cauchy sequence of real numbers} \nonumber \\
+    \implies& 
+    \forall t_0 \in J:
+    \: (x_1(t_0), x_2(t_0), \ldots) \text{ converges to a limit point, say } x_{lim}(t_0) \text{, because } \mathbb{R} \text{ is complete} \nonumber
+  \end{align}
+
+  Now, we define a candidate limit $x$ for $(x_n)$.
+  \newline
+
+  Define $x$ pointwise so that $\forall t_0 \in J: \: x(t_0) = x_{lim}(t_0)$.
+  \newline
+
+  From the defintion above, we obviously have: $x(a) = x(b)$.
+  \newline
+
+  From $(1)$ with $m \to \infty$ we have $\forall n > N$:
+  \begin{align*}
+    &d(x_n, x) = \max\limits_{t \in J} |x_n(t) - x(t)| < \epsilon \\
+    \implies& \forall t_0 \in J: |x_n(t_0) - x(t_0) < \epsilon
+  \end{align*}
+
+  This shows that $x_m$ converges to $x$ \textbf{\underline{uniformly}} on $J$.
+  \newline
+
+  Since the $x_m$'s are continuous on $J$ and the convergence is uniform, the limit function $x$ is also continuous on $J$.
+  \newline
+  
+  Because $x \in C[a,b]$ and $x(a) = x(b)$, then $x \in Y$, and thus $Y$ is complete.
+
+\end{proof}
+
+\newpage
+
+\section*{2.1.5}
+\begin{proof}
+  $ $
+
+  \begin{align*}
+    &\sum_{i = 1}^{n} \alpha_i x_i 
+    = 0_v \\
+    \implies& \sum_{i = 1}^{n} \alpha_i t^i 
+    = 0_v \\
+    \implies& \forall i, \: \alpha_i = 0 \\
+    \implies& (x_1, \ldots, x_n) \text{ is linearly independent.}
+  \end{align*}
+
+\end{proof}
+
+\section*{2.1.6}
+\begin{proof}(By Contradiction)
+  $ $
+
+  Let $x \in X$.
+
+  Suppose $x$ has 2 different representations, $x_1$ and $x_2$, in the basis $(e_1,\ldots,e_n)$, where:
+  \begin{align*}
+    x_1 = \sum_{j = 1}^{n} \alpha_j e_j \qquad \text{and} \qquad
+    x_2 = \sum_{k = 1}^{n} \beta_k e_k
+  \end{align*}
+
+  Then we have:
+  \begin{align*}
+    &x_1 = x_2 \\
+    \implies& \sum_{j = 1}^{n} \alpha_j e_j = \sum_{k = 1}^{n} \beta e_k \\
+    \implies& \forall i, \: \alpha_i = \beta_i
+    \qquad \text{(Because } (e_1,\ldots,e_n) \text{ is linearly independent.)}
+  \end{align*}
+
+  This is a contradiction to our assumption that $x_1$ and $x_2$ have different representations. 
+  
+  Thus, we conclude that every non-zero vector must have a unique representation in a given basis.
+
+\end{proof}
+
+
+\section*{2.1.10}
+\begin{proof}
+  $ $
+
+  \underline{i. $V = Y \cap Z$ is a subspace:}
+  \newline
+
+  We must check 3 conditions:
+
+  \qquad 1. $0_v \in V$
+  \begin{align*}
+    & Y \text{ and } Z \text{ are vector spaces} \\
+    \implies& 0_v \in Y \land 0_v \in Z \\
+    \implies& 0_v \in V=Y \cap Z.
+  \end{align*}
+
+  \qquad 2. $v_1, v_2 \in V \implies v_1 + v_2 \in V$
+  \begin{align*}
+    &v1, v_2 \in V \\
+    \implies& v_1, v_2 \in Y \land v_1, v_2 \in Z \\
+    \implies& v_1 + v_2 \in Y \land v_1 + v_2 \in Z \\
+    \implies& v_1 + v_2 \in V = Y \cup Z.
+  \end{align*}
+
+  \qquad 3. $k \in K$ and $v \in V \implies kv \in V$
+  \begin{align*}
+    &v \in V \\
+    \implies& v \in Y \land v \in Z \\
+    \implies& kv \in Y \land kv \in Z \\
+    \implies& kv \in V = Y \cup Z.
+  \end{align*}
+
+  \underline{ii. $V = Y \cup Z$ is not a subspace:}
+  \newline
+
+  Consider the following counterexample:
+
+  \quad Let $V = R^2$, $Y = \{(x, 0): x \in R\}$, $Z = \{ (0, y): y\in R \}$, and $V = Y \cup Z$.
+
+  \quad Clearly, $Y$ and $Z$ are subspaces of $R^2$.
+
+  \quad Take $v_1 = (1, 0)$ and $v_2 = (0, 1)$.
+
+  \quad We have $v_1, v_2 \in V$, but $v_1 + v_2 = (1, 1) \not \in V$.
+
+  \quad This shows that the union of subspaces fails to be closed under vector addition.
+  
+\end{proof}
+
+\section*{2.1.11}
+\begin{proof}
+  $ $
+
+  We must check 3 conditions:
+
+  \qquad 1. $0_v \in M$
+  \begin{align*}
+    &\text{Let } v \in M \\
+    \implies& 0v = 0_v \in M.
+  \end{align*}
+
+  \qquad 2. $v_1, v_2 \in M \implies v_1 + v_2 \in M$
+  \begin{align*}
+    &v1, v_2 \in M \\
+    \implies& 
+    v_1 = \sum_{\forall m_i \in M} \alpha_i m_i 
+    \quad \text{ and } \quad
+    v_2 = \sum_{\forall m_j \in M} \beta_j m_j \\
+    \implies& v_1 + v_2 = \sum_{\forall m_k \in M} (\alpha_k + \beta_k) m_k 
+    =
+    \sum_{\forall m_k \in M} \gamma_k m_k \\
+    \implies& v_1 + v_2 \in M.
+  \end{align*}
+
+  \qquad 3. $k \in K$ and $v \in M \implies kv \in M$
+  \begin{align*}
+    &v \in V \\
+    \implies& v = \sum_{\forall m_i \in M} \alpha_i m_i  \\
+    \implies& kv = \sum_{\forall m_i \in M} (k\alpha_i) m_i  \\
+    \implies& kv = \sum_{\forall m_i \in M} \gamma_i m_i  \\
+    \implies& kv \in M.
+  \end{align*}
+
+\end{proof}
+
+\newpage
+
+\section*{2.2.6}
+\begin{proof}
+  $ $
+
+  Let $x = (\zeta_1, \zeta_2)$, and $y = (\eta_1, \eta_2)$.
+  \newline
+
+  \underline{i. $||x||_1 = |\zeta_1| + |\zeta_2|$}
+  \newline
+
+  N1 holds because:
+  \begin{align*}
+    ||x||_1 = |\zeta_1| + |\zeta_2| \geq 0.
+  \end{align*}
+
+  N2 holds because:
+
+  \underline{$\implies$:}
+  \begin{align*}
+    & ||x||_1 = 0 \\
+    \implies& |\zeta_1| + |\zeta_2| = 0 \\
+    \implies& |\zeta_1|, |\zeta_2| = 0 \\
+    \implies& \zeta_1, \zeta_2 = 0 \\
+    \implies& x = (0, 0) = 0_v.
+  \end{align*}
+
+  \underline{$\impliedby$:}
+  \begin{align*}
+    & x = 0 \\
+    \implies& \zeta_1, \zeta_2 = 0 \\
+    \implies& |\zeta_1|, |\zeta_2| = 0 \\
+    \implies& |\zeta_1| + |\zeta_2| = 0 \\
+    \implies& ||x||_1 = 0 \\
+  \end{align*}
+
+  N3 holds because:
+  \begin{align*}
+    ||\alpha x||_1 
+    &= |\alpha \zeta_1| + |\alpha \zeta_2| \\
+    &= |\alpha| |\zeta_1| + |\alpha| |\zeta_2| \\
+    &= |\alpha| (|\zeta_1| + |\zeta_2|) \\
+    &= |\alpha| \: ||x||_1 \\
+  \end{align*}
+
+  N4 holds because:
+  \begin{align*}
+    ||x+y||_1
+    &= |\zeta_1 + \eta_1| + |\zeta_2 + \eta_2| \\
+    &\leq |\zeta_1| + |\eta_1| + |\zeta_2| + |\eta_2| \\
+    &= (|\zeta_1| + |\zeta_2|) + (|\eta_1| + |\eta_2|) \\
+    &= ||x||_1 + ||y||_1.
+  \end{align*}
+
+  \underline{ii. $||x||_2 = (\zeta_1^2 + \zeta_2^2)^{\frac{1}{2}}$}
+  \newline
+  
+  N1 holds because:
+  \begin{align*}
+    ||x||_2 = (|\zeta_1|^2 + |\zeta_2|^2)^{\frac{1}{2}} \geq 0.
+  \end{align*}
+
+  N2 holds because:
+
+  \underline{$\implies$:}
+  \begin{align*}
+    & ||x||_2 = 0 \\
+    \implies& (|\zeta_1|^2 + |\zeta_2|^2)^\frac{1}{2} = 0 \\
+    \implies& |\zeta_1|^2 + |\zeta_2|^2 = 0 \\
+    \implies& |\zeta_1|^2, |\zeta_2|^2 = 0 \\
+    \implies& |\zeta_1|, |\zeta_2| = 0 \\
+    \implies& \zeta_1, \zeta_2 = 0 \\
+    \implies& x = (0, 0) = 0_v.
+  \end{align*}
+
+  \underline{$\impliedby$:}
+  \begin{align*}
+    & x = 0 \\
+    \implies& \zeta_1, \zeta_2 = 0 \\
+    \implies& |\zeta_1|, |\zeta_2| = 0 \\
+    \implies& |\zeta_1|^2, |\zeta_2|^2 = 0 \\
+    \implies& |\zeta_1|^2 + |\zeta_2|^2 = 0 \\
+    \implies& (|\zeta_1|^2 + |\zeta_2|^2)^\frac{1}{2} = 0 \\
+    \implies& ||x||_2 = 0 \\
+  \end{align*}
+
+  N3 holds because:
+  \begin{align*}
+    ||\alpha x||_2
+    &= (|\alpha \zeta_1|^2 + |\alpha \zeta_2|^2)^\frac{1}{2} \\
+    &= (|\alpha|^2 |\zeta_1|^2 + |\alpha|^2 |\zeta_2|^2)^\frac{1}{2} \\
+    &= |\alpha| (|\zeta_1|^2 + |\zeta_2|^2)^\frac{1}{2} \\
+    &= |\alpha| \: ||x||_2 \\
+  \end{align*}
+
+  N4 holds because:
+  \begin{align*}
+    ||x+y||_2^2
+    &= (\zeta_1 + \eta_1)^2 + (\zeta_2 + \eta_2)^2 \\
+    &= \zeta_1^2 + 2\zeta_1 \eta_1 + \eta_1^2
+    + \zeta_2^2 + 2\zeta_2 \eta_2 + \eta_2^2 \\
+    &= (\zeta_1^2 + \zeta_2^2) 
+    + (\eta_1^2 + \eta_2^2)
+    + 2(\zeta_1 \eta_1 + \zeta_2 \eta_2) \\
+    &\leq (\zeta_1^2 + \zeta_2^2) 
+    + (\eta_1^2 + \eta_2^2)
+    + 2\sqrt{\zeta_1^2 + \zeta_2^2} \sqrt{\eta_1^2 + \eta_2^2} \qquad \text{(By the Cauchy-Schwartz inequality)} \\
+    &= ||x||_2^2 + ||y||_2^2 +  2||x||_2 \: ||y||_2 \\
+    &= (||x||_2 + ||y||_2)^2
+  \end{align*}
+
+  \noindent
+  $\implies ||x+y||_2 \leq ||x||_2 + ||y||_2$.
+  \newline
+
+  \underline{iii. $||x||_\infty = \max \lbrace |\zeta_1|, |\zeta_2| \rbrace$}
+  \newline
+  
+  N1 holds because:
+  \begin{align*}
+    ||x||_\infty = \max \lbrace |\zeta_1|, |\zeta_2| \rbrace \geq 0.
+  \end{align*}
+
+  N2 holds because:
+
+  \underline{$\implies$:}
+  \begin{align*}
+    & ||x||_\infty = 0 \\
+    \implies& \max \lbrace |\zeta_1|, |\zeta_2| \rbrace = 0 \\
+    \implies& |\zeta_1|, |\zeta_2| = 0 \\
+    \implies& \zeta_1, \zeta_2 = 0 \\
+    \implies& x = (\zeta_1, \zeta_2) = (0, 0) = 0_v.
+  \end{align*}
+
+  \underline{$\impliedby$:}
+  \begin{align*}
+    & x = 0 \\
+    \implies& \zeta_1, \zeta_2 = 0 \\
+    \implies& |\zeta_1|, |\zeta_2| = 0 \\
+    \implies& \max \lbrace |\zeta_1|, |\zeta_2| \rbrace = 0 \\
+    \implies& ||x||_\infty = 0 \\
+  \end{align*}
+
+  N3 holds because:
+  \begin{align*}
+    ||\alpha x||_\infty
+    &= \max \lbrace |\alpha \zeta_1|, 
+    |\alpha \zeta_2| \rbrace \\
+    &= |\alpha| \: \max \lbrace |\zeta_1|, 
+    |\zeta_2| \rbrace \\
+    &= |\alpha| \: ||x||_\infty \\
+  \end{align*}
+
+  N4 holds because:
+  \begin{align*}
+    ||x+y||_\infty
+    &= \max \lbrace |\zeta_1 + \eta_2|, 
+    |\zeta_2 + \eta_2| \rbrace \\
+    &\leq \max \lbrace |\zeta_1| + |\eta_2|, 
+    |\zeta_2| + |\eta_2| \rbrace \\
+    &\leq \max \lbrace |\zeta_1|, 
+    |\zeta_2| \rbrace 
+    + \max \lbrace |\eta_1|, 
+    |\eta_2| \rbrace \\
+    &= ||x||_\infty + ||y||_\infty.
+  \end{align*}
+  
+\end{proof}
+
+\section*{2.2.8}
+
+\newpage
+
+\section*{2.6.2}
+\begin{proof}
+  $ $
+
+  Let $v_1, v_2 \in R^2$, where $v_1 = (\zeta_1, \zeta_2)$, $v_2 = (\eta_1, \eta_2)$, and $\alpha \in R$.
+  \newline
+
+  \underline{i. $T_1: (\zeta_1, \zeta_2) \longmapsto (\zeta_1, 0)$}
+  \newline
+
+  Additivity:
+  \begin{align*}
+    T_1 (v_1 + v_2) 
+    &= T_1 (\zeta_1 + \eta_1, \zeta_2 + \eta_2) \\
+    &= (\zeta_1 + \eta_1, 0) \\
+    &= (\zeta_1, 0) + (\eta_1, 0) \\
+    &= T_1 v_1 + T_1 v_2.
+  \end{align*}
+
+  Homogeneity:
+  \begin{align*}
+    T_1 (\alpha v_1) 
+    &= T_1 (\alpha \zeta_1, \alpha \zeta_2) \\
+    &= (\alpha \zeta_1, 0) \\
+    &= \alpha (\zeta_1, 0) \\
+    &= \alpha T_1 v_1.
+  \end{align*}
+
+  Geometric interpretation: Projection onto the x-axis.
+  \newline
+
+  \underline{ii. $T_2: (\zeta_1, \zeta_2) \longmapsto (0, \zeta_2)$}
+  \newline
+
+  Proof is similar to part (i).
+  \newline
+
+  Geometric interpretation: Projection onto the y-axis.
+  \newline
+
+  \underline{iii. $T_3: (\zeta_1, \zeta_2) \longmapsto (\zeta_2, \zeta_1)$}
+  \newline
+
+  Additivity:
+  \begin{align*}
+    T_3(v_1 + v_2) 
+    &= T_3 (\zeta_1 + \eta_1, \zeta_2 + \eta_2) \\
+    &= (\zeta_2 + \eta_2, \zeta_1 + \eta_1) \\
+    &= (\zeta_2, \zeta_1)
+    +
+    (\eta_2, \eta_1) \\
+    &= T_3 v_1 + T_3 v_2.
+  \end{align*}
+
+  Homogeneity:
+  \begin{align*}
+    T_3 (\alpha v_1)
+    &= T_3 (\alpha \zeta_1, \alpha \zeta_2) \\
+    &= (\alpha \zeta_2, \alpha \zeta_1) \\
+    &= \alpha (\zeta_2, \zeta_1) \\
+    &= \alpha T_3 v_1
+  \end{align*}
+
+  Geometric interpretation: Reflection across the line $y=x$.
+  \newline
+
+  \underline{iv. $T_4: (\zeta_1, \zeta_2) \longmapsto (\gamma \zeta_1, \gamma \zeta_2)$}
+  \newline
+
+  Additivity:
+  \begin{align*}
+    T_4 (v_1 + v_2)
+    &= T_4 (\zeta_1 + \eta_1, \zeta_2 + \eta_2) \\
+    &= (\gamma (\zeta_1 + \eta_1), \gamma (\zeta_2 + \eta_2)) \\
+    &= (\gamma \zeta_1, \gamma \zeta_2) 
+    +
+    (\gamma \eta_1, \gamma \eta_2)\\
+    &= T_4 v_1 + T_4 v_2.
+  \end{align*}
+
+  Homogeneity:
+  \begin{align*}
+    T_4 (\alpha v_1)
+    &= T_4 (\alpha \zeta_1, \alpha \zeta_2) \\
+    &= (\gamma \alpha \zeta_1, \gamma \alpha \zeta_2) \\
+    &= \alpha (\gamma \zeta_1, \gamma \zeta_2) \\
+    &= \alpha T_4 v_1
+  \end{align*}
+
+\end{proof}
+
+\section*{2.6.6}
+\begin{proof}
+  $ $
+  
+  Let $X, Y, Z$ be vector spaces over the same field $K$.
+
+  Let $T: X \longrightarrow Y$, $S: Y \longrightarrow Z$.
+  
+  Then, the composite operator $ST$ exists and $ST: X \longrightarrow Z$.
+  \newline
+
+  Let $x_1, x_2 \in X$, and $\alpha \in K$.
+  \newline
+
+  Additivity:
+  \begin{align*}
+    (ST) (x_1 + x_2)
+    &= S (T (x_1 + x_2)) \\
+    &= S (T x_1 + T x_2) \\
+    &= (ST) x_1 + (ST) x_2.
+  \end{align*}
+
+  Homogeneity:
+  \begin{align*}
+    (ST) (\alpha x_1)
+    &= S (T (\alpha x_1)) \\
+    &= S (\alpha  T x_1) \\
+    &= \alpha (ST) x_1.
+  \end{align*}
+
+\end{proof}
+
+\newpage
+
+\section*{2.7.2}
+\begin{proof}
+  $ $
+
+  \underline{$\implies: $}
+  
+  Let $T: X \longrightarrow Y$ be a bounded linear operator, and $B_x$ be a bounded set in $X$.
+  \newline
+
+  Since $B_x$ is bounded, then $\forall x \in B_x$:
+  \begin{align*}
+    ||x|| \leq c_x.
+  \end{align*}
+
+  Let $B_y$ be the image of $B_x$ under $T$: $B_y= T(B_x)$.
+  \newline
+
+  Since $T$ is bounded, then $\forall y \in B_y$:
+  \begin{align*}
+    ||y|| &= ||Tx|| \\
+    &\leq ||T|| \: ||x|| \\
+    &\leq ||T||  c_x = c_y.
+  \end{align*}
+
+  Thus, $B_y$ is bounded.
+  \newline
+
+  \underline{$\impliedby: $}
+
+  Suppose $T$ maps bounded sets in $X$ into bounded sets $Y$.
+  \newline
+
+  Let $B_x = \{x \in X: ||x|| = 1 \}$.
+  
+  \noindent
+  $\implies B_x$ is bounded.
+  \newline
+
+  Let $B_y$ be the image of $B_x$ under $T$: $B_y = T(B_x)$.
+  
+  \noindent
+  $\implies B_y$ is bounded
+  
+  \noindent
+  $\implies \forall y \in B_y: \: ||y|| \leq c$
+
+  \noindent
+  $\implies \forall x \in B_x: ||Tx|| \leq c$
+
+  \noindent
+  $\implies T $ is bounded by $Lemma$  $2.7-2$.
+
+\end{proof}
+
+
+\section*{2.7.3}
+\begin{proof}
+  $ $
+  
+  Let $x \in X$ s.t. $||x|| = \alpha < 1$, then:
+  \begin{align*}
+    &y = \frac{1}{\alpha} x \\
+    \implies& ||y|| = \frac{1}{\alpha} ||x|| = 1 \\
+    \implies& ||Ty|| \leq ||T|| \\
+    \implies& ||T (\frac{1}{\alpha} x)|| \leq ||T|| \\
+    \implies& \frac{1}{\alpha} ||Tx|| \leq ||T|| \\
+    \implies& ||Tx|| \leq \alpha ||T|| < ||T||.
+  \end{align*}
+  
+\end{proof}
+
+\newpage
+
+
+\section*{3.1.4}
+\begin{proof}
+  $ $
+
+
+
+\end{proof}
 
 \end{document}
