@@ -152,6 +152,33 @@ $d(x,y) = \begin{cases}
 \noindent
 Which is the discrete metric.
 
+\section*{1.1.8}
+
+M1 holds because $|x(t) - y(t)|$ is a positive function, and the integral of a positive function is positive.
+\newline
+
+\noindent
+M2 holds because $|x(t) - x(t)| = 0$, and the integral of 0 is 0.
+\newline
+
+\noindent
+M3 holds because $d(x, y) = \int_{a}^{b} |x(t) - y(t)| dt = \int_{a}^{b}|y(t) - x(t)| dt = d(y, x)$.
+\newline
+
+\noindent
+To show that M4 holds, let $x, y, z \in X$, then:
+\begin{align*}
+  d(x,z) 
+  &= \int_{a}^{b} |x(t) - z(t)| \ dt &&\\
+  &= \int_{a}^{b} |(x(t) - y(t)) - (z(t) - y(t))| \ dt &&\\
+  &\geq \int_{a}^{b} (|x(t) - y(t)| - |z(t) - y(t)|) \ dt \qquad \text{(By the triangle inequality of absolute values)} &&\\
+  % &= \int_{a}^{b} (|x(t) - y(t)| - |y(t) - z(t)|) \ dt &&\\
+  &= \int_{a}^{b} |x(t) - y(t)| dt - \int_{a}^{b} |z(t) - y(t)| dt &&\\
+  &= d(x, y) - d(z, y) &&\\
+\end{align*}
+
+\noindent
+$\implies d(x, y) \leq d(x, z) + d(z, y).$
 
 
 \end{document}
