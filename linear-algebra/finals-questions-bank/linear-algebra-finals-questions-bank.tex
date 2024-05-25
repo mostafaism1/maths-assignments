@@ -110,8 +110,36 @@ Notes:
   If $T \in Hom(V)$, $W$ is a T-invariant subspace of $V$, and $V = R(T) \oplus W$, then $W \subseteq N(T)$. 
 
 \end{customthm}
+
+\begin{proof}{(Direct Proof)}
+  $ $
+
+  Let $w \in W$
+
+  \noindent
+  $\implies Tw \in R(T)$ (by definition of the range) and $Tw \in W$ (because W is $T$-invariant)
+
+  \noindent
+  $\implies Tw \in R(T) \cap W$.
+  \newline
+
+  But since $V = R(T) \oplus W$, then $R(T) \cap W = \{ 0_v \}$
+
+  \noindent
+  $\implies Tw = 0_v$
+
+  \noindent
+  $\implies w \in N(T)$
+
+  \noindent
+  $\implies W \subseteq N(T)$.
+
+\end{proof}
+
+\subsection*{Alternative Proof}
 \begin{proof}{(By contradiction)}
   $ $
+
 
   Suppose that $W \not\subseteq N(T)$
   
@@ -119,13 +147,10 @@ Notes:
   $\implies \exists w \in W$ s.t. $w \notin N(T)$
 
   \noindent
-  $\implies Tw \in R(T)$
-
-  \noindent
   $\implies Tw \in R(T)$ and $Tw \in W$ \quad (Because $W$ is $T$-invariant)
 
   \noindent
-  $\implies \exists v=Tw \in V$ s.t. $v$ is not uniquely represented as a sum from $R(T)$ and $W$.
+  $\implies R(T) \cap W \neq \{ 0_v \}$
 
   \noindent
   $\implies V \neq R(T) \oplus W$.
@@ -167,7 +192,7 @@ Notes:
 \begin{proof}
   $ $
 
-  We prove a stronger result:  $(S^\perp)^\perp = Span(S)$.
+  We prove a stronger result:  $Span(S) = (S^\perp)^\perp$.
   \newline
   
   We start from the fact (given by another theorem) that if $U$ is a subspace, then $U = (U^\perp)^\perp$. So, now we need only show that $Span(S)^\perp = S^\perp$. This amounts to showing that $(i) Span(S)^\perp \subseteq S^\perp$ and $(ii) S^\perp \subseteq Span(S)^\perp$.
@@ -176,13 +201,13 @@ Notes:
   (i) Is true since any vector that is orthgonal to all vectors in $Span(S)$ must also be orthogonal to all vectors in $S$.
   \newline
 
-  (ii) Let $s_o \in S^\perp$ and $s \in Span(S)$.
+  (ii) Let $s_o \in S^\perp$ and $s \in Span(S)$
 
   \noindent
   $\implies s = \sum a_i s_i, \ \forall s_i \in S$
 
   \noindent
-  $\implies \langle \sum a_i s_i, s_o \rangle = \sum \langle a_i s_i, s_o \rangle = \sum a_i \langle s_i, s_o \rangle = \sum a_i * 0 = 0$.
+  $\implies \langle s, s_o \rangle = \langle \sum a_i s_i, s_o \rangle = \sum \langle a_i s_i, s_o \rangle = \sum a_i \langle s_i, s_o \rangle = \sum a_i * 0 = 0$
 
   \noindent
   $\implies s_o \in Span(S)^\perp$
@@ -249,7 +274,9 @@ Notes:
 \begin{proof}{Part ii}
   $ $
 
-  \textbf{\underline{Forward direction: }} Assume $T$ is injective and $(v_1,\ldots, v_n)$ is linearly independent, then:
+  \textbf{\underline{Forward direction: }} 
+  
+  Assume $T$ is injective and $(v_1,\ldots, v_n)$ is linearly independent, then:
 
   \begin{align*}
     0_w &= a_1Tv_1 + \ldots + a_n Tv_n &&\\
@@ -265,16 +292,15 @@ Notes:
   \noindent
   $\implies (Tv_1,...,Tv_n)$ is linearly independent.
 
-  \textbf{\underline{Converse direction: }} Assume $(v_1,\ldots,v_n)$ and $(Tv_1,\ldots,Tv_n)$ are both linearly independent.
-
-  \noindent
-  $\implies$ If $a_1Tv_1 + \ldots + a_nTv_n = 0_w$, then $a_1,\ldots,a_n = 0$
-
-  \noindent
-  $\implies$ If $T(a_1v_1+\ldots+a_nv_n) = 0_w$, then $a_1v_1 + \ldots + a_nv_n = 0_v$
-
-  \noindent
-  $\implies N(T) = \{ 0_v \}$
+  \textbf{\underline{Converse direction: }}
+  \begin{align*}
+    &\text{Let } (v_1,\ldots,v_n) \text{ be a basis for } V \\
+    \implies& (v_1,\ldots,v_n) \text { is linearly independent} \\
+    \implies& (Tv_1,\ldots,Tv_n) \text { is linearly independent} \\
+    \implies& [a_1 Tv_1 + \ldots + a_n Tv_n = 0_w \implies a_1,\ldots,a_n = 0] \\
+    \implies& [T(a_1 v_1+\ldots+a_n v_n) = 0_w \implies a_1 v_1 + \ldots + a_n v_n = 0_v] \\
+    \implies& N(T) = \{ 0_v \} \\
+  \end{align*}
 
   \noindent
   $\implies T$ is injective.
@@ -289,24 +315,35 @@ Notes:
 
   \qquad $T(\sum_{i=0}^{n} c_it^i) = (x_0, x_1,\ldots, x_n)$
 
-  where: $x_k = \int_{0}^{1}f(t)dt$ \qquad for $k = 0,\ldots,n$.
+  where: $x_k = \int_{0}^{1} t^k f(t)dt$ \qquad for $k = 0,\ldots,n$.
   \newline
   
   Show that $T$ is invertible.
-  \newline
-
-  Question to self: What is $f(t)$? Also, is it "for some $f(t)$" or "for all $f(t)$"?
-
-  It cannot be "for all $f(t)$, because it's obviously false for $f(t)=0$.
-
-  So it has to be for some $f(t)$.
 
 \end{customthm}
 
 \begin{proof}
   $ $
-  
-  
+
+  First, we note that the set $B_{P_n(R)} = \{ t^0, \ldots, t^n \}$ is a basis for $P_n(R)$, and $\langle f1, f2 \rangle = \int_{0}^{1} f_1*f_2 \: dt$ defines an inner-product on $P_n(R)$.
+  \newline
+
+  It follows that $T$ can be defined equivalently as follows:
+  \begin{align*}
+    Tf = (\langle t^0, f \rangle, \ldots , \langle t^n, f\rangle)
+  \end{align*}
+
+  Finally, we have the following series of implications:
+  \begin{align*}
+    & Tf = 0_{R^n} \\
+    \implies& \forall i \in \{0,\ldots, n\}, \: \langle t^i, f \rangle = 0 \\
+    \implies& \sum_{i = 0}^{n} a_i \langle t^i, f \rangle = 0 \\
+    \implies& \biggl< \sum_{i = 0}^{n} a_i t^i, f \biggr> = 0 \\
+    \implies& \forall f^\prime \in P_n(R), \: \langle f^\prime, f \rangle = 0 \\
+    \implies& f = 0 = 0_{P_n(R)} \\
+    \implies& T \text{ is injective} \\
+    \implies& T \text{ is invertible.} \\
+  \end{align*}
 
 \end{proof}
 \newpage
@@ -321,8 +358,33 @@ Notes:
 \begin{proof}
   $ $
 
-  
+  Let: 
+  \begin{align*}
+    &[T]_\alpha^\beta = A \\
+    &[T^{-1}]_\beta^\alpha = B \\
+    &T \alpha_j = \sum\limits_{i = 1}^{n} b_{ij} \beta_i \\
+    &T^{-1} \beta_j = \sum\limits_{i = 1}^{n} a_{ij} \alpha_i
+  \end{align*}
 
+  Then, we have:
+  \begin{align*}
+    \alpha_j 
+    &= (T^{-1} T) \alpha_j \\
+    &= T^{-1} (T \alpha_j) \\
+    &= T^{-1} \bigg( \sum\limits_{i = 1}^{n} b_{ij} \beta_i \bigg) \\
+    &= \sum\limits_{i = 1}^{n} b_{ij} T^{-1} \beta_i \\
+    &= \sum\limits_{i = 1}^{n} b_{ij} \sum\limits_{k = 1}^{n} a_{ki} \alpha_k \\
+    &= \sum\limits_{k = 1}^{n} \bigg( \sum\limits_{i = 1}^{n} b_{ij} a_{ki} \bigg) \alpha_k
+  \end{align*}
+
+  \noindent
+  $\implies \bigg( \sum\limits_{i = 1}^{n} a_{ij} b_{ki} \bigg) = \delta_{kj}$
+
+  \noindent
+  $\iff BA = I$
+
+  \noindent
+  $\iff B = A^{-1}$.
 
 \end{proof}
 \newpage
@@ -332,13 +394,64 @@ Notes:
 
   Let $V = M_{2x2}(R)$ and $T(A) = A^t + 2tr(A)I_2$, where $A \in V$ and $A^t$ is the transpose of $A$.
 
-  Find an ordered Basis $\beta$ for $V$ so that $[T]\beta$ is a diagonal matrix.
+  Find an ordered Basis $\beta$ for $V$ so that $[T]_\beta$ is a diagonal matrix.
 \end{customthm}
 
 \begin{proof}
   $ $
 
+  Since $M_{2x2}(R)$ is isomorphic to $R^4$, we'll use $R^4$ in place of $M_{2x2}(R)$.
+  \newline
+
+  Let $\alpha$ be the standard basis for $R^4$:
+  \begin{align*}
+    \alpha = \{ (1, 0, 0, 0)^T , (0, 1, 0, 0)^T, (0, 0, 1, 0)^T, (0, 0, 0, 1)^T\}
+  \end{align*}
   
+  Then:
+  \begin{align*}
+    &T(A) = A^t + 2tr(A)I \\ 
+    \implies& T = \begin{pmatrix}
+      1 & 0 & 0 & 0 \\
+      0 & 0 & 1 & 0 \\
+      0 & 1 & 0 & 0 \\
+      0 & 0 & 0 & 1 \\
+    \end{pmatrix}
+    +
+    2 \begin{pmatrix}
+      1 & 0 & 0 & 0 \\
+      0 & 0 & 0 & 0 \\
+      0 & 0 & 0 & 0 \\
+      0 & 0 & 0 & 1 \\
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      3 & 0 & 0 & 0 \\
+      0 & 0 & 1 & 0 \\
+      0 & 1 & 0 & 0 \\
+      0 & 0 & 0 & 3 \\
+    \end{pmatrix}.
+  \end{align*}
+
+  Next, to find the eigenvalues of $T$, we solve the characteristic equation:
+  \begin{align*}
+    &det(T-\lambda I )
+    = 0 \\
+    \implies& det \begin{pmatrix}
+      3-\lambda & 0 & 0 & 0 \\
+      0 & -\lambda & 1 & 0 \\
+      0 & 1 & -\lambda & 0 \\
+      0 & 0 & 0 & 3-\lambda \\
+    \end{pmatrix}
+    = 0 \\
+    \implies& (3-\lambda) * [
+      -\lambda (-\lambda (3-\lambda))
+      -1 (3-\lambda)
+    ]
+    = 0 \\
+    \implies& (3-\lambda) * [(3-\lambda) (\lambda^2 - 1)] = 0 \\
+    \implies& \lambda = 3, \: +1, \: -1.
+  \end{align*}
 
 
 \end{proof}
@@ -431,49 +544,12 @@ Notes:
 
   \textbf{\underline{$\implies$}}:
 
+  Suppose $\langle Tu, Tv \rangle = \langle u, v \rangle$, then:
   \begin{align*}
-    & \langle
-      Tu, Tv
-    \rangle 
-    =
-    \langle
-      u, v
-    \rangle &&\\
-    \implies & 
-    \langle
-    u, T^*Tv
-    \rangle 
-    =
-    \langle
-      u, v
-    \rangle &&\\
-    \implies & T^*T = I &&\\
-    \implies & ||Tu||^2
-    =
-    \langle
-      Tu, Tu
-    \rangle &&\\
-    \implies & ||Tu||^2
-    =
-    \langle
-      u, T^*Tu
-    \rangle &&\\
-    \implies & ||Tu||^2
-    =
-    \langle
-      u, Iu
-    \rangle &&\\
-    \implies & ||Tu||^2
-    =
-    \langle
-      u, u
-    \rangle &&\\
-    \implies & ||Tu||
-    =
-    \sqrt{
-    \langle
-      u, u
-    \rangle} = ||u||. &&\\
+    ||Tu||
+    &= \sqrt{\langle Tu, Tu \rangle} \\
+    &= \sqrt{\langle u, u \rangle} \\
+    &= ||u||.
   \end{align*}
 
   \textbf{\underline{$\impliedby$}}:
@@ -1366,5 +1442,31 @@ Let $V = P_1(R) = Span(\{ 1,t \})$ with the inner product $\langle f,g \rangle =
     4x + 7y - z &= 4.
   \end{align*}
 
-
+  % DRAFT
+  \newpage
+  \begin{proof}
+    \begin{align*}
+      &
+      \begin{pmatrix}
+        1 & -1 & 1 & 1 \\
+        0 & 1 & 2  & 1 \\
+        -1 & 2 & 1  & 0 \\
+        2 & 0 & 6 & 4
+      \end{pmatrix} \\
+      \rightarrow& 
+      \begin{pmatrix}
+        1 & -1 & 1 & 1 \\
+        0 & 1 & 2  & 1 \\
+        0 & 1 & 2  & 1 \\
+        0 & 2 & 4 & 2
+      \end{pmatrix} \\
+      \rightarrow& 
+      \begin{pmatrix}
+        1 & 0 & 3 & 2 \\
+        0 & 1 & 2  & 1 \\
+        0 & 0 & 0  & 0 \\
+        0 & 0 & 0 & 0
+      \end{pmatrix} \\
+    \end{align*}
+  \end{proof}
 \end{document}
