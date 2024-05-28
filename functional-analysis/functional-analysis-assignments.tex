@@ -2,6 +2,7 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amsthm}
+\usepackage{centernot}
 \author{Mostafa Hassanein}
 \title{Functional Analysis Assignment (Chapter 1)}
 \date{16 March 2024}
@@ -1404,6 +1405,105 @@ ii. Subspaces whose components are all $0$ after some index $n$.
     \implies& \forall \alpha: \: 2Re\langle \alpha y, x \rangle &&\leq 0 \\
     \implies& \langle x, y \rangle = 0.
   \end{alignat*}
+
+\end{proof}
+
+\newpage
+
+\section*{5.1.2}
+\begin{proof}
+  $ $
+
+  Let $x,y \in X$
+  \begin{align*}
+    d(Tx, Ty) 
+    &= |Tx - Ty| \\
+    &= |\frac{x}{2} + x^{-1} - \frac{y}{2} - y^{-1}| \\
+    &= |\frac{x-y}{2} + \frac{y-x}{xy}| \\
+    &= |x-y| \: |\frac{1}{2} - \frac{1}{xy}| \\
+    &\leq \frac{1}{2} \: |x-y| \\
+    &= \frac{1}{2} d(x,y)
+  \end{align*}
+
+  Therefore, $T$ is a contraction and the smallest $\alpha$ is $\frac{1}{2}$.
+
+\end{proof}
+
+\section*{5.1.5}
+\setcounter{equation}{0}
+\begin{proof} (By Contradiction)
+  $ $
+
+  Suppose $T$ has 2 different fixed points $x$ and $y$, then:
+  \begin{align}
+    & x = Tx \land y = Ty \nonumber \\
+    \implies& d(x, y) = d(Tx, Ty) 
+  \end{align}
+
+  But we are given that:
+  \begin{align}
+    d(Tx, Ty) < d(x, y)
+  \end{align}
+
+  (1) and (2) $\implies d(x,y) < d(x,y)$.
+  \newline
+
+  This is a contradiction. Thus, $T$ has a unique fixed point.
+
+\end{proof}
+
+
+\section*{5.1.6}
+\setcounter{equation}{0}
+
+\underline{$i. \: T \text{ is a contraction} \implies T^n \text{ is a contraction}$:}
+\begin{proof}(By Induction)
+
+  \underline{Base case $(n = 1)$:}
+
+  $T^1 = T$ which is a contraction by assumption.
+  \newline
+
+  \underline{Inductive step ($n = k+1$):}
+
+  Suppose the induction hypothesis holds for $n = k$, and let $x, y \in X$, then:
+  \begin{align}
+    d(T^k x, T^k y) \leq \beta \: d(x, y) \qquad \text{(where $0 < \beta < 1$)}
+  \end{align}
+
+  Next, let $T^kx = u$ and $T^k y = v$. Because $T$ is a contraction then:
+  \begin{align}
+    d(Tu, Tv) \leq \alpha \: d(u, v) \qquad \text{(where $0 < \alpha < 1$)}
+  \end{align} 
+
+  Putting $(1)$ and $(2)$ together, we get: 
+  \begin{align*}
+    d(T^{k+1}x, T^{k+1}y) &= d(Tu, Tv) \\
+    &\leq \alpha \: d(u, v) \\
+    &\leq \alpha \: \beta \: d(x,y) \\
+    &= \gamma \: d(x,y) \qquad \text{(where $0 < \gamma < 1$)}
+  \end{align*}
+
+  Therefore, $T^{k+1}$ is a contraction.
+
+\end{proof}
+
+\noindent
+\underline{$ii. \: T^n \text{ is a contraction} \centernot\implies T \text{ is a contraction}$:}
+\begin{proof}(By Counterexample)
+  $ $
+  
+  Let the mapping $T^n: R \longrightarrow R$ be defined by:
+  \begin{align*}
+    Tx := \begin{cases}
+      -x, &\text{if } x \geq 0 \\
+      \frac{x}{2}, &\text{if } x < 0
+    \end{cases}
+  \end{align*}
+
+  Then, $T$ does not contract the distance between positive numbers.
+
+  However, $T^2$ is a contraction.
 
 \end{proof}
 
