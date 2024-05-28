@@ -1179,9 +1179,231 @@ $\implies d(x, y) \leq d(x, z) + d(z, y).$
 
 \section*{3.1.4}
 \begin{proof}
+  \begin{align*}
+    \langle x+y, x-y \rangle 
+    &= \langle x, x-y \rangle
+    +
+    \langle y, x-y \rangle \\
+    &= \langle x, x \rangle - \langle x, y \rangle
+    +
+    \langle y, x \rangle - \langle y, y \rangle \\
+    &= 0 - \langle x, y \rangle
+    +
+    \langle x, y \rangle - 0
+    = 0 \\
+    &= 0.
+  \end{align*}
+
+  Geometric interpretation for $X = \mathbb{R}^2$:
+  
+  \qquad Since $||x|| = ||y||$, then the vectors $x$ and $y$ form a rhombus. The vectors $x+y$ and $x-y$ are the diagonals of that rhombus.
+  
+  \qquad Therefore, this statement simply states that the diagonals of a rhombus are perpendicular/orthogonal.
+  \newline
+
+  Geometric interpretation for $X = \mathbb{C}^1$: 
+
+  \qquad Same as $X = \mathbb{R}^2$, since $\mathbb{R}^2$ and $\mathbb{C}^1$ have the same geometry.
+
+
+
+
+\end{proof}
+
+\section*{3.1.7}
+\begin{proof}(By Contradiction)
   $ $
 
+  Let $u, v \in V$ s.t. $u \neq 0_v$ and $v := a u$, where $a \neq 1$. Then $u \neq v$, and:
+  \begin{align*}
+    &\forall x \in X: \langle x, u \rangle = \langle x, v \rangle \\
+    \implies& \forall x \in X: \langle x, u \rangle = \langle x, au \rangle \\
+    \implies& \forall x \in X: \langle x, u \rangle = \bar{a} \langle x, u \rangle
+  \end{align*}
 
+  But this is impossible since $a \neq 1$. Thus, we must have $u = v$.
+
+\end{proof}
+
+\section*{3.1.11}
+\begin{proof}
+  $ $
+
+  To check if the given norm is induced by some inner-product, we could check whether the parallelogram equality holds, but there's an even simpler proof.
+  \newline
+
+  First, we note that this space is an $l^p$ space with $p=1$.
+  \newline
+
+  Finally, we note that it was shown in $3.1-7$ that the space $l^p$ with $p \neq 2$ is not an inner-product space.
+  \newline
+  
+  Therefore, there is no inner-product that induces the given norm.
+
+\end{proof}
+
+\newpage
+
+
+\section*{3.2.1}
+$ $
+
+The Euclidean inner product on $\mathbb{R}^2$ and $\mathbb{R}^3$ reduces to the dot product.
+\newline
+
+The dot product of 2 vectors is the product of their length times cosine the angle between them:
+\begin{align*}
+  \langle x,y \rangle
+  &= x \cdot y \\
+  &= ||x|| \: ||y|| \cos(\theta)
+\end{align*}
+
+Taking the absolute value of both sides we get:
+\begin{align*}
+  |\langle x,y \rangle| 
+  &= ||x|| \: ||y|| \: |\cos(\theta)| \\
+  &\leq ||x|| \: ||y||
+\end{align*}
+
+
+Which is the same result given by the Schwarz inequality.
+
+
+\section*{3.2.2}
+$ $
+
+i. The trivial subspace containing just the zero sequence.
+
+ii. Subspaces whose components are all $0$ after some index $n$.
+
+
+\section*{3.2.4}
+\setcounter{equation}{0}
+\begin{proof}
+  $ $
+
+  By the continuity of the inner product (Lemma 3.2-2), we have:
+  \begin{align}
+    \langle x_n, y \rangle \to \langle x, y \rangle \label{3.2.4.1}
+  \end{align}
+  
+  Next, we define the sequence $(a_n)$ by:  $a_n := \langle x_n, y \rangle$. Then:
+  \begin{align}
+    & \forall n \in \mathbb{N}: \: a_n = 0 \nonumber \\
+    \implies& a_n \to 0 \nonumber \\
+    \implies& \langle x_n, y \rangle \to 0 \label{3.2.4.2}
+  \end{align}
+
+  Finally:
+  \begin{align*}
+    (\ref{3.2.4.1}) \text{ and } (\ref{3.2.4.2}) \implies& \langle x, y \rangle \to 0 \\
+    \implies& x \perp y.
+  \end{align*}
+
+\end{proof}
+
+\section*{3.2.5}
+\begin{proof}
+  $ $
+
+  To prove that $x_n \to x$, we will show that $||x_n - x|| \to 0$:
+  \begin{align*}
+    ||x_n - x|| 
+    &= \langle x_n - x, x_n -x \rangle \\
+    &= \langle x_n, x_n \rangle
+    - \langle x_n, x \rangle
+    - \langle x, x_n \rangle
+    + \langle x, x \rangle \\
+    &= ||x_n||^2
+    - \langle x_n, x \rangle
+    - \langle x, x_n \rangle
+    + ||x_n||^2
+  \end{align*}
+
+  Taking the limit as $n \to \infty$:
+  \begin{align*}
+    ||x_n - x|| 
+    \to
+    2 ||x||^2
+    - 2\langle x, x \rangle = 2 ||x||^2 - 2 ||x||^2 = 0.
+  \end{align*}
+\end{proof}
+
+\section*{3.2.8}
+\begin{proof}
+  $ $
+
+  \underline{$\implies$}:
+  \begin{align*}
+    & \langle x, y \rangle = 0 \\
+    \implies& \forall \bar{\alpha}: \: \bar{\alpha} \langle x, y \rangle = 0 \\
+    \implies& \forall \alpha: \: \langle x, \alpha y \rangle = 0 \\
+    \implies& \forall \alpha: \: \langle x, \alpha y \rangle = 0 \: \land \: \langle \alpha y, x \rangle = 0
+  \end{align*}
+
+  Next, we have $\forall \alpha$:
+  \begin{align*}
+    ||x + \alpha y||^2 
+    &= \langle x + \alpha y, x + \alpha y \rangle \\
+    &= 
+    \langle x, x \rangle
+    +
+    \langle x, \alpha y \rangle
+    +
+    \langle \alpha y, x \rangle
+    +
+    \langle y, y \rangle \\
+    &= 
+    ||x||^2
+    +
+    0
+    +
+    0
+    +
+    ||y||^2 \\
+    &\geq ||x||^2
+  \end{align*}
+
+  Finally, taking the square root, we arrive at our desired result:
+  \begin{align*}
+    ||x + \alpha y|| \geq ||x||.
+  \end{align*}
+
+  \underline{$\impliedby$}:
+  \begin{alignat*}{2}
+    & \forall \alpha: \: ||x|| &&\leq ||x + \alpha y||  \\
+    \implies& \forall \alpha: \: ||x||^2 &&\leq ||x + \alpha y||^2 \\
+    & &&= \langle x + \alpha y, x + \alpha y \rangle \\
+    & &&= \langle x, x \rangle
+    +
+    \langle x, \alpha y \rangle
+    +
+    \langle \alpha y, x \rangle
+    +
+    \langle y, y \rangle \\
+    & &&= 
+    ||x||^2
+    +
+   \overline{\langle \alpha y, x \rangle}
+    +
+    \langle \alpha y, x \rangle
+    +
+    ||y||^2 \\
+    & &&= 
+    ||x||^2
+    +
+    2Re\langle \alpha y, x \rangle
+    +
+    ||y||^2 \\
+    & &&= 
+    ||x||^2
+    +
+    2Re (\alpha \langle y, x \rangle)
+    +
+    ||y||^2 \\
+    \implies& \forall \alpha: \: 2Re\langle \alpha y, x \rangle &&\leq 0 \\
+    \implies& \langle x, y \rangle = 0.
+  \end{alignat*}
 
 \end{proof}
 
