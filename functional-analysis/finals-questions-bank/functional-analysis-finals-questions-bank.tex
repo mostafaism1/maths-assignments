@@ -21,5 +21,485 @@
 
 \newpage
 
+\begin{center}
+  \section*{\underline{Definitions}}
+\end{center}
+
+\begin{definition}[Metric space]
+  A metric space is an ordered pair $(X,d)$, 
+  where $X$ is a set, 
+  and $d: X \times X \longrightarrow R$ is a distance function
+  such that $\forall x, y, z \in X$:
+  \begin{align*}
+    &M1 \text{ (Non-negativity)}: &&d(x,y) \geq 0 \\
+    &M2 \text{ (Definiteness)}:   &&d(x,x) = 0 \iff x = 0 \\
+    &M3 \text{ (Symmetry)}:   &&d(x,y) = d(y,x) \\
+    &M4 \text{ (Triangle inequality)}:   &&d(x,z) \leq d(x,y) + d(y,z) \\
+  \end{align*}
+
+  Note: To save time, you could just mention that $d$ satisfies the axioms of non-negativity, definiteness, symmetry, triangle inequality.
+\end{definition}
+
+\begin{definition}[Open set]
+  An open set is a set $X$ where $\forall x \in X$:
+  \begin{align*}
+    \exists r: \: B(x,r) \text{ is wholly contained inside } X.
+  \end{align*}
+
+  \noindent
+  Alternatively: 
+
+  A subset $M$ of a metric space $X$ is said to be open if it contains a ball about each of its points.
+\end{definition}
+
+\begin{definition}[Closed set]
+  A closed set is a set that is \underline{not} open.
+
+  \noindent
+  Alternatively:
+
+  A subset $K$ of $X$ is said to be closed if its complement (in $X$) is open.
+\end{definition}
+
+\begin{definition}[Interior point]
+  A point $x$ is an interior point of a set $M \subseteq X$ if $M$ is a neighborhood of $x$.
+\end{definition}
+
+\begin{definition}[Dense set]
+  A subset $M$ of a metric space $X$ is dense in $X$ if $\overline{M} = X$.
+\end{definition}
+
+\begin{definition}[Separable space]
+  A space $X$ is separable if it contains a \underline{countable subset} $M$ which is \underline{dense} in $X$
+\end{definition}
+
+\begin{definition}[Complete space]
+  A space $X$ is complete if every Cauchy sequence in $X$ converges.
+\end{definition}
+
+\begin{definition}[Finite dimensional vector space]
+  A vector space $V$ is finite dimensional if $\exists n \in N$, such that $X$ contains a set of $n$ linearly independet vectors, whereas any set of $n+1$ vectors is linearly dependent.
+\end{definition}
+
+\begin{definition}[Infinite dimensional vector space]
+  A vector space $V$ is infinite dimensional if it is \underline{not} finite dimensional.
+\end{definition}
+
+\begin{definition}[Normed space]
+  Is an ordered pair $(X, ||)$, where $X$ is a vector space, and $||: X \longrightarrow R$ is a norm function such that $\forall x,y \in X$:
+  \begin{align*}
+    &N1 \text{ (Non-negativity)}: &&||x|| \geq 0 \\
+    &N2 \text{ (Definiteness)}: &&||x|| = 0 \iff x = 0 \\
+    &N3 \text{ (Homogeneity)}: &&||\alpha \: x|| = \alpha \: ||x|| \\
+    &N4 \text{ (Triangle inequality)}: &&||x + y|| \leq ||x|| + ||y|| \\
+  \end{align*}
+\end{definition}
+
+\begin{definition}[Banach space]
+  Is a complete normed space.
+\end{definition}
+
+\begin{definition}[Hilbert space]
+  Is a complete inner product space.
+\end{definition}
+
+\begin{definition}[Linear operator]
+  A linear operator $T: X \longrightarrow Y$ is a mapping between vector spaces such that $\forall x, y \in X$ and $\forall \alpha \in K$:
+  \begin{align*}
+    T(\alpha \: x+y) = \alpha \: Tx + Ty
+  \end{align*}
+\end{definition}
+
+\begin{definition}[Linear functional]
+  A linear functional $f: X \longrightarrow K$ is a linear operator whose domain is a vector space $X$ and whose range is the scalar field $K$ of $X$.
+\end{definition}
+
+\begin{definition}[Bounded linear operator]
+  A linear operator $T: X \longrightarrow Y$ between normed vector spaces is bounded if $\exists c \in R$ such that:
+  \begin{align*}
+    \forall x \in X: \: ||Tx|| \leq c ||x||
+  \end{align*}
+\end{definition}
+
+\begin{definition}[Inner product space]
+  Is an ordered pair $(X, \langle \rangle)$, where $X$ is a vector space, and $\langle \rangle: X \times X \longrightarrow R$ is an inner-product function such that $\forall x,y,z \in X$:
+  \begin{align*}
+    &IP1 \text{ (Non-negativity)}: &&\langle x, x\rangle \geq 0 \\
+    &IP2 \text{ (Definiteness)}: &&\langle x, x\rangle = 0 \iff x = 0 \\
+    &IP3.1 \text{ (Additivity)}: &&\langle x + y, z\rangle = \langle x, z\rangle + \langle y, z\rangle\\
+    &IP3.2 \text{ (Homogeneity)}: &&\langle \alpha \: x, x\rangle = \alpha \: \langle x, x\rangle \\
+    &IP4 \text{ (Conjugate symmetry)}: &&\langle x, y\rangle = \overline{\langle y, x\rangle}
+  \end{align*}    
+\end{definition}
+
+\begin{definition}[Strong convergence]
+  A sequence $(x_n)$ in a normed space $X$ converges strongly if $\exists x \in X$ such that:
+  \begin{align*}
+    \lim_{n \to \infty} ||x_n - x|| = 0.
+  \end{align*}  
+\end{definition}
+
+\begin{definition}[Weak convergence]
+  A sequence $(x_n)$ in a normed space $X$ converges weakly if $\exists x \in X$ such that $\forall f \in X^\prime$:
+  \begin{align*}
+    \lim_{n \to \infty} f(x_n) = f(x).
+  \end{align*}  
+\end{definition}
+
+\newpage
+
+
+\begin{center}
+  \section*{\underline{True or false (without proof)}}
+\end{center}
+
+\begin{align*}
+  &\text{1. The sequence space $l^\infty$ is a metric space.}  &&& \text{True} \\
+  &\text{2. The complex plane $\mathbb{C}$ is separable.}  &&& \text{True} \\
+  &\text{3. Every Cauchy sequence in a metric space is convergent sequence.}  &&& \text{False} \\
+  &\text{4. The function sapce $C[a,b]$ is both a Banach space and a Hilbert space.}  &&& \text{False} \\
+  &\text{5. The integral operator is a bounded linear operator.}  &&& \text{True} \\
+  &\text{6. All normed spaces are inner product spaces.}  &&& \text{False} \\
+  &\text{7. The space $l^p$ with $p \neq 2$ is a Hilbert space.}  &&& \text{False} \\
+\end{align*}
+
+\newpage
+
+
+\begin{center}
+  \section*{\underline{Proofs}}
+\end{center}
+
+\begin{customthm}{1}[Completeness of $\mathbb{R}^n$ and $\mathbb{C}^n$]
+\end{customthm}
+
+\begin{proof}
+  $ $
+  
+  Let $F$ denote either $R$ or $C$. Then $F$ is a \underline{complete} field.
+  \newline
+
+  Let $(x_m)$ be a Cauchy sequence in $F^n$, where $x_m = (x^{(m)}_1, \ldots, x^{(m)}_n)$.
+  \newline
+
+  Since $(x_m)$ is Cauchy, then $\forall \epsilon > 0,$ $\exists N$ such that $\forall m,r \geq N$:
+  \begin{align*}
+    & d(x_m, x_r) = \left( \sum_{j=1}^{n} (x^{(m)}_j - x^{(r)}_j)^2 \right)^{1/2} < \epsilon \\
+    \implies& \forall j \in 1,\dots,n: \: (x^{(m)}_j - x^{(r)}_j)^2 < \epsilon^2 \\
+    \implies& \forall j \in 1,\dots,n: \: | x^{(m)}_j - x^{(r)}_j | < \epsilon \\
+    \implies& \forall j \in 1,\dots,n: \: \text{The sequence } (x^{(1)}_j, x^{(2)}_j, \ldots) \text{ is Cauchy} \\
+    \implies& \forall j \in 1,\dots,n: \: \text{The sequence } (x^{(1)}_j, x^{(2)}_j, \ldots) \text{ converges (by the completeness of $F$).}
+  \end{align*}
+
+  Denote the limit of the above sequences by $x_j$.
+  \newline
+
+  Next, we define our candidate limit as follows:
+  \begin{align*}
+    x = (x_1, \ldots, x_n)
+  \end{align*}
+
+  Finally, it is clear that $x \in F^n$, and $\forall m \geq N$:
+  \begin{align*}
+    d(x_m, x) < \epsilon
+  \end{align*}
+
+  This shows that $x$ is indeed the limit of $(x_n)$, and proves completeness of $F^n$.
+
+\end{proof}
+
+\newpage
+
+\setcounter{equation}{0}
+\begin{customthm}{2}[Completeness of the function space $C \lbrack a,b \rbrack$]
+\end{customthm}
+
+\begin{proof}
+  $ $
+
+  Let $(x_m)$ be a Cauchy sequence in $C[a,b]$, and $J = [a, b]$.
+  \newline
+
+  Then, $\forall \epsilon > 0$, $\exists N$ such that $\forall m,n > N$:
+  \begin{align}
+    &d(x_m, x_n) = \max\limits_{t \in J} | x_m(t) - x_n(t) | < \epsilon \\
+    \implies& \forall t_0 \in J: \: | x_m(t_0) - x_n(t_0) | < \epsilon \nonumber \\
+    \implies& \forall t_0 \in J: \: \text{The sequence } (x_1(t_0), x_2(t_0), \ldots) \text{ is a Cauchy sequence of real numbers} \nonumber \\
+    \implies& \forall t_0 \in J: \: \text{The sequence } (x_1(t_0), x_2(t_0), \ldots) \text{ converges (by completeness of R)}. \nonumber
+  \end{align}
+
+  Denote the limit of the above sequences by $x_{lim}(t_0)$.
+  \newline
+  
+  Next, we define our candidate limit $x$. We define $x$ pointwise as follows:
+  \begin{align*}
+    \forall t \in J: \: x(t) = x_{lim}(t)
+  \end{align*}
+
+  Now we show that $(x_m(t))$ converges uniformly on $J$.
+  
+  To do this we take the limit of $(1)$ as $n \to \infty$:
+  \begin{align*}
+    &d(x_m, x) = \max\limits_{t \in J} | x_m(t) - x(t) | < \epsilon \\
+    \implies& \forall t_0 \in J: \: | x_m(t_0) - x(t_0) | < \epsilon \\
+    \implies& (x_m(t)) \text{ converges uniformly on } J.
+  \end{align*}
+
+  Finally, since the $x_m$'s are continuous on $J$ and the convergence is uniform, then the limit function $x$ is continuous on $J$, and hence $x \in C[a,b]$.
+  \newline
+
+  Therefore, the space $C[a,b]$ is complete.
+
+\end{proof}
+
+\newpage
+
+\setcounter{equation}{0}
+\begin{customthm}{3}[Compactness]
+\end{customthm}
+
+\begin{proof}
+  $ $
+
+  
+\end{proof}
+
+\newpage
+
+\setcounter{equation}{0}
+\begin{customthm}{4}[Banach fixed point theorem (Contraction Theorem)]
+  $ $
+
+  Consider a metric space $X = (X, d)$, where $X \neq \emptyset$. Suppose that $X$ is complete and let $T: X \longrightarrow X$ be a contraction on $X$. Then $T$ has precisely one fixed point.
+\end{customthm}
+
+\begin{proof}
+  $ $
+
+  Proof sketch: 
+
+  \qquad
+  First, we construct a sequence $(x_n)$ and show that it is Cauchy, so that it converges in the complete space $X$. 
+  
+  \qquad
+  Second, we prove that its limit, $x$, is a fixed point of $T$. 
+  
+  \qquad
+  Finally, we show that $T$ has no other fixed points.
+  \begin{center}
+    \noindent\rule{8cm}{0.4pt}
+  \end{center}
+
+  Choose any $x_0 \in X$, and define the sequence $(x_n)$ recursively as follows:
+  \begin{align*}
+    x_n = \begin{cases}
+      x_0, & n = 0 \\
+      T x_{n-1}, & n > 0
+    \end{cases}
+  \end{align*}
+
+  We now show that $(x_n)$ is Cauchy.
+  
+  Because $T$ is a contraction we have:
+  \begin{align}
+    d(x_{m+1}, x_m) 
+    &= d(Tx_{m}, Tx_{m-1}) \nonumber \\
+    &\leq \alpha \: d(x_{m}, x_{m-1}) \nonumber \\
+    &= \alpha \: d(Tx_{m-1}, Tx_{m-2}) \nonumber \\
+    &\leq \alpha^2 \: d(x_{m-1}, x_{m-2}) \nonumber \\
+    \vdots \nonumber \\
+    &= \alpha^m \: d(x_1, x_0)
+  \end{align}
+
+  Applying the triangle inequality to $(1)$, we get $\forall n > m$:
+  \begin{align}
+    d(x_m, x_n) 
+    &\leq d(x_{m}, x_{m+1}) + d(x_{m+1}, x_{m+2}) + \ldots + d(x_{n-1}, x_{n}) \nonumber \\
+    &\leq (\alpha^{m} + \alpha^{m+1} + \ldots + \alpha^{n-1}) \: d(x_0, x_1)
+  \end{align}
+
+  Applying the geometric series formula to $(2)$, we get:
+  \begin{align*}
+    d(x_m, x_n)
+    &= \alpha^m \: \frac{1-\alpha^{n-m}}{1-\alpha} \: d(x_0, x_1) \\
+    &= \beta^m \: d(x_0, x_1) &&\text{for some $0 < \beta < 1$} \\
+    &< \epsilon &&\text{$\forall \epsilon$, and $\forall m,n > N(\epsilon)$}
+  \end{align*}
+
+  \noindent
+  $\implies (x_n)$ is Cauchy.
+
+  \noindent
+  $\implies (x_n)$ converges by the completeness of $X$ to a limit point, say $x$.
+  \newline
+
+  Next, we show that the point $x$ is a fixed point of $T$.
+
+  By the triangle inequality, we have:
+  \begin{align*}
+    d(x, Tx) 
+    &\leq d(x, x_m) + d(x_m, Tx) \\
+    &\leq d(x, x_m) + \alpha \: d(x_{m-1}, x) \\
+    &< \epsilon && \text{$\forall \epsilon > 0$ and $\forall m \geq N(\epsilon)$}  \\
+  \end{align*}
+
+  \noindent
+  $\implies d(x, Tx) = 0$
+
+  \noindent
+  $\implies x = Tx$
+
+  \noindent
+  $\implies x$ is a fixed point of $T$. 
+  \newline
+
+  Finally, we show that $x$ is the only fixed point of $T$.
+
+  Suppose $x$ and $x^\prime$ are fixed points of $T$, then:
+  \begin{align*}
+    &d(x, x^\prime) = d(Tx, Tx^\prime) \leq \alpha \: d(x, x^\prime) \\
+    \implies& d(x, x^\prime) = 0 \\
+    \implies& x = x^\prime.
+  \end{align*}
+  
+\end{proof}
+
+
+\newpage
+
+\setcounter{equation}{0}
+\begin{customthm}{5}[Fredholm Integral Equation]
+  $ $
+
+\end{customthm}
+
+\begin{proof}
+  $ $
+
+  A Fredhom integral equation of the second kind has the form:
+  \begin{align}
+    x(t) - \mu \int_{a}^{b} k(t,\tau)x(\tau) d\tau = v(t)
+  \end{align}
+
+  where:
+
+  \qquad
+  $[a,b]$: is a given interval.
+
+  \qquad
+  $x$: is an unknown function on $[a,b]$.
+
+  \qquad
+  $\mu$: is a parameter/constant.
+
+  \qquad
+  $k$: The kernel of the equation, is a function defined on the square $G = [a,b] x [a,b]$.
+
+  \qquad
+  $v$: is a given function on $[a,b]$.
+  \newline
+
+  Let's restrict this equation to the function space $C[a,b]$, with the metric:
+  \begin{align*}
+    d(x,y) = \max\limits_{t \in J} |x(t)-y(t)|
+  \end{align*}
+
+  We assume that $v \in C[a,b]$ and $k$ is continuous on $G$. Then, $k$ is bounded on $G$:
+  \begin{align*}
+    \forall t, \tau \in G: \; |k(t,\tau) \leq c
+  \end{align*}
+
+  Next, we we assume that the soluton to $(1)$ is a fixed point of some operator $T$, therefore we can replace $x$ with $Tx$ in $(1)$ to get:
+  \begin{align}
+    Tx(t) = v(t) + \mu \int_{a}^{b} k(t,\tau)x(\tau) d\tau
+  \end{align}
+
+  Since $v$ and $k$ are continuous, then $(2)$ defines an operator $T: C[a,b] \longrightarrow C[a,b]$.
+
+  Next, we derive the condition for $T$ to be a contraction:
+  \begin{align*}
+    d(Tx, Ty)
+    &= \max\limits_{t \in J} |Tx(t) - Ty(t)| \\
+    &= |\mu| \max\limits_{t \in J} |\int_{a}^{b} k(t,\tau)(x(\tau) - y(\tau))| \: d\tau \\
+    &\leq |\mu| \max\limits_{t \in J} \int_{a}^{b} |k(t,\tau)| \: |x(\tau) - y(\tau)| \: d\tau \\
+    &\leq |\mu| \: c \: \max\limits_{\sigma \in J} |x(\sigma) - y(\sigma)| \int_{a}^{b} d\tau \\
+    &= |\mu| \: c \: d(x,y) \: (b-a) \\
+    &= \alpha \: d(x,y) && \text{where } \alpha = |\mu| \: c \: (b-a)
+  \end{align*}
+
+  \noindent
+  $\implies T$ is a contraction when $|\mu| < \frac{1}{c(b-a)}.$
+  \newline
+
+  We now state the existence and uniqueness of a solution to $(1)$:
+  Given the restrictions stated above, $(1)$ has a solution $x \in J$.
+  $x$ is the limit of the iterative sequence $(x_0, x_1, \ldots)$, where $x_0$ is any point in $C[a,b]$, and:
+  \begin{align*}
+    x_{n+1}(t) = v(t) + \mu \int_{a}^{b} k(t, \tau) x_n(\tau) d\tau.
+  \end{align*}
+   
+\end{proof}
+
+\newpage
+
+
+\setcounter{equation}{0}
+\begin{customthm}{6}[Volterra Integral Equation]
+  $ $
+
+\end{customthm}
+
+\begin{proof}
+  $ $
+  
+  We assume that the solution is a fixed point of some operator $T$, and replace $x$ with $Tx$:
+  \begin{align*}
+    Tx(t) = v(t) + \mu \int_{a}^{\tau} k(t, \tau) x(\tau) d\tau
+  \end{align*}
+
+  Since $k$ is continuous on $R$, and $R$ is closed and bounded, then $k$ is bounded:
+  \begin{align*}
+    \forall t, \tau \in R: \: |k(t, \tau)| \leq c
+  \end{align*}
+
+  And, $\forall x,y \in C[a,b]$ we have:
+  \begin{align}
+    d(Tx, Ty)
+    &= |T x(t) - T y(t)| \nonumber \\
+    &= |\mu| \: |\int_{a}^{t} k(t, \tau) [x(\tau) - y(\tau)]\: d\tau| \nonumber \\
+    &\leq |\mu| \: \int_{a}^{t} |k(t, \tau)| \:  |x(\tau) - y(\tau)|\: d\tau \nonumber \\
+    &\leq |\mu| \: c \: d(x,y) \int_{a}^{t} d\tau \nonumber \\
+    &\leq |\mu| \: c \: (t-a) \: d(x,y)
+  \end{align}
+
+  Next, we show by induction that:
+  \begin{align}
+    |T^m x(t) - T^m y(t)| \leq |\mu|^m c^m \frac{(t-a)^m}{m!}
+  \end{align}
+
+  \underline{Base case ($1$)}: Holds by $(1)$.
+  \newline
+
+  \underline{Inductive step ($m+1$)}:
+  \newline
+
+  Suppose the I.H. holds for $m$, then:
+  \begin{align*}
+    |T^{k+1} x(t) - T^{k+1} y(t)|
+    &= |\mu| \: | \int_{a}^{t} k(t, \tau) \: \lbrack T^m x(t) - T^m y(t) \rbrack \: d\tau | \\
+    &\leq |\mu| \: c \int_{a}^{t} \: |\mu|^m c^m \frac{(t-a)^m}{m!} d\tau \\
+    &= |\mu|^{m+1} \: c^{m+1} \: \frac{(t-a)^{m+1}}{(m+1)!} d(x,y).
+  \end{align*}
+
+  Using $t-a \leq b-a$ on the RHS of (2), and taking the max over $t \in J$ on the LHS, we get:
+  \begin{align*}
+    d(T^mx, T^my) \leq \alpha_m d(x,y) && \text{where } \alpha_m = |\mu|^m c^m \frac{(b-a)^2}{m!}
+  \end{align*}
+
+  This implies that for any fixed $\mu$ and sufficiently large $m$, $\alpha < 1$.
+  
+  Hence $T^m$ is a contraction on $C[a,b]$ and has a unique fixed point.
+
+\end{proof}
 
 \end{document}
