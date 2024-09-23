@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{centernot}
+\author{Mostafa Hassanein}
+\title{
+  MTH-684 Logic \\
+  Assignment (1): Propositional Logic}
+\date{25 September 2024}
+\begin{document}
+
+\maketitle
+\newpage
+
+\section*{1-3}
+
+\begin{proof}(By Strong Induction)
+
+  We will show that this inequality holds using proof by strong induction on the number of connectives $n$ in a WFF $\phi$:
+  \newline
+
+  \underline{Base case $(n = 0)$:}
+  \newline
+
+  This case represents \textbf{atomic expressions}.
+
+  From the definition of $sub$ on \textbf{atomic expressions}, it is clear that $sub(\phi) = \{A\}$, where $A$ is an atomic expression.
+
+  \noindent
+  $\implies$
+  $|sub(\phi)| = 1$
+
+  \noindent
+  $\implies$
+  $|sub(\phi)| \leq 2n + 1 = 1$ holds.
+  \newline
+
+  \underline{Inductive step ($n = k+1$):}
+  \newline
+
+  This case represents \textbf{composite expressions}.
+
+  Suppose the induction hypothesis holds for $n \leq k$, we will do a case analysis on all connective types to show that it also holds for $n = k+1$.
+  \newline
+
+  \noindent
+  \textbf{\underline{(i): $\lnot$}}
+  \begin{align*}
+    &\phi = \lnot \psi \\
+    \implies& sub(\phi) = sub(\psi) \cup \{ \lnot \psi\} \\
+    \implies& |sub(\phi)| \leq |sub(\psi)| + 1 \\
+    \implies& |sub(\phi)| \leq (2k + 1) + 1 = 2(k+1) \leq 2(k+1) + 1.
+  \end{align*}
+
+
+  \noindent
+  \textbf{\underline{(ii): $\land$}} 
+  \begin{align*}
+    &\phi = \psi \land \omega \\
+    \implies& sub(\phi) = sub(\psi) \cup sub(\omega) \cup \{ (\psi \land \omega) \} \\
+    \implies& |sub(\phi)| \leq |sub(\psi)| + |sub(\omega)| + 1 \\
+    \implies& |sub(\phi)| \leq [2r + 1] + [2(k-r) + 1] + 1 \\
+    \implies& |sub(\phi)| \leq 2k + 3 = 2(k+1) + 1.
+  \end{align*}
+
+
+  \noindent
+  \textbf{\underline{(iii - v): $\lor$, $\implies$, $\iff$}} 
+  \newline
+  
+  These cases all have similar proof to case $ii$.
+  \newline
+
+  \noindent
+  This closes the induction, and thus $|sub(\phi)| \leq 2n + 1$ is true.
+
+\end{proof}
+
+\end{document}
