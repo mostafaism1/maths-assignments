@@ -1,0 +1,102 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{centernot}
+\author{Mostafa Hassanein}
+\title{
+  MTH-684 Logic \\
+  Assignment (2): Propositional Logic}
+\date{2 October 2024}
+\begin{document}
+
+\maketitle
+\newpage
+
+\section*{2-3}
+
+To prove an implication we assume the antecedent and show that the consequent holds.
+
+\subsection*{a.}
+\begin{proof}
+  $ $
+
+  Let $T_3 = T_1 \cup T_2$.
+
+  Suppose all WFFs in $T_3$ are true, then all WFFs in $T_1$, and $T_2$ are also true.
+
+  From $T_1 \models \phi$, we conclude that $\phi$ is true.
+
+  From $T_2 \models \psi$, we conclude that $\psi$ is true.
+
+  Putting it all together, we get: $T_3 \models \phi \land \psi$.
+
+\end{proof}
+
+\subsection*{b.}
+\begin{proof}
+  $ $
+
+  Let $T_4 = T_1 \cup T_2 \cup T_3$.
+
+  Suppose all WFFs in $T_4$ are true, then all WFFs in $T_1$, $T_2$, and $T_3$ are true.
+  
+  From $T_1 \models \phi$, we conclude that $\phi \lor \psi$ is true. We have 3 cases:
+  \newline
+
+  \underline{1. $\phi = \top \text{ and } \psi = \bot$:}
+  
+  In this case, all WFFs in $T_2 \cup \{ \phi \}$ are true.
+  
+  From $T_2 \cup \{ \phi \} \models \zeta$, we conclude that $\zeta$ is true.
+  \newline
+
+  \underline{2. $\phi = \bot \text{ and } \psi = \top$:}
+  
+  In this case, all WFFs in $T_3 \cup \{ \psi \}$ are true.
+  
+  From $T_3 \cup \{ \psi \} \models \zeta$, we conclude that $\zeta$ is true.
+  \newline
+
+  \underline{3. $\phi = \top \text{ and } \psi = \top$:}
+  
+  Using either case 1 or 2, it is clear that $\zeta$ is true.
+  \newline
+
+  Therefore, we conclude that $T_4 = T_1 \cup T_2 \cup T_3 \models \zeta$.  
+
+\end{proof}
+
+\subsection*{c.}
+\begin{proof}
+  $ $
+
+  We want to show that $T_1 \models (\phi \implies \psi)$ is true, so we assume $T_1$ and attempt to show that $\phi \implies \psi$ holds.
+
+  Next, to show that $\phi \implies \psi$, we assume $\phi$ and attempt to show that $\psi$ holds.
+
+  Putting our assumptions together: $T_1$ and $\phi$ are true. Therefore, all WFFs in $T_1 \cup \{ \phi \}$ are true.
+
+  From $T_1 \cup \{ \phi \} \models \psi$, we conclude that $\psi$ is true.
+
+  Therefore, $T_1 \models (\phi \implies \psi)$ as desired.
+
+\end{proof}
+
+\subsection*{d.}
+\begin{proof}(By Contradiction)
+  $ $
+
+  Suppose $T_1 \cup T_2$ is true.
+
+  For the sake of contradiction, suppose that $\phi$ is true.
+
+  From $T_1 \cup \{ \phi \} \models \psi$, we conclude that $\psi$ is true.
+
+  From $T_2 \cup \{ \phi \} \models \lnot \psi$, we conclude that $\lnot \psi$ is true.
+
+  But then we have: $\psi \land \lnot \psi$ is true. This is a contradiction.
+
+  Therefore, we must conclude that: $T_1 \cup T_2 \models \lnot \phi$.
+
+\end{proof}
+
+\end{document}
