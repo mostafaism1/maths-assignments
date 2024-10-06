@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{centernot}
+\usepackage{forest}
+\usepackage[legalpaper, landscape, margin=2in]{geometry}
+\author{Mostafa Hassanein}
+\title{
+  MTH-684 Logic \\
+  Assignment (3): Reasoning in Propositional Logic}
+\date{9 October 2024}
+\begin{document}
+
+\pagenumbering{gobble}
+\maketitle
+\newpage
+
+\section*{3-4(b)}
+
+\noindent
+\begin{forest}
+  for tree={
+    draw,
+    grow=south,            % Tree grows downwards (top to bottom)
+    parent anchor=south,    % Parent node connects from below
+    child anchor=north,     % Child nodes connect from above
+    l sep=10mm,             % Level separation
+    s sep=10mm,             % Sibling separation
+    align=center,           % Align text in nodes at center
+    inner sep=2mm,          % Padding around node content
+    edge={->},
+    edge path={\noexpand\path [draw, \forestoption{edge}] (!u.parent anchor) -- ++(0,-5pt) -| (.child anchor)\forestoption{edge label};},
+    if n children=0{tier=word}{} % Makes leaf nodes align horizontally
+  }
+  [$\mathcal{T}: \{ P \implies R \}$ \\
+   $\mathcal{F}: \{ ((Q \implies R) \implies ((P \lor Q) \implies R)) \}$
+   [$\mathcal{T}: \{ P \implies R{,\;} Q \implies R \}$ \\
+    $\mathcal{F}: \{ (P \lor Q) \implies R \}$
+    [$\mathcal{T}: \{ P \implies R {,\: } Q \implies R{, \;} P \lor Q \}$ \\
+    $\mathcal{F}: \{ R \}$
+     [$\mathcal{T}: \{ R {,\;} Q \implies R {,\:} P \lor Q \}$ \\
+     $\mathcal{F}: \{ R \}$
+     [$\mathcal{T}: \{ R {,\:} P \lor Q \}$ \\
+     $\mathcal{F}: \{ R \}$
+      [$\mathcal{T}: \{ R {,\:} P \}$ \\
+     $\mathcal{F}: \{ R \}$
+     ["True"]
+     ]
+      [$\mathcal{T}: \{ R {,\:} Q \}$ \\
+     $\mathcal{F}: \{ R \}$
+     ["True"]
+     ]
+     ]
+     [$\mathcal{T}: \{ R {,\;} P \lor Q \}$ \\
+     $\mathcal{F}: \{ R {,\:} Q \}$
+      [$\mathcal{T}: \{ R {,\;} P \}$ \\
+     $\mathcal{F}: \{ R {,\:} Q \}$
+     ["True"]
+     ]
+      [$\mathcal{T}: \{ R {,\;} Q \}$ \\
+     $\mathcal{F}: \{ R {,\:} Q \}$
+     ["True"]
+     ]
+     ]
+     ]
+     [$\mathcal{T}: \{Q \implies R {,\:} P \lor Q \}$ \\
+     $\mathcal{F}: \{ R {,\;} P \}$
+     [$\mathcal{T}: \{ R {,\:} P \lor Q \}$ \\
+     $\mathcal{F}: \{ R {,\;} P \}$
+      [$\mathcal{T}: \{ R {,\:} P \}$ \\
+     $\mathcal{F}: \{ R {,\;} P \}$
+     ["True"]]
+      [$\mathcal{T}: \{ R {,\:} Q \}$ \\
+     $\mathcal{F}: \{ R {,\;} P \}$
+     ["True"]]
+     ]
+     [$\mathcal{T}: \{ P \lor Q \}$ \\
+     $\mathcal{F}: \{ R {,\;} P {,\;} Q\}$
+      [$\mathcal{T}: \{ P \}$ \\
+     $\mathcal{F}: \{ R {,\;} P {,\;} Q\}$
+     ["True"]]
+      [$\mathcal{T}: \{ Q \}$ \\
+     $\mathcal{F}: \{ R {,\;} P {,\;} Q\}$
+      ["True"]]
+     ]
+     ]
+    ]
+   ]
+  ]
+\end{forest}
+
+\noindent
+The result is the conjunction of all the leaves.
+Since all the leaves are "true", the result is "true".
+\newline
+
+\noindent
+Therefore, there is no truth assignment that satisfies $\mathcal{T}$ and falsifies $\mathcal{F}$, and thus the argument is valid.
+
+\end{document}
