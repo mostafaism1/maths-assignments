@@ -13,21 +13,25 @@
 
 \section*{2-3}
 
-To prove an implication we assume the antecedent and show that the consequent holds.
+\textbf{\underline{Note: }} I've only managed to edit part (a).
+
 
 \subsection*{a.}
 \begin{proof}
   $ $
 
-  Let $T_3 = T_1 \cup T_2$.
+  Let $A$ be a truth assignment function and $[[.]]^A$ be its corresponding interpretation function under which $(\Gamma_1 \models \phi) = (\Gamma_2 \models \psi) = \top$.
+  \newline
 
-  Suppose all WFFs in $T_3$ are true, then all WFFs in $T_1$, and $T_2$ are also true.
+  We now want to show that $(\Gamma_1 \cup \Gamma_2 \models \phi \land \psi) = \top$ under the same interpretation function $[[.]]^A$. 
+    
+  So suppose that all formulas in $\Gamma_1 \cup \Gamma_2$ interpret to $\top$ under $[[.]]^A$. 
 
-  From $T_1 \models \phi$, we conclude that $\phi$ is true.
+  Because all formulas in $\Gamma_1$ are $\top$ and $\Gamma_1 \models \phi$, we have $\phi = \top$.
 
-  From $T_2 \models \psi$, we conclude that $\psi$ is true.
+  And because all formulas in $\Gamma_2$ are $\top$ and $\Gamma_2 \models \psi$, we have $\psi = \top$.
 
-  Putting it all together, we get: $T_3 \models \phi \land \psi$.
+  Finally, from the definition of logical conjunction: $\phi \land \psi = \top \iff \phi = \psi = \top$, we conclude that $\phi \land \psi = \top$.
 
 \end{proof}
 
