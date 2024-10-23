@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{centernot}
+\author{Mostafa Hassanein}
+\title{
+  MTH-684 Logic \\
+  Assignment (4): Reasoning in Propositional Logic}
+\date{23 October 2024}
+\begin{document}
+
+\maketitle
+\newpage
+
+\section*{4-2}
+Prove that:
+\begin{align*}
+  \{ (A \implies B), \: ((B \lor C) \implies D), \: (E \land \lnot D) \}  \models (A \implies D)
+\end{align*}
+
+\begin{proof}
+
+  \begin{align*}
+    &1. (A \implies B) &&\text{(Hypothesis)} &&\\
+    &2. ((B \lor C) \implies D) &&\text{(Hypothesis)} &&\\
+    &3. (E \land \lnot D) &&\text{(Hypothesis)} &&\\
+    &4. \lnot D &&\text{(3, SIM)} &&\\
+    &5. \lnot (B \lor C) &&\text{(2, 4, MT)} &&\\
+    &6. (\lnot A \lor B) &&\text{(1, IMP1)} &&\\
+    &7. ((\lnot A \lor B) \lor C) &&\text{(6, AD)} &&\\
+    &8. (\lnot A \lor (B \lor C)) &&\text{(7, GR)} &&\\
+    &9. (A \implies (B \lor C)) &&\text{(8, IMP2)} &&\\
+    &10. \lnot A &&\text{(5, 9, MT)} &&\\
+    &11. (\lnot A \lor E) &&\text{(10, AD)} &&\\
+    &12. (A \implies E) &&\text{(11, IMP2)} &&\\
+  \end{align*}
+
+\end{proof}
+
+\end{document}
