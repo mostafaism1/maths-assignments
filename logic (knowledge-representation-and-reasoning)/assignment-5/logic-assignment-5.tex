@@ -1,0 +1,169 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{centernot}
+\usepackage{forest}
+\usepackage[legalpaper, landscape, margin=2in]{geometry}
+\allowdisplaybreaks
+\author{Mostafa Hassanein}
+\title{
+  MTH-684 Logic \\
+  Assignment (5): First-Order Predicate Logic}
+\date{13 November 2024}
+\begin{document}
+
+\maketitle
+\newpage
+
+\section*{5-3}
+\subsection*{b.}
+$ $
+
+Given:
+\begin{align*}
+  &\mathcal{U} = \{ switch1, switch2, bulb \} &&\\
+  &\mathcal{F} = \{ s1^0, s2^0, b^0 \} &&\\
+  &\mathcal{I_F} = \{ (s1, switch1), (s2, switch2), (b, bulb) \} &&\\
+  &\mathcal{P} = \{ Switch^1, Bulb^1, Up^1, Down^1, On^1, Off^1 \} &&\\
+  &\mathcal{I_P}(Switch) = \{ switch1, switch2 \} &&\\
+  &\mathcal{I_P}(Bulb) = \{ bulb \} &&\\
+  &\mathcal{I_P}(Up) = \{ switch1 \} &&\\
+  &\mathcal{I_P}(Down) = \{ switch2 \} &&\\
+  &\mathcal{I_P}(On) = \{ bulb \} &&\\
+  &\mathcal{I_P}(Off) = \{ \} &&\\
+  &M = (\mathcal{U}, \mathcal{I_F}, \mathcal{I_P}) &&\\
+  &\mathcal{V} = \{ x, y, z_1, z_2, ... \} &&\\
+  &s: &&\\ 
+  &\text{\indent} s(x) =  switch1 &&\\
+  &\text{\indent} s(y) =  switch2 &&\\
+  &\text{\indent} s(z_i) =  bulb
+\end{align*}
+
+Let: 
+\begin{align*}
+  &P(x,y) := Switch(x) \land Switch(y) \land Down(x) \land Down(y) &&\\ 
+  &Q(z_1) := Bulb(z_1) \implies Off(z_1) 
+\end{align*}
+
+
+Determine the truth value of the formula:
+\begin{align*}
+  \forall x (
+    \forall y
+    (
+      P(x,y) 
+      \implies
+      \forall z_1 Q(z_1)
+    )
+  ) &&
+\end{align*}
+\newline
+
+\underline{Solution:}
+\begin{align*}
+  % 1
+  & [[ \forall x (\forall y (P(x,y) \implies \forall z_1 Q(z_1))) ]]^{M, s} = \top
+  & &&\\
+  % 2
+  \iff& [[ \forall y (P(x,y) \implies \forall z_1 Q(z_1)) ]]^{M, s[a/x]} = \top
+  &&\text{\qquad for every $a \in \mathcal{U}$} &&\\
+  % 3
+  \iff& [[ P(x,y) \implies \forall z_1 Q(z_1) ]]^{M, s[a/x][b/y]} = \top
+  &&\text{\qquad for every $a,b \in \mathcal{U}$} &&\\
+  % 4
+  \iff& [[ \lnot P(x,y)) \: \lor \: \forall z_1 Q(z_1) ]]^{M, s[a/x][b/y]} = \top
+  &&\text{\qquad for every $a,b \in \mathcal{U}$} &&\\
+  % 5
+  \iff& ([[ \lnot P(x,y) ]]^{M, s[a/x][b/y]} = \top &&\\
+  &\: \text{ or } \: &&\\
+  &[[\forall z_1 Q(z_1) ]]^{M, s[a/x][b/y]} = \top) 
+  &&\text{\qquad for every $a,b \in \mathcal{U}$} &&\\
+  % 6
+  \iff& ([[ P(x,y) ]]^{M, s[a/x][b/y]} = \bot &&\\
+  &\: \text{ or } \: &&\\
+  &[[Q(z_1) ]]^{M, s[a/x][b/y][c/z_1]} = \top) 
+  &&\text{\qquad for every $a,b,c \in \mathcal{U}$} &&\\
+  % 7
+  \iff& ([[ Switch(x) \land Switch(y) \land Down(x) \land Down(y) ]]^{M, s[a/x][b/y]} = \bot &&\\
+  & \: \text{ or } \: &&\\
+  &[[ Bulb(z_1) \implies Off(z_1) ]]^{M, s[a/x][b/y][c/z_1]} = \top) 
+  &&\text{\qquad for every $a,b,c \in \mathcal{U}$} &&\\
+  % 8
+  \iff& ([[ Switch(x) \land Switch(y) \land Down(x) \land Down(y) ]]^{M, s[a/x][b/y]} = \bot &&\\
+  & \: \text{ or } \: &&\\
+  &[[\lnot Bulb(z_1) \: \lor \: Off(z_1)]]^{M, s[a/x][b/y][c/z_1]} = \top) 
+  &&\text{\qquad for every $a,b,c \in \mathcal{U}$} &&\\
+  % 9
+  \iff& ([[ Switch(x)]]^{M, s[a/x][b/y]} 
+  = [[Switch(y)]]^{M, s[a/x][b/y]} 
+  = [[Down(x)]]^{M, s[a/x][b/y]} 
+  = [[Down(y) ]]^{M, s[a/x][b/y]} = \bot &&\\
+  & \: \text{ or } \: &&\\
+  &[[\lnot Bulb(z_1)]]^{M, s[a/x][b/y][c/z_1]} = \top \: \text{or} \: [[Off(z_1)]]^{M, s[a/x][b/y][c/z_1]} = \top) 
+  &&\text{\qquad for every $a,b,c \in \mathcal{U}$} &&\\
+  % 10
+  \iff& ([[ Switch(x)]]^{M, s[a/x][b/y]} 
+  = [[Switch(y)]]^{M, s[a/x][b/y]} 
+  = [[Down(x)]]^{M, s[a/x][b/y]} 
+  = [[Down(y) ]]^{M, s[a/x][b/y]} = \bot &&\\
+  & \: \text{ or } \: &&\\
+  &([[Bulb(z_1)]]^{M, s[a/x][b/y][c/z_1]} = \bot \: \text{or} \: [[Off(z_1)]]^{M, s[a/x][b/y][c/z_1]} = \top)) 
+  &&\text{\qquad for every $a,b,c \in \mathcal{U}$} &&\\
+  % 11
+  \iff& (([[x]]^{M, s[a/x][b/y]} \notin \{ switch1, switch2 \} 
+  \: \text{and} \: 
+  [[y]]^{M, s[a/x][b/y]} \notin \{ switch1, switch2 \}
+  \: \text{and} \: 
+  [[x]]^{M, s[a/x][b/y]} \notin \{ switch2 \}
+  \: \text{and} \: 
+  [[y]]^{M, s[a/x][b/y]} \notin \{ switch2 \}) &&\\
+  & \: \text{ or } \: &&\\
+  &([[z_1]]^{M, s[a/x][b/y][c/z_1]} \notin \{ bulb \} \: \text{or} \: [[z_1]]^{M, s[a/x][b/y][c/z_1]} \in \emptyset)) 
+  &&\text{\qquad for every $a,b,c \in \mathcal{U}$} &&\\
+  % 12
+  \iff& ((a \notin \{ switch1, switch2 \} 
+  \: \text{and} \: 
+  b \notin \{ switch1, switch2 \}
+  \: \text{and} \: 
+  a \notin \{ switch2 \}
+  \: \text{and} \: 
+  b \notin \{ switch2 \}) &&\\
+  & \: \text{ or } \: &&\\
+  &(c \notin \{ bulb \} \: \text{or} \: c \in \emptyset)) 
+  &&\text{\qquad for every $a,b,c \in \mathcal{U}$} &&\\
+\end{align*}
+
+
+  Take $a = switch2, b = switch2, c = bulb$, then:
+  \begin{align*}
+    %1
+    & ((switch2 \notin \{ switch1, switch2 \} 
+    \: \text{and} \: 
+    switch2 \notin \{ switch1, switch2 \}
+    \: \text{and} \: 
+    switch2 \notin \{ switch2 \}
+    \: \text{and} \: 
+    switch2 \notin \{ switch2 \}) &&\\*
+    & \: \text{ or } \: &&\\*
+    &(bulb \notin \{ bulb \} \: \text{or} \: bulb \in \emptyset)) &&\\*
+    %2
+    \iff& ((\bot
+    \: \text{and} \: 
+    \bot
+    \: \text{and} \: 
+    \bot
+    \: \text{and} \: 
+    \bot) &&\\*
+    & \: \text{ or } \: &&\\*
+    &(\bot \: \text{or} \: \bot)) &&\\*
+    %3
+    \iff& (\bot &&\\*
+    & \: \text{ or } \: &&\\*
+    &\bot) &&\\*
+    %4
+    \iff& \bot &&\\*
+  \end{align*}
+
+  $\iff$ The formula is false under the given interpretation structure.
+
+
+\end{document}
