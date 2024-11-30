@@ -1,0 +1,664 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{centernot}
+\usepackage{derivative}
+\author{Mostafa Hassanein}
+\title{
+  MTH-632 PDEs \\
+  Assignment (4): \\ Chapter 4: Separation of Variables \\ \& Chapter 6: Strum-Liouville Eigenvalue Problem}
+\date{30 Nov 2024}
+\begin{document}
+
+\maketitle
+\newpage
+
+\section*{i.}
+\section*{1.}
+We are required to find the eigenvalue of the following PDE subject to different boundary conditions:
+\begin{align*}
+  &X^{\prime\prime}(x) + \lambda X(x) = 0
+\end{align*}
+We begin by finding the general solution for $X(x)$:
+\begin{align*}
+  &X^{\prime\prime}(x) + \lambda X(x) = 0 \\
+  \implies& X^{\prime\prime}(x) = - \lambda X(x)
+\end{align*}
+Depending on the value of $\lambda$, the solution can have one of the following 3 forms:
+
+\underline{case 1: $\lambda < 0$}
+\begin{align*}
+  &X(x) = A e^{\sqrt{\lambda} x} + B e^{-\sqrt{\lambda} x} \\
+  & X^{\prime}(x) = \sqrt{\lambda} A e^{\sqrt{\lambda} x} - \sqrt{\lambda} B e^{-\sqrt{\lambda} x}
+\end{align*}
+
+\underline{case 2: $\lambda = 0$}
+\begin{align*}
+  &X(x) = Ax + B \\
+  &X^{\prime}(x) = A
+\end{align*}
+
+\underline{case 3: $\lambda > 0$}
+\begin{align*}
+  &X(x) = A \cos(\sqrt{\lambda} x) + 
+  B \sin(\sqrt{\lambda} x) \\
+  &X^{\prime}(x) = -\sqrt{\lambda} A \sin(\sqrt{\lambda} x) + 
+  \sqrt{\lambda} B\cos(\sqrt{\lambda} x)
+\end{align*}
+Now, we determine the values of $\lambda$ for the following boundary conditions in each of the 3 cases.
+
+% 1.a
+\subsection*{a. \underline{$X(0) = X(\pi) = 0$}}
+Assume case 1, then:
+\begin{align*}
+  &X(0) = 0 \\
+  \implies& A e^{0} + B e^{0} = 0 \\
+  \implies& A + B = 0 \\
+  \implies& B = - A \\
+  \implies& X(x) = A e^{\sqrt{\lambda} x} - A e^{-\sqrt{\lambda} x}.
+\end{align*}
+and,
+\begin{align*}
+  &X(\pi) = 0 \\
+  \implies& Ae^{\sqrt{\lambda}\pi} - Ae^{-\sqrt{\lambda} \pi} = 0 \\
+  \implies& A [e^{\sqrt{\lambda}\pi} - e^{-\sqrt{\lambda} \pi}] = 0 \\
+  \implies& A = 0 \qquad \text{or} \qquad e^{\sqrt{\lambda}\pi} - e^{-\sqrt{\lambda} \pi} = 0 \\
+  \implies& A = 0 \qquad \text{or} \qquad \sqrt{\lambda}\pi + \sqrt{\lambda} \pi  = 0 \\
+  \implies& A = 0 \qquad \text{or} \qquad \lambda = 0.
+\end{align*}
+But $\lambda < 0$, therefore we must have $A = B = 0$ which is a trivial solution.
+\newline
+
+\noindent
+Assume case 2, then:
+\begin{align*}
+  &X(0) = 0 \\
+  \implies& A*0 + B = 0 \\
+  \implies& B = 0 \\
+  \implies& X(x) = Ax. \\
+\end{align*}
+and,
+\begin{align*}
+  &X(\pi) = 0 \\
+  \implies& A*\pi = 0 \\
+  \implies& A = 0. \\
+\end{align*}
+
+The solution $A=B=0$ is trivial, so we ignore it.
+
+\noindent
+Assume case 3, then:
+\begin{align*}
+  &X(0) = 0 \\
+  \implies&A \cos(0) + B \sin(0) = 0 \\
+  \implies&A = 0 \\
+  \implies&X(0) = B \sin(\sqrt{\lambda} x).\\
+\end{align*}
+and,
+\begin{align*}
+  &X(\pi) = 0 \\
+  \implies& B \sin(\sqrt{\lambda} \pi) = 0 \\
+  \implies& \sin(\sqrt{\lambda} \pi) = 0 \\
+  \implies& \lambda_n = n^2, \quad n \in I. \\
+\end{align*}
+\newline
+
+% 1.b
+\subsection*{b. \underline{$X^{\prime}(0) = X^{\prime}(L) = 0$}}
+
+\underline{case 1: $\lambda < 0$}
+\begin{align*}
+  &X^{\prime}(0) = 0 \\
+  \implies&\sqrt{\lambda} A e^{0} - \sqrt{\lambda} B e^{0} = 0 \\
+  \implies&\sqrt{\lambda} A - \sqrt{\lambda} B = 0 \\
+  \implies&\sqrt{\lambda} A - \sqrt{\lambda} B = 0 \\
+  \implies&\sqrt{\lambda} [A - B] = 0 \\
+  \implies&A - B = 0 \\
+  \implies&A = B \\
+  \implies&X^{\prime}(x) = \sqrt{\lambda} A e^{\sqrt{\lambda} x} - \sqrt{\lambda} A e^{-\sqrt{\lambda} x} \\
+  \implies&X^{\prime}(x) = \sqrt{\lambda} A [e^{\sqrt{\lambda} x} - e^{-\sqrt{\lambda} x}] \\
+\end{align*}
+and,
+\begin{align*}
+  &X^{\prime}(L) = 0 \\
+  \implies&\sqrt{\lambda} A [e^{\sqrt{\lambda} L} - e^{-\sqrt{\lambda} L}] = 0 \\
+  \implies& \sqrt{\lambda}A = 0 \qquad \text{or} \qquad e^{\sqrt{\lambda} L} - e^{-\sqrt{\lambda} L} = 0 \\
+  \implies&\sqrt{\lambda}A = 0 \qquad \text{or} \qquad \sqrt{\lambda} L + \sqrt{\lambda} L = 0 \\
+  \implies& A = 0 \qquad \text{or} \qquad \lambda = 0.
+\end{align*}
+But $\lambda < 0$, therefore we must have $A = B = 0$ which is a trivial solution.
+\newline
+
+\noindent
+\underline{case 2: $\lambda = 0$}
+\begin{align*}
+  &X^{\prime}(0) = 0 \\
+  \implies& A = 0. \\
+\end{align*}
+and,
+\begin{align*}
+  &X^{\prime}(L) = 0 \\
+  \implies& A = 0 \\
+  \implies& X(x) = B.
+\end{align*}
+Therefore, $\lambda = 0$ is an eigenvalue.
+\newline
+
+\noindent
+\underline{case 3: $\lambda > 0$}
+\begin{align*}
+  &X^{\prime}(0) = 0 \\
+  \implies& -\sqrt{\lambda} A \sin(\sqrt{\lambda} * 0) + 
+  \sqrt{\lambda} B\cos(\sqrt{\lambda} * 0) = 0 \\
+  \implies& \sqrt{\lambda} B = 0 \\
+  \implies& B = 0 \\
+  \implies& X^{\prime}(x) = -\sqrt{\lambda} A \sin(\sqrt{\lambda} x).
+\end{align*}
+and,
+\begin{align*}
+  &X^{\prime}(L) = 0 \\
+  \implies& -\sqrt{\lambda} A \sin(\sqrt{\lambda} * L) = 0 \\
+  \implies& \sin(\sqrt{\lambda} * L) = 0 \\
+  \implies& \lambda_n = (\frac{n\pi}{L})^2, \quad n \in I.
+\end{align*}
+Therefore, the eigenvalues are:
+\begin{align*}
+  \lambda = 0, && \lambda_n = (\frac{n\pi}{L})^2, \quad n \in I.
+\end{align*}
+
+% 1.c
+\subsection*{c. \underline{$X(0) = X^{\prime}(L) = 0$}}
+
+\underline{case 1: $\lambda < 0$}
+
+\begin{align*}
+  &X(0) = 0 \\
+  \implies& B = -A \qquad \text{(from 1.a)} \\
+\end{align*}
+and,
+\begin{align*}
+  &X^{\prime}(L) = 0 \\
+  \implies& \sqrt{\lambda} A e^{\sqrt{\lambda} L} + \sqrt{\lambda} A e^{-\sqrt{\lambda} L} = 0 \\
+  \implies& \sqrt{\lambda} A [e^{\sqrt{\lambda} L} + e^{-\sqrt{\lambda} L}] = 0 \\
+  \implies& A = 0 \qquad \text{or} \qquad e^{\sqrt{\lambda} L} + e^{-\sqrt{\lambda} L} = 0 \\
+  \implies& A = 0 \qquad \text{or} \qquad \sqrt{\lambda} L -\sqrt{\lambda} L = 0 \\
+  \implies& A = 0 \qquad \text{or} \qquad \lambda = 0 \\
+  \implies& A = 0.
+\end{align*}
+This is a trivial solution.
+\newline
+
+\noindent
+\underline{case 2: $\lambda = 0$}
+\begin{align*}
+  &X(0) = 0 \\
+  \implies& Ax + B = 0 \\
+  \implies& B = 0. \\
+\end{align*}
+\newline
+and,
+\begin{align*}
+  &X^{\prime}(L) = 0 \\
+  \implies& A = 0 \\
+  \implies& X(x) = 0. \\
+\end{align*}
+This is a trivial solution.
+\newline
+
+\noindent
+\underline{case 3: $\lambda > 0$}
+\begin{align*}
+  &X(x) = 0 \\
+  \implies&A \cos(\sqrt{\lambda} * 0) + 
+  B \sin(\sqrt{\lambda} * 0) = 0 \\
+  \implies& A = 0. \\
+\end{align*}
+and,
+\begin{align*}
+  &X^{\prime}(L) = 0 \\
+  \implies& \sqrt{\lambda} B\cos(\sqrt{\lambda} L) = 0 \\
+  \implies& \cos(\sqrt{\lambda} L) = 0 \\
+  \implies& \lambda = (\frac{(n + \frac{1}{2}) \pi}{2})^2, \quad n \in I.\\
+\end{align*}
+
+
+% 1.d
+\subsection*{d. \underline{$X^{\prime}(0) = X(L) = 0$}}
+\underline{case 1: $\lambda < 0$}
+\begin{align*}
+  &X^{\prime}(0) \\
+  \implies& A = B \qquad \text{(from 1.b)} \\
+\end{align*}
+and,
+\begin{align*}
+  &X(L) = 0 \\
+  \implies& A e^{\sqrt{\lambda} L} + A e^{-\sqrt{\lambda} L}  = 0 \\
+  \implies& A [e^{\sqrt{\lambda} L} + e^{-\sqrt{\lambda} L}] = 0 \\
+  \implies& A = 0 \qquad \text{or} \qquad e^{\sqrt{\lambda} L} + e^{-\sqrt{\lambda} L} = 0 \\
+  \implies& A = 0 \qquad \text{or} \qquad \sqrt{\lambda} L -\sqrt{\lambda} L = 0 \\
+  \implies& A = 0.
+\end{align*}
+This is a trivial solution.
+\newline
+
+\underline{case 2: $\lambda = 0$}
+\begin{align*}
+  &X^{\prime}(0) = 0 \\
+  \implies& A = 0.
+\end{align*}
+and,
+\begin{align*}
+  &X(L) = 0 \\
+  \implies& B = 0.
+\end{align*}
+This is a trivial solution.
+\newline
+
+\underline{case 3: $\lambda > 0$}
+\begin{align*}
+  &X^{\prime}(0) = 0 \\
+  \implies& B = 0 \qquad \text{(from 1.b)} \\
+\end{align*}
+and,
+\begin{align*}
+  &X(L) = 0 \\
+  \implies& A \cos(\sqrt{\lambda} L) = 0 \\
+  \implies& \cos(\sqrt{\lambda} L) = 0 \\
+  \implies& \lambda = (\frac{(n + \frac{1}{2}) \pi}{2})^2, \quad n \in I.\\
+\end{align*}
+
+% 1.e
+\subsection*{e. \underline{$X(0) = 0 \text{ and } X^{\prime}(L) + X(L) = 0$}}
+\underline{case 1: $\lambda < 0$}
+\begin{align*}
+  &X(0) = 0 \\
+  \implies& B = - A \qquad \text{(from 1.a)} \\
+\end{align*}
+and,
+\begin{align*}
+  &X^{\prime}(L) + X(L) = 0 \\
+  \implies& [\sqrt{\lambda} A e^{\sqrt{\lambda} L} + \sqrt{\lambda} A e^{-\sqrt{\lambda} L}] 
+  + 
+  [A e^{\sqrt{\lambda} L} - A e^{-\sqrt{\lambda} L}]
+  = 0 \\
+  \implies& A [\sqrt{\lambda} e^{\sqrt{\lambda} L} + \sqrt{\lambda} e^{-\sqrt{\lambda} L} 
+  +
+  e^{\sqrt{\lambda} L} - e^{-\sqrt{\lambda} L}] \\
+  \implies& A = 0 \qquad \text{or} \qquad 
+  \sqrt{\lambda} e^{\sqrt{\lambda} L} + \sqrt{\lambda} e^{-\sqrt{\lambda} L} 
+  +
+  e^{\sqrt{\lambda} L} - e^{-\sqrt{\lambda} L} = 0 \\
+  \implies& A = 0 \qquad \text{or} \qquad 
+  \lambda L - \lambda L
+  +
+  \sqrt{\lambda} L + \sqrt{\lambda} L = 0 \\
+  \implies& A = 0 \qquad \text{or} \qquad 
+  2\sqrt{\lambda} L = 0 \\
+  \implies&A = 0 \qquad \text{or} \qquad 
+  \lambda = 0 \\
+  \implies& A = 0.
+\end{align*}
+This is a trivial solution.
+\newline
+
+\underline{case 2: $\lambda = 0$}
+\begin{align*}
+  &X(0) = 0 \\
+  \implies& B = 0.
+\end{align*}
+and,
+\begin{align*}
+  &X^{\prime}(L) + X(L) = 0 \\
+  \implies& AL = 0 \\
+  \implies& A = 0.
+\end{align*}
+This is a trivial solution.
+\newline
+
+\underline{case 3: $\lambda > 0$}
+\begin{align*}
+  &X(0) = 0 \\
+  \implies& A \cos(\sqrt{\lambda} * 0) + 
+  B \sin(\sqrt{\lambda} * 0) = 0 \\
+  \implies& A = 0.
+\end{align*}
+and,
+\begin{align*}
+  &X^{\prime}(L) + X(L) = 0 \\
+  \implies& \sqrt{\lambda} B\cos(\sqrt{\lambda} L) 
+  + B \sin(\sqrt{\lambda} L) = 0 \\
+  \implies& B [\sqrt{\lambda} \cos(\sqrt{\lambda} L) 
+  + \sin(\sqrt{\lambda} L)] = 0 \\
+  \implies& \sqrt{\lambda} \cos(\sqrt{\lambda} L) 
+  + \sin(\sqrt{\lambda} L) = 0 \\
+  \implies& \tan(\sqrt{\lambda} L) = - \sqrt{\lambda} \\
+  \implies& \sqrt{\lambda} L = \arctan(- \sqrt{\lambda}) \\
+\end{align*}
+This can be solved numerically (with MATLAB for instance).
+
+\noindent\rule{\textwidth}{1pt}
+\newpage
+
+\section*{ii.}
+\section*{1.}
+We use the separation of variables technique to solve the heat equation.
+\newline
+
+\noindent
+Assume the solution has the form:
+\begin{align*}
+  u(x,t) = X(x)T(t)
+\end{align*}
+
+\noindent
+Next, we compute $u_t$ and $u_xx$:
+\begin{align*}
+  u_t &= X(x) \dot{T(t)} \\
+  u_x &= X^{\prime}(x) T(t) \\
+  u_{xx} &= X^{\prime\prime}(x) T(t).
+\end{align*}
+
+\noindent
+Substitute into the heat equation:
+\begin{align*}
+  &u_t = ku_{xx} \\
+  \implies&X(x) \dot{T}(t) = k X^{\prime\prime}(x) T(t) \\
+  \implies& \frac{X^{\prime\prime}(x)}{X(x)} = \frac{\dot{T}(t)}{kT(t)} \\
+  \implies& \frac{X^{\prime\prime}(x)}{X(x)} = \frac{\dot{T}(t)}{kT(t)} = -\lambda \\
+  \implies& \frac{X^{\prime\prime}(x)}{X(x)} = -\lambda \qquad \text{and} \qquad \frac{\dot{T}(t)}{kT(t)} = -\lambda.
+\end{align*}
+
+\noindent
+First, we solve the spatial ODE along with the boundary conditions to obtain $X(x)$ as follows:
+\begin{align*}
+  &\frac{X^{\prime\prime}(x)}{X(x)} = -\lambda \\
+  \implies& X^{\prime\prime}(x) + \lambda X(x) = 0.
+\end{align*}
+and,
+\begin{align*}
+  &u(0, t) = 0 \\
+  \implies& X(0)T(t) = 0 \\
+  \implies& X(0) = 0
+\end{align*}
+and,
+\begin{align*}
+  &u(L, t) = 0 \\
+  \implies& X(L)T(t) = 0 \\
+  \implies& X(L) = 0
+\end{align*}
+
+\noindent
+This matches the ODE and boundary conditions of problem 1.a above. Therefore the eigenvalues and th corresponding spatial eigenvectors are given by:
+\begin{align*}
+  &\lambda_n = \left(\frac{n \pi }{L}\right)^2, &&n \in I \\
+  \implies&X_n(x) = \sin\left(\frac{n \pi }{L} x\right), &&n \in I.
+\end{align*}
+
+\noindent
+Having found the eignevalues $\lambda_n$, we now solve for the temporal eigenvectors $T(t)$:
+\begin{align*}
+  &\frac{\dot{T_n(t)}}{kT_n(t)} = -\lambda_n, &&n \in I \\
+  \implies&\dot{T_n(t)} = -k \lambda_n T_n(t), &&n \in I \\
+  \implies&\dot{T_n(t)} = -k \left(\frac{n \pi }{L}\right)^2 T_n(t), &&n \in I \\
+  \implies&T_n(t) = e^{-k \left(\frac{n \pi }{L}\right)^2 t}, &&n \in I.
+\end{align*}
+
+\noindent
+Therefore, $u_n(x,t)$ is given by:
+\begin{align*}
+  & u_n(x, t) = b_n X_n(x) T_n(t) \\
+  \implies& u_n(x, t) = b_n \sin\left(\frac{n \pi }{L} x\right) e^{-k \left(\frac{n \pi }{L}\right)^2 t}.
+\end{align*}
+
+\noindent
+The complete solution $u(x ,t)$ is the superposition of $u_n(x, t)$:
+\begin{align*}
+  u(x, t) = \sum_{n=1}^{\infty}  b_n \sin\left(\frac{n \pi }{L} x\right) e^{-k \left(\frac{n \pi }{L}\right)^2 t}.
+\end{align*}
+
+\noindent
+The constants $b_n$ can be found by applying the initial condition.
+
+\subsection*{a.}
+\begin{align*}
+  &u(x, 0) = 6 \sin\left(\frac{9\pi}{L} x\right) \\
+  \implies& \sum_{n=1}^{\infty}  b_n \sin\left(\frac{n \pi }{L} x\right) = 6 \sin\left(\frac{9\pi}{L} x\right) \\
+  \implies& b_9 = 6 \qquad \text{and} \qquad b_n = 0 \quad \forall n: n \neq 6 \\ 
+  \implies& u(x, t) =  6 \sin\left(\frac{9 \pi }{L} x\right) e^{-k \left(\frac{9 \pi }{L}\right)^2 t}.
+\end{align*}
+
+\subsection*{b.}
+\begin{align*}
+  &u(x, 0) = 2 \cos\left(\frac{3\pi}{L} x\right) \\
+  \implies& b_n = \frac{\int_{x=0}^{L} 2 \cos\left(\frac{3\pi}{L} x\right) \sin\left(\frac{n \pi }{L} x\right) dx}{\int_{x=0}^{L} \sin^2 \left(\frac{n \pi }{L} x\right)} .
+\end{align*}
+
+\section*{3.}
+Note to self: This problem explores periodic boundary conditions.
+\newline
+
+\underline{case 1: $\lambda < 0$}
+\begin{align}
+  &\phi(0) = \phi(2\pi) \nonumber \\
+  \implies&
+  A e^{\sqrt{-\lambda} * 0} + B e^{-\sqrt{-\lambda} * 0}
+  = A e^{\sqrt{-\lambda} 2\pi} + B e^{-\sqrt{-\lambda} 2\pi} \nonumber \\
+  \implies&
+  A+ B
+  = A e^{\sqrt{-\lambda} 2\pi} + B e^{-\sqrt{-\lambda} 2\pi} \nonumber \\
+  \implies&
+  A[1 - e^{\sqrt{-\lambda} 2\pi}] + B [1 - e^{-\sqrt{-\lambda} 2\pi}] = 0 \label{3.1.1}
+\end{align}
+and,
+\begin{align}
+  &\phi^{\prime}(0) = \phi^{\prime}(2\pi) \nonumber \\
+  \implies& 
+  \sqrt{-\lambda} A e^{\sqrt{-\lambda} * 0} - \sqrt{-\lambda} B e^{-\sqrt{-\lambda} * 0} 
+  = 
+  \sqrt{-\lambda} A e^{\sqrt{-\lambda} 2\pi} - \sqrt{-\lambda} B e^{-\sqrt{-\lambda} 2\pi} \nonumber \\
+  \implies& 
+  \sqrt{-\lambda} A - \sqrt{-\lambda} B
+  = 
+  \sqrt{-\lambda} A e^{\sqrt{-\lambda} 2\pi} - \sqrt{-\lambda} B e^{-\sqrt{-\lambda} 2\pi} \nonumber \\
+  \implies& 
+  \sqrt{-\lambda} A [1 - e^{\sqrt{-\lambda} 2\pi}] - \sqrt{-\lambda} B [1 - e^{-\sqrt{-\lambda} 2\pi}]
+  = 0 \label{3.1.2}
+\end{align}
+
+(\ref{3.1.1}) and (\ref{3.1.2}) is a $2x2$ system of linear equation. It can be put in the form $Mx = 0$.
+\begin{align*}
+  &M = \begin{pmatrix}
+    1 - e^{\sqrt{-\lambda} 2\pi} & 1 - e^{-\sqrt{-\lambda} 2\pi} \\
+    \sqrt{-\lambda}[1 - e^{\sqrt{-\lambda} 2\pi}] & \sqrt{-\lambda}[1 - e^{-\sqrt{-\lambda} 2\pi}]
+  \end{pmatrix} \\
+\end{align*}
+The system has a non-trivial solution only if the M is non-injective (i.e. has a zero determinant). Thus:
+\begin{align*}
+  &\det(M) = 0 \\
+  \implies& (1 - e^{\sqrt{-\lambda} 2\pi}) * (\sqrt{-\lambda}[1 - e^{-\sqrt{-\lambda} 2\pi}])
+  -
+  (1 - e^{-\sqrt{-\lambda} 2\pi}) * (\sqrt{-\lambda}[1 - e^{\sqrt{-\lambda} 2\pi}])
+  = 0 \\
+  \implies& -2 \sqrt{\lambda} (1 - e^{\sqrt{-\lambda} 2\pi}) * (1 - e^{-\sqrt{-\lambda} 2\pi}) = 0 \\
+  \implies& 1 - e^{\sqrt{-\lambda} 2\pi} = 0  \qquad \text{or} \qquad 1 - e^{-\sqrt{-\lambda} 2\pi} = 0 \\
+  \implies& e^{\sqrt{-\lambda} 2\pi} = 1  \qquad \text{or} \qquad  e^{-\sqrt{-\lambda} 2\pi} = 1 \\
+  \implies& \sqrt{-\lambda} 2\pi = \ln(1) = 0  \qquad \text{or} \qquad  -\sqrt{-\lambda} 2\pi = \ln(1) = 0 \\
+  \implies& \sqrt{-\lambda} = 0  \qquad \text{or} \qquad  \sqrt{-\lambda} = 0
+\end{align*}
+This is impossible, because $\lambda < 0$.
+
+\noindent
+Thus, the solution in this case is the trivial solution with $A=B=0$.
+\newline
+
+\underline{case 2: $\lambda = 0$}
+\begin{align*}
+  &\phi(0) = \phi(2\pi) \\
+  \implies& B = 2\pi A + B \\
+  \implies& A = 0.
+\end{align*}
+and,
+\begin{align*}
+  &\phi^{\prime}(0) = \phi^{\prime}(2\pi) \\
+  \implies& A = A \\
+  \implies& \phi(x) = B.
+\end{align*}
+
+\underline{case 3: $\lambda > 0$}
+\begin{align}
+  &\phi(0) = \phi(2\pi) \nonumber \\
+  \implies& A \cos(\sqrt{\lambda} * 0) + 
+  B \sin(\sqrt{\lambda} * 0)
+  = A \cos(\sqrt{\lambda} 2\pi) + 
+  B \sin(\sqrt{\lambda} 2\pi) \nonumber \\
+  \implies& A
+  = A \cos(\sqrt{\lambda} 2\pi) + 
+  B \sin(\sqrt{\lambda} 2\pi) \nonumber \\
+  \implies& A [1 - \cos(\sqrt{\lambda} 2\pi)]
+  - 
+  B \sin(\sqrt{\lambda} 2\pi) = 0 \label{3.3.1}
+\end{align}
+and,
+\begin{align}
+  &\phi^{\prime}(0) = \phi^{\prime}(2\pi) \nonumber \\
+  \implies& -\sqrt{\lambda} A \sin(\sqrt{\lambda} * 0) + 
+  \sqrt{\lambda} B\cos(\sqrt{\lambda}  * 0)
+  =
+  -\sqrt{\lambda} A \sin(\sqrt{\lambda} 2\pi) + 
+  \sqrt{\lambda} B\cos(\sqrt{\lambda} 2\pi) \nonumber \\
+  \implies& B\sqrt{\lambda}
+  =
+  -\sqrt{\lambda} A \sin(\sqrt{\lambda} 2\pi) + 
+  \sqrt{\lambda} B\cos(\sqrt{\lambda} 2\pi) \nonumber \\
+  \implies& B\sqrt{\lambda}
+  +
+  \sqrt{\lambda} A \sin(\sqrt{\lambda} 2\pi) 
+  - 
+  \sqrt{\lambda} B\cos(\sqrt{\lambda} 2\pi) 
+  = 0 \nonumber \\
+  \implies& \sqrt{\lambda} A \sin(\sqrt{\lambda} 2\pi) 
+  +\sqrt{\lambda} B [1 - \cos(\sqrt{\lambda} 2\pi)] = 0 \label{3.3.2}
+\end{align}
+(\ref{3.3.1}) and (\ref{3.3.2}) is a $2x2$ system of linear equation. It can be put in the form $Mx = 0$.
+\begin{align*}
+  &M = \begin{pmatrix}
+    1 - \cos(\sqrt{\lambda} 2\pi) & 
+    -\sin(\sqrt{\lambda} 2\pi) \\ 
+    \sqrt{\lambda} \sin(\sqrt{\lambda} 2\pi) & 
+    \sqrt{\lambda} [1 - \cos(\sqrt{\lambda} 2\pi)]
+  \end{pmatrix} \\
+\end{align*}
+The system has a non-trivial solution only if the M is non-injective (i.e. has a zero determinant). Thus:
+\begin{align*}
+  &\det(M) = 0 \\
+  \implies& (1 - \cos(\sqrt{\lambda} 2\pi)) * \sqrt{\lambda} [1 - \cos(\sqrt{\lambda} 2\pi)] 
+  +
+  \sin(\sqrt{\lambda} 2\pi) * \sqrt{\lambda} \sin(\sqrt{\lambda} 2\pi)
+  = 0 \\
+  \implies& \sqrt{\lambda}(1 - \cos(\sqrt{\lambda} 2\pi))^2 
+  +
+  \sqrt{\lambda} \sin^2(\sqrt{\lambda} 2\pi)
+  = 0 \\
+  \implies& \sqrt{\lambda}(1 - 2\cos(\sqrt{\lambda} 2\pi) + \cos^2(\sqrt{\lambda} 2\pi))
+  +
+  \sqrt{\lambda} \sin^2(\sqrt{\lambda} 2\pi)
+  = 0 \\
+  \implies& \sqrt{\lambda}(1 - 2\cos(\sqrt{\lambda} 2\pi) + \cos^2(\sqrt{\lambda} 2\pi) + \sin^2(\sqrt{\lambda} 2\pi))
+  = 0 \\
+  \implies& \sqrt{\lambda}(1 - 2\cos(\sqrt{\lambda} 2\pi) + 1)
+  = 0 \\
+  \implies& \sqrt{\lambda}(2 - 2\cos(\sqrt{\lambda} 2\pi))
+  = 0 \\
+  \implies& 2\sqrt{\lambda}(1 - \cos(\sqrt{\lambda} 2\pi))
+  = 0 \\
+  \implies& 1 - \cos(\sqrt{\lambda} 2\pi) = 0 \\
+  \implies& \cos(\sqrt{\lambda} 2\pi) = 1 \\
+  \implies& \cos(\sqrt{\lambda} 2\pi) = 1 \\
+  \implies& \sqrt{\lambda} 2\pi = 2\pi n \\
+  \implies& \sqrt{\lambda} = n \\
+  \implies& \lambda_n = n^2, \quad n \in I.
+\end{align*}
+
+\noindent\rule{\textwidth}{1pt}
+\newpage
+
+\section*{iii.}
+\section*{1.}
+\subsection*{a.}
+\noindent
+\underline{Boundary Condition Check:}
+\begin{align*}
+  &X(0) = 0 \\
+  \implies&  \beta_1 X(0) + \beta_2 X^{\prime}(0) = 0 \qquad \text{for } \beta_1 = 1 \text{ and } \beta_2 = 0.
+\end{align*}
+and,
+\begin{align}
+  &X^{\prime}(L) = 0 \nonumber \\
+  \implies&  \beta_3 X(L) + \beta_4 X^{\prime}(L) = 0 \qquad \text{for } \beta_3 = 0 \text{ and } \beta_4 = 1. \label{1.a.1}
+\end{align}
+
+\noindent
+$\implies \text{The boundary conditions are satisfied.}$
+\newline
+
+\noindent
+\underline{PDE form Check:}
+
+\begin{align}
+  &X^{\prime\prime}(x) + \lambda X(x) = 0 \nonumber \\
+  \implies& p(x) = 1, \: q(x) = 0, \: \sigma(x) = 1 \text{ in the Sturm-Liouville Equation: } \nonumber \\
+  &\dfrac{d}{dx} \left(p(x) \dfrac{dX(x)}{dx}\right) + q(x)X(x) + \lambda \sigma(x) X(x) = 0 \nonumber \\
+  \implies& p, \: q, \: \sigma \text{ are real and continuous, and } 
+  p, \: \sigma \text{ are positive on } [0, L]. \label{1.a.2}
+\end{align}
+\newline
+
+\noindent
+(\ref{1.a.1}) and (\ref{1.a.2}) $\implies \text{The problem is a \textbf{regular} Sturm-Liouville problem}.$
+
+\subsection*{b.}
+\begin{align*}
+  &X_n = \sin((n-\frac{1}{2})x) & n \in \{1,2, \dots\} &&\\
+  & \lambda_n = (n-\frac{1}{2})^2.
+\end{align*}
+\newpage
+
+\section*{3.}
+\subsection*{a.}
+\noindent
+\underline{Boundary Condition Check:}
+\begin{align*}
+  &X(0) = 0 \quad X'(0) = 0 \\
+  \implies&  \beta_1 X(0) + \beta_2 X^{\prime}(0) = 0 \qquad \text{for } \beta_1 = 1 \text{ and } \beta_2 = -1.
+\end{align*}
+and,
+\begin{align}
+  &X(L) = 0 \quad X'(L) = 0 \nonumber \\
+  \implies&  \beta_3 X(L) + \beta_4 X^{\prime}(L) = 0 \qquad \text{for } \beta_3 = 1 \text{ and } \beta_4 = -1. \label{3.a.1}
+\end{align}
+
+\noindent
+$\implies \text{The boundary conditions are satisfied.}$
+\newline
+
+\noindent
+\underline{PDE form Check:}
+
+\begin{align}
+  \text{This is equivalent to problem 1 above which checks out.} \label{3.a.2}
+\end{align}
+\newline
+
+\noindent
+(\ref{3.a.1}) and (\ref{3.a.2}) $\implies \text{The problem is a \textbf{regular} Sturm-Liouville problem}.$
+\newline
+
+\subsection*{b.}
+The same problem was solved before, and the solution was:
+\begin{align*}
+  &X_n = A_n \cos\left(\frac{2n\pi}{L} x\right) + B_n \sin\left(\frac{2n\pi}{L} x\right) & n \in \{1,2, \dots\} &&\\
+  & \lambda_n = \left(\frac{2n\pi}{L}\right)^2.
+\end{align*}
+\newpage
+
+
+\end{document}
