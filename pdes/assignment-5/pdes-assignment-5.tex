@@ -1,0 +1,333 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{centernot}
+\usepackage{derivative}
+\author{Mostafa Hassanein}
+\title{
+  MTH-632 PDEs \\
+  Assignment (5): \\ Chapter 8: Separation of Variables (Non-Homogeneous)}
+\date{18 Dec 2024}
+\begin{document}
+
+\maketitle
+\newpage
+
+\section*{i.}
+\subsection*{2.}
+
+\underline{Step 1: Transform the problem to eliminate BC inhomogeneities}
+\newline
+
+BCs are already homogeneous.
+\newline
+
+\noindent
+\underline{Step 2: Compute the eigenfunctions of the homogeneous PDE}
+\newline
+
+From the previous chapter, we know that PDE/eigenvalue problem:
+\begin{align*}
+  &\phi''(x) = -\lambda \phi(x) &&\\
+  &\phi(0) = 0 &&\\
+  &\phi(\pi) = 0
+\end{align*}
+
+has solutions given by the following eigenfunctions:
+\begin{align*}
+  &\phi_n(x) = \cos(\sqrt{\lambda} x) = \cos(n x), \quad \lambda^2 = n^2, \quad n \in \{0, 1, \ldots\}.
+\end{align*}
+
+\noindent
+\underline{Step 3: Expand the source function in the eigenfunction basis to obtain $s_n(t)$}
+\newline
+
+\begin{align*}
+  &s(x, t) = \sum_{n=0}^{\infty} s_n(t) \phi_n(x) &&\\
+  \implies&e^{-t} = \sum_{n=0}^{\infty} s_n(t) \cos(n x) &&\\
+  \implies&s_n(t) = \frac{\int_{x=0}^{\pi} e^{-t} \cos(n x) dx}{\int_{x=0}^{\pi} \cos^2(n x) dx} &&\\
+  \implies& s_n(t) = \begin{cases}
+    e^{-t}, &n=0 \\
+    0, &n \neq 0
+  \end{cases}
+\end{align*}
+
+\noindent
+\underline{Step 4: Expand the solution in the eigenfunction basis}
+\newline
+
+\begin{align*}
+  u(x, t) &= \sum_{n=0}^{\infty} u_n(t) \phi_n(x).
+\end{align*}
+
+\noindent
+\underline{Step 5: Compute $u_{t}$ and $u_{xx}$}
+\newline
+\begin{align*}
+  &u_{t} = \sum_{n=0}^{\infty} \dot{u}_n(t) \phi_n(x) &&\\
+  &u_{xx} = \sum_{n=0}^{\infty} u_n(t) \phi''_n(x) = - n^2 \sum_{n=0}^{\infty} u_n(t) \phi_n(x).
+\end{align*}
+
+\noindent
+\underline{Step 6: Expand the initial condition in the eigenfunction basis to obtain $u_n(0)$}
+\newline
+
+\begin{align*}
+  &u(x, 0) = \sum_{n=0}^{\infty} u_n(0) \phi_n(x) &&\\
+  \implies& \cos(2x) = \sum_{n=0}^{\infty} u_n(0) \phi_n(x) &&\\
+  \implies&u_n(0) = \frac{\int_{x=0}^{\pi} \cos(2x) \cos(n x) dx}{\int_{x=0}^{\pi} \cos^2(n x) dx} &&\\
+  \implies& u_n(0) = \begin{cases}
+    1, &n = 2 \\
+    0, &n \neq 2
+  \end{cases}
+\end{align*}
+
+\noindent
+\underline{Step 7: Substitute back into the PDE}
+\newline
+\begin{align*}
+  &u_t = u_{xx} + e^{-t} &&\\
+  \implies& \sum_{n=0}^{\infty} \dot{u}_n(t) \phi_n(x) 
+  = -\lambda^2 \sum_{n=0}^{\infty} u_n(t) \phi_n(x)
+  + \sum_{n=0}^{\infty} s_n(t) \phi_n(x) &&\\
+  \implies& \dot{u}_n(t) \phi_n(x) 
+  = - n^2 u_n(t) \phi_n(x)
+  + s_n(t) \phi_n(x) &&\\
+  \implies&\begin{cases}
+    \dot{u}_0(t) = s_0(t) = e^{-t}  \\
+    \dot{u}_n(t) = - n^2 u_n(t), \quad n \neq 0
+  \end{cases} \\
+\end{align*}
+
+\noindent
+\underline{Step 8: Solve the resulting ODEs}
+\newline
+\begin{align*}
+  &u_n(x, t) = \begin{cases}
+    A - e^{-t}, &n=0 \\
+    C_n e^{-n^2 t}, &n \neq 0
+  \end{cases}
+\end{align*}
+
+Comparing with the initial conditions we determine the constants as:
+\begin{align*} 
+  &A = 1 \\
+  &C_n = \begin{cases}
+    1, &n=2 \\
+    0, &n \neq 2
+  \end{cases}
+\end{align*}
+
+
+\noindent
+\underline{Step 8: Form the complete solution}
+\newline
+
+\begin{align*}
+  u(x, t) &= \sum_{n=0}^{\infty} u_n(t) \phi_n(x) &&\\
+  &= u_0(t) \phi_0(x)
+  + u_2(t) \phi_2(x) &&\\
+  &= 1 - e^{-t} 
+  + e^{-4t} \cos(2x)
+\end{align*}
+\newpage
+
+
+
+
+\section*{ii.}
+\subsection*{2.}
+
+\underline{Step 1: Transform the problem to eliminate BC inhomogeneities}
+\newline
+
+BCs are already homogeneous.
+\newline
+
+\noindent
+\underline{Step 2: Compute the eigenfunctions of the homogeneous PDE}
+\newline
+
+From the previous chapter, we know that PDE/eigenvalue problem:
+\begin{align*}
+  &\phi''(x) = -\lambda \phi(x) &&\\
+  &\phi(0) = 0 &&\\
+  &\phi(\pi) = 0
+\end{align*}
+
+has solutions given by the following eigenfunctions:
+\begin{align*}
+  &\phi_n(x) = \sin(\sqrt{\lambda} x) = \sin(n x), \quad \lambda^2 = n^2, \quad n \in \{1, \ldots\}.
+\end{align*}
+
+\noindent
+\underline{Step 3: Expand the source function in the eigenfunction basis to obtain $s_n(t)$}
+\newline
+
+\begin{align*}
+  &s(x, t) = \sum_{n=1}^{\infty} s_n(t) \phi_n(x) &&\\
+  \implies&cos(\omega t) = \sum_{n=1}^{\infty} s_n(t) \sin(n x) &&\\
+  \implies&s_n(t) = \frac{\int_{x=0}^{\pi} \cos(\omega t) \sin(n x) dx}{\int_{x=0}^{\pi} \sin^2(n x) dx} &&\\
+  \implies& s_n(t) = \begin{cases}
+    \frac{4}{n \pi} \cos(\omega t), &n \text{ is odd} \\
+    0, &n \text{ is even}
+  \end{cases}
+\end{align*}
+
+
+\noindent
+\underline{Step 4: Expand the solution in the eigenfunction basis}
+\newline
+
+\begin{align*}
+  u(x, t) &= \sum_{n=1}^{\infty} u_n(t) \phi_n(x).
+\end{align*}
+
+\noindent
+\underline{Step 5: Compute $u_{t}$, $u_{tt}$ and $u_{xx}$}
+\newline
+\begin{align*}
+  &u_{t} = \sum_{n=1}^{\infty} \dot{u}_n(t) \phi_n(x) &&\\
+  &u_{tt} = \sum_{n=1}^{\infty} \ddot{u}_n(t) \phi_n(x) &&\\
+  &u_{xx} = \sum_{n=1}^{\infty} u_n(t) \phi''_n(x) = - n^2 \sum_{n=1}^{\infty} u_n(t) \phi_n(x).
+\end{align*}
+
+\noindent
+\underline{Step 6: Expand the initial condition in the eigenfunction basis to obtain $u_n(0)$ and $\dot{u}_n(0)$}
+\newline
+
+\begin{align*}
+  &u(x, 0) = \sum_{n=1}^{\infty} u_n(0) \phi_n(x) &&\\
+  \implies& f(x) = \sum_{n=1}^{\infty} u_n(0) \phi_n(x) &&\\
+  \implies& u_n(0) = \frac{\int_{x=0}^{\pi} f(x) \sin(nx)}{\int_{x=0}^{\pi} \sin^2(nx)} &&\\
+  \implies& u_n(0) = \frac{2}{\pi} \int_{x=0}^{\pi} f(x) \sin(nx).
+\end{align*}
+
+\begin{align*}
+  &\dot{u}(x, 0) = \sum_{n=1}^{\infty} \dot{u}_n(0) \phi_n(x) &&\\
+  \implies&0 = \sum_{n=1}^{\infty} \dot{u}_n(0) \phi_n(x) &&\\
+  \implies&\dot{u}_n(0) = \frac{\int_{x=0}^{\pi} 0 * \sin(nx)}{\int_{x=0}^{\pi} 0 * \sin^2(nx)} = 0.
+\end{align*}
+
+\noindent
+\underline{Step 7: Substitute back into the PDE}
+\newline
+\begin{align*}
+  &u_{tt} - c^2 u_{xx} + \beta u_{t} = \cos(\omega t) &&\\
+  \implies&\sum_{n=1}^{\infty} \ddot{u}_n(t) \phi_n(x)
+  + c^2 n^2 \sum_{n=1}^{\infty} u_n(t) \phi_n(x)
+  + \beta \sum_{n=1}^{\infty} \dot{u}_n(t) \phi_n(x)
+  = \sum_{n=1}^{\infty} \frac{4}{(2n - 1) \pi} \cos(\omega t) \phi_n(x) &&\\
+  \implies&\begin{cases}
+    \ddot{u}_n(t)
+    + c^2 n^2  u_n(t)
+    + \beta  \dot{u}_n(t)
+    =  \frac{4}{n \pi} \cos(\omega t), &n \text{ is odd} \\
+    \ddot{u}_n(t)
+    + c^2 n^2 u_n(t)
+    + \beta \dot{u}_n(t)
+    = 0, &n \text{ is even}.
+  \end{cases}
+\end{align*}
+\newline
+
+\noindent
+\underline{Step 8: Solve the resulting ODEs}
+\newline
+
+\underline{n is odd:}
+\begin{align*}
+  u_n(t) = u_n^h + u_n^p  
+\end{align*}
+
+\underline{Compue the homogeneous solution $u_n^h$:}
+\newline
+
+We guess a solution of the form $u_n^h = Ae^{\mu_{n} t}$ and substitute into the ODE:
+\begin{align*}
+  &\mu_{n}^2 A e^{\mu_{n} t} + \beta \mu_{n} A e^{\mu_{n} t} + c^2 n^2 A e^{\mu_n t} = 0 &&\\
+  \implies&\mu_{n}^2 + \beta \mu_{n} + c^2 n^2  = 0 &&\\
+  \implies&\mu_{n} = \frac{-\beta \pm \sqrt{\beta^2 - 4 c^2 n^2}}{2}
+\end{align*}
+
+\noindent
+At this point, we assume the discriminant is negative, and thus we have 2 complex roots:
+
+\begin{align*}
+  \mu_{n} = \frac{-\beta \pm i \sqrt{4 c^2 n^2 - \beta^2}}{2}
+\end{align*}
+\begin{align*}
+  u_n^h &= Re \left[A_1 e^{\frac{-\beta + i \sqrt{4 c^2 n^2 - \beta^2}}{2} t}
+  +
+  A_2 e^{\frac{-\beta - i \sqrt{4 c^2 n^2 - \beta^2}}{2} t}
+  \right] &&\\
+  &= Re \left[e^{\frac{-\beta}{2} t}
+  \left(A_1 e^{\frac{i \sqrt{4 c^2 n^2 - \beta^2}}{2} t}
+  +
+  A_2 e^{\frac{-i \sqrt{4 c^2 n^2 - \beta^2}}{2} t} \right)
+  \right] &&\\
+  &= e^{\frac{-\beta}{2} t}
+  \left(A_1 \cos{\frac{\sqrt{4 c^2 n^2 - \beta^2}}{2} t}
+  +
+  A_2 \cos{\frac{\sqrt{4 c^2 n^2 - \beta^2}}{2} t} \right) &&\\
+  &= A e^{\frac{-\beta}{2} t}
+  \cos({\frac{\sqrt{4 c^2 n^2 - \beta^2}}{2} t + \phi}) &&\\
+\end{align*}
+
+\underline{Compue the particular solution $u_n^p$:}
+\newline
+
+We guess a solution of the form $u_n^p = B_1 \sin(\omega t) + B_2 \cos(\omega t)$ and substitute into the ODE:
+
+\begin{align*}
+  &-\omega^2 [B_1 \sin(\omega t) +  B_2 \cos(\omega t)]
+  + \beta \omega [B_1 \cos(\omega t) - B_2 \sin(\omega t)] \\
+  & + c^2n^2 [B_1 \sin(\omega t) + B_2 \cos(\omega t)]
+  =
+  \frac{4}{n \pi} \cos(\omega t) \\
+  \implies&\sin(\omega t)
+  [-\omega^2 B_1 - \beta \omega B_2 + c^2 n^2 B_1] 
+  +
+  \cos(\omega t)
+  [-\omega^2 B_2 + \beta \omega B_1 + c^2 n^2 B_2]
+  = \frac{4}{n \pi} \cos(\omega t) \\
+  \implies& -\omega^2 B_1 - \beta \omega B_2 + c^2 n^2 B_1 = 0 
+  \quad \text{and} \quad
+  -\omega^2 B_2 + \beta \omega B_1 + c^2 n^2 B_2 = \frac{4}{n \pi} \\
+  \implies& B_1 [-\omega^2 + c^2 n^2] + B_2 [-\beta \omega] = 0 
+  \quad \text{and} \quad
+  B_1 [\beta \omega] + B_2 [-\omega^2 + c^2 n^2]
+  = \frac{4}{n \pi}
+\end{align*}
+
+This is a $2x2$ system that can be solved for $B_1$ and $B_2$.
+\newline
+
+\underline{n is even:}
+
+This case has the same solution as $u_n^h$ for the odd n case.
+\newline
+
+\noindent
+\underline{Step 8: Determine $\phi$ by comparing with the initial conditions}
+\newline
+
+\noindent
+\underline{Step 9: Form the complete solution}
+\newline
+
+\begin{align*}
+  u(x, t) 
+  &=
+  \sum_{n=1}^{\infty} u_n^h(t) \phi_n(x)
+  +
+  \sum_{n=1}^{\infty} u_{2n-1}^p(t) \phi_{2n-1}(x) \\
+  &= 
+  \sum_{n=1}^{\infty} A_n e^{\frac{-\beta}{2} t}
+  \cos({\frac{\sqrt{4 c^2 n^2 - \beta^2}}{2} t} + \phi)
+  \sin(nx)
+  +
+  \sum_{n=1}^{\infty} [B_{1_{2n-1}} \sin(\omega t) + B_{2_{2n-1}} \cos(\omega t)] \sin((2n-1)x).
+\end{align*}
+\newpage
+
+\end{document}
