@@ -1,0 +1,345 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{centernot}
+\usepackage{derivative}
+\author{Mostafa Hassanein}
+\title{
+  MTH-632 PDEs \\
+  Assignment (6): \\ Chapter 9: Numerical Analysis of PDEs \\
+  Finite Difference (FD) Technique}
+\date{20 Dec 2024}
+\begin{document}
+
+\maketitle
+\newpage
+
+\section*{1.}
+
+The governing algebraic (finite difference) equation for the steady state temperature is given by:
+\begin{align*}
+  T_{i,j} = \frac{T_{i-1,j} + T_{i+1,j} + T_{i,j-1} + T_{i,j+1}}{4}
+\end{align*}
+
+We start with an initial guess for the temperature at the interior nodes to be zero.
+\newline
+
+\underline{iteration 1:}
+\begin{align*}
+  &T_{1,1} = \frac{T_{0,1} + T_{2,1} + T_{1,0} + T_{1,2}}{4}
+  = \frac{75 + 0 + 0 + 0}{4} = 18.75 &&\\
+  &T_{2,1} = \frac{T_{1,1} + T_{3,1} +  T_{2,0} + T_{2,2}}{4}
+  = \frac{0 + 50 + 0 + 0}{4} = 12.5 &&\\
+  &T_{1,2} = \frac{T_{0,2} + T_{2,2} +  T_{1,1} + T_{1,3}}{4}
+  = \frac{75 + 0 + 0 + 100}{4} = 43.75 &&\\
+  &T_{2,2} = \frac{T_{1,2} + T_{3,2} +  T_{2,1} + T_{2,3}}{4}
+  = \frac{0 + 50 + 0 + 100}{4} = 37.5 &&\\
+  &\left|\epsilon_{a_{11}}\right| = 100\%.
+\end{align*}
+
+\underline{iteration 2:}
+\begin{align*}
+  &T_{1,1} = \frac{T_{0,1} + T_{2,1} + T_{1,0} + T_{1,2}}{4}
+  = \frac{75 + 12.5 + 0 + 43.75}{4} = 32.81 &&\\
+  &T_{2,1} = \frac{T_{1,1} + T_{3,1} +  T_{2,0} + T_{2,2}}{4}
+  = \frac{18.75 + 50 + 0 + 37.5}{4} = 26.56 &&\\
+  &T_{1,2} = \frac{T_{0,2} + T_{2,2} +  T_{1,1} + T_{1,3}}{4}
+  = \frac{75 + 37.5 + 18.75 + 100}{4} = 57.81 &&\\
+  &T_{2,2} = \frac{T_{1,2} + T_{3,2} +  T_{2,1} + T_{2,3}}{4}
+  = \frac{43.75 + 50 + 12.5 + 100}{4} = 51.56 &&\\
+  &\left|\epsilon_{a_{11}}\right| = \left|\frac{32.81 - 18.75}{32.81}\right| = 43\%.
+\end{align*}
+
+\underline{iteration 3:}
+\begin{align*}
+  &T_{1,1} = \frac{T_{0,1} + T_{2,1} + T_{1,0} + T_{1,2}}{4}
+  = \frac{75 + 26.56 + 0 + 57.81}{4} = 39.84 &&\\
+  &T_{2,1} = \frac{T_{1,1} + T_{3,1} +  T_{2,0} + T_{2,2}}{4}
+  = \frac{32.81 + 50 + 0 + 51.56}{4} = 33.59 &&\\
+  &T_{1,2} = \frac{T_{0,2} + T_{2,2} +  T_{1,1} + T_{1,3}}{4}
+  = \frac{75 + 51.56 + 32.81 + 100}{4} = 64.84 &&\\
+  &T_{2,2} = \frac{T_{1,2} + T_{3,2} +  T_{2,1} + T_{2,3}}{4}
+  = \frac{57.81 + 50 + 26.56 + 100}{4} = 58.59 &&\\
+  &\left|\epsilon_{a_{11}}\right| = \left|\frac{39.84 - 32.81}{39.84}\right| = 17.6\%.
+\end{align*}
+
+\underline{iteration 4:}
+\begin{align*}
+  &T_{1,1} = \frac{T_{0,1} + T_{2,1} + T_{1,0} + T_{1,2}}{4}
+  = \frac{75 + 33.59 + 0 + 64.84}{4} = 43.36 &&\\
+  &T_{2,1} = \frac{T_{1,1} + T_{3,1} +  T_{2,0} + T_{2,2}}{4}
+  = \frac{39.84 + 50 + 0 + 58.59}{4} = 37.11 &&\\
+  &T_{1,2} = \frac{T_{0,2} + T_{2,2} +  T_{1,1} + T_{1,3}}{4}
+  = \frac{75 + 58.59 + 39.84 + 100}{4} = 68.36 &&\\
+  &T_{2,2} = \frac{T_{1,2} + T_{3,2} +  T_{2,1} + T_{2,3}}{4}
+  = \frac{64.84 + 50 + 33.59 + 100}{4} = 62.11 &&\\
+  &\left|\epsilon_{a_{11}}\right| = \left|\frac{43.36 - 39.84}{43.36}\right| = 8.1\%.
+\end{align*}
+
+\underline{iteration 5:}
+\begin{align*}
+  &T_{1,1} = \frac{T_{0,1} + T_{2,1} + T_{1,0} + T_{1,2}}{4}
+  = \frac{75 + 37.11 + 0 + 68.36}{4} = 45.12 &&\\
+  &T_{2,1} = \frac{T_{1,1} + T_{3,1} +  T_{2,0} + T_{2,2}}{4}
+  = \frac{43.36 + 50 + 0 + 62.11}{4} = 38.87 &&\\
+  &T_{1,2} = \frac{T_{0,2} + T_{2,2} +  T_{1,1} + T_{1,3}}{4}
+  = \frac{75 + 62.11 + 43.36 + 100}{4} = 70.12 &&\\
+  &T_{2,2} = \frac{T_{1,2} + T_{3,2} +  T_{2,1} + T_{2,3}}{4}
+  = \frac{68.36 + 50 + 37.11 + 100}{4} = 63.87 &&\\
+  &\left|\epsilon_{a_{11}}\right| = \left|\frac{45.12 - 43.36}{45.12}\right| = 3.9\%.
+\end{align*}
+
+\underline{iteration 6:}
+\begin{align*}
+  &T_{1,1} = \frac{T_{0,1} + T_{2,1} + T_{1,0} + T_{1,2}}{4}
+  = \frac{75 + 38.87 + 0 + 70.12}{4} = 45.98 &&\\
+  &T_{2,1} = \frac{T_{1,1} + T_{3,1} +  T_{2,0} + T_{2,2}}{4}
+  = \frac{45.12 + 50 + 0 + 63.87}{4} = 39.75 &&\\
+  &T_{1,2} = \frac{T_{0,2} + T_{2,2} +  T_{1,1} + T_{1,3}}{4}
+  = \frac{75 + 63.87 + 45.12 + 100}{4} = 71 &&\\
+  &T_{2,2} = \frac{T_{1,2} + T_{3,2} +  T_{2,1} + T_{2,3}}{4}
+  = \frac{70.12 + 50 + 38.87 + 100}{4} = 64.75 &&\\
+  &\left|\epsilon_{a_{11}}\right| = \left|\frac{45.98 - 45.12}{45.98}\right| = 1.8\%.
+\end{align*}
+
+\underline{iteration 7:}
+\begin{align*}
+  &T_{1,1} = \frac{T_{0,1} + T_{2,1} + T_{1,0} + T_{1,2}}{4}
+  = \frac{75 + 39.75 + 0 + 71}{4} = 46.44 &&\\
+  &T_{2,1} = \frac{T_{1,1} + T_{3,1} +  T_{2,0} + T_{2,2}}{4}
+  = \frac{45.98 + 50 + 0 + 64.75}{4} = 40.18 &&\\
+  &T_{1,2} = \frac{T_{0,2} + T_{2,2} +  T_{1,1} + T_{1,3}}{4}
+  = \frac{75 + 64.75 + 45.98 + 100}{4} = 71.43 &&\\
+  &T_{2,2} = \frac{T_{1,2} + T_{3,2} +  T_{2,1} + T_{2,3}}{4}
+  = \frac{71 + 50 + 39.75 + 100}{4} = 65.19 &&\\
+  &\left|\epsilon_{a_{11}}\right| = \left|\frac{46.44 - 45.98}{46.44}\right| = 0.99\% &&\\
+  &\left|\epsilon_{a_{21}}\right| = \left|\frac{40.18-39.75}{40.18}\right| = 1\% &&\\
+  &\left|\epsilon_{a_{12}}\right| = \left|\frac{71.43-71}{71.43}\right| = 0.6\% &&\\
+  &\left|\epsilon_{a_{22}}\right| = \left|\frac{65.19-64.75}{65.19}\right| = 0.6\%.
+\end{align*}
+
+
+\section*{2.}
+$ $
+
+We use an explicit scheme.
+\newline
+
+The finite difference equation for Poisson's equation in 3D is given by:
+\begin{align*}
+  T_{i,j,k}
+  = 
+  \frac
+  {
+  T_{i-1,j,k} + T_{i+1,j,k}
+  +
+  T_{i,j-1,k} + T_{i,j+1,k}
+  +
+  T_{i,j,k-1} + T_{i,j,k-1}
+  - h^2 f_{i,j,k}
+  }
+  {6}
+\end{align*}
+
+We start with an initial guess for the temperature at the interior nodes to be zero.
+\newline
+
+\underline{iteration 1:}
+\begin{align*}
+  T_{1,1,1}
+  &= 
+  \frac
+  {
+  T_{0,1,1} + T_{2,1,1}
+  +
+  T_{1,0,1} + T_{1,2,1}
+  +
+  T_{1,1,0} + T_{1,1,2}
+  - h^2 f_{1,1,1}
+  }
+  {6} &&\\
+  &=
+  \frac
+  {
+  0 + 0
+  +
+  0 + 0
+  +
+  0 + 0
+  - \frac{1}{36}(-10)
+  }
+  {6}
+  = \frac{10}{216} &&\\
+  &\vdots
+\end{align*}
+
+There are 25 points interior points, the other points can be computed in a similar manner.
+\newline
+
+On each iteration we should compute the maximum error, and if the error is low enough (say less than 1\%), we stop, otherwise we continue onto the next iteration.
+
+
+\section*{5.}
+$ $
+
+To solve the PDE:
+\begin{align*}
+  c_t = D c_{xx} - U c_x - k c  
+\end{align*}
+
+using finite difference, we compute the finite difference approximation to the derivatives as follows:
+\begin{align*}
+  &c_t = \frac{c_{i}^{l+1} - c_{i}^{l}}{\Delta t} &&\\
+  &c_x = \frac{c_{i+1}^{l} - c_{i}^{l}}{\Delta x} &&\\
+  &c_{xx} = \frac{c_{i+1}^{l} - 2c_{i}^{l} + c_{i-1}^{l}}{\Delta x} &&\\
+\end{align*}
+
+Next, we plug these approximations to the PDE:
+\begin{align*}
+  &\frac{c_{i}^{l+1} - c_{i}^{l}}{\Delta t}
+  =
+  D \frac{c_{i+1}^{l} - 2c_{i}^{l} + c_{i-1}^{l}}{\Delta x^2}
+  -
+  U \frac{c_{i+1}^{l} - c_{i}^{l}}{\Delta x}
+  -
+  k c_{i}^{l} &&\\
+  \implies& c_{i}^{l} 
+  [k
+  -\frac{1}{\Delta t}
+  + \frac{2D}{\Delta x^2}
+  - \frac{U}{\Delta x}
+  ]
+  +
+  c_{i-1}^{l}
+  [- \frac{D}{\Delta x^2}]
+  +
+  c_{i+1}^{l}
+  [-\frac{D}{\Delta x^2}
+  +
+  \frac{U}{\Delta x}
+  ]
+  +
+  c_{i}^{l+1}
+  [\frac{1}{\Delta t}]
+  =
+  0
+\end{align*}
+
+Plugging in the following values for the constants:
+\begin{align*}
+  &k = 0.15 &D = 100 &&U = 1 &&\\
+  &\Delta x = 1 &\Delta t = 0.005
+\end{align*}
+
+we get:
+\begin{align*}
+  -\frac{17}{20} c_{i}^{l} 
+  -
+  100 c_{i-1}^{l}
+  -
+  99 c_{i+1}^{l}
+  +
+  200 c_{i}^{l+1}
+  =
+  0
+\end{align*}
+
+Solving for $c_{i}^{l+1}$:
+\begin{align*}
+  c_{i}^{l+1}
+  =
+  \frac{1}{2} c_{i-1}^{l}
+  +
+  \frac{17}{4000} c_{i}^{l} 
+  +
+  \frac{99}{200} c_{i+1}^{l}
+\end{align*}
+
+We can nnow use the Liebmann's (Gauss-Seidel) method to solve for the concentrations iteratively.
+
+\underline{iteration 1, timestep 1:}
+\begin{align*}
+  &c_{1}^{1}
+  =
+  \frac{1}{2} c_{0}^{0}
+  +
+  \frac{17}{4000} c_{1}^{0} 
+  +
+  \frac{99}{200} c_{2}^{0}
+  =
+  -\frac{1}{2} 100
+  +
+  \frac{17}{4000} 0
+  +
+  \frac{99}{200} 0
+  =
+  50 &&\\
+  &c_{2}^{1}
+  =
+  \frac{1}{2} c_{1}^{0}
+  +
+  \frac{17}{4000} c_{2}^{0} 
+  +
+  \frac{99}{200} c_{3}^{0}
+  =
+  \frac{1}{2} 0
+  +
+  \frac{17}{4000} 0
+  +
+  \frac{99}{200} 0
+  =
+  0 &&\\
+  &\vdots &&\\
+  &c_{9}^{1}
+  =
+  \frac{1}{2} c_{8}^{0}
+  +
+  \frac{17}{4000} c_{9}^{0} 
+  +
+  \frac{99}{200} c_{10}^{0}
+  = 
+  \frac{1}{2} 0
+  +
+  \frac{17}{4000} 0
+  +
+  \frac{99}{200} 0
+  = 0
+\end{align*}
+
+\underline{iteration 1, timestep 2:}
+\begin{align*}
+  &c_{1}^{2}
+  =
+  \frac{1}{2} c_{0}^{1}
+  +
+  \frac{17}{4000} c_{1}^{1} 
+  +
+  \frac{99}{200} c_{2}^{1}
+  =
+  \frac{1}{2} 100
+  +
+  \frac{17}{4000} 50
+  +
+  \frac{99}{200} 0
+  =
+  50.21 &&\\
+  &c_{2}^{2}
+  =
+  \frac{1}{2} c_{1}^{1}
+  +
+  \frac{17}{4000} c_{2}^{1} 
+  +
+  \frac{99}{200} c_{3}^{1}
+  =
+  \frac{1}{2} 50
+  +
+  \frac{17}{4000} 0
+  +
+  \frac{99}{200} 0
+  =
+  25 &&\\
+  &\vdots
+\end{align*}
+
+This should be continued until the final timestep (timestep 9). Then, the same steps should be iterated until the maximum error falls below the required threshold.
+
+\end{document}
