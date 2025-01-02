@@ -1,0 +1,717 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{centernot}
+\usepackage{derivative}
+\author{Mostafa Hassanein}
+\title{
+  MTH-632 PDEs \\
+  Assignment (3): Method of Characteristics}
+\date{2 Jan 2025}
+\begin{document}
+
+\maketitle
+\newpage
+ 
+\section*{3.1.2}
+\subsection*{a.}
+Solve using the method of characteristics:
+\begin{align*}
+  &u_t + c u_x = e^{2x} &&\\
+  \text{Subject to: }& u(x,0) = f(x).
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+\begin{align*}
+  &u_t + c u_x = e^{2x} &&\\
+  \implies& \frac{dx}{dt} = c &&\\
+  \implies& x = ct + x_0 &&\\
+\end{align*}
+and,
+\begin{align*}
+  &u_t + c u_x = e^{2x} &&\\
+  \implies& \frac{du}{dt} = e^{2x} &&\\
+  \implies& \frac{du}{dt} = e^{2(ct+x_0)} &&\\
+  \implies& u(x,t) = \frac{1}{2c} e^{2(ct+x_0)} + K &&\\
+\end{align*}
+
+Apply the initial condition to find $K$:
+\begin{align*}
+  &u(x_0, 0) = f(x_0) &&\\
+  \implies& \frac{1}{2c} e^{2x_0} + K = f(x_0) &&\\
+  \implies& K = - \frac{1}{2c} e^{2x_0} + f(x_0) &&\\
+\end{align*}
+
+Substitute back in $u$:
+\begin{align*}
+  u(x,t) &= \frac{1}{2c} e^{2(ct+x_0)} - \frac{1}{2c} e^{2x_0} + f(x_0) &&\\
+  &= \frac{1}{2c} e^{2(ct+x-ct)} - \frac{1}{2c} e^{2(x-ct)} + f(x-ct) &&\\
+  &= \frac{1}{2c} e^{2x} - \frac{1}{2c} e^{2(x-ct)} + f(x-ct).
+\end{align*}
+
+\newpage
+
+\subsection*{b.}
+Solve using the method of characteristics:
+\begin{align*}
+  &u_t + x u_x = 1 &&\\
+  \text{Subject to: }& u(x,0) = f(x).
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+\begin{align*}
+  &u_t + x u_x = 1 &&\\
+  \implies& \frac{dx}{dt} = x &&\\
+  \implies& x = ce^t &&\\
+  \implies& x = x_0e^t.
+\end{align*}
+
+and,
+\begin{align*}
+  &u_t + x u_x = 1 &&\\
+  \implies& \frac{du}{dt} = 1 &&\\
+  \implies& u(x,t) = t + K &&\\
+  \implies& u(x_0, 0) = K = f(x_0) &&\\
+  \implies& u(x,t) = t + f(x_0) &&\\
+  \implies& u(x,t) = t + f(xe^{-t}).
+\end{align*}
+
+\newpage
+
+\subsection*{c.}
+Solve using the method of characteristics:
+\begin{align*}
+  &u_t + 3t u_x = u &&\\
+  \text{Subject to: }& u(x,0) = f(x).
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+\begin{align*}
+  &u_t + 3t u_x = u &&\\
+  \implies& \frac{dx}{dt} = 3t &&\\
+  \implies& x = \frac{3}{2} t^2 + x_0.
+\end{align*}
+and,
+\begin{align*}
+  &u_t + 3t u_x = u &&\\
+  \implies& \frac{du}{dt} = u &&\\
+  \implies& u(x,t) = Ke^t  &&\\
+  \implies& u(x_0, 0) = K = f(x_0) &&\\
+  \implies& u(x, t) = f(x_0)e^{t} &&\\
+  \implies& u(x, t) = f(x-\frac{3}{2}t^2)e^{t}.
+\end{align*}
+
+\newpage
+
+\subsection*{d.}
+Solve using the method of characteristics:
+\begin{align*}
+  &u_t - 2 u_x = e^{2x} &&\\
+  \text{Subject to: }& u(x,0) = \cos(x).
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+
+This is the same as point $(a.)$ above, with the values $c=-2$ and $f(x)=\cos(x)$. Thus, the solution is given by:
+\begin{align*}
+  u(x,t) &= \frac{1}{2c} e^{2x} - \frac{1}{2c} e^{2(x-ct)} + f(x-ct) &&\\
+  &= -\frac{1}{4} e^{2x} + \frac{1}{4} e^{2(x+2t)} + \cos(x+2t).
+\end{align*}
+
+\newpage
+
+\subsection*{e.}
+Solve using the method of characteristics:
+\begin{align*}
+  &u_t - t^2 u_x = -u &&\\
+  \text{Subject to: }& u(x,0) = 3 e^x.
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+\begin{align*}
+  &u_t - t^2 u_x = -u &&\\
+  \implies& \frac{dx}{dt} = -t^2 &&\\
+  \implies& x = - \frac{1}{3} t^3 + x_0.
+\end{align*}
+and,
+\begin{align*}
+  &u_t - t^2 u_x = -u &&\\
+  \implies& \frac{du}{dt} = -u &&\\
+  \implies& u(x,t) = Ke^{-t} &&\\
+  \implies& u(x_0,0) = K = 3e^{x_0} &&\\
+  \implies& u(x,t) = 3e^{x_0-t} &&\\
+  \implies& u(x,t) = 3e^{x+\frac{1}{3}t^2-t}.
+\end{align*}
+
+\newpage
+
+\section*{3.1.4}
+
+Solve:
+\begin{align*}
+  &u_t = u &&\\
+  \text{Subject to: }& u(x,0) = 1 + \cos(x).
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+\begin{align*}
+  &u_t = u &&\\
+  \implies& u(x,t) = k(x)e^t.
+\end{align*}
+
+On the line $x = -2t$, we have:
+\begin{align*}
+  &u(x,t) = 1 + \cos(x) &&\\
+  \implies& k(x)e^t = 1 + \cos(x) &&\\
+  \implies& k(x)e^{-\frac{1}{2}x} = 1 + \cos(x) &&\\
+  \implies& k(x) = e^{\frac{1}{2}x} \left[1 + \cos(x)\right].
+\end{align*}
+
+Substituting back in $u$:
+\begin{align*}
+  u(x,t) = e^{\frac{1}{2}x + t} \left[1 + \cos(x)\right].
+\end{align*}
+
+\newpage
+
+\section*{3.1.6}
+\subsection*{a.}
+
+Solve the following first-order linear PDE:
+\begin{align*}
+  &u_t + c u_x= e^{-3x} &&\\
+  \text{Subject to: }& u(x,0) = f(x).
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+\begin{align*}
+  &u_t + c u_x= e^{-3x} &&\\
+  \implies& \frac{dx}{dt} = c &&\\
+  \implies& x = ct + x_0.
+\end{align*}
+and,
+\begin{align*}
+  &u_t + c u_x= e^{-3x} &&\\
+  \implies& \frac{du}{dt} = e^{-3x} &&\\
+  \implies& \frac{du}{dt} = e^{-3(ct + x_0)} &&\\
+  \implies& u(x,t) = k - \frac{1}{3c} e^{-3(ct + x_0)} &&\\
+  \implies& u(x_0,0) = k - \frac{1}{3c} e^{-3x_0} = f(x_0) &&\\
+  \implies& k = f(x_0) + \frac{1}{3c} e^{-3x_0}.
+\end{align*}
+
+Substituting back in $u$:
+\begin{align*}
+  u(x,t) &= k - \frac{1}{3c} e^{-3(ct + x_0)} &&\\
+  &= f(x_0) + \frac{1}{3c} e^{-3x_0} - \frac{1}{3c} e^{-3(ct + x_0)} &&\\
+  &= f(x-ct) + \frac{1}{3c} e^{-3(x-ct)} - \frac{1}{3c} e^{-3x} &&\\
+\end{align*}
+
+\newpage
+
+\subsection*{b.}
+Solve the following first-order linear PDE:
+\begin{align*}
+  &u_t + t u_x= 5 &&\\
+  \text{Subject to: }& u(x,0) = f(x).
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+\begin{align*}
+  &u_t + t u_x= 5 &&\\
+  \implies& \frac{dx}{dt} = t &&\\
+  \implies& x = \frac{1}{2} t^2 + x_0.
+\end{align*}
+and,
+\begin{align*}
+  &u_t + t u_x= 5 &&\\
+  \implies& \frac{du}{dt} = 5 &&\\
+  \implies& u(x,t) = 5t + k = 5t + f(x_0) &&\\
+  \implies& u(x,t) = 5t + k = 5t + f(x-\frac{1}{2} t^2).
+\end{align*}
+
+\newpage
+
+\subsection*{c.}
+Solve the following first-order linear PDE:
+\begin{align*}
+  &u_t - t^2 u_x= -u &&\\
+  \text{Subject to: }& u(x,0) = f(x).
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+\begin{align*}
+  &u_t - t^2 u_x= -u &&\\
+  \implies& \frac{dx}{dt} = -t^2 &&\\
+  \implies& x = - \frac{1}{3} t^3 + x_0.
+\end{align*}
+and,
+\begin{align*}
+  &u_t - t^2 u_x= -u &&\\
+  \implies& \frac{du}{dt} = -u &&\\
+  \implies& u(x,t) = ke^{-t} &&\\
+  \implies& u(x_0,0) = k = f(x_0) &&\\
+  \implies& u(x,t) = f(x_0)e^{-t} &&\\
+  \implies& u(x,t) = f(x+\frac{1}{3}t^3)e^{-t}.
+\end{align*}
+
+\newpage
+
+\subsection*{d.}
+Solve the following first-order linear PDE:
+\begin{align*}
+  &u_t + x u_x= t &&\\
+  \text{Subject to: }& u(x,0) = f(x).
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+\begin{align*}
+  &u_t + x u_x= t &&\\
+  \implies& \frac{dx}{dt} = x &&\\
+  \implies& x = ce^x = x_0e^t.
+\end{align*}
+and,
+\begin{align*}
+  &u_t + x u_x= t &&\\
+  \implies& \frac{du}{dt} = t &&\\
+  \implies& u(x,t) = \frac{1}{2} t^2 + k &&\\
+  \implies& u(x_0,0) = k = f(x_0) &&\\
+  \implies& u(x,t) = \frac{1}{2} t^2 + f(x_0) &&\\
+  \implies& u(x,t) = \frac{1}{2} t^2 + f(e^{-t}x) &&\\
+\end{align*}
+
+\newpage
+
+\subsection*{e.}
+Solve the following first-order linear PDE:
+\begin{align*}
+  &u_t + x u_x= x &&\\
+  \text{Subject to: }& u(x,0) = f(x).
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+\begin{align*}
+  &u_t + x u_x= t &&\\
+  \implies& \frac{dx}{dt} = x &&\\
+  \implies& x = ce^x = x_0e^t.
+\end{align*}
+and,
+\begin{align*}
+  &u_t + x u_x= x &&\\
+  \implies& \frac{du}{dt} = x &&\\
+  \implies& \frac{du}{dt} = x_0 e^t &&\\
+  \implies& u(x,t) = x_0 e^t + k &&\\
+  \implies& u(x_0,0) = x_0 + k = f(x_0) &&\\
+  \implies& k = f(x_0) - x_0 &&\\
+  \implies& u(x,t) = x_0 e^t + f(x_0) - x_0 &&\\
+  \implies& u(x,t) = x + f(xe^{-t}) - xe^{-t} &&\\
+\end{align*}
+
+\newpage
+
+\section*{3.2.2}
+
+Consider the problems:
+\begin{align*}
+  &u_t + 2uu_x = 0 &&\\
+  &u(x,0) = f(x) = \begin{cases}
+    1 & x < 0 \\
+    1 + \frac{x}{L} & 0 < x < L \\
+    2 & x > L
+  \end{cases}
+\end{align*}
+
+a. Determine the equation for the characteristics.
+
+b. Determine the solution $u(x,t)$
+
+c. Sketch the characteristic curves.
+
+d. Sketch $u(x,t)$ for fixed $t$.
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+
+\subsection*{a.}
+\begin{align*}
+    &\frac{dx}{dt} = 2u &&\\
+    &\frac{du}{dt} = 0.
+\end{align*}
+
+\subsection*{b.}
+\begin{align*}
+  &\frac{du}{dt} = 0 &&\\
+  \implies&u(x,t) = u(x_0,0) = f(x_0) = \begin{cases}
+    1 & x_0 < 0 \\
+    1 + \frac{x_0}{L} & 0 < x_0 < L \\
+    2 & x_0 > L
+  \end{cases} &&\\
+\end{align*}
+
+\begin{align*}
+  &\frac{dx}{dt} = 2u &&\\
+  \implies& x = 2ut + x_0 &&\\
+  \implies& x = \begin{cases}
+    2t + x_0 & x_0 < 0 \\
+    2t + 2t \frac{x_0}{L} + x_0 & 0 < x_0 < L \\
+    4t + x_0 & x_0 > L.
+\end{cases}
+\end{align*}
+
+Substituting back in $u$:
+\begin{align*}
+  \implies&u(x,t) = u(x_0,0) = f(x_0) = \begin{cases}
+    1 & x-2t < 0 \\
+    1 + \frac{x_0}{L} & 0 < \frac{x - 2t}{\frac{2t}{L} + 1} < L \\
+    2 & x-4t > L
+  \end{cases} &&\\
+\end{align*}
+
+\newpage
+\section*{3.2.4}
+
+Solve:
+\begin{align*}
+  &u_t + t^2uu_x = 5 &&\\
+  &u(x,0) = x.
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+\begin{align*}
+  &u_t + t^2uu_x = 5 &&\\
+  \implies& \frac{du}{dt} = 5 &&\\
+  \implies& u(x,t) = 5t + k &&\\
+  \implies& u(x_0,0) = k = x_0 &&\\
+  \implies& u(x,t) = 5t + x_0 &&\\
+\end{align*}
+and,
+\begin{align*}
+  &u_t + t^2uu_x = 5 &&\\
+  \implies&\frac{dx}{dt} = t^2u &&\\
+  \implies&\frac{dx}{dt} = t^2 (5t + x_0) &&\\
+  \implies&\frac{dx}{dt} = 5t^3 + x_0t^2 &&\\
+  \implies&x = \frac{5}{4} t^4 + \frac{1}{3}x_0t^3 + x_0.
+\end{align*}
+
+Substitute back in $u$:
+\begin{align*}
+  u(x,t) &= 5t + x_0 &&\\
+  &= 5t + \frac{x-\frac{5}{4}t^4}{\frac{1}{3}t^3 + 1}.
+\end{align*}
+
+\newpage
+
+\section*{3.2.2}
+Solve:
+\begin{align*}
+  &\rho_t + \rho^2 \rho_x = 0 &&\\
+  &\rho(x,0) = \begin{cases}
+    4 & x < 0 \\
+    3 & x > 0
+  \end{cases}
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+
+\begin{align*}
+  &\rho_t + \rho^2 \rho_x = 0 &&\\
+  \implies& \frac{d\rho}{dt} = 0 &&\\
+  \implies& \rho(x,t) = k = \rho(x_0, 0) = \begin{cases}
+    4 & x_0 < 0 \\
+    3 & x_0 > 0
+  \end{cases}
+\end{align*}
+and,
+\begin{align*}
+  &\frac{dx}{dt} = \rho^2 &&\\
+  &\frac{dx}{dt} = \rho^2(x_0, 0) = \begin{cases}
+    16 & x_0 < 0 \\
+    9 & x_0 > 0
+  \end{cases} &&\\
+  &x = \begin{cases}
+    16t + x_0 & x_0 < 0 \\
+    9t + x_0 & x_0 > 0
+  \end{cases} &&\\
+\end{align*}
+
+Substitute back in $\rho$:
+\begin{align*}
+  &\rho(x,t) = \begin{cases}
+    4 & x-16t < 0 \\
+    3 & x-9t > 0
+  \end{cases}
+\end{align*}
+
+The discontinuity in the initial condition at $x_0 = 0$ will result in a shock. The shock characteristic is given by:
+\begin{align*}
+  &\frac{dx_s}{dt} = \frac{[q]}{[u]} = \frac{\frac{1}{3} [3^3 - 4^3]}{3-4} = \frac{37}{3} &&\\
+  \implies& x_s = \frac{37}{3}t + x_{s_0} = \frac{37}{3}t.
+\end{align*}
+
+The solution above the shock characteristic/line is $\rho=4$, and below it is $\rho=3$.
+
+\newpage
+
+\section*{3.2.4}
+Solve:
+\begin{align*}
+  &u_t + 4u u_x = 0 &&\\
+  &u(x,0) = \begin{cases}
+    2 & x < -1 \\
+    3 & x > -1
+  \end{cases}
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+\begin{align*}
+  &u_t + 4u u_x = 0 &&\\
+  \implies& \frac{du}{dt} = 0 &&\\
+  \implies& u(x,t) = k = u(x_0, 0) = \begin{cases}
+    2 & x_0 < -1 \\
+    3 & x_0 > -1
+  \end{cases} &&\\
+\end{align*}
+and,
+\begin{align*}
+  &u_t + 4u u_x = 0 &&\\
+  \implies& \frac{dx}{dt} = 4u &&\\
+  \implies& x = \begin{cases}
+    8t + x_0 & x_0 < -1 \\
+    12t + x_0 & x_0 > -1
+  \end{cases} &&\\ &&\\
+\end{align*}
+
+Substitute back in $u$:
+\begin{align*}
+  u(x,t) &= \begin{cases}
+    2 & x-8t < -1 \\
+    3 & x-12t > -1
+  \end{cases} &&\\
+  &= \begin{cases}
+    2 & x < 8t-1 \\
+    3 & x > 12t-1
+  \end{cases}
+\end{align*}
+
+The discontinuity in the initial condition at $x_0 = -1$ will result in a fanning-out in the region $8t-1< x < 12 -1$, where the solution is given by:
+\begin{align*}
+  &\frac{dx}{dt} = 4u &&\\
+  \implies& x = 4ut + x_0 = 4ut -1 &&\\
+  \implies& u = \frac{x+1}{4t}.
+\end{align*}
+
+\newpage
+
+\section*{3.2.6}
+Solve the quasilinear equation:
+\begin{align*}
+  &u_t + u u_x = 0 &&\\
+  &u(x,0) = \begin{cases}
+    0 & x < 0 \\
+    x & 0 \leq x < 1 \\
+    1 & x \geq 1
+  \end{cases}
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+\begin{align*}
+  &u_t + u u_x = 0 &&\\
+  \implies& \frac{du}{dt} = 0 &&\\
+  \implies& u(x,t) = k = u(x_0, 0) = \begin{cases}
+    0 & x_0 < 0 \\
+    x_0 & 0 \leq x_0 < 1 \\
+    1 & x_0 \geq 1
+  \end{cases} &&\\
+\end{align*}
+and,
+\begin{align*}
+  &u_t + u u_x = 0 &&\\
+  \implies& \frac{dx}{dt} = u &&\\
+  \implies& \frac{dx}{dt} = \begin{cases}
+    0 & x_0 < 0 \\
+    x_0 & 0 \leq x_0 < 1 \\
+    1 & x_0 \geq 1
+  \end{cases} &&\\
+  \implies& x = \begin{cases}
+    x_0 & x_0 < 0 \\
+    x_0t + x_0 & 0 \leq x_0 < 1 \\
+    t + x_0 & x_0 \geq 1
+  \end{cases} &&\\
+\end{align*}
+
+Substitute back in $u$:
+\begin{align*}
+  u(x,t) = \begin{cases}
+    0 & x < 0 \\
+    x & 0 \leq \frac{x}{1+t} < 1 \\
+    1 & x-t \geq 1
+  \end{cases} &&\\
+\end{align*}
+
+\newpage
+
+\section*{3.3.2}
+The \underline{general} solution of the one dimensional wave equation:
+\begin{align*}
+  &u_{tt} - 4u_{xx} = 0
+\end{align*}
+is given by:
+\begin{align*}
+  u(x,t) = F(x-2t) + G(x+2t).
+\end{align*}
+
+Find the solution subject to the initial conditions:
+\begin{align*}
+  &u(x,0)=\cos(x) & -\infty < x < \infty &&\\
+  &u_t(x,0)=0 & -\infty < x < \infty.
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+\begin{align}
+  &u(x,0) = \cos(x) \nonumber &&\\
+  \implies& F(x) + G(x) = \cos(x).
+\end{align}
+and,
+\begin{align}
+  &u_t(x,0) = 0 \nonumber &&\\
+  \implies&-2\dot{F}(x) + 2\dot{G}(x) = 0 \nonumber &&\\
+  \implies& -F(x) + G(x) = k.
+\end{align}
+
+Solving (1) and (2) together, we get:
+\begin{align*}
+  &G(x) = \frac{1}{2} \cos(x) + \frac{1}{2} k,
+  && F(x) = \frac{1}{2} \cos(x) - \frac{1}{2} k &&\\
+  \implies&G(x+2t) = \frac{1}{2} \cos(x+2t) + \frac{1}{2} k,
+  && F(x-2t) = \frac{1}{2} \cos(x-2t) - \frac{1}{2} k &&\\
+\end{align*}
+
+Therefore:
+\begin{align*}
+  u(x,t) &= F(x-2t) + G(x+2t) &&\\
+  &= \frac{1}{2} \cos(x+2t) + \frac{1}{2} k
+  + F(x-2t) = \frac{1}{2} \cos(x-2t) - \frac{1}{2} k &&\\
+  &=\frac{1}{2} [\cos(x-2t) + \cos(x+2t)].
+\end{align*}
+
+\newpage
+
+\section*{Problems}
+\subsection*{2}
+Solve:
+\begin{align*}
+  &u_{tt} - c^2 u_{xx} = 0, &x < 0 &&\\
+  \text{Subject to:} \\
+  &u(x,0) = \sin(x), &x < 0 &&\\
+  &u_t(x,0) = 0, &x < 0 &&\\
+  &u(0,t) = e^{-t}, &t > 0.
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+
+By D'Alembert's formula for a semi-infinite domain:
+\begin{align*}
+  u(x,t) 
+  &= \begin{cases}
+    \frac{f(x-ct) + f(x+ct)}{2} + \frac{1}{2c} \int_{x-ct}^{x+ct} g(\eta) d\eta & x+ct < 0 \\
+    h(t-\frac{x}{c}) + \frac{f(x-ct) - f(x+ct)}{2} + \frac{1}{2c} \int_{ct-x}^{x+ct} g(\eta) d\eta & x+ct > 0
+  \end{cases} &&\\
+  &= \begin{cases}
+    \frac{\sin(x-ct) - \sin(x+ct)}{2} & x+ct < 0 \\
+    e^{-(t-\frac{x}{c})} + \frac{\sin(x-ct) - \sin(x+ct)}{2} & x+ct > 0
+  \end{cases} &&\\
+\end{align*}
+
+\newpage
+
+\subsection*{4}
+Solve:
+\begin{align*}
+  &u_{tt} - c^2 u_{xx} = 0,  &x,t > 0 &&\\
+  \text{Subject to:} \\
+  &u(x,0) = 0 &&\\
+  &u_t(x,0) = 0 &&\\
+  &u_x(0,t) = h(t).
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+
+For $x-ct > 0$, the solution is $u = 0$, because both $u(x,0) = 0$ and $u_t(x,0) = 0$, and reflections from the boundary have not reached yet.
+\newline
+
+For $x-ct < 0$, the solution will be the result of reflections at the boundary.
+
+\end{document}
