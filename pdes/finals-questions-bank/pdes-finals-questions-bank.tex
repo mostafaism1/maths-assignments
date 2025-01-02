@@ -1,0 +1,247 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{centernot}
+\usepackage{derivative}
+\author{Mostafa Hassanein}
+\title{
+  Partial Differential Equations (MTH-632) Finals Questions Bank \\
+  Final 2024}
+\date{1 Jan 2025}
+\begin{document}
+
+\maketitle
+\newpage
+
+\section*{2.}
+
+\subsection*{a.}
+Find the characteristic equation, characteristic curves and the canonical form of:
+\begin{align*}
+  u_{xx} + u_{xy} + u_{yy} = 0
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+
+\newpage
+
+\subsection*{b.}
+Solve using the method of characteristics the PDE:
+\begin{align*}
+  u_t - 2 u_x = e^{2x}
+\end{align*}
+
+Subject to:
+\begin{align*}
+  u(x,0) = \cos(x).
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+\begin{align*}
+  &u_t - 2 u_x = e^{2x} &&\\
+  \implies& \frac{dx}{dt} = -2 &&\\
+  \implies& x = -2t + x_{0}.
+\end{align*}
+and,
+\begin{align*}
+  &u_t - 2 u_x = e^{2x} &&\\
+  \implies& \frac{du}{dt} = e^{2x} &&\\
+  \implies& \frac{du}{dt} = e^{2(-2t + x_{0})} &&\\
+  \implies& \frac{du}{dt} = e^{2x_{0}}e^{-4t} &&\\
+  \implies& u(x,t) = \frac{-e^{2x_{0}}e^{-4t}}{4} + K.
+\end{align*}
+
+To find $K$, we apply the initial conditions:
+\begin{align*}
+  &u(x_0,0) = \cos(x_0) &&\\
+  \implies& \frac{-e^{2x_{0}}e^{0}}{4} + K = \cos(x_0) &&\\
+  \implies& \frac{-e^{2x_{0}}}{4} + K = \cos(x_0) &&\\
+  \implies& K = \frac{e^{2x_{0}}}{4} + \cos(x_0) &&\\
+\end{align*}
+
+Finally, we get:
+\begin{align*}
+  u(x,t) &= \frac{-e^{2x_{0}}e^{-4t}}{4} + \frac{e^{2x_{0}}}{4} + \cos(x_0) &&\\
+  &= \frac{1}{4} e^{2x_{0}} \left[ -e^{-4t} + 1 \right] + \cos(x_0) &&\\
+  &= \frac{1}{4}e^{2(x+2t)} \left[ -e^{-4t} + 1 \right] + \cos(x+2t) &&\\
+\end{align*}
+\newpage
+
+\subsection*{c.}
+Solve the linear PDE:
+\begin{align*}
+  u_t + t u_x = 5
+\end{align*}
+
+Subject to:
+\begin{align*}
+  u(x,0) = f(x).
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+
+\begin{align*}
+  &u_t + t u_x = 5 &&\\
+  \implies& \frac{dx}{dt} = t &&\\
+  \implies& x = \frac{1}{2} t^2 + x_0 &&\\
+  \implies& x = \frac{1}{2} t^2 + x_0.
+\end{align*}
+and,
+\begin{align*}
+  &u_t + t u_x = 5 &&\\
+  \implies& \frac{du}{dt} = 5 &&\\
+  \implies& u = 5t + K.
+\end{align*}
+
+To find $K$, we apply the initial conditions:
+\begin{align*}
+  &u(x_0,0) = f(x_0) &&\\
+  \implies& 5*0 + K = f(x_0) &&\\
+  \implies& K = f(x_0).
+\end{align*}
+
+Finally, we get:
+\begin{align*}
+  &u(x,t) = 5t + f(x_0) &&\\
+  \implies& u(x,t) = 5t + f(x-\frac{1}{2}t^2).
+\end{align*}
+
+\newpage
+
+\section*{3.}
+\subsection*{a.}
+Solve the equation:
+\begin{align*}
+  u_t + 4 u u_x = 0
+\end{align*}
+
+Subject to:
+\begin{align*}
+  u(x,0) = \begin{cases}
+    3 & x < 1 \\
+    2 & x > 1
+  \end{cases}
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+\begin{align*}
+  &u_t + 4 u u_x = 0 &&\\
+  \implies& \frac{du}{dt} = 0 &&\\
+  \implies& u(x,t) = K &&\\
+\end{align*}
+To find $K$, we apply the initial conditions:
+\begin{align*}
+  &u(x_0,0) = \begin{cases}
+    3 & x_0 < 1 \\
+    2 & x_0 > 1
+  \end{cases} &&\\
+  \implies& K = \begin{cases}
+    3 & x_0 < 1 \\
+    2 & x_0 > 1
+  \end{cases} 
+\end{align*}
+and,
+\begin{align*}
+  &u_t + 4 u u_x = 0 &&\\
+  \implies& \frac{dx}{dt} = \begin{cases}
+    12 & x_0 < 1 \\
+    8 & x_0 > 1
+  \end{cases}  &&\\
+  \implies& x = \begin{cases}
+    12t + x_0 & x_0 < 1 \\
+    8t + x_0 & x_0 > 1
+  \end{cases} &&\\
+\end{align*}
+
+Therefore, away from the discontinuity we get :
+\begin{align*}
+  u(x,t) = \begin{cases}
+    3 & x < 1 + 12t \\
+    2 & x > 1 + 8t
+  \end{cases}
+\end{align*}
+
+% To find the solution at the discontinuity $x_0 = 1$, we first find the characteristic curve for the shock wave:
+
+To find the characteristic of the shock, we first rewrite the PDE in the conservation law form:
+\begin{align*}
+  u_t + \pdv{(q(u))}{x} = 0, \quad \text{where } q(u)=2u^2.
+\end{align*}
+then:
+\begin{align*}
+  &\frac{dx_s}{dt} = \frac{[q]}{[u]} = \frac{2*2^2 - 2*3^2}{2-3} = 10 &&\\
+  \implies& x_s = 10t + x_{s_0} = 10t + 1.
+\end{align*}
+
+% Next, we solve the ODE for u on the shock characteristic:
+% \begin{align*}
+%   &\frac{dx_s}{dt} = 4u &&\\
+%   \implies& x_s = 4ut + x_{s_0} &&\\
+%   \implies& x_s = 4ut + 1 &&\\
+%   \implies& u = \frac{x_s-1}{4t} = \frac{10t + 1 - 1}{4t} = \frac{10}{4}.
+% \end{align*}
+
+\newpage
+
+\subsection*{b.}
+
+\subsubsection*{i.}
+
+Assuming an infinite domain ($-\infty < x < \infty$), $u(x,0) = f(x)$ and $u_x(x,0)=g(x)$, then the solution is given by D'Alembert's formula:
+\begin{align*}
+  u(x,t) = \frac{f(x-ct) + f(x+ct)}{2} + \frac{1}{2c} \int_{x-ct}^{x+ct} g(\eta) d\eta.
+\end{align*}
+
+\subsubsection*{ii.}
+
+For $f(x) = \cos(x)$ and $g(x) = 0$:
+\begin{align*}
+  u(x,t) = \frac{\cos(x-ct) + \cos(x+ct)}{2}
+\end{align*}
+
+\subsubsection*{iii.}
+Transfer the PDE to a system of 2 ODEs as follows:
+\begin{align*}
+  &u_{tt} - c^2 u_x = 0 &&\\
+  \implies& (\pdv{}{t} - c \pdv{}{x}) (\pdv{}{t} + c \pdv{}{x}) u = 0 &&\\
+  \implies& v = (\pdv{}{t} + c \pdv{}{x}) u
+  \quad \text{and} \quad
+  (\pdv{}{t} - c \pdv{}{x}) v = 0.
+\end{align*}
+
+\newpage
+
+\subsection*{c.}
+This is a semi-infinite domain ($0 \leq x < \infty$).
+The solution is given by the modified D'Alembert's formula:
+\begin{align*}
+  &u(x,t) = \begin{cases}
+    \frac{f(x-ct) + f(x+ct)}{2} + \frac{1}{2c} \int_{x-ct}^{x+ct} g(\eta) d\eta & x-ct \geq 0 \\
+    h(t-\frac{x}{c}) + \frac{f(x-ct) - f(x+ct)}{2} + \frac{1}{2c} \int_{ct-x}^{x+ct} g(\eta) d\eta & x-ct < 0
+  \end{cases}.
+\end{align*}
+
+For $f(x) = 0$ and $g(x) = 0$, and $c^2 = 4$, we have:
+\begin{align*}
+  u(x,t) = \begin{cases}
+    0 & x-2t \geq 0 \\
+    h(t-\frac{x}{2}) & x-2t < 0
+  \end{cases} &&\\
+\end{align*}
+
+\end{document}
