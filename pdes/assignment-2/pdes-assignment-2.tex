@@ -67,238 +67,112 @@
   \implies& \text{The problem is hyperbolic.}
 \end{align*}
 
-\section*{2.3.1}
+\newpage
+
+\section*{2.3.1 \& 2.3.2 }
 \subsection*{a.}
-$A=x, \: B=0, \: C=1$.
+Find the characteristic equation, characteristic curves and obtain a canonical form for:
+\begin{align*}
+  x u_{xx} + u_{yy} = x^2
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+
+\begin{align*}
+  A=x && B=0 && C=1 && D=0 && E=0 && F=0 && G=x^2  
+\end{align*}
 \begin{align*}
   \Delta &= B^2 - 4AC &&\\
   &= 0 - 4(x*1) &&\\
-  &= -4x &&\\
+  &= -4x.
+\end{align*}
+\begin{align*}
   \implies& x < 0 \text{ then hyperbolic} &&\\
   & x = 0 \text{ then parabolic} &&\\
-  & x > 0 \text{ then elliptic.} &&\\
+  & x > 0 \text{ then elliptic}.
 \end{align*}
 
 \underline{1. $x < 0 \: (hyperbolic)$:}
 \newline
 
-\quad \underline{Characteristic Equation:}
+\quad \underline{Step 1: Characteristic Equation:}
 \begin{align*}
-  \dfrac{dy}{dx} &= \frac{B^2 \pm \sqrt{B - 4AC}}{2A} &&\\
-  &= \frac{0^2 \pm \sqrt{0 - 4x}}{2x} &&\\
+  \dfrac{dy}{dx} &= \frac{B \pm \sqrt{B - 4AC}}{2A} &&\\
+  &= \frac{0 \pm \sqrt{0 - 4x}}{2x} &&\\
   &= \pm \frac{2 \sqrt{-x}}{2x} &&\\
-  &= \mp (x)^{-\frac{1}{2}} &&\\
+  &= \pm (-x)^{-\frac{1}{2}}.
 \end{align*}
 
-\quad \underline{Characteristic Curves:}
+\quad \underline{Step 2: Solve for the Characteristic Curves:}
 \begin{align*}
   &\xi = \phi_1(x, y) = y + 2x^{\frac{1}{2}} = C_1 &&\\
   &\eta = \phi_2(x, y) = y - 2x^{\frac{1}{2}} = C_2 &&\\
 \end{align*}
 
-\quad \underline{Canonical Form:}
+\quad \underline{Step 3: Compute the Canonical Coefficients:}
 \begin{align*}
-  &\xi_x = x^{-\frac{1}{2}} &&\xi_y = 1 &&\xi_{xy} = 0 &&\xi_{xx} = -\frac{1}{2} x^{-\frac{3}{2}}&\xi_{yy} = 0 &&\\
-  &\eta_x = -x^{-\frac{1}{2}} &&\eta_y = 1 &&\xi_{xy} = 0 &&\xi_{xx} = \frac{1}{2} x^{-\frac{3}{2}}&\xi_{yy} = 0 &&\\
+  % x-deriv
+  &\xi_x = x^{-\frac{1}{2}} &&
+  \eta_x = -x^{-\frac{1}{2}} &&\\
+  % xx-deriv
+  &\xi_{xx} = -\frac{1}{2} x^{-\frac{3}{2}} &&
+  \eta_{xx} = \frac{1}{2} x^{-\frac{3}{2}} &&\\
+  % y-deriv
+  &\xi_y = 1 &&
+  \eta_y = 1 &&\\
+  %yy-deriv
+  &\xi_{yy} = 0 &&
+  \eta_{yy} = 0.
+\end{align*}
+\begin{align*}
+  A^* &= A \xi_{x}^2 + B \xi_{x}\xi_{y} + C \xi_{y}^2 
+  = 0 &&\\
+  B^* &= 2A \xi_{x} \eta_{x} + B(\xi_{x} \eta_{y} + \xi_{y} \eta_{x}) + 2C \xi_{y} \eta_{y} 
+  = 4 &&\\
+  C^* &= A\eta_{x}^2 + B \eta_{x} \eta_{y} + C \eta_{y}^2 
+  = 0 &&\\
+  D^* &= A \xi_{xx} + B \xi_{xy} + C \xi_{yy} + D \xi_{x} + E \xi_{y} 
+  = \frac{1}{2} x^{-\frac{1}{2}} &&\\
+  E^* &= A \eta_{xx} + B \eta_{xy} + C \eta_{yy} + D \eta_{x} + E \eta_{y} 
+  = - \frac{1}{2} x^{-\frac{1}{2}} &&\\
+  F^* &= F = 0 &&\\
+  G^* &= G = x^2.
 \end{align*}
 
+\quad \underline{Step 4: Transform to the Canonical Form:}
 \begin{align*}
-  &A^* = C^* = 0 &&\\
-  &B^* = 
+  4u_{\xi}{\eta} +
+  \frac{1}{2} x^{-\frac{1}{2}} u_{\xi} - \frac{1}{2} x^{-\frac{1}{2}} u_{\eta} = x^2.
 \end{align*}
 
+\quad \underline{Step 5: Compute $x$ and $y$ in terms of $\xi$ and $\eta$:}
+\begin{align*}
+  &y = \frac{1}{2} (\xi + \eta) &&\\
+  &x = [\frac{1}{4} (\xi - \eta)]^2 &&\\
+\end{align*}
 
+Finally, substitute $x$ and $y$ in terms of $\xi$ and $\eta$ in the Canonical Form.
+\newline
 
+Same steps should be repeated for the parabolic and elliptic cases.
 
-% \section*{2.}
-% Let $u = 2x + y$.
+\newpage
 
-% \subsection*{a.}
-% \begin{align*}
-%   & \pdv{u}{x} = 2 &&\\
-%   & \pdv{u}{y} = 1 &&\\
-%   & \pdv{v}{x} = x \pdv{F}{u} \pdv{u}{x} + F(u) = 2x\pdv{F}{u} + F(u) &&\\
-%   & \pdv{v}{y} = x \pdv{F}{u} \pdv{u}{y} = x \pdv{F}{u} &&\\
-% \end{align*}
+\subsection*{b,c,d,e,f}
+Can be solved in the same way as part $(a)$ solved above.
 
-% Then:
-% \begin{align*}
-%   x\pdv{v}{x} - 2x\pdv{v}{y} &= x (2x \pdv{F}{u} + F(u)) - 2x (x \pdv{F}{u}) &&\\
-%   &= xF(u) = v.
-% \end{align*}
+\newpage
 
-% Therefore, $v(x, y) = xF(2x + y)$ is a general solution to the given PDE.
+\section*{2.4.1 \& 2.4.2}
 
-% \subsection*{b.}
-% \begin{align*}
-%   &v(1, y) = y^2 &&\\
-%   \implies& F(2+y)  = y^2 &&\\
-%   \implies& F  = (u-2)^2 &&\\
-%   \implies& v(x, y)  = x*(2x+y - 2)^2 \text{ \quad is a particular solution.} &&\\
-% \end{align*}
+Can be solved in the same way as problem $2.3.1 \& 2.3.2$ above.
 
-% \section*{3.}
-% \begin{align*}
-%   &\pdv{u}{x} = F(x-3y) + 2G(2x+y) &&\\
-%   &\pdv{u}{y} = -3F(x-3y) + G(2x+y) &&\\
-%   &7F(x-3y) = \pdv{u}{x} - 2\pdv{u}{y} &&\\
-%   &7G(2x + y) = 3\pdv{u}{x} + \pdv{u}{y} &&\\
-%   \implies &7u = 4\pdv{u}{x} - \pdv{u}{y}.
-% \end{align*}
+\newpage
 
-% \section*{4.}
-% \subsection*{a.}
-
-% Let $u = 2y-3x$.
-% \begin{align*}
-%   &\pdv{z}{x} = -3e^x \pdv{f}{u} + e^xf &&\\
-%   &\pdv{z}{y} = 2e^x \pdv{f}{u} &&\\
-%   &2\pdv{z}{x} + 3\pdv{z}{y} = 2e^x f &&\\
-%   \implies& 2\pdv{z}{x} + 3\pdv{z}{y} = 2z \text{\quad is a PDE satisfying the general solution.}
-% \end{align*}
-
-% \subsection*{b.}
-
-% Let $u = 2x+y$ and $v = x-2y$.
-% \begin{align*}
-%   &\pdv{z}{x} = 2 \pdv{f}{u} + \pdv{g}{v} &&\\
-%   &\pdv{z}{y} = \pdv{f}{u} - 2\pdv{g}{v} &&\\
-%   &\pdv{z}{y,x} = 2 \pdv[order=2]{f}{u} - 2\pdv[order=2]{g}{v} &&\\
-%   &\pdv{z}{x,y} = 2\pdv[order=2]{f}{u} - 2\pdv[order=2]{g}{v} &&\\
-%   \implies& \pdv{z}{x,y} = \pdv{z}{y,x} \text{\quad is a PDE satisfying the general solution.}
-% \end{align*}
-
-% \section*{5.}
-% \subsection*{a.}
-% \begin{align*}
-%   &x \pdv{z}{x,y} + \pdv{z}{y} = 0 &&\\
-%   \text{Let } u(x,y) = \pdv{z}{y} &&\\
-%   \implies& x\pdv*{u}{x} + u = 0 &&\\
-%   \implies& \pdv*{u}{x} = (- \frac{1}{x}) u &&\\
-%   \implies& u = F(y) * e^{-ln(x)} = F(y) * e^{ln(x^{-1})} = F(Y) * x^{-1} &&\\
-%   \implies& z(x,y) 
-%   = \int u \,dy 
-%   = x^{-1} \int F(Y) \,dy = x^{-1}H(y) + G(x)
-% \end{align*}
-
-% \subsection*{b.}
-% \underline{Boundary Condition 1:}
-% \begin{align*}
-%   &z(x,0) = x^5 + x &&\\
-%   \implies& x^{-1} H(y) + G(x) = x^5 + x &&\\
-%   \implies& G(x)= x^5 + x \quad \text{ and } \quad H(0) = 0
-% \end{align*}
-
-% \underline{Boundary Condition 2:}
-% \begin{align*}
-%   &z(2, y) = 3y^4 &&\\
-%   \implies& 2^{-1}H(y) + G(2) = 3y^4 &&\\
-%   \implies& \frac{1}{2} H(y) + 2^5 + 2 = 3y^4 &&\\
-%   \implies& H(y) = 6y^4 -68
-% \end{align*}
-
-% Therefore:
-% \begin{align*}
-%   z(x,y) &= x^{-1} H(y) + G(x) &&\\
-%   &= x^{-1} (6y^4 -68) + x^5 + x.
-% \end{align*}
-
-% \underline{Verify:}
-
-% \begin{align*}
-%   &\pdv{z}{y} = 24x^{-1}y^3 &&\\
-%   &\pdv{z}{x,y} = -24x^{-2}y^3 &&\\
-%   &x \pdv{z}{x,y} = -24x^{-1}y^3 &&\\
-%   \implies& x \pdv{z}{x,y} + \pdv{z}{y} = -24x^{-1}y^3 + 24x^{-1}y^3 = 0.
-% \end{align*}
-
-
-
-% \section*{6.}
-% $ $
-
-% $v = \frac{F(r-ct) + G(r+ct)}{r}$.
-
-% Let $u = r - ct$ and $w = r + ct$, then: $v = \frac{F(u) + G(w)}{r}$.
-
-% \begin{flalign*}
-%   &\pdv{v}{r} = \frac{r \pdv{F}{u} + r \pdv{G}{w} - F - G}{r^2} && \pdv{v}{t} = \frac{-cr \pdv{F}{u} + cr \pdv{G}{w}}{r^2} &&
-% \end{flalign*}
-% \begin{flalign*}
-%   \pdv[order=2]{v}{r} &= \frac{r^2(r \pdv[order=2]{F}{u} + \pdv{F}{u}) + r^2(r \pdv[order=2]{G}{w} + \pdv{G}{w}) - \pdv{F}{u} - \pdv{G}{w} -2r (r \pdv{F}{u} + r \pdv{G}{w} - F - G)}{r^4} &&\\ 
-%   &= \frac{\pdv[order=2]{F}{u}(r^3) + \pdv[order=2]{G}{w}(r^3) + \pdv{F}{u}(-r^2 -1) + \pdv{G}{w} (-r^2-1) + F(2r) + G(2r)}{r^4} &&
-% \end{flalign*}
-% \begin{flalign*}
-%   \pdv[order=2]{v}{t} &= \frac{r^2(c^2r \pdv[order=2]{F}{u} + -c \pdv{F}{u}) + r^2(c^2r \pdv[order=2]{G}{w} + c\pdv{G}{w}) + 2r (-cr \pdv{F}{u} + cr \pdv{G}{w})}{r^4} && \\
-%   &= \frac{\pdv[order=2]{F}{u}(r^3c^2) + \pdv[order=2]{G}{w}(r^3c^2) + \pdv{F}{u}(-3cr^2) + \pdv{G}{w}(3cr^2)}{r^4} &&
-% \end{flalign*}
-
-% \begin{flalign*}
-%   \implies \pdv[order=2]{v}{r} + \frac{2}{r} \pdv{v}{r} &= 
-%   \frac{\pdv[order=2]{F}{u}(r^3) + \pdv[order=2]{G}{w}(r^3) + \pdv{F}{u}(-r^2 -1) + \pdv{G}{w} (-r^2-1) + F(2r) + G(2r)}{r^4} &&\\
-%   &+ 
-%   \frac{2}{r} (\frac{r \pdv{F}{u} + r \pdv{G}{w} - F - G}{r^2}) &&\\
-%   &= \frac{1}{c^2} \frac{\pdv[order=2]{F}{u}(r^3c^2) + \pdv[order=2]{G}{w}(r^3c^2) + \pdv{F}{u}(-3cr^2) + \pdv{G}{w}(3cr^2)}{r^4} &&\\
-%   &= \frac{1}{c^2} \pdv[order=2]{v}{t}.
-% \end{flalign*}
-
-% \section*{Problems:}
-% \section*{1.}
-% \begin{center}
-%   \begin{tabular}{|c | c|}
-%     \hline
-%     \textbf{PDE} & \textbf{Order} \\
-%     \hline
-%     $(a)$ & 2 \\
-%     \hline
-%     $(b)$ & 3 \\
-%     \hline
-%     $(c)$ & 4 \\
-%     \hline
-%     $(d)$ & 2 \\
-%     \hline
-%     $(e)$ & 1 \\
-%     \hline
-%   \end{tabular}
-% \end{center}
-
-% \section*{3.}
-% \begin{center}
-%   \begin{tabular}{|c | c| c| c| c|}
-%     \hline
-%     \textbf{PDE} & \textbf{Linear} & \textbf{Non-Linear} & \textbf{Quasi-Linear} & \textbf{Homogenous} \\
-%     \hline
-%     $(a)$ & \checkmark &  &  &  \\
-%     \hline
-%     $(b)$ & \checkmark &  &  &  \checkmark \\
-%     \hline
-%     $(c)$ &  &  & \checkmark &   \\
-%     \hline
-%     $(d)$ &  & \checkmark &  &   \\
-%     \hline
-%     $(e)$ & \checkmark &  &  &  \checkmark \\
-%     \hline
-%     $(f)$ &  &  & \checkmark &  \\
-%     \hline
-%     $(g)$ &  & \checkmark  &  &  \\
-%     \hline
-%     $(h)$ & \checkmark &  &  & \checkmark \\
-%     \hline
-%     $(i)$ &  &  & \checkmark &  \\
-%     \hline
-%   \end{tabular}
-% \end{center}
-
-% \section*{5.}
-% Let $w = xy$ and $v = y/x$.
-% \begin{align*}
-%   &u_x = yF^{\prime} - x^{-1} G^{\prime} + G &&\\
-%   &u_{xx} = y^2 F^{\prime\prime} + y x^{-3} G^{\prime\prime}  + x^{-2} G^{\prime} - x^{-2}G^{\prime} = y^2 F^{\prime\prime} + y x^{-3} G^{\prime\prime}  &&\\
-%   &u_y = xF^{\prime} + G^{\prime} &&\\
-%   &u_{yy} = x^2F^{\prime\prime} + x^{-1} G^{\prime\prime} &&\\
-%   &x^2 u_{xx} = x^2 y^2 F^{\prime\prime} + x^{-1} y G^{\prime\prime} &&\\
-%   &y^2 u_{yy} = x^2 y^2 F^{\prime\prime} + x^{-1} y^2 G^{\prime\prime} &&\\
-%   \implies& x^2 u_{xx} - y^2 u_{yy} = [x^2 y^2 F^{\prime\prime} + x^{-1} y G^{\prime\prime}] - [x^2 y^2 F^{\prime\prime} + x^{-1} y G^{\prime\prime}] = 0.
-% \end{align*}
+\section*{2.5.2}
 
 \end{document}
