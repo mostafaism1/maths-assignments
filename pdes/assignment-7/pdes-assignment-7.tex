@@ -1,0 +1,99 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{centernot}
+\usepackage{derivative}
+\author{Mostafa Hassanein}
+\title{
+  MTH-632 PDEs \\
+  Assignment (6): \\ Chapter 10: Green's Functions}
+\date{3 Jan 2025}
+\begin{document}
+
+\maketitle
+\newpage
+
+\section*{10.2.1}
+\begin{align*}
+  &u_{t} = u_{xx} + Q(x, t) 0, \quad 0\leq x \leq 1, \quad t > 0 &&\\
+  &u(x, 0) = f(x) &&\\
+  &u(0, t) = A(t) &&\\
+  &u(1, t) = B(t).
+\end{align*}
+Obtain a solution of the form:
+\begin{align*}
+  u(x,t) = \int_{0}^{1} f(s) G(x;s,t) ds +
+  \int_{0}^{1} \int_{0}^{t} Q(s,\tau) G(x; s, t-\tau) d\tau ds.  
+\end{align*}
+
+\begin{center}
+  \noindent\rule{8cm}{0.4pt}
+\end{center}
+
+\underline{Solution:}
+\begin{align*}
+  &w(x, t) = A(t) + x[B(t) - A(t)] &&\\
+  &v(x, t) = u(x, t) - w(x, t) &&\\
+  &y(x, t) = Q(x, t) - wt + w_{xx}.
+\end{align*}
+\begin{align*}
+  \implies&v_{t} = v_{xx} + y(x, t) &&\\
+  &v(x, 0) = g(x) = f(x) - A(0) - x[B(0) - A(0)] &&\\
+  &v(0, t) = v(1, t) = 0.
+\end{align*}
+\newline
+
+The eigenfunctions are given by:
+\begin{align*}
+  &\phi_{n}(x) = sin(n \pi x) &&\\ 
+  &\lambda_n = (n\pi)^2 &&\\ 
+  &n= 1, 2, \ldots
+\end{align*}
+
+Expand $y(x,t)$ in the eigenfunction basis:
+\begin{align*}
+  &y(x,t) = \sum_{n=1}^{\infty} y_n(t) \phi_n(x) &&\\
+  \implies&y_n(t) = \frac{\int_{0}^{1} y(x,y) \sin(n \pi x) dx}{\int_{0}^{1} \sin^2(n \pi x) dx}.
+\end{align*}
+
+Expand $v(x,t)$ in the eigenfunction basis:
+\begin{align*}
+  &v(x,t) = \sum_{n=1}^{\infty} v_n(t) \phi(x) &&\\
+  \implies& v(x, 0) = \sum_{n=1}^{\infty} v_n(0) \phi_n(x) = g(x) &&\\
+  \implies& v_n(0) = \frac{\int_{0}^{1} g(x) \sin(n \pi x) dx}{\int_{0}^{1} \sin^2(n \pi x) dx} 
+  = 2 \int_{0}^{1} g(x) \sin(n \pi x) dx.
+\end{align*}
+
+Plugging into the PDE, we get:
+\begin{align*}
+  &\sum_{n=1}^{\infty} 
+  \left[
+    \dot{v}_n(t) + n^2 \pi^2 v_n(t) - y_n(t)
+  \right] 
+  \sin(n \pi x) = 0 &&\\
+  \implies& \forall n: \dot{v}_n(t) + n^2 \pi^2 v_n(t) = y_n(t).
+\end{align*}
+
+Using the method of variation of parameters, we can solve for $v_n(t)$ as follows:
+\begin{align*}
+  v_n(t) 
+  &= v_n(0) e^{- n^2 \pi ^2 t}
+  + \int_{0}^{t} y_n(\tau) e^{-n^2 \pi^2 (t - \tau)} d\tau &&\\
+  &= e^{- n^2 \pi ^2 t} 2 \int_{0}^{1} g(x) \sin(n \pi x) dx 
+  + \int_{0}^{t} y_n(\tau) e^{-n^2 \pi^2 (t - \tau)} d\tau.
+\end{align*}
+
+Now, plugging into $v(x,t)$, we get:
+\begin{align*}
+  v(x,t) 
+  &= \sum_{n=1}^{\infty} v_n(t) \phi(x) &&\\
+  &=
+  \sum_{n=1}^{\infty}
+  \left[
+    e^{- n^2 \pi ^2 t} 2 \int_{0}^{1} g(x) \sin(n \pi x) dx 
+  + \int_{0}^{t} y_n(\tau) e^{-n^2 \pi^2 (t - \tau)} d\tau
+  \right]
+  \sin(n \pi x)
+\end{align*}
+
+\end{document}
+
