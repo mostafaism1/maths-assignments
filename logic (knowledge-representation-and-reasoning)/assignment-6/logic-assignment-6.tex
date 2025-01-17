@@ -1,0 +1,60 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{centernot}
+\author{Mostafa Hassanein}
+\title{
+  MTH-684 Logic \\
+  Assignment (6): Inference in First-Order Predicate Logic (FOPL)}
+\date{16 January 2025}
+\begin{document}
+
+\maketitle
+\newpage
+
+\section*{6-1}
+Using the FOPL system of natural deduction introduced in class, prove the following.
+\begin{align*}
+  \vdash 
+  \exists x \left[ P(x) \lor Q(x) \right]
+  \iff
+  \exists x P(x) \lor \exists x Q(x)
+\end{align*}
+
+\begin{proof}
+  $ $
+
+  \underline{$\implies$:}
+  \begin{align*}
+    &*1. \exists x \left[ P(x) \lor Q(x) \right] &&\text{(Assumption)} \\
+    &*2. P(c) \lor Q(c) &&\text{($1$, $\exists$-elim)} \\
+    &*3. \exists x P(x) \lor Q(c) &&\text{($2$, $\exists$-intro)} \\
+    &*4. \exists x P(x) \lor \exists x Q(x) &&\text{($3$, $\exists$-intro)} \\
+    &5. \exists x \left[ P(x) \lor Q(x) \right]
+    \implies
+    \exists x P(x) \lor \exists x Q(x) &&\text{($1$, $4$, $\implies$-intro)}.
+  \end{align*}
+
+  \underline{$\impliedby$:}
+  \begin{align*}
+    &*i. \exists x P(x) \lor \exists x Q(x) &&\text{(Assumption)} \\
+    &**ii. \lnot \left[ \exists x \left[ P(x) \lor Q(x) \right] \right] &&\text{(Assumption)} \\
+    &**iii. \lnot \left[ P(c) \lor Q(c) \right] &&\text{($ii$, $\exists$-elim)} \\
+    &**iv. \lnot \left[ \exists x P(x) \lor Q(c) \right] &&\text{($iii$, $\exists$-intro)} \\
+    &**v. \lnot \left[ \exists x P(x) \lor \exists x Q(x) \right] &&\text{($iv$, $\exists$-intro)} \\
+    &*vi. \lnot \lnot \left[ \exists x \left[ P(x) \lor Q(x) \right] \right]  &&\text{($i$, $ii$, $v$, $\lnot$-intro)} \\
+    &*vii. \exists x \left[ P(x) \lor Q(x) \right] &&\text{(vi, $\lnot$-elim)} \\
+    &viii. \exists x P(x) \lor \exists x Q(x)
+    \implies
+    \exists x \left[ P(x) \lor Q(x) \right] &&\text{($i$, $vii$, $\implies$-intro)}.
+  \end{align*}
+
+  \underline{$\iff$:}
+  \begin{align*}
+    \exists x \left[ P(x) \lor Q(x) \right]
+    \iff
+    \exists x P(x) \lor \exists x Q(x) &&\text{($5$, $viii$, $\iff$-intro)}.
+  \end{align*}
+
+\end{proof}
+
+\end{document}
