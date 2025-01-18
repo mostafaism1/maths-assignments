@@ -1,0 +1,201 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{centernot}
+\author{Mostafa Hassanein}
+\title{Logic (Knowledge Representation and Reasoning) Finals Questions Bank}
+\date{18 January 2024}
+\begin{document}
+
+\maketitle
+\newpage
+
+\section*{6-1}
+
+Using the FOPL system of natural deduction introduced in class, prove the following.
+
+\subsection*{a.}
+\begin{align*}
+  \{ 
+  \forall x \left[ P(x) \implies Q(x) \right],
+  \forall x \left[ Q(x) \implies R(x) \right] \}
+  \vdash
+  \forall x \left[ P(x) \implies R(x) \right].
+\end{align*}
+\begin{proof}
+  \begin{align*}
+    &1. \forall x \left[ P(x) \implies Q(x) \right] &&\text{(Premise)} \\
+    &2. \forall x \left[ Q(x) \implies R(x) \right] &&\text{(Premise)} \\
+    &3. P(t) \implies Q(t) &&\text{($1, \forall$-elim)} \\
+    &4. Q(t) \implies R(t) &&\text{($2, \forall$-elim)} \\
+    &*5. P(t) &&\text{(Assumption)} \\
+    &*6. Q(t) &&\text{($3 , 5, \implies$-elim)} \\
+    &*7. R(t) &&\text{($4 , 6, \implies$-elim)} \\
+    &8. P(t) \implies R(t) &&\text{($5, 7, \implies$-intro)} \\
+    &9. \forall x \left[ P(x) \implies R(x) \right] &&\text{($8, \forall$-intro)}.
+  \end{align*}
+\end{proof}
+
+\newpage
+
+\subsection*{b.}
+\begin{align*}
+  \{ 
+  \forall x \left[ P(x) \lor Q(x) \right],
+  \forall x \left[ \left[ \lnot P(x) \land Q(x) \right] \implies R(x) \right] \}
+  \vdash
+  \forall x \left[\lnot R(x) \implies P(x) \right].
+\end{align*}
+\begin{proof}
+  \begin{align*}
+    &1. \forall x \left[ P(x) \lor Q(x) \right] &&\text{(Premise)} \\
+    &2. \forall x \left[ \left[ \lnot P(x) \land Q(x) \right] \implies R(x) \right] &&\text{(Premise)} \\
+    &3. P(t) \lor Q(t) &&\text{($1, \forall$-elim)} \\
+    &4. \left[ \lnot P(t) \land Q(t) \right] \implies R(t) &&\text{($2, \forall$-elim)} \\
+    &*5. \lnot R(t) &&\text{(Assumption)} \\
+    &**6. \lnot P(t) &&\text{(Assumption)} \\
+    &**7. Q(t) &&\text{($3, 6, \lor$-elim)} \\
+    &**8. \lnot P(t) \land Q(t) &&\text{($6, 7, \land$-intro)} \\
+    &**9. R(t) &&\text{($4, 8, \implies$-elim)} \\
+    &**10. \lnot R(t) \land R(t) &&\text{($5, 9, \land$-elim)} \\
+    &*11. \lnot \lnot P(t) &&\text{($6, 10, \lnot$-intro)} \\
+    &*12. P(t) &&\text{($11, \lnot$-elim)} \\
+    &13. \lnot R(t) \implies P(t) &&\text{($5, 12, \implies$-intro)} \\
+    &14. \forall x \left[ \lnot R(x) \implies P(x) \right] &&\text{($13, \forall$-intro)}.
+  \end{align*}
+\end{proof}
+
+\newpage
+
+\subsection*{c.}
+\begin{align*}
+  \{ 
+  \forall x \left[ P(x) \lor Q(x) \right],
+  \forall x \left[ \lnot Q(x) \lor S(x) \right],
+  \forall x \left[ R(x) \implies \lnot S(x) \right],
+  \exists x \left[ \lnot P(x) \right]
+  \}
+  \vdash
+  \exists x \left[\lnot R(x) \right].
+\end{align*}
+\begin{proof}
+  \begin{align*}
+    &1. \forall x \left[ P(x) \lor Q(x) \right] &&\text{(Premise)} \\
+    &2. \forall x \left[ \lnot Q(x) \lor S(x) \right] &&\text{(Premise)} \\
+    &3. \forall x \left[ R(x) \implies \lnot S(x) \right] &&\text{(Premise)} \\
+    &4. \exists x \left[ \lnot P(x) \right] &&\text{(Premise)} \\
+    &5. \lnot P(c) &&\text{($4, \exists$-elim)} \\
+    &6. P(c) \lor Q(c) &&\text{($1, \forall$-elim)} \\
+    &7. \lnot Q(c) \lor S(c) &&\text{($2, \forall$-elim)} \\
+    &8. R(c) \implies \lnot S(c) &&\text{($3, \forall$-elim)} \\
+    &9. Q(c) &&\text{($5, 6, \lor$-elim)} \\
+    &10. S(c) &&\text{($7, 9, \lor$-elim)} \\
+    &*11. R(c) &&\text{(Assumption)} \\
+    &*12. \lnot S(c) &&\text{($8, 11, \implies$-elim)} \\
+    &*13. S(c) \land \lnot S(c) &&\text{($10, 12, \land$-intro)} \\
+    &14. \lnot R(c) &&\text{($13, \lnot$-intro)} \\
+    &15. \exists x \left[ \lnot R(c) \right]  &&\text{($14, \exists$-intro)}.
+  \end{align*}
+\end{proof}
+
+\newpage
+
+\subsection*{d.}
+\begin{align*}
+  \vdash
+  \left[ \lnot \left[ \exists x P(x) \right] \right]
+  \iff
+  \forall x \left[ \lnot P(x) \right].
+\end{align*}
+\begin{proof}
+  $ $
+
+  \underline{$\implies$:}
+  \begin{align*}
+    &1. \lnot \left[ \exists x P(x) \right] &&\text{(Premise)} \\
+    &*2. P(t) &&\text{(Assumption)} \\
+    &*3. \exists x P(x) &&\text{($2, \exists$-intro)} \\
+    &*4. \lnot \left[ \exists x P(x) \right] \land \exists x P(x) &&\text{($1, 3, \land$-intro)} \\
+    &5. \lnot P(t) &&\text{($4, \lnot$-intro)} \\
+    &6. \forall x \left[ \lnot P(x) \right] &&\text{($4, \forall$-intro)} \\
+    &7. \left[ \lnot \left[ \exists x P(x) \right] \right]
+    \implies
+    \forall x \left[ \lnot P(x) \right] &&\text{($1, 6, \implies$-intro)}.
+  \end{align*}
+
+  \underline{$\impliedby$:}
+  \begin{align*}
+    &i. \forall x \left[ \lnot P(x) \right] &&\text{(Premise)} \\
+    &*ii. \lnot \left[ \lnot \left[ \exists x P(x) \right] \right] &&\text{(Assumption)} \\
+    &*iii. \exists x P(x) &&\text{($ii, \lnot$-elim)} \\
+    &*iv. P(c) &&\text{($iii, \exists$-elim)} \\
+    &*v. \lnot P(c) &&\text{($i, \forall$-elim)} \\
+    &*vi. P(c) \land \lnot P(c) &&\text{($iv, v, \land$-intro)} \\
+    &vii. \lnot \left[ \lnot \left[ \lnot \left[ \exists x P(x) \right] \right] \right] &&\text{($ii, vi, \lnot$-intro)} \\
+    &viii. \lnot \left[ \exists x P(x) \right]  &&\text{($vii \lnot$-elim)} \\
+    &ix. \forall x \left[ \lnot P(x) \right]
+    \implies
+    \left[ \lnot \left[ \exists x P(x) \right] \right]
+    &&\text{($i, viii, \implies$-intro)}.
+  \end{align*}
+
+  \underline{$\iff$:}
+  \begin{align*}
+    \vdash
+    \left[ \lnot \left[ \exists x P(x) \right] \right]
+    \iff
+    \forall x \left[ \lnot P(x) \right]
+    &&\text{($7, ix, \iff$-intro)}.
+  \end{align*}
+
+\end{proof}
+
+
+\newpage
+
+\subsection*{e.}
+
+\begin{align*}
+  \vdash 
+  \exists x \left[ P(x) \lor Q(x) \right]
+  \iff
+  \exists x P(x) \lor \exists x Q(x)
+\end{align*}
+
+\begin{proof}
+  $ $
+
+  \underline{$\implies$:}
+  \begin{align*}
+    &*1. \exists x \left[ P(x) \lor Q(x) \right] &&\text{(Assumption)} \\
+    &*2. P(c) \lor Q(c) &&\text{($1$, $\exists$-elim)} \\
+    &*3. \exists x P(x) \lor Q(c) &&\text{($2$, $\exists$-intro)} \\
+    &*4. \exists x P(x) \lor \exists x Q(x) &&\text{($3$, $\exists$-intro)} \\
+    &5. \exists x \left[ P(x) \lor Q(x) \right]
+    \implies
+    \exists x P(x) \lor \exists x Q(x) &&\text{($1$, $4$, $\implies$-intro)}.
+  \end{align*}
+
+  \underline{$\impliedby$:}
+  \begin{align*}
+    &*i. \exists x P(x) \lor \exists x Q(x) &&\text{(Assumption)} \\
+    &**ii. \lnot \left[ \exists x \left[ P(x) \lor Q(x) \right] \right] &&\text{(Assumption)} \\
+    &**iii. \lnot \left[ P(c) \lor Q(c) \right] &&\text{($ii$, $\exists$-elim)} \\
+    &**iv. \lnot \left[ \exists x P(x) \lor Q(c) \right] &&\text{($iii$, $\exists$-intro)} \\
+    &**v. \lnot \left[ \exists x P(x) \lor \exists x Q(x) \right] &&\text{($iv$, $\exists$-intro)} \\
+    &*vi. \lnot \lnot \left[ \exists x \left[ P(x) \lor Q(x) \right] \right]  &&\text{($i$, $ii$, $v$, $\lnot$-intro)} \\
+    &*vii. \exists x \left[ P(x) \lor Q(x) \right] &&\text{(vi, $\lnot$-elim)} \\
+    &viii. \exists x P(x) \lor \exists x Q(x)
+    \implies
+    \exists x \left[ P(x) \lor Q(x) \right] &&\text{($i$, $vii$, $\implies$-intro)}.
+  \end{align*}
+
+  \underline{$\iff$:}
+  \begin{align*}
+    \exists x \left[ P(x) \lor Q(x) \right]
+    \iff
+    \exists x P(x) \lor \exists x Q(x) &&\text{($5$, $viii$, $\iff$-intro)}.
+  \end{align*}
+
+\end{proof}
+
+\end{document}
