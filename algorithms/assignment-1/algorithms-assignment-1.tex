@@ -1,0 +1,82 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{centernot}
+\author{Mostafa Hassanein}
+\title{
+  MTH-681 Algorithms \\
+  Assignment (1): Asymptotic Analysis}
+\date{8 March 2025}
+\begin{document}
+
+\maketitle
+\newpage
+
+\section*{1-8}
+
+Using two different methods, prove that:
+\begin{align*}
+  \sum_{i=1}^{i=n} 2^i = \Theta(2^n)
+\end{align*}
+
+\begin{proof}(First proof: By explicitly finding constants $c$ and $n_0$)
+  $ $
+
+  The series $\sum_{i=1}^{i=n} 2^i$ is a geometric series which has a closed form solution given by:
+  \begin{align*}
+    S(n) = \sum_{i=1}^{i=n} 2^i = \frac{2^n - 2}{2-1} = 2^n - 2.
+  \end{align*}
+
+  \textbf{\underline{Upperbound:}}
+
+  Take $c=1$, $n_0=1$, then $\forall n \in Z^+$ and $n> n_0$:
+  \begin{align}
+    & S(n) = 2^n - 2\leq 2^n \nonumber &&\\
+    \implies& S(n) = O(2^n). \label{1-8.1}
+  \end{align}
+
+
+  \textbf{\underline{Lowerbound:}}
+
+  Take $c=1/2$, $n_0=2$, then $\forall n \in Z^+$ and $n> n_0$:
+  \begin{align}
+    & S(n) = 2^n - 2 \geq 2^{n-1}  \nonumber &&\\
+    \implies& S(n) = \Omega(2^n). \label{1-8.2}
+  \end{align}
+
+  \textbf{\underline{Tightbound:}}
+
+  \eqref{1-8.1} and \eqref{1-8.2} $\implies S(n) = \Theta(2^n)$.
+\end{proof}
+
+\newpage
+
+\begin{proof}(Second proof: Using integrals)
+  $ $
+
+  In this proof, we again start from the closed-form solution:
+  \begin{align*}
+    S(n) = \sum_{i=1}^{i=n} 2^i = \frac{2^n - 2}{2-1} = 2^n - 2.
+  \end{align*}
+
+  but use integration to get a lower and upper bounds.
+  \newline
+
+  Since $S(n)$ is monotically increasing, then the bounds are given by:
+  \newline
+
+  \begin{align*}
+    % 1
+    &\int_{x=0}^{x=n} 2^x dx 
+    &&\leq S(n)
+    &&\leq \int_{x=1}^{x=n+1} 2^x dx &&\\
+    % 2
+    \implies& \frac{1}{\ln(2)} \left[2^n - 1\right]
+    &&\leq S(n)
+    &&\leq \frac{1}{\ln(2)} \left[2^{n+1} - 2\right] &&\\
+    % 3
+    \implies& S(n) = \Theta(2^n).
+  \end{align*}
+  
+\end{proof}
+
+\end{document}
