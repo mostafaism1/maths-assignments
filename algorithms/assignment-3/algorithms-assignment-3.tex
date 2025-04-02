@@ -1,0 +1,237 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{centernot}
+\usepackage{listings}
+\usepackage{color}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{conj}[thm]{Conjecture}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\author{Mostafa Hassanein}
+\title{
+  MTH-681 Analysis and Design of Algorithms \\
+  Assignment (3): Divide and Conquer \\
+  The Master Theorem}
+\date{31 March 2025}
+\begin{document}
+
+\maketitle
+\newpage
+
+\section*{3-5}
+
+Consider an $m \times n$ matrix of numbers, $A$, having the property that, for every $1 \leq i < j \leq m$ and $1 \leq k < l \leq n$, $A_{ik} + A_{jl} \leq A_{il} + A_{jk}$.
+
+\noindent
+Let $lm(i)$ be the index of the column containing the
+leftmost minimum number of row $i$.
+
+a) Prove that, for every $1 \leq i < m, lm(i) \leq lm(i + 1)$.
+
+b) Describe a $O(m+ nlog(m))$ divide-and-conquer algorithm that computes lm for all rows of $A$.
+
+\newpage
+
+\begin{center}
+  \textbf{\underline{Solution:}}  
+\end{center}
+
+\subsection*{a)}
+\begin{proof}{(By Contradiction)}
+
+  Suppose for the sake of contradiction that $\forall i,j,k,l$:
+  \begin{align*}
+    1 \leq i < j \leq m \quad \land \quad 1 \leq k < l \leq n \implies A_{ik} + A_{jl} \leq A_{il} + A_{jk}
+  \end{align*}
+  
+  but $lm(i) > lm(i+1)$.
+  \newline
+
+  Let $j = i+1$, $k = lm(i+1) = lm(j)$, $l = lm(i)$
+  \newline
+
+  \noindent
+  $\implies$
+  $A_{il}$ is the minimum element of row $i$, and 
+  $A_{jk}$ is the minimum element of row $j$.
+  \newline
+
+  \noindent
+  $\implies A_{il} \leq A_{ik} \quad \land \quad A_{jk} \leq A_{jl}$
+  \newline
+
+  \noindent
+  $\implies A_{il} + A_{jk} \leq A_{ik} + A_{jl}$
+  \newline
+
+  This is a contradiction to the assumption that $A_{ik} + A_{jl} \leq A_{il} + A_{jk}$.
+
+  Therefore, we must conclude that: $lm(i) \leq lm(i+1)$.
+    
+\end{proof}
+
+\newpage
+
+\subsection*{b)}
+
+\begin{lstlisting}
+  // @code{matrix} is an mxn matrix with the propery stated at the problem statement.
+  int[] leftMostMins(int[][] matrix) {
+    int[] result = new int[matrix.length];
+    return helper(matrix, 0, matrix.length - 1, 0, matrix[0].length - 1, result);
+  }
+
+  // Computes the left-most mins for @code{matrix} by recursing on the rows of the matrix and collecting the results into the @code{result} variable. 
+  int[] helper(int[][] matrix, int lowRowIndex, int highRowIndex, int lowColumnIndex, int highColumnIndex, int[] result) {
+    // Base case 1.
+    if (lowRowIndex > highRowIndex) {
+      return result;      
+    }
+
+    // Base case 2.
+    if (lowRowIndex == highRowIndex) {
+      result[lowRowIndex] = findLeftMostMinIndexforSequence(matrix[lowRowIndex], lowColumnIndex, highColumnIndex);
+      return result;
+    }
+
+    // Recursive step.
+      // 1. Divide: find the index of the leftMostMin for midRow
+    int midRowIndex = (lowRowIndex + highRowIndex) / 2;
+    int midRowLeftMostMinIndex = findLeftMostMinIndexforSequence(matrix[midRowIndex], lowColumnIndex, highColumnIndex);
+
+      // 2. Conquer: solve 2 smaller sub-problems
+    helper(matrix, lowRowIndex, midRowIndex-1, lowColumnIndex, midRowLeftMostMinIndex, result);
+    helper(matrix, midRowIndex+1, highRowIndex, midRowLeftMostMinIndex, highColumnIndex, result);
+    
+
+      // 3. Combine
+    result[midRowIndex] = midRowLeftMostMinIndex;
+
+    return result;
+  }
+
+
+  // Any O(searchEndIndex - searchStartIndex) linear search algorithm.
+  int findLeftMostMinIndexforSequence(int[] sequence, int searchStartIndex, int searchEndIndex) {
+    int result = searchEndIndex;
+    int min = Integer.MAX_VALUE;
+    for (int i = searchEndIndex; i >= searchStartIndex; i--) {
+      if (sequence[i] <= min) {
+        min = sequence[i];
+        result = i;
+      }
+    }
+    return result;
+  }
+\end{lstlisting}
+
+\newpage
+
+\begin{center}
+  \textbf{\underline{Correctness}}
+\end{center}
+
+\begin{proof}{(By Strong Induction)}
+
+  \textbf{\underline{Base case 1: $m = 0$}}
+
+  In this case the top call to helper is passed $lowRowIndex = 0$ and $highRowIndex = -1$, which hits base case 1 and correctly returns an empty array.
+  \newline
+
+  \textbf{\underline{Base case 2: $m = 1$}}
+
+  In this case the top call to helper is passed $lowRowIndex = 0$ and $highRowIndex = 0$, which hits base case 2.
+  
+  Inside base case 2, it correctly finds and sets the left-most min for that single row and returns the result.
+  \newline
+
+  \textbf{\underline{Inductive step: $m > 1$}}
+
+  In the recursive step, the top call to helper is passed $lowRowIndex = 0$ and $highRowIndex > 0$, which hits the recursive step.
+
+  It then solves the problem at the middle row of the matrix, correctly sets the result for the middle row, and recurses on 2 smaller sub-problems, which by the induction hypothesis also set the result correctly for the remaining rows.
+  
+\end{proof}
+
+
+\newpage
+\begin{center}
+  \textbf{\underline{Average Case Time Complexity Analysis: $A_t(m, n)$}}  
+\end{center}
+
+For simplicity, we do an average-case analysis assuming that $midRowLeftMostMinIndex$ is equally likely to fall anywhere between the $lowColumnIndex$ and $highColumnIndex$, and thus the left and right sub-problems are of nearly equal sizes.
+\newline
+
+The solution is then described by the following recurrence equation:
+\begin{align*}
+  T(m,n) = 2T(\frac{m}{2}, \frac{n}{2}) + \Theta(n) + \Theta(1).
+\end{align*}
+
+\textbf{\underline{Notes:}}
+
+\quad 1. The $\Theta(n)$ is contributed by the divide part of the algorithm.
+\newline
+
+\quad 2. The $\Theta(1)$ is included because we have to touch each row at least once.
+\newline
+
+The Master theorem does not apply straightforwardly to this formula, but it does apply to:
+\begin{align*}
+  T_1(m,n) = 2T_1(\frac{m}{2}, \frac{n}{2}) + \Theta(n).
+\end{align*}
+
+In this case: $a=2$, $b=2$, $f(n) = \Theta(n)$
+
+\noindent
+$\implies$
+$\lg_b{a} = \lg_2{2} = 1$ 
+
+\noindent
+$\implies$
+$n^{\lg_b{a}} = n^1 = n$.
+
+\noindent
+$\implies$
+$f(n) = \Theta(n^{\lg_b{a}})$
+
+\noindent
+$\implies$
+(Case 2)
+
+\noindent
+$\implies$
+$T_1(m,n) = \Theta(n^{\lg_b{a}} \lg{m}) = \Theta(n \lg{m})$.
+\newline
+
+Finally, we add the effect of the $\Theta(1)$ term in the original recurrence equation which gives an additional $\Theta(m)$ term in the solution:
+\begin{align*}
+  T(m,n) = \Theta(n \lg{m}) + \Theta(m).
+\end{align*}
+\newline
+
+\end{document}
