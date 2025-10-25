@@ -1,0 +1,259 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{centernot}
+\usepackage{listings}
+\usepackage{color}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{conj}[thm]{Conjecture}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\author{Mostafa Hassanein}
+\title{
+  MTH-681 Analysis and Design of Algorithms \\
+  MIDTERM EXAM}
+\date{8 May 2025}
+\begin{document}
+
+\maketitle
+\newpage
+
+
+
+% \section*{1}
+
+% \subsection*{a.}
+
+
+
+% \begin{center}
+%   \textbf{\underline{Solution:}}  
+% \end{center}
+
+% \subsection*{a.}
+
+% \begin{lstlisting}
+%   int
+% \end{lstlisting}
+
+% \newpage
+
+
+% \begin{thm}
+%   placeholder
+% \end{thm}
+
+% \begin{proof}(By Substitution)
+%   $ $
+%   \newline
+  
+%   PLACEHOLDER
+%   \begin{align*}
+%     PLACEHOLDER
+%   \end{align*}
+% \end{proof}
+
+% \newpage
+
+% \subsection*{b.}
+
+% \begin{lem}
+%     PLACEHOLDER
+% \end{lem}
+
+% \begin{proof}
+%   $ $
+%   \newline
+
+%   PLACEHOLDER
+% \end{proof}
+
+% \newpage
+
+% \begin{thm}
+%   The algorithm is correct.
+% \end{thm}
+
+% \begin{proof}(By Strong Induction)
+%   $ $
+%   \newline
+
+%   \textbf{\underline{Base case ($n=3$):}}
+  
+%   PLACEHOLDER
+
+%   \textbf{\underline{Inductive step ($n > 3$):}}
+
+%   PLACEHOLDER
+  
+% \end{proof}
+
+
+% % Snippets
+% % \begin{align}
+% %   & X=1  \nonumber &&\\
+% %   \implies& Y=2 \label{1-8.2}
+% % \end{align}
+% % \eqref{1-8.1} and \eqref{1-8.2} $\implies S(n) = \Theta(2^n)$.
+
+
+\section*{Question 1}
+\begin{thm}
+  $W_t(n) = T(n) = \Theta(n \lg n)$.
+\end{thm}
+
+\begin{proof}
+  $ $
+  \newline
+
+  In the worst case of this algorithm the variable "$found$" is never set to true (because on each iteration the search item is not found in the sequence S) and thus the while loop executes $n-1 = \Theta(n)$ times.
+  \newline
+
+  On each iteration we call BSearchHelp on an input of size $i$.
+  \newline
+
+  Since BSearchHelp is an $\Theta(\lg n)$ algorithm, then on each iteration we incur $\Theta(\lg i)$.
+  \newline
+
+  The total time is then given by the summation:
+
+  \begin{align*}
+    T(n) 
+    &= \sum_{i=2}^{n} \Theta(\lg i) \\
+    &= \sum_{i=2}^{n} c_1 \lg i \\
+    &= c_1 \sum_{i=2}^{n} \lg i \\
+  \end{align*}
+
+  \textbf{\underline{Upper Bound:}}
+
+  \begin{align*}
+    T(n) 
+    &= c_1 \sum_{i=2}^{n} \lg i \\
+    &\leq c_1 \sum_{i=2}^{n} \lg n \\
+    &\leq c_1 n \lg n
+  \end{align*}
+
+  Take $c_1 = 1$ and $n_0 = 1$, then:
+
+  $\implies T(n) = O(n\ln n)$.
+  \newline
+
+  \textbf{\underline{Lower Bound:}}
+
+  % Since $i \lg i$ is a non-decreasing function, then we can bound the sum using integration bounds:
+
+  % \begin{align*}
+  %   \leq \sum_{i=2}^{n} \Theta(i \lg i) \leq
+  % \end{align*}
+
+  
+\end{proof}
+
+
+\newpage
+
+\section*{Question 2}
+
+\begin{align*}
+  a &= 2 \\
+  b &= 8 \\
+  \log_b{a} &= \log_8{2} = 3 \\
+  n^{\log_b{a}} &= n^{3}
+\end{align*}
+
+1. 
+\begin{align*}
+  &f(n) = n \\
+  \implies & f(n) = O(n^2)  \\
+  \implies & f(n) = O(n^{\log_b{a} - \epsilon}) \quad \text{for } \epsilon = 1 \\
+  \implies& \text{Case 1}
+\end{align*}
+\newline
+
+2. 
+\begin{align*}
+  &f(n) = n^3 \\
+  \implies & f(n) = \Theta(n^3)  \\
+  \implies & f(n) = \Theta(n^{\log_b{a}}) \\
+  \implies& \text{Case 2}
+\end{align*}
+\newline
+
+3. 
+\begin{align}
+  &f(n) = n^4 \nonumber \\
+  \implies & f(n) = \Omega(n^3) \nonumber \\
+  \implies & f(n) = \Omega(n^{\log_b{a} + \epsilon}) \quad \text{for } \epsilon = 1 \label{2.1.1}
+\end{align}
+
+and:
+
+\begin{align}
+  af(n/b) 
+  &= 2f(n/8) \nonumber \\
+  &= \frac{2}{8^3} n^3 \nonumber \\
+  &< c f(n) = c n^3 \quad \text{for } c = \frac{3}{8^3} \label{2.1.2}
+\end{align}
+
+$\eqref{2.1.1}$ and $\eqref{2.1.2}$ $\implies \text{Case 3}$.
+\newline
+
+
+4. 
+\begin{align*}
+  &f(n) = \frac{1}{\log{n}} * n^3 \\
+  \implies & \left(f(n) \neq \Theta(n^3)\right) \quad 
+  \land \quad \left(\forall \epsilon: f(n) \neq \Omega(n^{3 + \epsilon})\right) \quad 
+  \land \quad \left(\forall \epsilon: f(n) \neq O(n^3 - \epsilon)\right) \\
+  \implies& \text{The Master theorem does not apply.}
+\end{align*}
+\newline
+
+5. 
+\begin{align*}
+  &f(n) = \log{n} * n^3 \\
+  \implies & \left(f(n) \neq \Theta(n^3)\right) \quad 
+  \land \quad \left(\forall \epsilon: f(n) \neq \Omega(n^{3 + \epsilon})\right) \quad 
+  \land \quad \left(\forall \epsilon: f(n) \neq O(n^3 - \epsilon)\right) \\
+  \implies& \text{The Master theorem does not apply.}
+\end{align*}
+
+
+\newpage
+
+\section*{Question 3}
+
+\textbf{\underline{Algorithm}:}
+
+1. We iterate over the elements of the set A, and we build up the partial sums into an array S.
+
+2. For each possible pair of indices $i,j$ where $1 \leq i < j \leq n$, compute the difference $s[j] - s[i]$ and check if it equals $k$.
+
+
+
+
+\end{document}

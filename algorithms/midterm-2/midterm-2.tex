@@ -1,0 +1,241 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{centernot}
+\usepackage{listings}
+\usepackage{color}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{conj}[thm]{Conjecture}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\author{Mostafa Hassanein}
+\title{
+  MTH-681 Analysis and Design of Algorithms \\
+  SECOND MIDTERM EXAM}
+\date{22 JUNE 2025}
+\begin{document}
+
+\maketitle
+\newpage
+
+
+
+% \section*{1}
+
+% \subsection*{a.}
+
+
+
+% \begin{center}
+%   \textbf{\underline{Solution:}}  
+% \end{center}
+
+% \subsection*{a.}
+
+% \begin{lstlisting}
+%   int
+% \end{lstlisting}
+
+% \newpage
+
+
+% \begin{thm}
+%   placeholder
+% \end{thm}
+
+% \begin{proof}(By Substitution)
+%   $ $
+%   \newline
+  
+%   PLACEHOLDER
+%   \begin{align*}
+%     PLACEHOLDER
+%   \end{align*}
+% \end{proof}
+
+% \newpage
+
+% \subsection*{b.}
+
+% \begin{lem}
+%     PLACEHOLDER
+% \end{lem}
+
+% \begin{proof}
+%   $ $
+%   \newline
+
+%   PLACEHOLDER
+% \end{proof}
+
+% \newpage
+
+% \begin{thm}
+%   The algorithm is correct.
+% \end{thm}
+
+% \begin{proof}(By Strong Induction)
+%   $ $
+%   \newline
+
+%   \textbf{\underline{Base case ($n=3$):}}
+  
+%   PLACEHOLDER
+
+%   \textbf{\underline{Inductive step ($n > 3$):}}
+
+%   PLACEHOLDER
+  
+% \end{proof}
+
+
+% % Snippets
+% % \begin{align}
+% %   & X=1  \nonumber &&\\
+% %   \implies& Y=2 \label{1-8.2}
+% % \end{align}
+% % \eqref{1-8.1} and \eqref{1-8.2} $\implies S(n) = \Theta(2^n)$.
+
+
+\section*{Question 1}
+\subsection*{1.}
+\begin{align*}
+  &2^{n+1} = 2*2^n < 3 * 2^n \\
+  \implies& \exists c = 3, n_0 = 0, \text{such that } \forall n > n_0:  2^{n+1} < c*2^n \\
+  \implies& 2^{n+1} = O(2^n).
+\end{align*}
+
+
+\subsection*{2.}
+\begin{align*}
+  &2^{2n} = (2^n)^2 = 2^n * 2^n \\
+  \implies& \not \exists c, n_0, \text{such that } \forall n > n_0:  2^{2n} < c*2^n \\
+  \implies& 2^{2n} = \Omega(2^n) \\
+  \implies& 2^{2n} \neq O(2^n).
+\end{align*}
+
+\subsection*{3.}
+We can obtain an upper-bound on the summation using an integral bound:
+\begin{align*}
+  \sum_{k=1}^{n} k \ln{k} 
+  &\leq \int_{1}^{n+1} x \ln{x} dx \\
+  &= \left[ \frac{1}{2} x^2 \ln{x} - \frac{1}{4} x^2 \right]_{x = 1} ^{n+1} \\
+  &= \frac{1}{2} (n+1)^2 \ln{(n+1)} - \frac{1}{4} (n+1)^2 + c \\
+  &\leq \frac{1}{2} (n+1)^2 \ln{(n+1)}.
+\end{align*}
+
+Next, we use the limit test:
+\begin{align*}
+  L 
+  &= \lim_{n \to \infty} \frac{\frac{1}{2} (n+1)^2 \ln{(n+1)}}{n^2 \ln{n}} \\
+  &= \lim_{n \to \infty} \frac{\frac{1}{2} (n^2 +2n + 1) \ln{(n+1)}}{n^2 \ln{n}} \\
+  &= \lim_{n \to \infty} \frac{\frac{1}{2} n^2 \ln{(n+1)} + n \ln{(n+1)} + \frac{1}{2}\ln{(n+1)}}{n^2 \ln{n}} \\
+  &= \lim_{n \to \infty} \frac{\frac{1}{2} n^2 \ln{(n+1)}}{n^2 \ln{n}} \\
+  &= \lim_{n \to \infty} \frac{\frac{1}{2} n^2 \ln{n} + \ln{1}}{n^2 \ln{n}} \\
+  &= \lim_{n \to \infty} \frac{\frac{1}{2} n^2 \ln{n}}{n^2 \ln{n}} = \frac{1}{2}.
+\end{align*}
+$\implies \sum_{k=1}^{n} k \ln{k} = \Theta(n^2 \ln{n})$
+$\implies \sum_{k=1}^{n} k \ln{k} = O(n^2 \ln{n})$.
+
+\newpage
+
+\section*{Question 2}
+
+\subsection*{1.}
+
+Scrable[S, 1, 2]:
+    
+    mid = 1
+
+    After 2 calls to merge sort help S won't change: S = [5,2]
+
+    The first call to Scrambe(S, 1, 1), results in: S[1] = S[1] * S[2] = 5*2 = 10.
+
+    The second and third calls to Scrable won't do anything.
+
+    The fourth call to scrable, results in: S[1] = S[1] * S[2] = 10*2 = 20.
+
+    The final calls to merge sort help won't do anything.
+
+    Therefore, the final result is: S = [20, 2]
+
+
+\subsection*{2.}
+\begin{align*}
+  T(n) 
+  &= 4T(\frac{n}{2}) + 4\Theta(\frac{n}{2} \lg{\frac{n}{2}}) \\
+  &= 4T(\frac{n}{2}) + \Theta(n \lg n).
+\end{align*}
+
+
+\subsection*{3.}
+\begin{align*}
+  a &= 4 \\
+  b &= 2 \\
+  \lg_b{a} &= \lg_2{4} = 2 \\
+  n^{\lg_b{a}} &= n^2 \\
+  f(n) &= n \lg{n}
+\end{align*}
+
+\begin{align*}
+  \implies& f(n) = O(n^{2 -\epsilon}), \text{ for } \epsilon = 0.5 \\
+  \implies& \text{First Case} \\
+  \implies& T(n) = \Theta(n^2).
+\end{align*}
+
+
+\newpage
+
+\section*{Question 3}
+
+\textbf{\underline{Algorithm}:}
+
+\begin{lstlisting}
+  Sequence LCS(s1, s2) {
+  return LCSRecursive(s1, 1, m, s2, 1, n, 0)
+}
+
+
+Sequence LCSRecursive(Sequence s1, Index low_1, Index high_1, Sequence s2, Index low_2, Index high_2, Sequence partialResult) {
+  if (low_1 > high_1 || low_2 > high_2) {
+    return partialResult;
+  }
+  else {
+    if (s[low_1] == s[low_2]) {
+      LCSRecursive(s1, low_1+1, high_1, s2, low_2+1, high_2, partialResult + 1);
+    }
+    else if (s[low_1] < s[low_2]) {
+      LCSRecursive(s1, low_1+1, high_1, s2, low_2, high_2, partialResult);
+    }
+    else {
+      LCSRecursive(s1, low_1, high_1, s2, low_2+1, high_2, partialResult);
+    }
+  }
+}
+\end{lstlisting}
+
+\end{document}
