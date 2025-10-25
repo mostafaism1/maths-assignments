@@ -1,0 +1,102 @@
+\documentclass{article}
+\usepackage{amsmath, amsthm, amsfonts}
+\usepackage{centernot}
+\usepackage{listings}
+\usepackage{color}
+
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{remark}[thm]{Remark}
+\newtheorem{conj}[thm]{Conjecture}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\author{Mostafa Hassanein}
+\title{
+  MTH-681 Analysis and Design of Algorithms \\
+  Assignment (4): Divide and Conquer \\
+  The Master Theorem}
+\date{31 May 2025}
+\begin{document}
+
+\maketitle
+\newpage
+
+\section*{4-9}
+
+Consider the following reucrrence:
+\begin{align*}
+ T(n) &= T(n/2) + 5^{\lfloor \log_5{n} \rfloor} &&\\
+ T(1) &= \Theta(1)
+\end{align*}
+
+Can you solve it using the master method? If "yes", solve it; if "no", explain why. 
+
+\begin{center}
+  \textbf{\underline{Solution:}}  
+\end{center}
+\begin{align*}
+  a &= 1 \\
+  b &= 2 \\
+  \log_b{a} &= \log_2{1} = 0.
+\end{align*}
+
+To simplify the analysis, assume $n$ is an integer power of 5: $n = 5^k$.
+\begin{align*}
+  \implies f(n) 
+  &= 5^{\lfloor \log_5{n} \rfloor} &&\\
+  &= 5^{\log_5{n}} &&\\
+  &= n.
+\end{align*}
+
+Comparing $f(n)$ with $n^{\log_b{a}}$:
+\begin{align*}
+  f(n) 
+  &= n &&\\
+  &= \Omega(n^{0 + \epsilon}) \quad \text{for } \epsilon=0.5 &&\\
+  &= \Omega(n^{\log_b{a} + \epsilon}) \quad \text{for } \epsilon=0.5.
+\end{align*}
+
+This matches the first condition for the third case of the master method.
+\newline
+
+Next, we check the regularity condition:
+
+\begin{align*}
+  f(n/b)
+  &= f(n/2) &&\\
+  &= n/2 &&\\
+  &\leq c n \quad \text{for } c=0.6 &&\\
+  &= c f(n) \quad \text{for } c=0.6.
+\end{align*}
+
+Therefore the recurrence does match the third case of the master method.
+\newline
+
+Finally, we apply the master method to find a tight bound on $T(n)$:
+\begin{align*}
+  T(n) = \Theta(f(n)) = \Theta(n).
+\end{align*}
+
+\end{document}
