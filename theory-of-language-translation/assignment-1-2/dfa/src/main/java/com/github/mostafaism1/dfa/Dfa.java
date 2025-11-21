@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.BiFunction;
 
-public interface Dfa<STATE extends Enum<STATE>, SYMBOL extends Enum<SYMBOL>> {
+public interface Dfa<STATE, SYMBOL extends Enum<SYMBOL>> {
 
   public Dfa<?, ?> build(
       Set<STATE> states, 

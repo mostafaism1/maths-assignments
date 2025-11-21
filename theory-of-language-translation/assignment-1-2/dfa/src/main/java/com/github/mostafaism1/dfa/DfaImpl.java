@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.function.BiFunction;
 
-public class DfaImpl<STATE extends Enum<STATE>, SYMBOL extends Enum<SYMBOL>>
+public class DfaImpl<STATE, SYMBOL extends Enum<SYMBOL>>
     implements Dfa<STATE, SYMBOL> {
 
   private STATE startState;
