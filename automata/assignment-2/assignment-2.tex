@@ -191,6 +191,54 @@ Give informal descriptions and state diagrams of pushdown automata for the langu
   \underline{Solution:}
 \end{center}
 
+\textbf{Informal Description:}
+
+The pushdown automaton reads input symbols (0 or 1) one at a time and uses two states to track the parity of the number of symbols read. It starts in state $q_0$ (representing an even count, since 0 symbols have been read). Each input symbol causes a transition that toggles between states $q_0$ and $q_1$. After reading all input, if the automaton is in state $q_1$ (odd count), it transitions to the accept state $q_{accept}$.
+
+The stack is not essential for this language, but we include it for the formal PDA definition. We use a bottom-of-stack marker \$ to detect when input is complete.
+
+\vspace{0.5cm}
+
+\textbf{State Diagram:}
+
+\begin{center}
+\begin{tikzpicture}[node distance=3cm, auto]
+  % States
+  \node[state, initial] (q0) {$q_0$};
+  \node[state, right of=q0] (q1) {$q_1$};
+  \node[state, accepting, right of=q1] (qa) {$q_a$};
+
+  % Transitions
+  \path[->]
+    (q0) edge[bend left] node[above] {$0,\epsilon\rightarrow\epsilon$} (q1)
+    (q0) edge[bend left=60] node[below] {$1,\epsilon\rightarrow\epsilon$} (q1)
+    (q1) edge[bend left] node[below] {$0,\epsilon\rightarrow\epsilon$} (q0)
+    (q1) edge[bend left=60] node[above] {$1,\epsilon\rightarrow\epsilon$} (q0)
+    (q1) edge node[above] {$\epsilon,\$\rightarrow\epsilon$} (qa);
+\end{tikzpicture}
+\end{center}
+
+\vspace{0.3cm}
+
+\textbf{Formal Description:}
+\begin{itemize}
+  \item States: $Q = \{q_0, q_1, q_a\}$
+  \item Start state: $q_0$
+  \item Accept state: $q_a$
+  \item Stack alphabet: $\Gamma = \{\$\}$
+  \item Initial stack symbol: \$
+  \item Transitions:
+  \begin{align*}
+    \delta(q_0, 0, \epsilon) &= \{(q_1, \epsilon)\} \\
+    \delta(q_0, 1, \epsilon) &= \{(q_1, \epsilon)\} \\
+    \delta(q_1, 0, \epsilon) &= \{(q_0, \epsilon)\} \\
+    \delta(q_1, 1, \epsilon) &= \{(q_0, \epsilon)\} \\
+    \delta(q_1, \epsilon, \$) &= \{(q_a, \epsilon)\}
+  \end{align*}
+\end{itemize}
+
+The automaton alternates between states $q_0$ and $q_1$ for each symbol read. It accepts if and only if it ends in state $q_1$ (odd number of symbols) and can transition to $q_a$ by popping the bottom marker \$.
+
 
 \subsection*{f.}
 
