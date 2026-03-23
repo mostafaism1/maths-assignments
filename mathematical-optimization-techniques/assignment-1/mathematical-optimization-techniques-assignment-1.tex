@@ -1,0 +1,708 @@
+\documentclass{article}
+\usepackage[a4paper, margin=0.75in]{geometry}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\author{Mostafa Hassanein}
+\title{
+  MTH-645 Optimization Techniques \\
+  Assignment (1)}
+\date{21 March 2026}
+\begin{document}
+
+\maketitle
+
+\newpage
+
+\section*{1}
+It is required to find the minimum of the unimodal function $F(x,y) = 15 e^{-x} + 2e^{y}$ along the segment joining the two points $(1, 1)$ and $(5, 4)$ within an interval of length $0.1$. Use both Fibonacci search and Golden section methods to locate the minimum.
+
+\begin{center}
+  \textbf{\underline{Solution:}}  
+\end{center}
+
+\subsection*{a. \underline{Fibonacci search}}
+
+\begin{align*}
+ L_0 &= \sqrt{(5-1)^2 + (4-1)^2} = \sqrt{25} = 5. &&\\
+ L_n &= 0.1. &&\\
+ reduction (r) &= L_0 / L_n = 5/0.1 = 50. &&\\
+ N_{fib} &\geq r = 50 \implies N_{fib} = 55. &&\\
+ \text{Fibonacci Sequence}&: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55 &&\\
+ iterations &= 8.
+\end{align*}
+
+The line segment between $a$ and $b$ is given by the vector:
+\begin{align*}
+  L_0 = (5-1, 4,1) = (4,3).
+\end{align*}
+
+$x_1$ and $x_2$ are given by the equations:
+\begin{align*}
+  x_1 &= a + \frac{F_{n-2}}{F_{n}} L_0 &&\\
+  x_2 &= b - \frac{F_{n-2}}{F_{n}} L_0 = a + \frac{F_{n-1}}{F_{n}} L_0.
+\end{align*}
+
+\textbf{\underline{Iterations:}}
+\newline
+
+\begin{tabular}{ |c|c|c|c|c|c|c|c| }
+\hline
+iteration & a & $x_1$ & $x_2$ & b & $f(x_1)$ & comp & $f(x_2)$ \\ 
+\hline 
+1 & (1,1) & (2.53, 2.15)  & (3.47, 2.85)  & (5,4) & 18.36 & $<$ & 35.04 \\ 
+\hline 
+2 & (1,1) & (1.94, 1.70)  & (2.53, 2.15) & (3.47, 2.85) & 13.1 & $<$ & 18.36 \\ 
+\hline
+3 & (1,1) & (1.59, 1.44)  & (1.94, 1.70) & (2.53, 2.15) & 11.5 & $<$ & 13.1 \\ 
+\hline
+4 & (1,1) & (1.35, 1.26)  & (1.59, 1.44) & (1.94, 1.70) & 10.94 & $<$ & 11.5 \\ 
+\hline
+5 & (1,1) & (1.24, 1.18)  & (1.35, 1.26) & (1.59, 1.44) & 10.85 & $<$ & 10.94 \\ 
+\hline
+6 & (1,1) & (1.10, 1.08) & (1.24, 1.18) & (1.35, 1.26) & 10.88 & $>$ & 10.85 \\ 
+\hline
+7 & (1.10, 1.08) & (1.24, 1.18) & (1.21, 1.16 ) & (1.35, 1.26) & 10.85 & = & 10.85 \\ 
+\hline
+\end{tabular}
+\newline
+
+\begin{align*}
+  x^* = midpoint(a,b) = (1.23, 1.13)
+\end{align*}
+
+
+\subsection*{b. \textbf{\underline{Golden Section}}}
+First, let's compute the required number of iterations:
+\begin{align*}
+  &(0.618)^n = \frac{1}{50} &&\\
+  \implies& n\ln(0.618) = \ln(\frac{1}{50}) &&\\
+  \implies& n = 8.13 &&\\
+  \implies& n = 9.
+\end{align*}
+
+$x_1$ and $x_2$ are given by the equations:
+\begin{align*}
+  x_1 &= a + 0.618 L_0 &&\\
+  x_2 &= b - 0.618 L_0
+\end{align*}
+
+\textbf{\underline{Iterations:}}
+\newline
+
+\begin{tabular}{ |c|c|c|c|c|c|c|c| }
+\hline
+iteration & a & $x_1$ & $x_2$ & b & $f(x_1)$ & comp & $f(x_2)$ \\ 
+\hline 
+1 &	(1.00, 1.00) &	(2.52, 2.14)	& (3.47, 2.85)	& (5.00, 4.00)	& 18.29	& $<$ &	35.18 \\
+\hline 
+2 &	(1.00, 1.00) &	(1.94, 1.70)	& (2.52, 2.14)	& (3.47, 2.85)	& 13.18	& $<$ &	18.29 \\
+\hline 
+3 &	(1.00, 1.00) &	(1.58, 1.43)	& (1.94, 1.70)	& (2.52, 2.14)	& 11.50	& $<$ &	13.18 \\
+\hline 
+4 &	(1.00, 1.00) &	(1.36, 1.27)	& (1.58, 1.43)	& (1.94, 1.70)	& 10.97	& $<$ &	11.50 \\
+\hline 
+5 &	(1.00, 1.00) &	(1.22, 1.16)	& (1.36, 1.27)	& (1.58, 1.43)	& 10.84	& $<$ &	10.97 \\
+\hline 
+6 &	(1.00, 1.00) &	(1.13, 1.10)	& (1.22, 1.16)	& (1.36, 1.27)	& 10.83	& $<$ &	10.84 \\
+\hline 
+7 &	(1.00, 1.00) &	(1.08, 1.06)	& (1.13, 1.10)	& (1.22, 1.16)	& 10.86	& $>$ &	10.83 \\
+\hline 
+8 &	(1.08, 1.06) &	(1.13, 1.10)	& (1.17, 1.12)	& (1.22, 1.16)	& 10.83	& $=$ &	10.83 \\
+\hline 
+\end{tabular}
+\newline
+
+
+\begin{align*}
+  x^* = midpoint(a,b) = (1.15, 1.11)
+\end{align*}
+
+\newpage
+
+\section*{2.}
+It is required to find the maximum of the unimodal function $F = \ln{x} - 2x^2$ within the interval $(0, 1)$. Use the method which requires the minimum number of function evaluations to locate the maximum in an interval of length $0.05$.
+
+\begin{center}
+  \textbf{\underline{Solution:}}  
+\end{center}
+
+We transform the problem into a minimization problem by multiply by $-1$, we get: the new objective function:
+\begin{align*}
+  G(x) = 2x^2 - \ln{x}
+\end{align*}
+
+The \textbf{Fibonacci search} method is the method that requires the minimum number of function evaluations. So we use it for the solution.
+
+\begin{align*}
+ L_0 &= 1. &&\\
+ L_n &= 0.05. &&\\
+ reduction (r) &= L_0 / L_n = 1/0.05 = 20. &&\\
+ N_{fib} &\geq r = 20 \implies N_{fib} = 21. &&\\
+ \text{Fibonacci Sequence}&: 1, 1, 2, 3, 5, 8, 13, 21 &&\\
+ iterations &= 6.
+\end{align*}
+
+\textbf{\underline{Iterations:}}
+\newline
+
+\begin{tabular}{ |c|c|c|c|c|c|c|c| }
+\hline
+iteration & a & $x_1$ & $x_2$ & b & $f(x_1)$ & comp & $f(x_2)$ \\ 
+\hline 
+1	& 0.00	& 0.38	& 0.61 &	1.00	& 1.25 &	$>$	& 1.24 \\
+\hline
+2	& 0.38	& 0.61	& 0.76 &	1.00	& 1.24 &	$<$	& 1.43 \\
+\hline
+3	& 0.38	& 0.52	& 0.61 &	0.76	& 1.19 &	$<$	& 1.24 \\
+\hline
+4	& 0.38	& 0.47	& 0.52 &	0.61	& 1.19 &	$>$	& 1.19 \\
+\hline
+5	& 0.47	& 0.52	& 0.57 &	0.61	& 1.19 &	$<$	& 1.21 \\
+\hline
+6	& 0.47 & 0.50 &	0.53 &	0.56 & 1.19 & $<$ &	1.20 \\
+\hline
+\end{tabular}
+\newline
+
+\begin{align*}
+  x^* = midpoint(a,b) = 0.52
+\end{align*}
+
+\newpage
+
+\section*{3.}
+a. Use Fibonacci search to find the point of minimum energy $E = 14x^2 + y^2 + z^2 - 4xy - 6xz - 3x$ along the segment joining the two points $(1, 2, 4)$ and $(3, 5, 8)$ with an error $\epsilon \leq 0.05$.
+\newline
+
+\noindent
+b. Comment on the relation between the gradient at the point of minimum and the segment direction.
+
+\begin{center}
+  \textbf{\underline{Solution:}}  
+\end{center}
+
+\subsection*{a.}
+
+\begin{align*}
+ \vec{L_0} &= (3-1, 5-2, 8-4) = (2,3,4). &&\\
+ L_0 &= \sqrt{(3-1)^2 + (5-2)^2 + (8-4)^2} = 5.39. &&\\
+ L_n &= 0.05. &&\\
+ reduction (r) &= L_0 / L_n = 5.39/0.05 = 107.8. &&\\
+ N_{fib} &\geq r = 107.8 \implies N_{fib} = 144. &&\\
+ \text{Fibonacci Sequence}&: 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144
+ &&\\
+ iterations &= 10.
+\end{align*}
+
+\textbf{\underline{Iterations:}}
+\newline
+
+\begin{tabular}{ |c|c|c|c|c|c|c|c| }
+\hline
+iteration & a & $x_1$ & $x_2$ & b & $f(x_1)$ & comp & $f(x_2)$ \\ 
+\hline 
+1	& (1.00, 2.00, 4.00)	& (1.76, 3.14, 5.52)	& (2.23, 3.85, 6.47)	& (3.00, 5.00, 8.00)	& -1.97	& $<$	& -1.27 \\
+\hline 
+2	& (1.00, 2.00, 4.00)	& (1.47, 2.70, 4.94)	& (1.76, 3.14, 5.52)	& (2.23, 3.85, 6.47)	& -1.91	& $>$	& -1.97 \\
+\hline 
+3	& (1.47, 2.70, 4.94)	& (1.76, 3.14, 5.52)	& (1.94, 3.41, 5.88)	& (2.23, 3.85, 6.47)	& -1.97	& $<$	& -1.82 \\
+\hline 
+4	& (1.47, 2.70, 4.94)	& (1.65, 2.97, 5.30)	& (1.76, 3.14, 5.52)	& (1.94, 3.41, 5.88)	& -1.99	& $<$	& -1.97 \\
+\hline 
+5	& (1.47, 2.70, 4.94)	& (1.58, 2.87, 5.16)	& (1.65, 2.97, 5.30)	& (1.76, 3.14, 5.52)	& -1.98	& $>$	& -1.99 \\
+\hline 
+6	& (1.58, 2.87, 5.16)	& (1.65, 2.97, 5.30)	& (1.69, 3.04, 5.39)	& (1.76, 3.14, 5.52)	& -1.99	& $<$	& -1.99 \\
+\hline 
+7	& (1.58, 2.87, 5.16)	& (1.62, 2.93, 5.25)	& (1.65, 2.97, 5.30)	& (1.69, 3.04, 5.39)	& -1.99	& $>$	& -1.99 \\
+\hline 
+8	& (1.62, 2.93, 5.25)	& (1.65, 2.97, 5.30)	& (1.66, 3.00, 5.33)	& (1.69, 3.04, 5.39)	& -1.99	& $>$	& -1.99 \\
+\hline 
+9	& (1.65, 2.97, 5.30)	& (1.66, 3.00, 5.33)	& (1.67, 3.01, 5.35)	& (1.69, 3.04, 5.39)	& -1.99	& $<$	& -1.99 \\
+\hline 
+x	& (1.65, 2.97, 5.30)	& (1.66, 2.99, 5.32)	& (1.66, 3.00, 5.33)	& (1.67, 3.01, 5.35)	& -1.99	& $>$	& -1.99 \\
+\hline
+\end{tabular}
+\newline
+
+\begin{align*}
+  x^* = midpoint(a,b) = (1.66, 2.99, 5.33)
+\end{align*}
+
+\subsection*{b.}
+\begin{align*}
+  \vec{\nabla}(E) 
+  = 
+    \left(
+      \frac{\partial E}{\partial x},
+      \frac{\partial E}{\partial y},
+      \frac{\partial E}{\partial z}
+    \right)
+  = \left(
+      28x -4y -6z -3,
+      2y -4x,
+      2z -6x
+    \right)
+\end{align*}
+  
+\begin{align*}
+  \nabla(E(1.66,2.99,5.33))
+  = \left(
+      -0.46,
+      -0.66,
+      0.7
+    \right)
+\end{align*}
+
+Let $\theta$ be the angle between the segment direction, $\vec{L_0}$, and the gradient direction at the point of minimum, $\vec{\nabla}(E(1.66,2.99,5.33)$). Then:
+\begin{align*}
+  \cos(\theta) 
+  &= \frac{u \cdot v}{\lVert u \rVert \lVert v \rVert} &&\\
+  &= \frac{\left(2,3,4\right) \cdot \left(-0.46,-0.66,0.7 \right)}{5.39 * 3.02} &&\\
+  &= \frac{2 * (-0.46) + 3*(-0.66) + 4*0.7}{5.39 * 1.07} = 0.03 &&\\
+  \implies& \theta = 88.
+\end{align*}
+
+This shows that the directions nearly orthogonal.
+\newpage
+
+\section*{4.}
+Consider the problem: Minimize $(x+2y-4)^2 + (3x -4y-2)^2$. Starting at $(0,0)$, find the minimum along the steepest decent direction at $(0, 0)$, find the minimum along the steepest decent direction at (0, 0) using Powell's quadratic interpolation and $\delta = 1$. How many quadratic interpolations are expected to lead to the minimum in this direction?
+
+\begin{center}
+  \textbf{\underline{Solution:}}  
+\end{center}
+
+Denote $F(x,y) = (x+2y-4)^2 + (3x -4y-2)^2$.
+
+First, we compute the gradient:
+\begin{align*}
+  \nabla (F(x,y) 
+  &= )\left( \frac{\partial E}{\partial x}, \frac{\partial E}{\partial y} \right) &&\\
+  \frac{\partial E}{\partial x} &= \left( 2(x + 2y - 4)(1) + 2(3x - 4y - 2)(3) \right) &&\\
+  \frac{\partial E}{\partial y} &=  2(x + 2y - 4)(2) + 2(3x - 4y - 2)(-4) &&\\
+  \implies& \nabla (F(0,0)) = \left(-20, 0 \right)
+\end{align*}
+
+Next, we compute the steepest descent direction at $(0,0)$:
+\begin{align*}
+  -\nabla (F(0,0)) &= \left(20, 0\right) &&\\
+  \vec{d} &= normalize\left(\left(20, 0\right)\right) = \left(1,0\right).
+\end{align*}
+
+Along the steepest descent direction, we parameterize $(x,y)$ in terms of $\Delta$:
+\begin{align*}
+  \left(x, y\right) = \left(0,0\right) + \Delta\left(1, 0\right) = \left(\Delta, 0\right)
+\end{align*}
+
+And parametrize $F$ in terms of $\Delta$:
+\begin{align*}
+  F(\Delta) 
+  &= F(\Delta, 0) = (\Delta - 4)^2 + (3\Delta - 2)^2 &&\\
+  &= 10 \Delta^2 - 20 \Delta + 20.
+\end{align*}
+
+Since only the initial guess point is given without a search interval, our strategy will be to take consecutive $\delta$ steps along the steepest descent direction until we find an appropriate search interval:
+
+\begin{center}
+  \begin{tabular}{ |c|c| }
+  \hline
+  $\Delta$ & $F(\Delta)$  \\ 
+  \hline 
+  0	& 20	\\
+  1	& 10	\\
+  2	& 20	\\
+  \hline
+  \end{tabular}
+\end{center}
+
+Since $F(\Delta) < F(0)$ and $F(\Delta) < F(2 \Delta)$, then $[0, 2 \Delta]$ is an appropriate search interval.
+
+Next, we use Powell's quadratic interpolation at the 3 points: $0$, $\Delta$, $2 \Delta$:
+\begin{align*}
+  x_c &= \frac{a+b}{2} = \Delta &&\\
+  y &= x-x_c &&\\
+  G(y) &= ay^2 + by + c &&\\
+  G(0) &= c = F(\Delta) = 10 &&\\
+  G(\delta) &= G^+ = 20 &&\\
+  G(- \delta) &= G^- = 20 &&\\
+\end{align*}
+
+(To simplify the calculation, I'll just look up the formula for $y^*$ from the slides):
+
+\begin{align*}
+  y^* 
+  &= - \frac{G^+ - G^-}{G^+ + G^- -2G^0} \frac{\Delta}{2} &&\\
+  &= - \frac{(20 - 20)}{20 + 20 -2*10} \frac{1}{2} = 0.
+\end{align*}
+
+\begin{align*}
+  x^*
+  &= y^* + x_c &&\\
+  &= 0 + \Delta = 1.
+\end{align*}
+
+We don't need to perform further searches, since the current interval length = $2\delta \implies \epsilon = \frac{2\delta}{2} = \delta$, achieves the required accuracy. 
+
+\newpage
+
+\section*{5.}
+Construct three simplices of the simplex method to find the minimum of
+$F = 5x^2 - 4xy + 10y^2 - 7x$ using the initial simplex with vertices: (0,0), (0.5, 0), (0, 0.5).
+
+\noindent
+Show the steps on a graph paper.
+
+\begin{center}
+  \textbf{\underline{Solution:}}  
+\end{center}
+
+Assume an expansion coefficient $\gamma = 2$ and a contraction coefficient $\beta = 1/2$.
+\newline
+
+\textbf{\underline{Iteration 1:}}
+\newline
+
+\qquad
+\underline{Step 1: Evaluate the function at all vertiex points:}
+
+\begin{align*}
+  x_1 &= (0,0)   &F(x_1) &= 0 \\
+  x_2 &= (0.5,0) &F(x_2) &= -2.25 \\
+  x_3 &= (0,0.5) &F(x_3) &= 2.5
+\end{align*}
+
+\qquad
+$\implies x_l = x_2, \quad x_h = x_3.$
+\newline
+
+\qquad
+\underline{Step 2: Find the centroix point $x_0$:}
+\begin{align*}
+  x_0    &= \frac{1}{2} (x_1 + x_2) = (0.25, 0) \\
+  F(x_0) &= -1.44.
+\end{align*}
+\newline
+
+\qquad
+\underline{Step 3: Find the reflection point $x_r$:}
+\begin{align*}
+  x_r    &= 2x_0 - x_h = (0.5, -0.5) \\
+  F(x_r) &= 1.25.
+\end{align*}
+\newline
+
+\qquad
+\underline{Step 4: Decision point (accept OR expand OR contract):}
+\newline
+
+\qquad
+$F(x_r) < F(x_h)$, but $F(x_r)$ is larger than all remaining points $\implies$ attemp contraction.
+\newline
+
+\qquad
+\underline{Step 5: Attempt contraction:}
+
+\begin{align*}
+  x_c    &= \beta x_h + (1-\beta) x_0 = (0.125, 0.25) \\
+  F(x_c) &= -0.3.
+\end{align*}
+
+\qquad
+$F(x_c) < \min[F(x_h), F(x_r)] \implies$ accept $x_c$. 
+\newline
+
+\qquad
+\underline{Step 6: Test for convergence (standard-deviation):}
+\begin{align*}
+  Q = \sqrt{\frac{\sum_{i=1}^{n}  [ F(x_i) - F(x_0) ]^2 }{n}} = 1.16.
+\end{align*}
+\newline
+\newline
+
+
+\textbf{\underline{Iteration 2:}}
+\newline
+
+\qquad
+\underline{Step 1: Evaluate the function at all vertiex points:}
+
+\begin{align*}
+  x_1 &= (0,0)   &F(x_1) &= 0 \\
+  x_2 &= (0.5,0) &F(x_2) &= -2.25 \\
+  x_3 &= (0.125,0.25) &F(x_3) &= -0.3
+\end{align*}
+
+\qquad
+$\implies x_l = x_2, \quad x_h = x_1.$
+\newline
+
+\qquad
+\underline{Step 2: Find the centroix point $x_0$:}
+\begin{align*}
+  x_0    &= \frac{1}{2} (x_2 + x_3) = (0.31, 0.125) \\
+  F(x_0) &= -1.69.
+\end{align*}
+\newline
+
+\qquad
+\underline{Step 3: Find the reflection point $x_r$:}
+\begin{align*}
+  x_r    &= 2x_0 - x_h = (0.62, 0.25) \\
+  F(x_r) &= -2.41
+\end{align*}
+\newline
+
+\qquad
+\underline{Step 4: Decision point (accept OR expand OR contract):}
+\newline
+
+\qquad
+$F(x_r)$ is less than all other points $\implies$ attemp expansion.
+\newline
+
+\qquad
+\underline{Step 5: Attempt expansion:}
+
+\begin{align*}
+  x_e    &= 2x_r - x_0 = (0.93, 0.375) \\
+  F(x_e) &= -2.17
+\end{align*}
+
+\qquad
+$F(x_c) > F(x_r) \implies$ reject $x_e$ and accept $x_r$.
+\newline
+
+\qquad
+\underline{Step 6: Test for convergence (standard-deviation):}
+\begin{align*}
+  Q = \sqrt{\frac{\sum_{i=1}^{n}  [ F(x_i) - F(x_0) ]^2 }{n}} = 0.96.
+\end{align*}
+\newline
+\newline
+
+\textbf{\underline{Iteration 3:}}
+\newline
+
+\qquad
+\underline{Step 1: Evaluate the function at all vertiex points:}
+
+\begin{align*}
+  x_1 &= (0.62,0.25)   &F(x_1) &= -2.41 \\
+  x_2 &= (0.5,0) &F(x_2) &= -2.25 \\
+  x_3 &= (0.125,0.25) &F(x_3) &= -0.3
+\end{align*}
+
+\qquad
+$\implies x_l = x_1, \quad x_h = x_3.$
+\newline
+
+\qquad
+\underline{Step 2: Find the centroix point $x_0$:}
+\begin{align*}
+  x_0    &= \frac{1}{2} (x_1 + x_1) = (0.56, 0.125) \\
+  F(x_0) &= -2.48.
+\end{align*}
+\newline
+
+\qquad
+\underline{Step 3: Find the reflection point $x_r$:}
+\begin{align*}
+  x_r    &= 2x_0 - x_h = (0.995, 0) \\
+  F(x_r) &= -2.01
+\end{align*}
+\newline
+
+\qquad
+\underline{Step 4: Decision point (accept OR expand OR contract):}
+\newline
+
+\qquad
+$F(x_r) < F(x_h)$, but $F(x_r)$ is larger than all remaining points $\implies$ attemp contraction.
+\newline
+
+\qquad
+\underline{Step 5: Attempt contraction:}
+
+\begin{align*}
+  x_c    &= \beta x_h + (1-\beta) x_0 = (0.34, 0.19) \\
+  F(x_c) &= -1.7.
+\end{align*}
+
+\qquad
+$F(x_c) > F(x_r) \implies$ reject $x_c$ and accept $x_r$. 
+\newline
+
+\qquad
+\underline{Step 6: Test for convergence (standard-deviation):}
+\begin{align*}
+  Q = \sqrt{\frac{\sum_{i=1}^{n}  [ F(x_i) - F(x_0) ]^2 }{n}} = 0.3.
+\end{align*}
+\newline
+
+\qquad
+The final simplex is given by:
+\begin{align*}
+  x_1 &= (0.62,0.25)   &F(x_1) &= -2.41 \\
+  x_2 &= (0.5,0) &F(x_2) &= -2.25 \\
+  x_3 &= (0.995,0) &F(x_3) &= -2.01.
+\end{align*}
+
+\qquad
+and the solution is given by:
+\begin{align*}
+  x_0    &= \frac{1}{2} (x_1 + x_1) = (0.56, 0.125) \\
+  F(x_0) &= -2.48.
+\end{align*}
+\newpage
+
+
+\section*{6.}
+
+Carry out three steps to find three new base points of pattern search to Minimize 
+\begin{align*}
+  F = x_1^2 x_2^2 + (x_1 - 2)^2(x_2 - 3)^2
+\end{align*}
+starting at $x= (1, 1), \delta=0.2$ 
+for both directions. Show the steps taken on graph paper.
+
+\begin{center}
+  \textbf{\underline{Solution:}}  
+\end{center}
+
+Search directions ($d_i$):
+\begin{align*}
+  \bigg( (1, 0), (-1, 0), (0, 1), (0, -1) \bigg)
+\end{align*}
+
+\subsection*{\underline{First search:}}
+
+\underline{Step 1: Compute base point:}
+
+\begin{align*}
+  b^{0}    &= (1, 1) \\
+  F(b^{0}) &= 5.
+\end{align*}
+\newline
+
+\underline{Step 2: Make exploratory moves:}
+\newline
+
+\begin{tabular}{ |c|c|c|c|c|c|c|c|c| }
+\hline
+direction & $b^0$ & $F(b^0)$ & $x^1$ & $F(x^1)$ & $F(x^1)$ \: comp \: $f(b^0)$ & ACCEPTED? \\ 
+\hline
+$d_1$ & $(1, 1)$ & $5$ & $(1.2, 1)$ & $4$ & $<$ & YES \\ 
+\hline
+\end{tabular}
+\newline
+
+\underline{Step 3: Make pattern move:}
+\begin{align*}
+  x^p &= b^0 + 2 \delta d_1 = (1.4, 1) \\
+  F(x^p) & = 3.4.
+\end{align*}
+
+\begin{tabular}{ |c|c|c|c|c|c|c|c|c| }
+\hline
+direction & $b^0$ & $F(b^0)$ & $x^1$ & $F(x^1)$ & $F(x^1)$ \: comp \: $f(b^0)$ & ACCEPTED? \\ 
+\hline
+$d_1$ & $(1, 1)$ & $5$ & $(1.6, 1)$ & $3.2$ & $<$ & YES \\ 
+\hline
+\end{tabular}
+\newline
+
+$\implies b^1 = (1.6, 1)$.
+\newline
+
+\subsection*{\underline{Second search:}}
+
+\underline{Step 1: Compute base point:}
+
+\begin{align*}
+  b^1    &= (1.6, 1) \\
+  F(b^1) &= 3.2.
+\end{align*}
+\newline
+
+\underline{Step 2: Make exploratory moves:}
+\newline
+
+\begin{tabular}{ |c|c|c|c|c|c|c|c|c| }
+\hline
+direction & $b^1$ & $F(b^1)$ & $x^2$ & $F(x^2)$ & $F(x^2)$ \: comp \: $f(b^1)$ & ACCEPTED? \\ 
+\hline
+$d_1$ & $(1.6, 1)$ & $3.4$ & $(1.8, 1)$ & $3.4$ & $>$ & NO \\ 
+\hline
+$d_2$ & $(1.6, 1)$ & $3.4$ & $(1.4, 1)$ & $3.4$ & $>$ & NO \\ 
+\hline
+$d_3$ & $(1.6, 1)$ & $3.4$ & $(1.6, 1.2)$ & $4.2$ & $>$ & NO \\ 
+\hline
+$d_4$ & $(1.6, 1)$ & $3.4$ & $(1.6, 0.8)$ & $2.4$ & $<$ & YES \\ 
+\hline
+\end{tabular}
+\newline
+
+\underline{Step 3: Make pattern move:}
+\begin{align*}
+  x^p &= b^1 + 2 \delta d_4 = (1.6, 0.6) \\
+  F(x^p) & = 1.8.
+\end{align*}
+
+\begin{tabular}{ |c|c|c|c|c|c|c|c|c| }
+\hline
+direction & $b^1$ & $F(b^1)$ & $x^2$ & $F(x^2)$ & $F(x^2)$ \: comp \: $f(b^1)$ & ACCEPTED? \\ 
+\hline
+$d_1$ & $(1.6, 1)$ & $5$ & $(1.6, 0.4)$ & $1.5$ & $<$ & YES \\ 
+\hline
+\end{tabular}
+\newline
+
+$\implies b^2 = (1.6, 0.4)$.
+\newline
+
+\subsection*{\underline{Third search:}}
+
+\underline{Step 1: Compute base point:}
+
+\begin{align*}
+  b^2    &= (1.6, 0.4) \\
+  F(b^2) &= 1.5.
+\end{align*}
+\newline
+
+\underline{Step 2: Make exploratory moves:}
+\newline
+
+\begin{tabular}{ |c|c|c|c|c|c|c|c|c| }
+\hline
+direction & $b^2$ & $F(b^2)$ & $x^3$ & $F(x^3)$ & $F(x^3)$ \: comp \: $f(b^2)$ & ACCEPTED? \\ 
+\hline
+$d_1$ & $(1.6, 0.4)$ & $1.5$ & $(1.8, 0.4)$ & $0.79$ & $<$ & ACCEPTED \\ 
+\hline
+\end{tabular}
+\newline
+
+\underline{Step 3: Make pattern move:}
+\begin{align*}
+  x^p &= b^2 + 2 \delta d_1 = (2, 0.4) \\
+  F(x^p) & = 0.64.
+\end{align*}
+
+\begin{tabular}{ |c|c|c|c|c|c|c|c|c| }
+\hline
+direction & $b^2$ & $F(b^2)$ & $x^3$ & $F(x^3)$ & $F(x^3)$ \: comp \: $f(b^2)$ & ACCEPTED? \\ 
+\hline
+$d_1$ & $(1.6, 0.4)$ & $1.5$ & $(2.2, 0.4)$ & $1$ & $<$ & YES \\
+\hline
+\end{tabular}
+\newline
+
+$\implies b^3 = (2.2, 0.4)$.
+\newline
+
+
+
+
+
+
+\end{document}
